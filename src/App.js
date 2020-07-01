@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app-wrapper">
+      <header className="header">
+        <img src="https://i.pinimg.com/600x315/13/e3/43/13e34340ef2625f926ed799e68b1a7e2.jpg" alt="just" />
       </header>
-    </div>
-  );
+      <nav className="nav">
+        <ul>
+          <li><a href="#1">Profile</a></li>
+          <li><a href="#1">Messages</a></li>
+          <li><a href="#1">News</a></li>
+          <li><a href="#1">Music</a></li>
+        </ul>
+      </nav>
+      <div className="content">
+        <img src="https://intimacyheals.files.wordpress.com/2017/05/wavequotes.jpg" / >
+      </div>
+    </div>)
 }
 
 export default App;
