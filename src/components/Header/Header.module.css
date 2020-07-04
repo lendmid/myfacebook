@@ -1,0 +1,30 @@
+.header {
+    grid-column: 1 / -1;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 600px 1fr;
+    justify-content: stretch;
+    align-content: center;
+    border-bottom: 1px solid #E8EAED;
+}
+
+.nav {
+    grid-column: 2 / 2;
+}
+
+.list li {
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+    padding: 0 3px;
+}
+
+.list li a {
+    display: block;
+    padding: 13px;
+}
+
+.list li a:hover {
+    background-color: #f2f2f2;
+    border-radius: 10%;
+}

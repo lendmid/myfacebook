@@ -12,7 +12,6 @@ const MyPosts = () => {
         </div>         
         <div className="{s.posts}">
             <div className="{s.item}">
-                {/* <img src="http://hq-oboi.ru/photo/kotik_kak_pushistyy_komochek_1920x1200.jpg" alt="exaple"/> */}
                 post 1
             </div>
         </div>
