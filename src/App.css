@@ -1,32 +1,31 @@
 .app-wrapper {
   display: grid;
-  width: 1200px;
-  margin: 0 auto;
-
-  grid-template-areas: 
+  background-color: black;
+  grid-template-columns: 320px auto;
+  grid-template-rows: 60px auto;
+  /* grid-template-areas: 
   "h h"
   "n c";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 2fr 10fr; */
 }
 
 .header {
-  grid-area: h;
-  background-color: gray;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  background-color: #fff;
 }
+
 .header img {
-  width: 100px;
+  height: 60px;
+  width: 100%;
 }
 
 .nav {
-  grid-area: n;
   background-color: burlywood;
 }
 
 .content {
   grid-area: c;
   background-color: darkgrey;
-}
-.may {
-
 }
