@@ -1,0 +1,11 @@
+.post_wrapper {
+    background-color: rgba(220, 222, 225, 0.8);
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.post_wrapper img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

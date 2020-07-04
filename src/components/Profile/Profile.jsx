@@ -20,7 +20,10 @@ const Profile = () => {
                     <span>Дмитрий Дорошенко</span> 
                 </div>
             </div>
+            <div className={s.profile_information}>
             <MyPosts />
+
+            </div>
         </div>
     )
 }
