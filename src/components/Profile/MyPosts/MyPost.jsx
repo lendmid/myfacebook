@@ -3,7 +3,7 @@ import s from './MyPost.module.css';
 
 const MyPosts = () => {
   return (
-    <div className="">
+    <div className={s.post_wrapper}>
         My posts
         <div>
               <textarea name="" id="" cols="30" rows="10"></textarea>
