@@ -8,3 +8,27 @@
     height: 80px;
     border-radius: 50%;
 } */
+.wrapper {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #fff;
+}
+
+.chats_header {
+    padding: 10px 16px;
+}
+
+.chats_wrapper {
+    /* background-color: gray; */
+    min-width: 300px;
+    max-width: 383px;
+    border-right: 1px solid #E8EAED;
+}
+
+.chats li {
+    padding: 7px;
+    height: 64px;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+}

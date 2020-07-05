@@ -6,7 +6,7 @@ const MyPosts = () => {
   return (
     <div className={s.posts_wrapper}>
         <div className={s.create_post_wrapper}>
-            <textarea name="" id="" cols="50" rows="10">Опубликуйте что-нибудь</textarea>
+            <textarea name="" id="" cols="30" rows="5">Опубликуйте что-нибудь</textarea>
             <button>Add post</button>
           </div>         
         My posts

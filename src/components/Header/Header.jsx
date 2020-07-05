@@ -1,16 +1,17 @@
 import React from 'react';
 import s from './Header.module.css';
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
     return (
         <header className={s.header}>
             <nav className={s.nav}>
                 <ul className={s.list}>
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/dialogs">Messages</a></li>
-                    <li><a>News</a></li>
-                    <li><a>Music</a></li>
-                    <li><a>Settings</a></li>
+                    <li><NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink></li>
+                    <li><NavLink to="/dialogs">Messages</NavLink></li>
+                    <li><NavLink to="">News</NavLink></li>
+                    <li><NavLink to="">Music</NavLink></li>
+                    <li><NavLink to="">Settings</NavLink></li>
                 </ul>
             </nav>
         </header>

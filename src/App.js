@@ -10,8 +10,6 @@ const App = () => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        {/* <Profile /> */}
-        {/* <Dialogs /> */}
         <Route path='/dialogs' component={Dialogs} />
         <Route path='/profile' component={Profile} />
       </div>)
