@@ -12,11 +12,13 @@ ins {
   color: rgb(5, 5, 5);
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .app-wrapper {
   display: grid;
   background-color: #F0F2F5;
-  grid-template-columns: 1fr 855px 1fr;
-  grid-template-rows: 55px 1fr;
-  /* height: 100%; */
-  /* overflow-y: scroll; */
+  grid-template-columns: 1fr 940px 1fr;
+  grid-template-rows: 60px 1fr;
 }

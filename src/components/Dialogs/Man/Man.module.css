@@ -1,0 +1,27 @@
+.post_wrapper {
+    display: grid;
+    grid-template-columns: 50px 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: start;
+    align-items: center;
+}
+
+.last_message {
+    grid-row: 2 / -1;
+    grid-column: 2 / -1;
+    padding-left: 10px;
+}
+
+.date {}
+
+.name {
+    grid-row: 1 / 1;
+    grid-column: 2 / -1;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    grid-row: 1 / -1;
+}

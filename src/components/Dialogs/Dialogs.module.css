@@ -1,20 +1,25 @@
 .wrapper {
     grid-column: 1 / -1;
+    grid-row: 2 / 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 420fr 1500fr;
     background-color: #fff;
-    /* overflow-y: scroll; */
+    height: 100%;
+}
+
+.chats_wrapper {
+    min-width: 300px;
+    max-width: 420px;
+    border-right: 1px solid #E8EAED;
 }
 
 .chats_header {
     padding: 10px 16px;
 }
 
-.chats_wrapper {
+.chats_list {
     /* background-color: gray; */
-    min-width: 300px;
-    max-width: 383px;
-    border-right: 1px solid #E8EAED;
+    padding: 10px;
 }
 
 .chats li {
@@ -22,10 +27,10 @@
     height: 64px;
     background-color: #F2F2F2;
     border-radius: 10px;
+    margin: 5px 0;
 }
 
 h1 {
-
     color: rgba(0, 0, 0, 1);
     font-size: 24px;
     font-weight: bold;

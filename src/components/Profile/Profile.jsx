@@ -17,7 +17,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className={s.short_biography}>
-                    <span>Дмитрий Дорошенко</span> 
+                    <span>Дорошенко Дмитрий</span> 
                 </div>
             </div>
             <div className={s.profile_information}>
