@@ -1,18 +1,9 @@
-/* 
-.post_wrapper {
-    background-color: rgba(220, 222, 225, 0.8);
-}
-
-.post_wrapper img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-} */
 .wrapper {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: #fff;
+    /* overflow-y: scroll; */
 }
 
 .chats_header {
@@ -31,4 +22,11 @@
     height: 64px;
     background-color: #F2F2F2;
     border-radius: 10px;
+}
+
+h1 {
+
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: bold;
 }

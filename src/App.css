@@ -17,6 +17,6 @@ ins {
   background-color: #F0F2F5;
   grid-template-columns: 1fr 855px 1fr;
   grid-template-rows: 55px 1fr;
-  height: 100vh;
-  overflow: scroll;
+  /* height: 100%; */
+  /* overflow-y: scroll; */
 }
