@@ -10,8 +10,8 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Route path='/dialogs' render={() => <Dialogs dialogsData={props.dialogsData} />} />
-        <Route path='/profile' render={() => <Profile posts={props.posts} />} />
+        <Route path='/dialogs' render={() => <Dialogs dialogsData={props.state.messagesPage.dialogsData} />} />
+        <Route path='/profile' render={() => <Profile posts={props.state.profilePage.posts} />} />
       </div>
     </BrowserRouter>
   )

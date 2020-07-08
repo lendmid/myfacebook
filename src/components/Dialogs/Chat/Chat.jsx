@@ -1,7 +1,7 @@
 import React from "react";
-import s from './Man.module.css';
+import s from './Chat.module.css';
 
-const Man = (props) => {
+const Chat = (props) => {
   return (
     <div className={s.post_wrapper}>
       <img src={props.img} alt="avatar" />
@@ -19,4 +19,4 @@ const Man = (props) => {
     </div> 
   )
 }
-export default Man;
+export default Chat;

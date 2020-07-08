@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import state from './redux/state';
 
 
-ReactDOM.render(<React.StrictMode><App appState={state} /></React.StrictMode>,document.getElementById('root'));
+ReactDOM.render(<React.StrictMode><App state={state} /></React.StrictMode>,
+  document.getElementById('root'));
 
 serviceWorker.unregister();
