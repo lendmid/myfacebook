@@ -5,14 +5,14 @@ import Dialogs from './components/Dialogs/Dialogs';
 import './App.css';
 import { Route, BrowserRouter } from 'react-router-dom';
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Route path='/dialogs' component={Dialogs} />
-        <Route path='/profile' component={Profile} />
-      </div>)
+        <Route path='/dialogs' render={() => <Dialogs dialogsData={props.dialogsData} />} />
+        <Route path='/profile' render={() => <Profile posts={props.posts} />} />
+      </div>
     </BrowserRouter>
   )
 }
