@@ -6,15 +6,14 @@ import './App.css';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 const App = (props) => {
-  return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Route path='/dialogs' render={() => <Dialogs dialogsData={props.state.messagesPage.dialogsData} />} />
-        <Route path='/profile' render={() => <Profile posts={props.state.profilePage.posts} />} />
-      </div>
-    </BrowserRouter>
-  )
-}
-
+    return (
+      <BrowserRouter>
+        <div className="app-wrapper">
+          <Header />
+          <Route path='/dialogs' render={() => <Dialogs dialogsData={props.state.messagesPage.dialogsData} />} />
+          <Route path='/profile' render={() => <Profile posts={props.state.profilePage.posts} addPost={props.addPost} />} />
+        </div>
+      </BrowserRouter>
+    )
+  }
 export default App;

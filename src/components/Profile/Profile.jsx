@@ -12,7 +12,7 @@ const Profile = (props) => {
         <div className={s.profile}>
             <ProfileHeader />
             <div className={s.profile_information}>
-                <AddPost />
+                <AddPost addPost={props.addPost} />
                 {postsElement}
             </div>
         </div>
