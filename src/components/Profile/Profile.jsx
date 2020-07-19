@@ -5,8 +5,7 @@ import AddPost from './Posts/AddPost/AddPost';
 import Post from '././Posts/Post';
 
 const Profile = (props) => {
-    let postsElement =
-        props.posts.map(post => <Post message={post.message} likesCount={post.likesCount} />)
+    let postsElement = props.posts.map(post => <Post message={post.message} likesCount={post.likesCount} />)
 
     return (
         <div className={s.profile}>

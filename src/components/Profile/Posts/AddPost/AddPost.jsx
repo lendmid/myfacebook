@@ -3,6 +3,7 @@ import s from './AddPost.module.css';
 
 const AddPost = (props) => {
 
+  debugger
   let addPost = () => {
     let text = newPostElement.current.value; 
     props.addPost(text)
