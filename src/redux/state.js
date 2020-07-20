@@ -1,3 +1,5 @@
+// import { act } from "react-dom/test-utils";
+
 // import { rerenderEntireTree } from "../render";
 let store = {
     _state: {
@@ -18,6 +20,7 @@ let store = {
                     likesCount: 17
                 },
             ],
+            newPostText: ''
         },
         messagesPage: {
             dialogsData: [{
@@ -61,20 +64,22 @@ let store = {
     getState() {
         return store._state;
     },
-    rerenderEntireTree()  {
-    },
-    addPost(text) {
-        let newPost = {
-            id: 5,
-            message: text,
-            likesCount: 0,
-        }
-    
-        this._state.profilePage.posts.unshift(newPost);
-        this.rerenderEntireTree(this._state);
-    },
     subscribe(obserever) {
         this.rerenderEntireTree = obserever;
+    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: action.message,
+                likesCount: 0,
+            }
+            this._state.profilePage.posts.unshift(newPost);
+            this.rerenderEntireTree(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            // this._callSubscriber(this._state)
+        }
     }
 }
 

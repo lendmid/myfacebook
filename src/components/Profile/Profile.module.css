@@ -1,8 +1,7 @@
 .profile {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: 1fr 940px 1fr;
-    grid-template-rows: 510px 1fr;
+    grid-template: 510px 1fr / 1fr 940px 1fr;
 }
 
 .profile_information {

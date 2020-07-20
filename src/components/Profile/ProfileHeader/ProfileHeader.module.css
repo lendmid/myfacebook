@@ -3,8 +3,7 @@
     grid-row: 1 / 1;
     display: grid;
     justify-items: center;
-    grid-template-columns: 1fr 940px 1fr;
-    grid-template-rows: 350px 1fr;
+    grid-template: 350px 1fr / 1fr 940px 1fr;
 
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #E8EAED;
