@@ -51,25 +51,31 @@ h1 {
     font-weight: bold;
 }
 
-.send_wrapper {
-    /* max-width: 40px;
-    grid-template: ; */
+.dialog_wrapper {
+    display: grid;
+    grid-template-rows: 1fr 52px;
 }
 
-/* .textarea {
-    background-color: rgba(220, 222, 225, 0.3);
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 450px;
-    min-width: 450px;
-    min-height: 100px;
-    max-height: 300px;
-} */
+.send_wrapper {
+    grid-row: 2 / 2;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr 36px;
+}
 
-/* .button {
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 15px;
-    background-color: #a4a6a87c;
-    cursor: pointer;
-} */
+.send_wrapper a {
+    place-self: center;
+}
+
+.send {
+    width: 24px;
+    height: 24px;
+}
+
+.input {
+    background-color: #F2F2F2;
+    border-radius: 36px;
+    padding: 0 16px;
+    color: #797979;
+    margin: 0 10px;
+}

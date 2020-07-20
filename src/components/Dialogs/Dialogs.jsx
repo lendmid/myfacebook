@@ -19,7 +19,7 @@ const Dialogs = (props) => {
 
   return (
     <div className={s.wrapper}>
-      <div className={s.dialogs_wrapper}>
+      <aside className={s.dialogs_wrapper}>
         <div className={s.dialogs_header}>
           <h1>Чаты</h1>
         </div>
@@ -28,11 +28,11 @@ const Dialogs = (props) => {
               {dialogs}
           </ul>
         </div>
-      </div>
+      </aside>
       <div className={s.dialog_wrapper}>
         <div className={s.send_wrapper}>
-          <textarea className={s.textarea} name="" id="" cols="30" rows="1" placeholder="Введите сообщение"></textarea>
-          <button className={s.button}>Send</button>
+          <input className={s.input} placeholder="Введите сообщение..."></input>
+          <a href="#1"><img src="https://image.flaticon.com/icons/svg/2948/2948197.svg" alt="send" className={s.send} /></a>
         </div>
       </div>
     </div>

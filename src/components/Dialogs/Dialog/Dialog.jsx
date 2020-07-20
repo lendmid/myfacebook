@@ -4,7 +4,7 @@ import s from './Dialog.module.css';
 const Dialog = (props) => {
   return (
     <div className={s.post_wrapper}>
-      <img src={props.img} alt="avatar" />
+      <img src={props.img} alt="avatar" className={s.avatar} />
       <div className={s.name}>
         <span>{props.name}</span>
       </div>
