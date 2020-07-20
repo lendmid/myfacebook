@@ -31,7 +31,7 @@ const Dialogs = (props) => {
       </div>
       <div className={s.dialog}>
         <textarea name="" id="" cols="30" rows="5" placeholder="Введите сообщение"></textarea>
-        <button onClick={() => console.log('Send')}>Send</button>
+        <button>Send</button>
       </div>
     </div>
   )
