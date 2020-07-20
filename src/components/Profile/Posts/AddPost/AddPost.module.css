@@ -9,7 +9,7 @@
     margin-bottom: 15px;
 }
 
-textarea {
+.textarea {
     background-color: rgba(220, 222, 225, 0.3);
     padding: 10px;
     border-radius: 8px;
@@ -19,7 +19,7 @@ textarea {
     max-height: 300px;
 }
 
-button {
+.button {
     padding: 10px;
     border-radius: 8px;
     margin-top: 15px;

@@ -23,15 +23,17 @@ const Dialogs = (props) => {
         <div className={s.dialogs_header}>
           <h1>Чаты</h1>
         </div>
-      <div className={s.dialogs_list}>
-        <ul className={s.dialogs}> 
-            {dialogs}
-        </ul>
+        <div className={s.dialogs_list}>
+          <ul className={s.dialogs}> 
+              {dialogs}
+          </ul>
         </div>
       </div>
-      <div className={s.dialog}>
-        <textarea name="" id="" cols="30" rows="5" placeholder="Введите сообщение"></textarea>
-        <button>Send</button>
+      <div className={s.dialog_wrapper}>
+        <div className={s.send_wrapper}>
+          <textarea className={s.textarea} name="" id="" cols="30" rows="1" placeholder="Введите сообщение"></textarea>
+          <button className={s.button}>Send</button>
+        </div>
       </div>
     </div>
   )

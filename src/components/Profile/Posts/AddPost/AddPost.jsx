@@ -17,8 +17,8 @@ const AddPost = (props) => {
 
   return (
     <div className={s.add_post_wrapper}>
-      <textarea ref={newPostElement} onChange={ onPostChange } value={props.newPostText} name="" id="" cols="30" rows="5" placeholder="Опубликуйте что-нибудь"></textarea>
-      <button onClick={ addPost }>Add post</button>
+      <textarea className={s.textarea} ref={newPostElement} onChange={ onPostChange } value={props.newPostText} name="" id="" cols="30" rows="5" placeholder="Опубликуйте что-нибудь"></textarea>
+      <button className={s.button} onClick={ addPost }>Add post</button>
     </div>  
   )
 }
