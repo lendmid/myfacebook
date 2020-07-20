@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let store = {
     _state: {
@@ -22,7 +24,7 @@ let store = {
             ],
             newPostText: ''
         },
-        messagesPage: {
+        dialogsPage: {
             dialogsData: [{
                     id: 1,
                     name: "Megan Claire Washington",
@@ -58,14 +60,20 @@ let store = {
                     message: "At, voluptatibus consequatur sit asperiores cupiditate libero optio ipsam possimus commodi nostrum quos maiores illo vitae nisi quasi?",
                     date: "15 mar",
                 },
-            ]
+            ],
+            messages: '',
+            newMessageBody : '',
         }
     },
     getState() {
-        return store._state;
+        return this._state;
     },
-    subscribe(obserever) {
-        this.rerenderEntireTree = obserever;
+    subscribe(observer) {
+        this._callSubscriber = observer;
+        // this.rerenderEntireTree = obserever;
+    },
+    _callSubscriber() {
+        console.log('State change')
     },
     dispatch(action) {
         if (action.type === ADD_POST) {
@@ -76,18 +84,25 @@ let store = {
             }
             this._state.profilePage.posts.unshift(newPost);
             this._state.profilePage.newPostText = '';
-            this.rerenderEntireTree(this._state);
+            this._callSubscriber(this._state);
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText;
-            this.rerenderEntireTree(this._state);
+            this._callSubscriber(this._state);
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialogsPage.newMessageBody = action.newMessageBody;
+            this._callSubscriber(this._state);
+        } else if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialogsPage.newMessageBody;
+            this._state.dialogsPage.newMessageBody = '';
+            this._state.dialogsPage.messages.push({id: 6, message: body});
+            this._callSubscriber(this._state);
         }
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-
-export const updateNewPostActionCreator = (newPostText) => ({
-        type: UPDATE_NEW_POST_TEXT, newPostText: newPostText})
-
+export const addPostCreator = () => ({type: ADD_POST})
+export const updateNewPostCreator = (newPostText) => ({ type: UPDATE_NEW_POST_TEXT, newPostText: newPostText })
+export const sendMessageCreator = () => ({type: SEND_MESSAGE})
+export const updateNewMessageBodyCreator = (newMessageBody) => ({ type: UPDATE_NEW_MESSAGE_BODY, newMessageBody: newMessageBody })
 export default store;
 window.store = store;

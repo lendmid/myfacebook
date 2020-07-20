@@ -1,7 +1,7 @@
 import React from "react";
-import s from './Chat.module.css';
+import s from './Dialog.module.css';
 
-const Chat = (props) => {
+const Dialog = (props) => {
   return (
     <div className={s.post_wrapper}>
       <img src={props.img} alt="avatar" />
@@ -19,4 +19,4 @@ const Chat = (props) => {
     </div> 
   )
 }
-export default Chat;
+export default Dialog;
