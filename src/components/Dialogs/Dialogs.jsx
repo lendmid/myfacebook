@@ -17,6 +17,10 @@ const DialogItem = (props) => {
 const Dialogs = (props) => {
   let dialogs = props.dialogsData.map(dialog => <DialogItem id={dialog.id} name={dialog.name} img={dialog.img} date={dialog.date} message={dialog.message} /> )
 
+  let onSendMessageClick = () => {
+
+  }
+
   return (
     <div className={s.wrapper}>
       <aside className={s.dialogs_wrapper}>
@@ -32,7 +36,7 @@ const Dialogs = (props) => {
       <div className={s.dialog_wrapper}>
         <div className={s.send_wrapper}>
           <input className={s.input} placeholder="Введите сообщение..."></input>
-          <a href="#1"><img src="https://image.flaticon.com/icons/svg/2948/2948197.svg" alt="send" className={s.send} /></a>
+          <a href="send" onClick={onSendMessageClick}><img src="https://image.flaticon.com/icons/svg/2948/2948197.svg" alt="send" className={s.send} /></a>
         </div>
       </div>
     </div>
