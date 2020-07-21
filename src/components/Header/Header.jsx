@@ -8,7 +8,7 @@ const Header = () => {
             <nav className={s.nav}>
                 <ul className={s.list}>
                     <li><NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink></li>
-                    <li><NavLink to="/dialogs">Messages</NavLink></li>
+                    <li><NavLink to="/messages">Messages</NavLink></li>
                     <li><NavLink to="">News</NavLink></li>
                     <li><NavLink to="">Music</NavLink></li>
                     <li><NavLink to="">Settings</NavLink></li>

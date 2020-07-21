@@ -1,0 +1,48 @@
+.last_message_wrapper {
+    display: grid;
+    grid-template: 25px 25px / 50px 1fr;
+    justify-items: start;
+    align-items: center;
+    height: 50px;
+}
+
+.name {
+    grid-row: 1 / 1;
+    grid-column: 2 / 2;
+    padding-left: 10px;
+}
+
+.message {
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+    display: grid;
+    grid-template: 25px / 320fr 80fr;
+    justify-items: start;
+    align-items: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.last_message {
+    grid-column: 1 / 1;
+    padding-left: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.date {
+    grid-column: 2 / 2;
+    width: 100%;
+    padding-left: 5px;
+    white-space: nowrap;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    grid-row: 1 / -1;
+    grid-column: 1 / 1;
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import s from './Dialog.module.css';
+import s from './Message.module.css';
 
-const Dialog = (props) => {
+const LastMessage = (props) => {
   return (
     <div className={s.post_wrapper}>
       <img src={props.img} alt="avatar" className={s.avatar} />
@@ -19,4 +19,4 @@ const Dialog = (props) => {
     </div> 
   )
 }
-export default Dialog;
+export default LastMessage;

@@ -1,6 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let store = {
@@ -24,8 +24,9 @@ let store = {
             ],
             newPostText: ''
         },
-        dialogsPage: {
-            dialogsData: [{
+        messagesPage: {
+            messagesData: [
+                {
                     id: 1,
                     name: "Megan Claire Washington",
                     img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png",
@@ -61,8 +62,8 @@ let store = {
                     date: "15 mar",
                 },
             ],
-            messages: '',
-            newMessageBody : '',
+            newMessageText: '',
+            historyMessages: [],
         }
     },
     getState() {
@@ -70,7 +71,6 @@ let store = {
     },
     subscribe(observer) {
         this._callSubscriber = observer;
-        // this.rerenderEntireTree = obserever;
     },
     _callSubscriber() {
         console.log('State change')
@@ -88,21 +88,22 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText;
             this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageBody = action.newMessageBody;
+        } else if (action.type === UPDATE_NEW_MESSAGE) {
+            this._state.messagesPage.newMessageText = action.newMessageText;
             this._callSubscriber(this._state);
         } else if (action.type === SEND_MESSAGE) {
-            let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.newMessageBody = '';
-            this._state.dialogsPage.messages.push({id: 6, message: body});
+            let newMessageText = this._state.messagesPage.newMessageText;
+            this._state.messagesPage.newMessageText = '';
+            this._state.messagesPage.historyMessages.push({id: 6, newMessageText: newMessageText});
             this._callSubscriber(this._state);
         }
     }
 }
 
 export const addPostCreator = () => ({type: ADD_POST})
-export const updateNewPostCreator = (newPostText) => ({ type: UPDATE_NEW_POST_TEXT, newPostText: newPostText })
+export const updateNewPostTextCreator = (newPostText) => ({ type: UPDATE_NEW_POST_TEXT, newPostText: newPostText })
 export const sendMessageCreator = () => ({type: SEND_MESSAGE})
-export const updateNewMessageBodyCreator = (newMessageBody) => ({ type: UPDATE_NEW_MESSAGE_BODY, newMessageBody: newMessageBody })
+export const updateNewMessageTextCreator = (newMessageText) => ({ type: UPDATE_NEW_MESSAGE, newMessageText: newMessageText })
+
 export default store;
 window.store = store;
