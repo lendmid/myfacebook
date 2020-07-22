@@ -6,7 +6,7 @@ const LastMessage = (props) => {
     <div className={s.message_wrapper}>
       <img src="https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png" alt="avatar" className={s.avatar} />
       <div className={s.message}>
-        <div>{props.message}</div>
+        {props.message}
       </div>
     </div> 
   )

@@ -1,15 +1,19 @@
 .message_wrapper {
-    width: 100%;
-    display: flex;
-    margin: 20px 0;
-    border: 1px solid #E5E5E5;
-    border-radius: 20px;
-    padding: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 100fr;
+    align-items: end;
 }
-
 
 .avatar {
     height: 28px;
     width: 28px;
     margin-right: 10px;
+}
+
+.message {
+    border: 1px solid #E5E5E5;
+    border-radius: 10px 20px 20px 2px;
+    padding: 20px;
+    place-self: start;
 }

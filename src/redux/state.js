@@ -84,6 +84,8 @@ let store = {
                 "Cum reiciendis perferendis eum vel odio adipisci eos ex. Doloribus culpa incidunt esse necessitatibus tenetur corrupti neque ut, beatae ab.",
                 "Minima expedita eaque repellendus dicta quasi excepturi hic deleniti blanditiis iure, odio repellat iusto ducimus voluptatibus porro asperiores.",
                 "Suscipit, accusamus quo. Nemo velit rerum excepturi modi omnis. Cupiditate aperiam debitis mollitia explicabo tempore!",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nemo, voluptatum voluptates pariatur, voluptatibus sit",
+                "Ab molestiae dolore accusamus quidem quia quos facilis corrupti obcaecati deserunt autem eligendi repudiandae! Rerum!",
             ],
         }
     },
@@ -115,7 +117,7 @@ let store = {
         } else if (action.type === SEND_MESSAGE) {
             let newMessageText = this._state.messagesPage.newMessageText;
             this._state.messagesPage.newMessageText = '';
-            this._state.messagesPage.historyMessages.push({id: 6, newMessageText: newMessageText});
+            this._state.messagesPage.historyMessages.push(`${newMessageText}`);
             this._callSubscriber(this._state);
         }
     }
