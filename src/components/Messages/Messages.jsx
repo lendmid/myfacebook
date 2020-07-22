@@ -3,7 +3,7 @@ import s from './Messages.module.css';
 import { NavLink } from "react-router-dom";
 import LastMessage from './LastMessage/LastMessage';
 import Message from './Message/Message';
-import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/state';
+import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/messagesReducer';
 
 const LastMessageItem = (props) => {
   let path = "/messages/" + props.id;

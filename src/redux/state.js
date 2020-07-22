@@ -1,8 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
-const SEND_MESSAGE = 'SEND-MESSAGE';
-
+import profileReducer from './profileReducer'
+import messagesReducer from './messagesReducer'
+    
 let store = {
     _state: {
         profilePage: {
@@ -99,34 +97,12 @@ let store = {
         console.log('State change')
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0,
-            }
-            this._state.profilePage.posts.unshift(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newPostText;
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE) {
-            this._state.messagesPage.newMessageText = action.newMessageText;
-            this._callSubscriber(this._state);
-        } else if (action.type === SEND_MESSAGE) {
-            let newMessageText = this._state.messagesPage.newMessageText;
-            this._state.messagesPage.newMessageText = '';
-            this._state.messagesPage.historyMessages.push(`${newMessageText}`);
-            this._callSubscriber(this._state);
-        }
+        this._state.profilePage  = profileReducer(this._state.profilePage, action);
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
+
+        this._callSubscriber(this._state);
     }
 }
-
-export const addPostCreator = () => ({type: ADD_POST})
-export const updateNewPostTextCreator = (newPostText) => ({ type: UPDATE_NEW_POST_TEXT, newPostText: newPostText })
-export const sendMessageCreator = () => ({type: SEND_MESSAGE})
-export const updateNewMessageTextCreator = (newMessageText) => ({ type: UPDATE_NEW_MESSAGE, newMessageText: newMessageText })
 
 export default store;
 window.store = store;
