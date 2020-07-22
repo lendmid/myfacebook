@@ -2,6 +2,7 @@ import React from "react";
 import s from './Messages.module.css';
 import { NavLink } from "react-router-dom";
 import LastMessage from './LastMessage/LastMessage';
+import Message from './Message/Message';
 import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/state';
 
 const LastMessageItem = (props) => {
@@ -15,16 +16,17 @@ const LastMessageItem = (props) => {
   )
 }
 
-// const Message = (props) => {
-//   return (
-//     <Message message={props.message} />
-//   )
-// }
+const MessageItem = (props) => {
+  return (
+    <Message message={props.message} />
+  )
+}
 
 const Messages = (props) => {
   let lastMessages = props.messagesPage.messagesData.map(lastM => <LastMessageItem id={lastM.id} name={lastM.name} img={lastM.img} date={lastM.date} message={lastM.message} />)
   // let historyMessages = props.messagesPage.historyMessages.map( m => <Message message={m.message} />);
-  let historyMessages = props.messagesPage.messagesData.map(obj => obj.message);
+  // let historyMessages = props.messagesPage.historyMessages.map(obj => obj.message);
+  let historyMessages = props.messagesPage.historyMessages.map(message => <MessageItem message={message} />);
   let newMessageText = props.messagesPage.newMessageText;
 
   let sendMessage = () => {
