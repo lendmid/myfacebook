@@ -5,7 +5,8 @@ import App from './App';
 import store from './redux/redux-store';
 
 let rerenderEntireTree = (state) => {
-  ReactDOM.render(<React.StrictMode><App state={ state } dispatch={store.dispatch.bind(store)} /></React.StrictMode>,
+  // ReactDOM.render(<React.StrictMode><App state={ state } dispatch={store.dispatch.bind(store)} /></React.StrictMode>,
+  ReactDOM.render(<React.StrictMode><App store={store} /></React.StrictMode>,
     document.getElementById('root'));
 }
 // serviceWorker.unregister();

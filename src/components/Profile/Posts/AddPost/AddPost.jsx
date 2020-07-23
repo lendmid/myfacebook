@@ -1,16 +1,15 @@
 import React from "react";
 import s from './AddPost.module.css';
-import { addPostCreator, updateNewPostTextCreator} from '../../../../redux/profileReducer';
 
 const AddPost = (props) => {
+  
   let addPost = () => {
-  props.dispatch(addPostCreator())
+    props.addPost()
   }
   
   let newPostTextChange = () => {
     let newPostText = newPostElement.current.value;
-    let action = updateNewPostTextCreator(newPostText);
-    props.dispatch(action);
+    props.updateNewPostText(newPostText);
   }
 
   let newPostElement = React.createRef();
