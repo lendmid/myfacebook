@@ -1,0 +1,28 @@
+.send_wrapper {
+    grid-row: 3 / 3;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: 1fr 36px;
+    grid-gap: 15px;
+    align-items: center;
+}
+
+.send_wrapper a {
+    place-self: center;
+    width: 24px;
+    height: 24px;
+}
+
+.send {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.input {
+    background-color: #F2F2F2;
+    border-radius: 36px;
+    padding: 0 16px;
+    color: #797979;
+    height: 36px;
+}

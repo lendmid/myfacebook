@@ -3,7 +3,7 @@ import s from './LastMessage.module.css';
 
 const LastMessage = (props) => {
   return (
-    <div className={s.last_message_wrapper}>
+    <li className={s.last_message_wrapper}>
       <img src={props.img} alt="avatar" className={s.avatar} />
       <div className={s.name}>
         <span>{props.name}</span>
@@ -16,7 +16,7 @@ const LastMessage = (props) => {
           <span>{props.date}</span>
         </div>
       </div>
-    </div> 
+    </li>
   )
 }
 export default LastMessage;

@@ -1,5 +1,17 @@
 import React from "react";
 import s from './LastMessage.module.css';
+import {NavLink} from "react-router-dom";
+
+const LastMessageItem = (props) => {
+    let path = "/messages/" + props.id;
+    return (
+        <li>
+            <NavLink to={path}>
+                <LastMessage message={props.message} date={props.date} name={props.name} img={props.img}/>
+            </NavLink>
+        </li>
+    )
+}
 
 const LastMessage = (props) => {
   return (

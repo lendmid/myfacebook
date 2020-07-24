@@ -1,14 +1,14 @@
 import React from "react";
-import s from './Message.module.css';
+import s from './DialogHeader.module.css';
 
-const LastMessage = (props) => {
+const DialogHeader = (props) => {
   return (
-    <div className={s.message_wrapper}>
-      <img src="https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png" alt="avatar" className={s.avatar} />
-      <div className={s.message}>
-        {props.message}
+      <div className={s.dialog_header}>
+          <div className={s.main_information}>
+              <img src={props.store.getState().messagesPage.messagesData[0].img} alt=""/>
+              <span>{props.store.getState().messagesPage.messagesData[0].name}</span>
+          </div>
       </div>
-    </div> 
   )
 }
-export default LastMessage;
+export default DialogHeader;
