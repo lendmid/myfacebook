@@ -1,19 +1,16 @@
 import React from "react";
 import s from './AddPost.module.css';
 
+
 const AddPost = (props) => {
     
-    let addPost = () => {
-        props.addPost();
-    }
-    
+    let addPost = () => props.addPost();
     let newPostTextChange = () => {
         let newPostText = newPostElement.current.value;
         props.updateNewPostText(newPostText);
     }
     
     let newPostElement = React.createRef();
-    
     return (
         <div className={s.add_post_wrapper}>
             <textarea className={s.textarea} ref={newPostElement} onChange={newPostTextChange} value={props.newPostText}
@@ -22,4 +19,5 @@ const AddPost = (props) => {
         </div>
     )
 }
+
 export default AddPost;

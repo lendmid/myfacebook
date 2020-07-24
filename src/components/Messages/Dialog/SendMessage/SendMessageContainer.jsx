@@ -1,27 +1,21 @@
 import React from "react";
-import s from './SendMessage.module.css';
 import {sendMessageCreator, updateNewMessageTextCreator} from "../../../../redux/messagesReducer";
+import SendMessage from "./SendMessage";
 
-const SendMessage = (props) => {
-    
-    let newMessageText = props.messagesPage.newMessageText;
+
+const SendMessageContainer = (props) => {
+    let state = props.store.getState();
+    let newMessageText = state.messagesPage.newMessageText;
     
     let sendMessage = () => {
         props.store.dispatch(sendMessageCreator())
     }
-    let newMessageTextChange = (e) => {
-        let newMessageText = e.target.value;
+    let newMessageTextChange = (newMessageText) => {
         let action = updateNewMessageTextCreator(newMessageText);
         props.store.dispatch(action);
     }
     
-    return (
-        <div className={s.send_wrapper}>
-            <input className={s.input} value={newMessageText} onChange={newMessageTextChange}
-                   placeholder="Введите сообщение..."></input>
-            <a href="#1" onClick={sendMessage}><img src="https://image.flaticon.com/icons/svg/2948/2948197.svg" alt="send" className={s.send} /></a>
-            <button onClick={sendMessage} className={s.send}></button>
-        </div>
-    )
+    return (<SendMessage newMessageTextChange={newMessageTextChange} sendMessage={sendMessage}
+                         newMessageText={newMessageText} />)
 }
-export default SendMessage;
+export default SendMessageContainer;

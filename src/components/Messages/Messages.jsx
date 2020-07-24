@@ -3,6 +3,7 @@ import s from './Messages.module.css';
 import LastMessages from "./LastMessages/LastMessages";
 import Dialog from "./Dialog/Dialog";
 
+
 const Messages = (props) => {
     return (
         <div className={s.wrapper}>
@@ -11,4 +12,5 @@ const Messages = (props) => {
         </div>
     )
 }
+
 export default Messages;

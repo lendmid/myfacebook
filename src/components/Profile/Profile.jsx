@@ -4,10 +4,11 @@ import s from './Profile.module.css';
 import AddPostContainer from './Posts/AddPost/AddPostContainer';
 import Post from '././Posts/Post';
 
-const Profile = (props) => {
-    let oldPosts = props.store.getState().profilePage.posts
-        .map(post => <Post message={post.message} likesCount={post.likesCount} />)
 
+const Profile = (props) => {
+    let state = props.store.getState();
+    let oldPosts = state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} />)
+    
     return (
         <div className={s.profile}>
             <ProfileHeader />
@@ -18,4 +19,5 @@ const Profile = (props) => {
         </div>
     )
 }
+
 export default Profile;

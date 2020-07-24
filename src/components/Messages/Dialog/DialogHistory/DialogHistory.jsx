@@ -1,14 +1,23 @@
 import React from "react";
-import s from './Message.module.css';
+import s from './DialogHistory.module.css';
+import Message from "./Message/Message";
 
-const LastMessage = (props) => {
-  return (
-    <div className={s.message_wrapper}>
-      <img src="https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png" alt="avatar" className={s.avatar} />
-      <div className={s.message}>
-        {props.message}
-      </div>
-    </div> 
-  )
+
+const MessageItem = (props) => {
+    return (
+        <Message message={props.message} />
+    )
 }
-export default LastMessage;
+
+const DialogHistory = (props) => {
+    let state = props.store.getState();
+    let historyMessages = state.messagesPage.historyMessages.map(message => <MessageItem message={message} />);
+    
+    return (
+        <div className={s.history_wrapper}>
+            {historyMessages}
+        </div>
+    )
+}
+
+export default DialogHistory;
