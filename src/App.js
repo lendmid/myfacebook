@@ -7,12 +7,13 @@ import { Route, BrowserRouter } from 'react-router-dom';
 
 const App = (props) => {
   // debugger
+  let state = props.store.getState();
     return (
       <BrowserRouter>
         <div className="app-wrapper">
           <Header />
-          <Route path='/messages' render={() => <Messages messagesPage={props.state.messagesPage} dispatch={props.dispatch} />} />
-          {/* <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} /> */}
+          <Route path='/messages' render={() => <Messages messagesPage={state.messagesPage} dispatch={state.dispatch} />} />
+          {/* <Route path='/messages' render={() => <Messages store={props.store}/>} /> */}
           <Route path='/profile' render={() => <Profile store={props.store} />} />
         </div>
       </BrowserRouter>

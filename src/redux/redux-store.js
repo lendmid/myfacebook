@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from "redux";
+import {createStore, combineReducers} from "redux";
 import profileReducers from "./profileReducer";
 import messegesReducers from "./messagesReducer";
 

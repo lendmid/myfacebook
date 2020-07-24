@@ -3,14 +3,14 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     messagesData: [{
-            id: 1,
-            name: "Megan Claire Washington",
-            img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png",
-            message: [
-                "Nihil eos veritatis fuga nesciunt asperiores dolorem beatae maiores debitis consequuntur nulla odio doloremque impedit rem eligendi fugit.",
-            ],
-            date: "3 jul",
-        },
+        id: 1,
+        name: "Megan Claire Washington",
+        img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png",
+        message: [
+            "Nihil eos veritatis fuga nesciunt asperiores dolorem beatae maiores debitis consequuntur nulla odio doloremque impedit rem eligendi fugit.",
+        ],
+        date: "3 jul",
+    },
         {
             id: 2,
             name: "Patrick Steven Gonzales",
@@ -82,6 +82,9 @@ const messagesReducer = (state = initialState, action) => {
 }
 
 export const sendMessageCreator = () => ({type: SEND_MESSAGE})
-export const updateNewMessageTextCreator = (newMessageText) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: newMessageText })
+export const updateNewMessageTextCreator = (newMessageText) => ({
+    type: UPDATE_NEW_MESSAGE_TEXT,
+    newMessageText: newMessageText
+})
 
 export default messagesReducer;

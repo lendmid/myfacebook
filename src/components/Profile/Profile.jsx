@@ -5,16 +5,15 @@ import AddPostContainer from './Posts/AddPost/AddPostContainer';
 import Post from '././Posts/Post';
 
 const Profile = (props) => {
-    debugger
-    let postsElement = props.store.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} />)
+    let oldPosts = props.store.getState().profilePage.posts
+        .map(post => <Post message={post.message} likesCount={post.likesCount} />)
 
     return (
         <div className={s.profile}>
             <ProfileHeader />
             <div className={s.profile_information}>
-                {/* <AddPostContainer dispatch={props.dispatch} newPostText={props.profilePage.newPostText} /> */}
                 <AddPostContainer store={props.store} />
-                {postsElement}
+                {oldPosts}
             </div>
         </div>
     )
