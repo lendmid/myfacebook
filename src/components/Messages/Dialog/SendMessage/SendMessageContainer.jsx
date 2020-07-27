@@ -1,6 +1,7 @@
 import React from "react";
 import {sendMessageCreator, updateNewMessageTextCreator} from "../../../../redux/messagesReducer";
 import SendMessage from "./SendMessage";
+import {connect} from "react-redux";
 
 
 const SendMessageContainer = (props) => {
@@ -18,4 +19,17 @@ const SendMessageContainer = (props) => {
     return (<SendMessage newMessageTextChange={newMessageTextChange} sendMessage={sendMessage}
                          newMessageText={newMessageText} />)
 }
+
+// let mapStateToProps = (state) => {
+//     return {}
+//
+// }
+// let mapDispatchToProps = () => {
+//     return {
+//
+//     }
+// }
+//
+// const SuperSendMessageContainer = connect(mapStateToProps, mapDispatchToProps)();
+
 export default SendMessageContainer;
