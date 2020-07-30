@@ -20,16 +20,16 @@ const SendMessageContainer = (props) => {
                          newMessageText={newMessageText} />)
 }
 
-// let mapStateToProps = (state) => {
-//     return {}
-//
-// }
-// let mapDispatchToProps = () => {
-//     return {
-//
-//     }
-// }
-//
-// const SuperSendMessageContainer = connect(mapStateToProps, mapDispatchToProps)();
+let mapStateToProps = (state) => {
+    return {}
+
+}
+let mapDispatchToProps = () => {
+    return {
+
+    }
+}
+
+const SuperSendMessageContainer = connect(mapStateToProps, mapDispatchToProps)();
 
 export default SendMessageContainer;
