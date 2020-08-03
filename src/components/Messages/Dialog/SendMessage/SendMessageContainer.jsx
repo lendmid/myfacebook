@@ -21,12 +21,21 @@ const SendMessageContainer = (props) => {
 }
 
 let mapStateToProps = (state) => {
-    return {}
+    return {
+        newMessageText: state.messagesPage.newMessageText,
+    }
 
 }
-let mapDispatchToProps = () => {
+let mapDispatchToProps = (dispatch) => {
     return {
-
+        sendMessage: () => {
+            dispatch(sendMessageCreator());
+            // props.store.dispatch(sendMessageCreator());
+        },
+        newMessageTextChange: (newMessageText) => {
+            dispatch(updateNewMessageTextCreator(newMessageText));
+            // props.store.dispatch(updateNewMessageTextCreator(newMessageText));
+        },
     }
 }
 
