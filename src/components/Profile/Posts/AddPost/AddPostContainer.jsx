@@ -1,19 +1,22 @@
 import React from "react";
 import {addPostCreator, updateNewPostTextCreator} from '../../../../redux/profileReducer';
 import AddPost from './AddPost';
+import {connect} from "react-redux";
 
 
-const AddPostConrainer = (props) => {
-    let state = props.store.getState();
-    let newPostText = state.profilePage.newPostText;
-    
-    let addPost = () => props.store.dispatch(addPostCreator())
-    let newPostTextChange = (newPostText) => {
-        let action = updateNewPostTextCreator(newPostText);
-        props.store.dispatch(action);
+let mapStateToProps = (state) => {
+    return {
+        newPostText: state.profilePage.newPostText,
     }
-    
-    return (<AddPost updateNewPostText={newPostTextChange} addPost={addPost} newPostText={newPostText}/>)
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewPostText: (newPostText) => dispatch(updateNewPostTextCreator(newPostText)),
+        addPost: () => dispatch(addPostCreator())
+    }
+}
+// суть операции в пробрасывании props'ов в компоненту
+const AddPostConrainer = connect(mapStateToProps, mapDispatchToProps)(AddPost);
 
 export default AddPostConrainer;
