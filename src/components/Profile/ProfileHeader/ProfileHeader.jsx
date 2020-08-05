@@ -9,7 +9,7 @@ const ProfileHeader = () => {
                     <img src="http://www.topoboi.com/pic/201310/1600x900/topoboi.com-21405.jpg" alt="background"/>
                 </div>
                 <div className={s.face_photo}>
-                    <img src="https://scontent.fhel3-1.fna.fbcdn.net/v/t1.0-1/c0.50.200.200a/p200x200/55770075_107719600409031_3462998651494727680_o.jpg?_nc_cat=110&_nc_sid=7206a8&_nc_ohc=r-2XIJCbF-sAX_GJWeS&_nc_ht=scontent.fhel3-1.fna&oh=fd42d1b968711c863f81262d2cd3d413&oe=5F25C7CE" alt="face_photo" />
+                    <img src="https://cutt.ly/sdPfYQr" alt="face_photo" />
                 </div>
             </div>
             <div className={s.short_biography}>
