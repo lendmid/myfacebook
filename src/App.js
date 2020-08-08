@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Profile from './components/Profile/Profile';
 import Messages from './components/Messages/Messages';
+import UsersContainer from "./components/Users/UsersContainer";
+
 import './App.css';
 import {Route} from 'react-router-dom';
 
@@ -12,6 +14,7 @@ const App = (props) => {
             <Header />
             <Route path='/messages' render={() => <Messages store={props.store} />} />
             <Route path='/profile' render={() => <Profile store={props.store} />} />
+            <Route path='/users' render={() => <UsersContainer store={props.store} />} />
         </div>
     )
 }
