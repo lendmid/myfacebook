@@ -6,7 +6,7 @@ import LastMessage from "./LastMessage/LastMessage";
 const LastMessages = (props) => {
     
     let state = props.store.getState();
-    let lastMessages = state.messagesPage.messagesData.map(lastM => <LastMessage id={lastM.id} name={lastM.name}
+    let lastMessages = state.messagesPage.messagesData.map(lastM => <LastMessage key={lastM.id} name={lastM.name}
                                                                                  img={lastM.img} date={lastM.date}
                                                                                  message={lastM.message} />)
     

@@ -3,7 +3,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 let initialState = {
     posts: [
-            {
+        {
             id: 3,
             message: "Sint aliquid cumque quae minima ipsum nisi placeat illum culpa!",
             likesCount: 36
@@ -24,27 +24,29 @@ let initialState = {
 
 
 const profileReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
         case ADD_POST:
-            let newPost = {
-                id: Number(`${state.posts[0].id}`) + 1,
-                message: state.newPostText,
-                likesCount: randomInteger(5, 100),
-            }
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts];
-            stateCopy.posts.unshift(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy;
+            return {
+                ...state,
+                posts: [
+                    {
+                        id: Number(`${state.posts[0].id}`) + 1,
+                        message: state.newPostText,
+                        likesCount: randomInteger(5, 100),
+                    },
+                    ...state.posts
+                ],
+                newPostText: '',
+            };
         case UPDATE_NEW_POST_TEXT:
-            let stateCopyForUpdate = {...state};
-            stateCopyForUpdate.newPostText = action.newPostText;
-            return stateCopyForUpdate;
+            return  {...state,
+                newPostText: action.newPostText,
+            };
         default:
             return state
     }
 }
+
 function randomInteger(min, max) {
     // случайное число от min до (max+1)
     let rand = min + Math.random() * (max + 1 - min);

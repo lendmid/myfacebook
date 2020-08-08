@@ -7,7 +7,7 @@ import Post from '././Posts/Post';
 
 const Profile = (props) => {
     let state = props.store.getState();
-    let oldPosts = state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} />)
+    let oldPosts = state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id}/>)
     
     return (
         <div className={s.profile}>
