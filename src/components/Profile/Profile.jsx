@@ -3,7 +3,6 @@ import ProfileHeader from './ProfileHeader/ProfileHeader';
 import s from './Profile.module.css';
 import AddPostContainer from './Posts/AddPost/AddPostContainer';
 import Post from '././Posts/Post';
-import {connect} from "react-redux";
 
 
 const Profile = (props) => {

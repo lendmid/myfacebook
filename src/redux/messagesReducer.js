@@ -2,15 +2,16 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
-    messagesData: [{
-        id: 1,
-        name: "Megan Claire Washington",
-        img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png",
-        message: [
-            "Nihil eos veritatis fuga nesciunt asperiores dolorem beatae maiores debitis consequuntur nulla odio doloremque impedit rem eligendi fugit.",
-        ],
-        date: "3 jul",
-    },
+    messagesData: [
+        {
+            id: 1,
+            name: "Megan Claire Washington",
+            img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png",
+            message: [
+                "Nihil eos veritatis fuga nesciunt asperiores dolorem beatae maiores debitis consequuntur nulla odio doloremque impedit rem eligendi fugit.",
+            ],
+            date: "3 jul",
+        },
         {
             id: 2,
             name: "Patrick Steven Gonzales",
@@ -69,13 +70,15 @@ let initialState = {
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
-            let newMessageText = state.newMessageText;
-            state.newMessageText = '';
-            state.historyMessages.push(`${newMessageText}`);
-            return state;
+            let stateCopy = {...state};
+            let newMessageText = stateCopy.newMessageText;
+            stateCopy.newMessageText = '';
+            stateCopy.historyMessages.push(`${newMessageText}`);
+            return stateCopy;
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newMessageText;
-            return state;
+            let stateCopyForUpdate = {...state};
+            stateCopyForUpdate.newMessageText = action.newMessageText;
+            return stateCopyForUpdate;
         default:
             return state;
     }

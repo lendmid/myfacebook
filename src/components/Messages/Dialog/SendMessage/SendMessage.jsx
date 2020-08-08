@@ -6,7 +6,7 @@ const SendMessage = (props) => {
     let sendMessage = () => props.sendMessage();
     let newMessageTextChange = () => {
         let newPostText = newMessageElement.current.value;
-        props.newMessageTextChange(newPostText);
+        props.updateNewMessageText(newPostText);
     }
     
     let newMessageElement = React.createRef();

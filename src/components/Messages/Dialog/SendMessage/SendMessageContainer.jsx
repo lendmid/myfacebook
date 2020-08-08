@@ -12,8 +12,8 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
+        updateNewMessageText: (newMessageText) => dispatch(updateNewMessageTextCreator(newMessageText)),
         sendMessage: () => dispatch(sendMessageCreator()),
-        newMessageTextChange: (newMessageText) => dispatch(updateNewMessageTextCreator(newMessageText)),
     }
 }
 // суть операции в пробрасывании props'ов в компоненту
