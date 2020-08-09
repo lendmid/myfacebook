@@ -7,7 +7,6 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
     return {
         newPostText: state.profilePage.newPostText,
-        posts: state.profilePage.posts,
     }
 }
 
@@ -17,7 +16,7 @@ let mapDispatchToProps = (dispatch) => {
         addPost: () => dispatch(addPostCreator())
     }
 }
-// суть операции в пробрасывании props'ов в компоненту
+
 const AddPostConrainer = connect(mapStateToProps, mapDispatchToProps)(AddPost);
 
 export default AddPostConrainer;

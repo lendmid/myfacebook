@@ -2,19 +2,16 @@ import React from 'react';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 import s from './Profile.module.css';
 import AddPostContainer from './Posts/AddPost/AddPostContainer';
-import Post from '././Posts/Post';
 
 
 const Profile = (props) => {
-    let state = props.store.getState();
-    let oldPosts = state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id}/>)
     
     return (
         <div className={s.profile}>
             <ProfileHeader />
             <div className={s.profile_information}>
-                <AddPostContainer store={props.store} />
-                {oldPosts}
+                <AddPostContainer />
+                {props.posts}
             </div>
         </div>
     )
