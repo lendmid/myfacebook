@@ -4,7 +4,7 @@ import s from './User.module.css';
 const User = (props) => {
     debugger
     return (
-        <div>
+        <div className={s.user}>
             <div className={s.fullName}>{props.fullName}</div>
             <div className={s.followed}>{props.followed}</div>
             <div className={s.status}>{props.status}</div>

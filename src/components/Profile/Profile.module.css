@@ -2,6 +2,7 @@
     grid-column: 1 / -1;
     display: grid;
     grid-template: 510px 1fr / 1fr 940px 1fr;
+    background-color: #F0F2F5;
 }
 
 .profile_information {

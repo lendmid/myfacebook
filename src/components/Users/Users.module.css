@@ -1,0 +1,6 @@
+.users{
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 3fr 1fr;*/
+    /*grid-gap: 15px;*/
+    grid-column: 2 / 2;
+}
