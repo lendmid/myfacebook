@@ -1,11 +1,11 @@
 import React from 'react';
 
+
 const Users = (props) => {
+    debugger
     return (
         <div>
-            {
-                props.users.map(u => <div key={u.id} fullName></div>)
-            }
+            {props.users}
         </div>
     )
 }
