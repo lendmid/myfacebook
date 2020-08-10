@@ -1,6 +1,6 @@
 .app-wrapper {
   display: grid;
-  background-color: #fff;
+  background-color: #F0F2F5;
   grid-template: 60px 1fr / 1fr 940px 1fr;
   height: 100%;
 }
