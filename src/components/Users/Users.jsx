@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Users.module.css';
-import {AxiosInstance as axios} from "axios";
+import axios from "axios";
 
 
 const Users = (props) => {
