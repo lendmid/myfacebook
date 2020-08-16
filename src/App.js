@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Messages from './components/Messages/Messages';
 import UsersContainer from "./components/Users/UsersContainer";
-
 import './App.css';
 import {Route} from 'react-router-dom';
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -18,4 +17,5 @@ const App = (props) => {
         </div>
     )
 }
+
 export default App;
