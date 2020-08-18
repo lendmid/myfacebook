@@ -4,16 +4,19 @@ import axios from "axios";
 
 
 const Users = (props) => {
-    // debugger
     
     axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-        // debugger
-        console.log(response)
     })
+    
+    let getUsers = () => {
+        // console.log('click')
+    }
+    
     
     return (
         <div className={s.users}>
             {props.users}
+            <button className={s.button} onClick={getUsers}>Кнопка</button>
         </div>
     )
 }

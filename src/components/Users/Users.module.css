@@ -4,3 +4,19 @@
     grid-template-columns: 1fr 940px 1fr;
     margin-top: 20px;
 }
+
+.button {
+    grid-column: 2 / 2;
+    place-self: center;
+    width: 100px;
+    height: 50px;
+    background-color: #797979;
+    color: white;
+    border: 1px black solid;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+.button:hover {
+    cursor: pointer;
+}
