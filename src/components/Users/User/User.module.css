@@ -5,5 +5,26 @@
     
     background-color: white;
     border: 1px solid #DCDEE1;
-    border-radius: 8px;
+    border-radius: 10px;
+    
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.followed {
+    grid-column: 3 / 3;
+    width: auto;
+    height: 30px;
+    padding: 0 10px;
+    background-color: #797979;
+    color: white;
+    border: 1px black solid;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.status {
+    grid-column: 2 / 2;
+    grid-row: 1 / 1;
 }

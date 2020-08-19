@@ -17,6 +17,7 @@
     margin-bottom: 20px;
     font-size: 15px;
 }
+
 .button:hover {
     cursor: pointer;
 }

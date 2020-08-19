@@ -1,7 +1,7 @@
 import profileReducer from './profileReducer'
 import messagesReducer from './messagesReducer'
 
-let store = {
+let _exapmle_store = {
     _state: {
         profilePage: {
             posts: [{
@@ -104,5 +104,5 @@ let store = {
     }
 }
 
-export default store;
-window.store = store;
+export default _exapmle_store;
+window.store = _exapmle_store;

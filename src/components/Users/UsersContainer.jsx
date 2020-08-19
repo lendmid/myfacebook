@@ -7,7 +7,8 @@ import User from "./User/User";
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users.map(user => <User key={user.id} followed={user.followed} fullName={user.fullName} status={user.status} city={user.location.city} country={user.location.country} />),
+        // users: state.usersPage.users.map(user => <User key={user.id} followed={user.followed} fullName={user.fullName} status={user.status} city={user.location.city} country={user.location.country} />),
+        users: state.usersPage.users.map(user => <User key={user.id} followed={user.followed} name={user.name} status={user.status} />),
     }
 }
 
@@ -19,8 +20,8 @@ let mapDispatchToProps = (dispatch) => {
         unfollow: (userId) => {
             dispatch(unfollowAC(userId));
         },
-        setUsers: (userId) => {
-            dispatch(setUsersAC(userId));
+        setUsers: (users) => {
+            dispatch(setUsersAC(users));
         },
     }
 }
