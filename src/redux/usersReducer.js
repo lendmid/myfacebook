@@ -5,20 +5,13 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERSCOUNT = 'SET_TOTAL_USERSCOUNT';
 
 let initialState = {
-    users: [
-        // {id: 1, followed: false, name: "Dmitry K.", status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-        // {id: 2, followed: true, name: "Sergey S.", status: 'I am a boss', location: {city: 'Moscow', country: 'Russia'}},
-        // {id: 3, followed: false, name: "Svetlana D.", status: 'I am a boss', location: {city: 'Chicago', country: 'USA'}},
-        // {id: 1, followed: false, fullName: "Dmitry K.", status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-        // {id: 2, followed: true, fullName: "Sergey S.", status: 'I am a boss', location: {city: 'Moscow', country: 'Russia'}},
-        // {id: 3, followed: false, fullName: "Svetlana D.", status: 'I am a boss', location: {city: 'Chicago', country: 'USA'}},
-    ],
+    users: [],
     pageSizae: 5,
     totalUsersCount: 0,
     currentPage: 2,
 }
 
-const usersReducer = (state = initialState, action) => {
+let usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -47,13 +40,10 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-// export const followAC = () => ({type: FOLLOW, userId})
-export const followAC = () => ({type: FOLLOW})
-// export const unfollowAC = () => ({type: UNFOLLOW, userId})
-export const unfollowAC = () => ({type: UNFOLLOW})
-// export const setUsersAC = () => ({type: SET_USERS, userId})
-export const setUsersAC = (users) => ({type: SET_USERS, users })
-export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage })
-export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERSCOUNT, totalUsersCount })
+export let followAC = (userId) => ({type: FOLLOW, userId});
+export let unfollowAC = (userId) => ({type: UNFOLLOW, userId});
+export let setUsersAC = (users) => ({type: SET_USERS, users });
+export let setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage });
+export let setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERSCOUNT, totalUsersCount });
 
 export default usersReducer;
