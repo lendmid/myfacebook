@@ -5,3 +5,20 @@
     margin-top: 20px;
 }
 
+.selectedPage {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.numbers {
+    grid-column: 2 / 2;
+    padding: 20px;
+    background-color: #fff;
+    place-self: center;
+    margin: 20px;
+}
+
+.number {
+    display: inline-block;
+    padding: 0 10px;
+}
