@@ -1,5 +1,5 @@
 import React from "react";
-import preloader from "../../../assets/images/Spinner-0.7s-300px.svg"
+import preloader from "../../../assets/images/Preloader.svg"
 
 let Preloader = (props) => {
     return (
