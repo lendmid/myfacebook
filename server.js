@@ -2,7 +2,6 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let dataBase = require('./dataBase');
 let usersController = require('./controllers/users')
-
 let app = express();
 
 app.use(bodyParser.json());

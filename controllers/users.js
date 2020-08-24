@@ -30,7 +30,6 @@ exports.create = (req, res) => {
             return res.sendStatus(500);
         }
         res.send(user);
-        
     })
 }
 
@@ -41,7 +40,6 @@ exports.update = (req, res) => {
             return res.sendStatus(500);
         }
         res.sendStatus(200);
-        
     })
 }
 
