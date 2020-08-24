@@ -8,10 +8,10 @@ let state = {
 exports.connect = (url, options, callback) => {
     if (state.dataBase) return callback();
     
-    MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, (err, dataBase) => {
+    MongoClient.connect(url, {useUnifiedTopology: true, useNewUrlParser: true}, (err, client) => {
         if (err) return callback(err);
         
-        state.dataBase = dataBase;
+        state.dataBase = client.db('27017');
         callback();
     })
 }

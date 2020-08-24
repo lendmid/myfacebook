@@ -9,21 +9,21 @@ let app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// dataBase.connect('mongodb://localhost:27017', {useUnifiedTopology: true, useNewUrlParser: true}, err => { //подключение базы данных
-dataBase.connect('mongodb://localhost:27017', {useUnifiedTopology: true, useNewUrlParser: true},err => { //подключение базы данных
+dataBase.connect('mongodb://localhost:27017', {useUnifiedTopology: true, useNewUrlParser: true},err => {
     if (err) return console.log(err);
     
-    console.log('DataBase Connected');
+    console.log('DataBase connected');
     
-    app.listen(3012, () => { // подключение сервера на локалхост на порт 3012
+    app.listen(3012, () => {
         console.log('API app started')
     })
 })
 
-app.get('/', (req, res) => { // по умолчанию по урлу, указанному в app.listen(3012, ..), то есть по http://localhost:3012/ будет происходить get запрос, который на клиент отдаст Hello API
+app.get('/', (req, res) => {
     res.send('Hello API');
 })
-app.get('/users', (req, res) => { // по урлу http://localhost:3012/users выведет массив объектов users
+
+app.get('/users', (req, res) => {
     dataBase.get().collection('users').find().toArray((err, docs) => {
         if (err) {
             console.log(err);
@@ -48,7 +48,7 @@ app.post('/users', function (req, res) { // метод post реализует �
     let user = {
         name: req.body.name,
     };
-    dataBase.get().collection('users').insert(user, (err, result) => {
+    dataBase.get().collection('users').insertOne(user, (err, result) => {
         // обращение к коллекции users. Если коллекции не существует, то она создасться автоматически. На вход в insert нужно передать объект, который мы хоти сохранить, вторым параметром идет функция с параметрами err и result
         if (err) {
             console.log(err);
@@ -84,18 +84,3 @@ app.delete('/users/:id', function (req, res) {
         }
     )
 })
-
-let users = [
-    {
-        id: 1,
-        name: "Megan Claire Washington"
-    },
-    {
-        id: 2,
-        name: "Patrick Steven Gonzales"
-    },
-    {
-        id: 3,
-        name: "Stephanie Lillian Coleman"
-    },
-]
