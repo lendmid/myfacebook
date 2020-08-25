@@ -32,7 +32,7 @@ class UsersContainer extends React.Component {
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
-                   onPageChanged={this.onPageChanged}Ю
+                   onPageChanged={this.onPageChanged}
                    users={this.props.users}
             />
         </>
@@ -41,7 +41,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users.map(user => <User key={user.id} followed={user.followed} name={user.name} status={user.status} />),
+        users: state.usersPage.users.map(user => <User key={user.id} id={user.id} followed={user.followed} name={user.name} status={user.status} />),
         pageSize: state.usersPage.pageSizae,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,

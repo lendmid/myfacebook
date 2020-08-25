@@ -1,5 +1,8 @@
-.user {
+.link {
     grid-column: 2 / 2;
+}
+
+.user {
     margin-bottom: 20px;
     padding: 10px;
     max-height: 50px;
