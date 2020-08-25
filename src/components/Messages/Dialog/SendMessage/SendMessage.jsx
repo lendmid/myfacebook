@@ -21,5 +21,5 @@ const SendMessage = (props) => {
         </div>
     )
 }
-//TODO: added alert or error if newMessageText.length < 1
+
 export default SendMessage;

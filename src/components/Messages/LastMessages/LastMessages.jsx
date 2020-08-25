@@ -23,5 +23,3 @@ const LastMessages = (props) => {
 }
 
 export default LastMessages;
-
-//TODO: added LastMessagesContainer, wrap him connect an mapStateToProps for work provider in App.js

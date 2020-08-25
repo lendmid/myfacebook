@@ -1,0 +1,3 @@
+TODO: added alert or error if newMessageText.length < 1
+TODO: added alert or error if newPostText.length < 1
+TODO: added LastMessagesContainer, wrap him connect an mapStateToProps for work provider in App.js
