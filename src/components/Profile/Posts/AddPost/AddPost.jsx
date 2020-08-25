@@ -19,5 +19,5 @@ const AddPost = (props) => {
         </div>
     )
 }
-
+//TODO: added alert or error if newPostText.length < 1
 export default AddPost;

@@ -5,8 +5,8 @@ import s from './SendMessage.module.css';
 const SendMessage = (props) => {
     let sendMessage = () => props.sendMessage();
     let newMessageTextChange = () => {
-        let newPostText = newMessageElement.current.value;
-        props.updateNewMessageText(newPostText);
+        let newMessageText = newMessageElement.current.value;
+        props.updateNewMessageText(newMessageText);
     }
     
     let newMessageElement = React.createRef();
@@ -21,5 +21,5 @@ const SendMessage = (props) => {
         </div>
     )
 }
-
+//TODO: added alert or error if newMessageText.length < 1
 export default SendMessage;

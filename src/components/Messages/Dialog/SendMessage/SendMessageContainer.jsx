@@ -16,7 +16,7 @@ let mapDispatchToProps = (dispatch) => {
         sendMessage: () => dispatch(sendMessageCreator()),
     }
 }
-// суть операции в пробрасывании props'ов в компоненту
+
 const SendMessageContainer = connect(mapStateToProps, mapDispatchToProps)(SendMessage);
 
 export default SendMessageContainer;
