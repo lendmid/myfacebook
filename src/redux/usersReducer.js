@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -46,9 +48,21 @@ let usersReducer = (state = initialState, action) => {
 
 export let follow = (userId) => ({type: FOLLOW, userId});
 export let unfollow = (userId) => ({type: UNFOLLOW, userId});
-export let setUsers = (users) => ({type: SET_USERS, users });
-export let setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage });
-export let setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERSCOUNT, totalUsersCount });
-export let toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching });
+export let setUsers = (users) => ({type: SET_USERS, users});
+export let setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export let setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERSCOUNT, totalUsersCount});
+export let toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+
+export let getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setUsersTotalCount(Math.ceil(data.totalCount / 100)));
+        })
+    }
+    
+}
 
 export default usersReducer;
