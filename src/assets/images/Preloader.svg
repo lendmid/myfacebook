@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     style="margin: auto; background: rgba(255, 255, 255, 0); display: block; shape-rendering: auto;" width="500px"
-     height="500px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+     style="margin: auto; background: rgba(255, 255, 255, 0); display: block; shape-rendering: auto;" width="300px"
+     height="300px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 <g transform="rotate(0 50 50)">
   <rect x="48" y="28" rx="2" ry="2" width="4" height="4" fill="#e8dec9">
     <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="0.7407407407407407s" begin="-0.6790123456790123s" repeatCount="indefinite"></animate>
