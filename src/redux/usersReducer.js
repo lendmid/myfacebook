@@ -53,8 +53,11 @@ export let setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPa
 export let setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERSCOUNT, totalUsersCount});
 export let toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
-export let getUsers = (currentPage, pageSize) => {
+
+//getUsersThunkCreator
+export let getUsers = (currentPage = 1, pageSize = 5) => {
     return (dispatch) => {
+        dispatch(setCurrentPage(currentPage));
         dispatch(toggleIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
@@ -62,7 +65,6 @@ export let getUsers = (currentPage, pageSize) => {
             dispatch(setUsersTotalCount(Math.ceil(data.totalCount / 100)));
         })
     }
-    
 }
 
 export default usersReducer;
