@@ -12,7 +12,7 @@ const App = (props) => {
         <div className="app-wrapper">
             <Header />
             <Route path='/messages' render={() => <Messages store={props.store} />} />
-            <Route path='/profile' render={() => <ProfileContainer store={props.store} />} />
+            <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
             <Route path='/users' render={() => <UsersContainer store={props.store} />} />
         </div>
     )

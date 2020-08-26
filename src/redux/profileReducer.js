@@ -1,25 +1,27 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_PROFILE = 'SET-PROFILE';
 
 let initialState = {
     posts: [
         {
             id: 3,
             message: "Sint aliquid cumque quae minima ipsum nisi placeat illum culpa!",
-            likesCount: 36
+            likesCount: randomInteger(5, 100)
         },
         {
             id: 2,
             message: "Animi accusamus necessitatibus consectetur natus sequi adipisci explicabo quis quidem est distinctio voluptates et quibusdam.",
-            likesCount: 52
+            likesCount: randomInteger(5, 100)
         },
         {
             id: 1,
             message: "Temporibus quos culpa molestiae quasi perspiciatis voluptatum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla illum quam a magnam alias perferendis laudantium, beatae cum, debitis necessitatibus reiciendis, sint dignissimos at iusto voluptate perspiciatis nam temporibus sunt.",
-            likesCount: 17
+            likesCount: randomInteger(5, 100)
         },
     ],
     newPostText: '',
+    profile: null,
 }
 
 
@@ -42,6 +44,10 @@ const profileReducer = (state = initialState, action) => {
             return  {...state,
                 newPostText: action.newPostText,
             };
+        case SET_PROFILE:
+            return  {...state,
+                profile: action.profile,
+            };
         default:
             return state
     }
@@ -52,7 +58,8 @@ function randomInteger(min, max) {
     return Math.floor(rand);
 }
 
-export const addPostCreator = () => ({type: ADD_POST})
-export const updateNewPostTextCreator = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText: newPostText})
+export let addPostCreator = () => ({type: ADD_POST})
+export let updateNewPostTextCreator = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
+export let setProfile = (profile) => ({type: SET_PROFILE, profile})
 
 export default profileReducer;

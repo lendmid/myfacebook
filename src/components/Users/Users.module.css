@@ -8,6 +8,13 @@
 .selectedPage {
     font-weight: bold;
     padding: 0 10px;
+    cursor: pointer;
+}
+
+.nonSelectedPage {
+    display: inline-block;
+    padding: 0 10px;
+    cursor: pointer;
 }
 
 .numbers {
@@ -16,9 +23,4 @@
     background-color: #fff;
     place-self: center;
     margin: 20px;
-}
-
-.nonSelectedPage {
-    display: inline-block;
-    padding: 0 10px;
 }

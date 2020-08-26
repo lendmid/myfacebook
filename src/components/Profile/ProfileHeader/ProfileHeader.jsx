@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './ProfileHeader.module.css';
-const ProfileHeader = () => {
+
+
+const ProfileHeader = (props) => {
     return (
         <div className={s.profile_header}>
             <div className={s.foto}>
@@ -18,4 +20,5 @@ const ProfileHeader = () => {
         </div>
     )
 }
+
 export default ProfileHeader;
