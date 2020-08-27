@@ -11,12 +11,18 @@ let instance = axios.create({
 
 export let usersAPI = {
     getUsers(currentPage = 1, pageSize = 5) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`,
-            {
-                withCredentials: true
-            })
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => {
                 return response.data
         })
+    },
+    getProfile(userId) {
+        return instance.get('profile/' + userId);
+    }
+}
+
+export let authAPI = {
+    me() {
+     instance.get('auth/me')
     }
 }

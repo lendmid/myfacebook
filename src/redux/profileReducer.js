@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE = 'SET-PROFILE';
@@ -61,5 +63,11 @@ function randomInteger(min, max) {
 export let addPostCreator = () => ({type: ADD_POST})
 export let updateNewPostTextCreator = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
 export let setProfile = (profile) => ({type: SET_PROFILE, profile})
+
+export let getUserProfile = (userId) => (dispatch) => {
+    usersAPI.getProfile(userId).then(response => {
+        dispatch(setProfile(response.data));
+    })
+}
 
 export default profileReducer;

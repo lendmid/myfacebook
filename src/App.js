@@ -5,6 +5,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import './App.css';
 import {Route} from 'react-router-dom';
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import LoginContainer from "./components/Login/LoginContainer";
 
 
 const App = (props) => {
@@ -14,6 +15,7 @@ const App = (props) => {
             <Route path='/messages' render={() => <Messages store={props.store} />} />
             <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
             <Route path='/users' render={() => <UsersContainer store={props.store} />} />
+            <Route path='/login' render={() => <LoginContainer store={props.store} />} />
         </div>
     )
 }
