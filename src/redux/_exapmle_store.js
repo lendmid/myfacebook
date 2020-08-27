@@ -105,4 +105,3 @@ let _exapmle_store = {
 }
 
 export default _exapmle_store;
-window.store = _exapmle_store;
