@@ -1,6 +1,7 @@
 import React from "react";
 import s from './LastMessage.module.css';
 
+// import avatar_5 from "../../../../assets/images/avatar_1.png";
 
 const LastMessage = (props) => {
     return (
