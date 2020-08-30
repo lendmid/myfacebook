@@ -1,3 +1,9 @@
+import avatar_1 from "./../assets/images/avatar_1.png"
+import avatar_2 from "./../assets/images/avatar_2.png"
+import avatar_3 from "./../assets/images/avatar_3.png"
+import avatar_4 from "./../assets/images/avatar_4.png"
+import avatar_5 from "./../assets/images/avatar_5.png"
+
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
@@ -6,7 +12,7 @@ let initialState = {
         {
             id: 1,
             name: "Megan Claire Washington",
-            img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-26.png",
+            img: `${avatar_1}`,
             message: [
                 "Nihil eos veritatis fuga nesciunt asperiores dolorem beatae maiores debitis consequuntur nulla odio doloremque impedit rem eligendi fugit.",
             ],
@@ -15,7 +21,7 @@ let initialState = {
         {
             id: 2,
             name: "Patrick Steven Gonzales",
-            img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-12.png",
+            img: `${avatar_2}`,
             message: [
                 "Illum vitae iure, qui et optio natus quas corrupti hic blanditiis voluptatem dolorum, mollitia quis officia alias?",
             ],
@@ -24,7 +30,7 @@ let initialState = {
         {
             id: 3,
             name: "Stephanie Lillian Coleman",
-            img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-24.png",
+            img: `${avatar_3}`,
             message: [
                 "Recusandae, ea maiores? Nostrum perspiciatis obcaecati id autem dicta, debitis expedita accusamus deserunt quos fugiat ipsam eveniet!",
             ],
@@ -33,7 +39,7 @@ let initialState = {
         {
             id: 4,
             name: "Kimberly Stephanie Reed",
-            img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-20.png",
+            img: `${avatar_4}`,
             message: [
                 "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis pariatur delectus ullam?",
             ],
@@ -42,7 +48,7 @@ let initialState = {
         {
             id: 5,
             name: "Ethan Ian Clark",
-            img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-13.png",
+            img: `${avatar_5}`,
             message: [
                 "At, voluptatibus consequatur sit asperiores cupiditate libero optio ipsam possimus commodi nostrum quos maiores illo vitae nisi quasi?",
             ],
