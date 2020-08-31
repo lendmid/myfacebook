@@ -12,7 +12,7 @@ let initialState = {
         {
             id: 1,
             name: "Megan Claire Washington",
-            img: `${avatar_1}`,
+            img: avatar_1,
             message: [
                 "Nihil eos veritatis fuga nesciunt asperiores dolorem beatae maiores debitis consequuntur nulla odio doloremque impedit rem eligendi fugit.",
             ],
@@ -21,7 +21,7 @@ let initialState = {
         {
             id: 2,
             name: "Patrick Steven Gonzales",
-            img: `${avatar_2}`,
+            img: avatar_2,
             message: [
                 "Illum vitae iure, qui et optio natus quas corrupti hic blanditiis voluptatem dolorum, mollitia quis officia alias?",
             ],
@@ -30,7 +30,7 @@ let initialState = {
         {
             id: 3,
             name: "Stephanie Lillian Coleman",
-            img: `${avatar_3}`,
+            img: avatar_3,
             message: [
                 "Recusandae, ea maiores? Nostrum perspiciatis obcaecati id autem dicta, debitis expedita accusamus deserunt quos fugiat ipsam eveniet!",
             ],
@@ -39,7 +39,7 @@ let initialState = {
         {
             id: 4,
             name: "Kimberly Stephanie Reed",
-            img: `${avatar_4}`,
+            img: avatar_4,
             message: [
                 "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis pariatur delectus ullam?",
             ],
@@ -48,7 +48,7 @@ let initialState = {
         {
             id: 5,
             name: "Ethan Ian Clark",
-            img: `${avatar_5}`,
+            img: avatar_5,
             message: [
                 "At, voluptatibus consequatur sit asperiores cupiditate libero optio ipsam possimus commodi nostrum quos maiores illo vitae nisi quasi?",
             ],
