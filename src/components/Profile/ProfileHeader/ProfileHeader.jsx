@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './ProfileHeader.module.css';
+import ProfileStatus from "./ProfileStatus"
 
 
 const ProfileHeader = (props) => {
@@ -15,7 +16,8 @@ const ProfileHeader = (props) => {
                 </div>
             </div>
             <div className={s.short_biography}>
-                <span>Дорошенко Дмитрий</span> 
+                <span>Дорошенко Дмитрий</span>
+                <ProfileStatus status={'Hello'} />
             </div>
         </div>
     )
