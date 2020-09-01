@@ -23,6 +23,6 @@ export let usersAPI = {
 
 export let authAPI = {
     me() {
-     instance.get('auth/me')
+        return instance.get('auth/me');
     }
 }
