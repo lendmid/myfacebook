@@ -1,25 +1,16 @@
 .send_wrapper {
     grid-row: 3 / 3;
-    padding: 0 15px;
+    padding: 0 20px;
     display: grid;
     grid-template-columns: 1fr 36px;
     grid-gap: 15px;
-    align-items: center;
-}
-
-.send_wrapper a {
-    place-self: center;
-    width: 24px;
-    height: 24px;
+    place-items: center;
 }
 
 .send {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
+    width: 30px;
+    height: 30px;
     background: no-repeat center/100% url(https://image.flaticon.com/icons/svg/2948/2948197.svg);
-    /*background-image: url("https://image.flaticon.com/icons/svg/2948/2948197.svg");*/
-    
 }
 
 .input {
@@ -28,4 +19,5 @@
     padding: 0 16px;
     color: #797979;
     height: 36px;
+    width: 100%;
 }

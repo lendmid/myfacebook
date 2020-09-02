@@ -86,8 +86,7 @@ const messagesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newMessageText: '',
-                historyMessages: [...state.historyMessages, `${newMessageText}`]
-                
+                historyMessages: [...state.historyMessages, {message: `${newMessageText}`, id: Math.random() * 5000}],
             };
         case UPDATE_NEW_MESSAGE_TEXT:
             return {
