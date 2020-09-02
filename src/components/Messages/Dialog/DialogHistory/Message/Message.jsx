@@ -3,7 +3,6 @@ import s from './Message.module.css';
 import avatar_1 from "./../../../../../assets/images/avatar_1.png";
 
 
-
 const LastMessage = (props) => {
     return (
         <div className={s.message_wrapper}>

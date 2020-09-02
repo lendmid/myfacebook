@@ -6,7 +6,7 @@ import DialogHistory from "./DialogHistory";
 
 let mapStateToProps = (state) => {
     return {
-        historyMessages: state.messagesPage.historyMessages.map(message => <Message message={message} />)
+        historyMessages: state.messagesPage.historyMessages.map(message => <Message message={message.message} key={message.id}/>)
     }
 }
 

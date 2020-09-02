@@ -17,7 +17,7 @@ const ProfileHeader = (props) => {
             </div>
             <div className={s.short_biography}>
                 <span>Дорошенко Дмитрий</span>
-                <ProfileStatus status={'Hello'} />
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     )

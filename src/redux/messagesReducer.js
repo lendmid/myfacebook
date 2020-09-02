@@ -56,23 +56,28 @@ let initialState = {
         },
     ],
     newMessageText: '',
-    historyMessages: [
-        "Amet delectus dolor, ipsam eveniet fuga beatae.",
-        "Vitae possimus, obcaecati quasi ab velit magnam officia aperiam fugit.",
-        "Iste, error cumque. Laudantium, odit iure, ullam ipsa saepe.",
-        "Autem officiis aut labore dolorum voluptatem enim dicta exercitationem veniam.",
-        "Quam quo quae beatae facilis doloribus. Temporibus, qui!",
-        "Saepe animi aliquam accusamus reiciendis, assumenda eum sunt.",
-        "Veritatis quo explicabo ad voluptates laborum, quos accusantium facere tempore quibusdam velit qui porro incidunt alias aliquid",
-        "Cum reiciendis perferendis eum vel odio adipisci eos ex. Doloribus culpa incidunt esse necessitatibus tenetur corrupti neque ut, beatae ab.",
-        "Minima expedita eaque repellendus dicta quasi excepturi hic deleniti blanditiis iure, odio repellat iusto ducimus voluptatibus porro asperiores.",
-        "Suscipit, accusamus quo. Nemo velit rerum excepturi modi omnis. Cupiditate aperiam debitis mollitia explicabo tempore!",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nemo, voluptatum voluptates pariatur, voluptatibus sit",
-        "Ab molestiae dolore accusamus quidem quia quos facilis corrupti obcaecati deserunt autem eligendi repudiandae! Rerum!",
-        "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus",
-    ],
+    historyMessages: generateHistoryMessages(15)
 }
 
+function generateHistoryMessages(n) {
+    let historyMessages = [];
+    let words1 = ["Amet delectus dolor,", "Vitae possimus,", "Autem officiis aut,", "Veritatis quo,", "Ab molestiae dolore,", "Aperiam debitis mollitia,", "Laudantium, odit iure,", "Doloribus culpa"];
+    let words2 = ["error cumque. Laudantium,", "ad voluptates laborum,", "dicta quasi excepturi hic,", "facilis corrupti obcaecati,", "cum soluta nobis est eligendi,", "explicabo tempore,", "velit qui porro incidunt,"];
+    let words3 = ["hic deleniti blanditiis", "omnis nemo", "optio cumque nihil", "id quod maxime", "nihil impedit quo", "velit qui porro incidunt alias", "assumenda eum sunt"];
+    let words4 = ["voluptates pariatur", "deleniti blanditiis iure", "odio repellat iusto ducimus", "nemo, voluptatum voluptates", "placeat facere possimus", "voluptatibus porro asperiores", "facere tempore quibusdam"];
+    
+    for (let i = 0; i < n; i++) {
+        let rand1 = Math.round(Math.random() * words1.length);
+        let rand2 = Math.round(Math.random() * words2.length);
+        let rand3 = Math.round(Math.random() * words3.length);
+        let rand4 = Math.round(Math.random() * words4.length);
+        historyMessages.push({
+            message: `${words1[rand1]} ${words2[rand2]} ${words3[rand3]} ${words4[rand4]}.`,
+            id: Math.random() * 5000
+        })
+    }
+    return historyMessages;
+}
 
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {

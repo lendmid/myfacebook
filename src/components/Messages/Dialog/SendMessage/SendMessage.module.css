@@ -17,6 +17,9 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
+    background: no-repeat center/100% url(https://image.flaticon.com/icons/svg/2948/2948197.svg);
+    /*background-image: url("https://image.flaticon.com/icons/svg/2948/2948197.svg");*/
+    
 }
 
 .input {
