@@ -5,7 +5,6 @@ import avatar_4 from "./../assets/images/avatar_4.png"
 import avatar_5 from "./../assets/images/avatar_5.png"
 
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     messagesData: [
@@ -55,7 +54,6 @@ let initialState = {
             date: "15 mar",
         },
     ],
-    newMessageText: '',
     historyMessages: generateHistoryMessages(15)
 }
 
@@ -82,26 +80,15 @@ function generateHistoryMessages(n) {
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
-            let newMessageText = state.newMessageText;
             return {
                 ...state,
-                newMessageText: '',
-                historyMessages: [...state.historyMessages, {message: `${newMessageText}`, id: Math.random() * 5000}],
-            };
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newMessageText,
+                historyMessages: [...state.historyMessages, {message: `${action.newMessageText}`, id: Math.random() * 5000}],
             };
         default:
             return state;
     }
 }
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE})
-export const updateNewMessageTextCreator = (newMessageText) => ({
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    newMessageText: newMessageText
-})
+export const sendMessageCreator = (newMessageText) => ({type: SEND_MESSAGE, newMessageText})
 
 export default messagesReducer;

@@ -18,8 +18,7 @@ const AddPost = (props) => {
 let AddPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component="textarea" className={s.textarea}
-                   name="newPostText" cols="30" rows="5" placeholder="Опубликуйте что-нибудь"></Field>
+            <Field component="textarea" className={s.textarea} name="newPostText" cols="30" rows="7" placeholder="Enter somesing"></Field>
             <button className={s.button}>Add post</button>
         </form>
     )

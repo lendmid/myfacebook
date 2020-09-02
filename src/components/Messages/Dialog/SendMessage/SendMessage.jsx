@@ -1,23 +1,28 @@
 import React from "react";
 import s from './SendMessage.module.css';
+import {Field, reduxForm} from "redux-form"
 
 
 const SendMessage = (props) => {
-    let sendMessage = () => props.sendMessage();
-    let newMessageTextChange = () => {
-        let newMessageText = newMessageElement.current.value;
-        props.updateNewMessageText(newMessageText);
+    let sendMessage = (formData) => {
+        props.sendMessage(formData.newMessageText);
     }
-    
-    let newMessageElement = React.createRef();
     return (
-        <div className={s.send_wrapper}>
-            <input className={s.input} ref={newMessageElement} value={props.newMessageText}
-                   onChange={newMessageTextChange}
-                   placeholder="Введите сообщение..."></input>
-            <button onClick={sendMessage} className={s.send}></button>
+        <div>
+            <SendMessageFormRedux onSubmit={sendMessage}/>
         </div>
     )
 }
+
+let SendMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className={s.send_wrapper}>
+            <Field component="input" className={s.input} name="newMessageText" placeholder="Enter somesing"></Field>
+            <button className={s.send}></button>
+        </form>
+    )
+}
+
+let SendMessageFormRedux = reduxForm({form: 'sendMessage'})(SendMessageForm)
 
 export default SendMessage;
