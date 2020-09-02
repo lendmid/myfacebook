@@ -1,7 +1,6 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE = 'SET-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 const UPDATE_STATUS = 'UPDATE-STATUS';
@@ -24,7 +23,6 @@ let initialState = {
             likesCount: randomInteger(5, 100)
         },
     ],
-    newPostText: '',
     profile: null,
     status: ''
 }
@@ -38,16 +36,11 @@ const profileReducer = (state = initialState, action) => {
                 posts: [
                     {
                         id: Number(`${state.posts[0].id}`) + 1,
-                        message: state.newPostText,
+                        message: action.newPostText,
                         likesCount: randomInteger(5, 100),
                     },
                     ...state.posts
                 ],
-                newPostText: '',
-            };
-        case UPDATE_NEW_POST_TEXT:
-            return  {...state,
-                newPostText: action.newPostText,
             };
         case SET_PROFILE:
             return  {...state,
@@ -71,8 +64,7 @@ function randomInteger(min, max) {
     return Math.floor(rand);
 }
 
-export let addPostCreator = () => ({type: ADD_POST})
-export let updateNewPostTextCreator = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, newPostText})
+export let addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export let setProfile = (profile) => ({type: SET_PROFILE, profile})
 export let setStatus = (status) => ({type: SET_STATUS, status})
 

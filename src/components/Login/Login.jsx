@@ -11,7 +11,7 @@ let Login = (props) => {
     return (
         <div className={s.wrapper}>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <LoginFormRedux onSubmit={onSubmit} />
         </div>
     )
 }
@@ -36,6 +36,6 @@ let LoginForm = (props) => {
     )
 }
 
-let LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
+let LoginFormRedux = reduxForm({form: 'login'})(LoginForm)
 
 export default Login;
