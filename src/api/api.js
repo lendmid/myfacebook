@@ -15,10 +15,10 @@ export let usersAPI = {
             return response.data
         })
     },
-    getProfile(userId) {
-        console.log('Obsolete method. Please use profileApi object.')
-        return profileAPI.getProfile(userId);
-    }
+    // getProfile(userId) {
+    //     console.log('Obsolete method. Please use profileApi object.')
+    //     return profileAPI.getProfile(userId);
+    // }
 }
 
 export let profileAPI = {
@@ -29,7 +29,6 @@ export let profileAPI = {
         return instance.get('profile/status/' + userId);
     },
     updateStatus(status) {
-        debugger
         return instance.put('profile/status/', {status});
     }
 }
