@@ -1,0 +1,8 @@
+.wrapper {
+    grid-column: 2 / 2;
+    background-color: #aaa;
+}
+
+.form {
+    display: grid
+}
