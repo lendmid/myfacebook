@@ -1,8 +1,50 @@
 .wrapper {
+    grid-row: 1 / -1;
+    place-self: center;
     grid-column: 2 / 2;
-    background-color: #aaa;
+    display: grid;
+    place-items: center;
 }
 
 .form {
-    display: grid
+    display: grid;
+    grid-gap: 15px;
+    
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    
+}
+
+.input {
+    padding: 10px;
+    border-radius: 6px;
+    width: 350px;
+    height: 52px;
+    border: 1px solid #dddfe2;
+    font-size: 16px;
+}
+
+.button {
+    place-self: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #a4a6a87c;
+    font-size: 16px;
+}
+
+.sign_up {
+    background-color: rgba(16, 87, 23, 0.3);
+}
+
+.line {
+    margin: 10px 0;
+    content: "";
+    background-color: #a4a6a87c;
+    width: 300px;
+    height: 1px;
+    place-self: center;
 }

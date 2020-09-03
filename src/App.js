@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import Messages from './components/Messages/Messages';
 import UsersContainer from "./components/Users/UsersContainer";
 import './App.css';
-import {Route} from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 
@@ -11,7 +11,8 @@ import LoginContainer from "./components/Login/LoginContainer";
 const App = (props) => {
     return (
         <div className="app-wrapper">
-            <Header />
+            {/*{props.location.pathname !== '/login' ? <Header /> : ''}*/}
+            <Header/>
             <Route path='/messages' render={() => <Messages store={props.store} />} />
             <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
             <Route path='/users' render={() => <UsersContainer store={props.store} />} />
@@ -20,4 +21,4 @@ const App = (props) => {
     )
 }
 
-export default App;
+export default withRouter(App);

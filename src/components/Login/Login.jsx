@@ -1,6 +1,7 @@
 import React from "react"
 import s from './Login.module.css';
 import {Field, reduxForm} from "redux-form"
+import {InputLoginPage} from "../common/FormValidator/FormValidator";
 
 
 let Login = (props) => {
@@ -10,7 +11,6 @@ let Login = (props) => {
     
     return (
         <div className={s.wrapper}>
-            <h1>Login</h1>
             <LoginFormRedux onSubmit={onSubmit} />
         </div>
     )
@@ -18,20 +18,12 @@ let Login = (props) => {
 
 let LoginForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit} className={s.form} >
-            <div>
-                <label htmlFor="login">Login</label>
-                <Field component="input" type="text" placeholder="Login" name="login" />
-            </div>
-            <div>
-                <label htmlFor="password">Password</label>
-                <Field component="input" type="password" placeholder="Password" name="password" />
-            </div>
-            <div>
-                <label htmlFor="checkbox">Remember me</label>
-                <Field component="input" type="checkbox" name="checkbox" />
-            </div>
-            <button>Login</button>
+        <form onSubmit={props.handleSubmit} className={s.form}>
+            <Field component={InputLoginPage} type="email" placeholder="Email" name="login" className={s.input} />
+            <Field component={InputLoginPage} type="password" placeholder="Password" name="password" className={s.input} />
+            <button className={s.button}>Sign in</button>
+            <div className={s.line}></div>
+            <button className={`${s.button} ${s.sign_up}`}>Sign up</button>
         </form>
     )
 }
