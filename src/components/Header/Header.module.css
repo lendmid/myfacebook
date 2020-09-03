@@ -1,13 +1,13 @@
 .header {
     grid-column: 1 / -1;
-    background-color: #fff;
     display: grid;
     grid-template-columns: 1fr 600px 1fr;
-    /* justify-content: stretch; */
-    align-content: center;
-    border-bottom: 1px solid #E8EAED;
+    place-items: center;
     position: sticky;
     top: 0;
+    
+    background-color: #fff;
+    border-bottom: 1px solid #E8EAED;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     z-index: 5;
 }
@@ -40,4 +40,35 @@
 
 .list li a:active {
     background-color: #e5e5e5;
+}
+
+.signOut {
+    display: grid;
+    place-items: center;
+    grid-template: 1fr / 40px 80px;
+    
+    width: 120px;
+    height: 50px;
+    border-radius: 10%;
+    background-color: rgba(239, 239, 239, 0.4);
+    justify-self: end;
+    margin-right: 5px;
+}
+
+.signOut:hover {
+    background-color: #f2f2f2;
+    transition: ease 0.4s;
+}
+
+.img {
+    width: 20px;
+    height: 20px;
+    grid-row: 1 /1;
+    grid-column: 1 / 1;
+    margin-left: 15px;
+}
+
+.span {
+    grid-row: 1 / 1;
+    grid-column: 2 / 2;
 }

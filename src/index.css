@@ -25,3 +25,9 @@ a {
 button:hover {
   cursor: pointer;
 }
+
+button {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', sans-serif;
+  font-size: 15px;
+}
