@@ -15,10 +15,6 @@ export let usersAPI = {
             return response.data
         })
     },
-    // getProfile(userId) {
-    //     console.log('Obsolete method. Please use profileApi object.')
-    //     return profileAPI.getProfile(userId);
-    // }
 }
 
 export let profileAPI = {
@@ -36,5 +32,12 @@ export let profileAPI = {
 export let authAPI = {
     me() {
         return instance.get('auth/me');
+    },
+    signIn(email, password, rememberMe = true) {
+        return instance.post('auth/login', {email, password, rememberMe});
+    },
+    signOut() {
+        return instance.delete('auth/login');
     }
+    
 }

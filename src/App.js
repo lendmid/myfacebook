@@ -5,18 +5,18 @@ import UsersContainer from "./components/Users/UsersContainer";
 import './App.css';
 import {Route, withRouter} from 'react-router-dom';
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import LoginContainer from "./components/Login/LoginContainer";
+import SignInContainer from "./components/SignIn/SignInContainer";
 
 
 const App = (props) => {
     return (
         <div className="app-wrapper">
-            {/*{props.location.pathname !== '/login' ? <Header /> : ''}*/}
+            {/*{props.location.pathname !== '/signIn' ? <Header /> : ''}*/}
             <Header/>
             <Route path='/messages' render={() => <Messages store={props.store} />} />
             <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
             <Route path='/users' render={() => <UsersContainer store={props.store} />} />
-            <Route path='/login' render={() => <LoginContainer store={props.store} />} />
+            <Route path='/signIn' render={() => <SignInContainer store={props.store} />} />
         </div>
     )
 }

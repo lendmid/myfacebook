@@ -1,15 +1,20 @@
 import React from "react"
-import s from './Login.module.css';
+import s from './SignIn.module.css';
 import {Field, reduxForm} from "redux-form"
 import {InputLoginPage} from "../common/FormValidator/FormValidator";
 import {required} from "../../utils/validators/validators";
+import {connect} from "react-redux";
+import {signIn} from "../../redux/authReducer";
+import {Redirect} from "react-router-dom";
 
 
-let Login = (props) => {
+let SignIn = (props) => {
     let onSubmit = (formData) => {
-        console.log(formData);
+        props.signIn(formData.email, formData.password, true)
     }
-    
+    if (props.isAuth) {
+        return <Redirect to={"/profile"} />
+    }
     return (
         <div className={s.wrapper}>
             <LoginFormRedux onSubmit={onSubmit} />
@@ -20,7 +25,7 @@ let Login = (props) => {
 let LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
-            <Field component={InputLoginPage} type="email" placeholder="Email" name="login" validate={[required]} className={s.input} />
+            <Field component={InputLoginPage} type="email" placeholder="Email" name="email" validate={[required]} className={s.input} />
             <Field component={InputLoginPage} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} />
             <button className={s.button}>Sign in</button>
             <div className={s.line}></div>
@@ -29,6 +34,10 @@ let LoginForm = (props) => {
     )
 }
 
-let LoginFormRedux = reduxForm({form: 'login'})(LoginForm)
+let LoginFormRedux = reduxForm({form: 'signIn'})(LoginForm)
 
-export default Login;
+let mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {signIn})(SignIn);
