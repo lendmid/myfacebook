@@ -5,7 +5,7 @@ import {InputMessagesPage} from "../../../common/FormValidator/FormValidator";
 import {minLenghtCreator, required} from "../../../../utils/validators/validators";
 
 
-let minLenght1 = minLenghtCreator(1)
+let minLenght1 = minLenghtCreator(1);
 
 const SendMessage = (props) => {
     let sendMessage = (formData) => {
