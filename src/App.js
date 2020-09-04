@@ -12,7 +12,7 @@ const App = (props) => {
     return (
         <div className="app-wrapper">
             {/*{props.location.pathname !== '/signIn' ? <Header /> : ''}*/}
-            <Header/>
+            <Header store={props.store}/>
             <Route path='/messages' render={() => <Messages store={props.store} />} />
             <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
             <Route path='/users' render={() => <UsersContainer store={props.store} />} />

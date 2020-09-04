@@ -12,6 +12,7 @@ let SignIn = (props) => {
     let onSubmit = (formData) => {
         props.signIn(formData.email, formData.password, true)
     }
+    
     if (props.isAuth) {
         return <Redirect to={"/profile"} />
     }

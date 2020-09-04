@@ -1,9 +1,14 @@
 import React from 'react';
 import s from './Header.module.css';
-import {NavLink} from "react-router-dom";
-import signOut from "../../assets/images/signOut.svg"
+import {NavLink, Redirect} from "react-router-dom";
+import signOutImg from "../../assets/images/signOutImg.svg"
+import {signOut} from "../../redux/authReducer";
+import {connect} from "react-redux";
 
 const Header = (props) => {
+    
+    if (!props.isAuth) return <Redirect to={"/signIn"} />;
+    
     return (
         <header className={s.header}>
             <nav className={s.nav}>
@@ -15,11 +20,17 @@ const Header = (props) => {
                     <li><NavLink to="">Settings</NavLink></li>
                 </ul>
             </nav>
-            <button className={s.signOut}>
-                <img src={signOut} alt="signOut" className={s.img}/>
-                <span className={s.span}>Sign out</span>
-            </button>
+            {props.isAuth ?
+                <button className={s.signOut} onClick={() => props.signOut()}>
+                    <img src={signOutImg} alt="signOut" className={s.img}/>
+                    <span className={s.span}>Sign out</span>
+                </button> : null}
         </header>
     )
 }
-export default Header;
+
+let mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {signOut})(Header);
