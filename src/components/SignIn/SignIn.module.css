@@ -4,16 +4,28 @@
     grid-column: 2 / 2;
     display: grid;
     place-items: center;
+    
+    
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 }
 
 .form {
     display: grid;
     grid-gap: 10px;
     
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.error {
+    border: 1px red solid;
+}
+
+.error_message {
+    color: red;
 }
 
 .input {
@@ -37,7 +49,6 @@
     padding: 10px;
     background-color: #a4a6a87c;
     font-size: 16px;
-    
 }
 
 .sign_up {

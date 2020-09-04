@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import Login from "./SignIn";
+import SignIn from "./SignIn";
 
 
 let mapStateToProps = (state) => {
@@ -13,6 +13,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const SignInConrainer = connect(mapStateToProps, mapDispatchToProps)(Login);
+const SignInConrainer = connect(mapStateToProps, mapDispatchToProps)(SignIn);
 
 export default SignInConrainer;

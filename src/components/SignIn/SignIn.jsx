@@ -16,26 +16,29 @@ let SignIn = (props) => {
     if (props.isAuth) {
         return <Redirect to={"/profile"} />
     }
+    
     return (
         <div className={s.wrapper}>
-            <LoginFormRedux onSubmit={onSubmit} />
+            <SignInFormRedux onSubmit={onSubmit} />
+            <div className={s.line}></div>
+            <button className={`${s.button} ${s.sign_up}`}>Sign up</button>
         </div>
     )
 }
 
-let LoginForm = (props) => {
+let SignInForm = (props) => {
+    
     return (
-        <form onSubmit={props.handleSubmit} className={s.form}>
+        <form onSubmit={props.handleSubmit} className={`${s.form} ${props.error ? s.error : ""}`}>
             <Field component={InputLoginPage} type="email" placeholder="Email" name="email" validate={[required]} className={s.input} />
-            <Field component={InputLoginPage} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} />
+            <Field component={InputLoginPage} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} autocomplete="on" />
             <button className={s.button}>Sign in</button>
-            <div className={s.line}></div>
-            <button className={`${s.button} ${s.sign_up}`}>Sign up</button>
+            {props.error ? <span className={s.error_message}>{props.error}</span> : ""}
         </form>
     )
 }
 
-let LoginFormRedux = reduxForm({form: 'signIn'})(LoginForm)
+let SignInFormRedux = reduxForm({form: 'signIn'})(SignInForm)
 
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth

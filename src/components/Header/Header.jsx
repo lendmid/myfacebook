@@ -20,11 +20,10 @@ const Header = (props) => {
                     <li><NavLink to="">Settings</NavLink></li>
                 </ul>
             </nav>
-            {props.isAuth ?
-                <button className={s.signOut} onClick={() => props.signOut()}>
-                    <img src={signOutImg} alt="signOut" className={s.img}/>
-                    <span className={s.span}>Sign out</span>
-                </button> : null}
+            <button className={s.signOut} onClick={() => props.signOut()}>
+                <img src={signOutImg} alt="signOut" className={s.img}/>
+                <span className={s.span}>Sign out</span>
+            </button>
         </header>
     )
 }
