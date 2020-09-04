@@ -10,10 +10,11 @@ import {getAuthUserData} from "../../redux/authReducer";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        this.props.getAuthUserData();
-        let userId = this.props.match.params.userId ? this.props.match.params.userId : 11132;
-        this.props.getProfile(userId);
-        this.props.getStatus(userId);
+        // this.props.getAuthUserData();
+        // let userId = this.props.match.params.userId ? this.props.match.params.userId : 11132;
+        // let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.authorizedUserId;
+        // this.props.getProfile(userId);
+        // this.props.getStatus(userId);
     }
     
     render() {
@@ -26,8 +27,9 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     posts: state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />),
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
     status: state.profilePage.status,
+    isAuth: state.auth.isAuth,
+    authorizedUserId: state.auth.userId
 })
 
 export default compose(

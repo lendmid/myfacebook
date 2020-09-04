@@ -1,13 +1,13 @@
 import React from 'react';
 import s from './Header.module.css';
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import signOutImg from "../../assets/images/signOutImg.svg"
 import {signOut} from "../../redux/authReducer";
 import {connect} from "react-redux";
 
 const Header = (props) => {
     
-    if (!props.isAuth) return <Redirect to={"/signIn"} />;
+    // if (!props.isAuth) return <Redirect to={"/signIn"} />;
     
     return (
         <header className={s.header}>

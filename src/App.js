@@ -6,18 +6,51 @@ import './App.css';
 import {Route, withRouter} from 'react-router-dom';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
+import {signOut} from "./redux/authReducer";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {initializeApp} from "./redux/appReducer";
+import Preloader from "./components/common/Preloader/Preloader";
 
 
-const App = (props) => {
-    return (
-        <div className="app-wrapper">
-            <Header store={props.store}/>
-            <Route path='/messages' render={() => <Messages store={props.store} />} />
-            <Route path='/profile/:userId?' render={() => <ProfileContainer store={props.store} />} />
-            <Route path='/users' render={() => <UsersContainer store={props.store} />} />
-            <Route path='/signIn' render={() => <SignInContainer store={props.store} />} />
+class App extends React.Component {
+    
+    componentDidMount() {
+        this.props.initializeApp();
+        // let userId = this.props.match.params.userId ? this.props.match.params.userId : 11132;
+        // let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.authorizedUserId;
+        // this.props.getProfile(userId);
+        // this.props.getStatus(userId);
+    }
+    
+    
+    render() {
+        debugger
+        if (!this.props.initialized) return <Preloader />
+        if (!this.props.isAuth) return (
+            <Route path='/signIn' render={() => <SignInContainer store={this.props.store} />} />
+        )
+        
+        
+        return (
+            <div className="app-wrapper">
+            <Header store={this.props.store} />
+            <Route path='/messages' render={() => <Messages store={this.props.store} />} />
+            <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
+            <Route path='/users' render={() => <UsersContainer store={this.props.store} />} />
         </div>
-    )
+        )
+    }
 }
 
-export default withRouter(App);
+
+let mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+    initialized: state.app.initialized,
+})
+
+export default compose(
+    connect(mapStateToProps, {initializeApp, signOut}),
+    withRouter,
+    // withAuthRedirect,
+)(App)
