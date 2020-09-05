@@ -6,11 +6,12 @@ import './App.css';
 import {Route, withRouter} from 'react-router-dom';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
-import {signOut} from "./redux/authReducer";
+import {getAuthUserData, signOut} from "./redux/authReducer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
 
 
 class App extends React.Component {
@@ -25,20 +26,24 @@ class App extends React.Component {
     
     
     render() {
-        debugger
         if (!this.props.initialized) return <Preloader />
-        if (!this.props.isAuth) return (
-            <Route path='/signIn' render={() => <SignInContainer store={this.props.store} />} />
-        )
+        // if (!this.props.isAuth) return <Redirect to={"/signIn"} />;
+        // debugger
+        // if (this.props.isAuth) return (
+        //     <div className="app-wrapper">
+        //         <Route path='/signIn' render={() => <SignInContainer store={this.props.store} />} />
+        //     </div>
+        // )
         
         
         return (
             <div className="app-wrapper">
-            <Header store={this.props.store} />
-            <Route path='/messages' render={() => <Messages store={this.props.store} />} />
-            <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
-            <Route path='/users' render={() => <UsersContainer store={this.props.store} />} />
-        </div>
+                <Header store={this.props.store} />
+                <Route path='/messages' render={() => <Messages store={this.props.store} />} />
+                <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
+                <Route path='/users' render={() => <UsersContainer store={this.props.store} />} />
+                <Route path='/signIn' render={() => <SignInContainer store={this.props.store} />} />
+            </div>
         )
     }
 }
@@ -50,7 +55,7 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {initializeApp, signOut}),
+    connect(mapStateToProps, {initializeApp, signOut, getProfile, getStatus, updateStatus, getAuthUserData}),
     withRouter,
     // withAuthRedirect,
 )(App)

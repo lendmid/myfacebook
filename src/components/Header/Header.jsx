@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import signOutImg from "../../assets/images/signOutImg.svg"
 import {signOut} from "../../redux/authReducer";
 import {connect} from "react-redux";
@@ -20,7 +20,10 @@ const Header = (props) => {
                     <li><NavLink to="">Settings</NavLink></li>
                 </ul>
             </nav>
-            <button className={s.signOut} onClick={() => props.signOut()}>
+            <button className={s.signOut} onClick={() => {
+                props.signOut();
+                return <Redirect to={"/signIn"} />;
+            }}>
                 <img src={signOutImg} alt="signOut" className={s.img}/>
                 <span className={s.span}>Sign out</span>
             </button>

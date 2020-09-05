@@ -8,26 +8,35 @@ import {TextAreaProfilePage} from "../../../common/FormValidator/FormValidator";
 let minLenght1 = minLenghtCreator(1)
 
 let AddPost = (props) => {
+    
+    const { handleSubmit, pristine, reset, submitting } = props
+    
     let addNewPost = (formData) => {
+        debugger
         props.addPost(formData.newPostText);
     }
     
     return (
         <div className={s.add_post_wrapper}>
-            <AddPostFormRedux onSubmit={addNewPost} />
+            <form onSubmit={addNewPost}>
+                <Field component={TextAreaProfilePage} className={s.textarea} name="newPostText" cols="30" rows="7" placeholder="Enter somesing..." validate={[required, minLenght1]}></Field>
+                <button className={s.button} type="submit" disabled={pristine || submitting} onClick="submit">Add post</button>
+            </form>
+            {/*<AddPostFormRedux onSubmit={addNewPost} />*/}
         </div>
     )
 }
 
-let AddPostForm = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <Field component={TextAreaProfilePage} className={s.textarea} name="newPostText" cols="30" rows="7" placeholder="Enter somesing..." validate={[required, minLenght1]}></Field>
-            <button className={s.button}>Add post</button>
-        </form>
-    )
-}
+// let AddPostForm = (props) => {
+//     return (
+//         <form onSubmit={props.handleSubmit}>
+//             <Field component={TextAreaProfilePage} className={s.textarea} name="newPostText" cols="30" rows="7" placeholder="Enter somesing..." validate={[required, minLenght1]}></Field>
+//             <button className={s.button} onClick={reset}>Add post</button>
+//         </form>
+//     )
+// }
 
-let AddPostFormRedux = reduxForm({form: 'addPost'})(AddPostForm)
+// let AddPostFormRedux = reduxForm({form: 'addPost'})(AddPostForm)
+// let AddPostFormRedux = reduxForm({form: 'addPost'})(AddPostForm)
 
-export default AddPost;
+export default reduxForm({form: 'addPost'})(AddPost);
