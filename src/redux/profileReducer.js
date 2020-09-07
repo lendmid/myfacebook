@@ -68,6 +68,12 @@ export let addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export let setProfile = (profile) => ({type: SET_PROFILE, profile})
 export let setStatus = (status) => ({type: SET_STATUS, status})
 
+
+// export let addPost = (newPostText) => {
+//     debugger
+//     return (dispatch) => {dispatch(addPostCreator(newPostText))
+// }}
+
 export let getProfile = (userId) => (dispatch) => {
     profileAPI.getProfile(userId).then(response => {
         dispatch(setProfile(response.data));

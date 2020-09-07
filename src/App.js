@@ -2,15 +2,15 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Messages from './components/Messages/Messages';
 import UsersContainer from "./components/Users/UsersContainer";
-import './App.css';
-import {Route, withRouter} from 'react-router-dom';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
+import Preloader from "./components/common/Preloader/Preloader";
+import './App.css';
+import {Route, withRouter} from 'react-router-dom';
 import {getAuthUserData, signOut} from "./redux/authReducer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
-import Preloader from "./components/common/Preloader/Preloader";
 import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
 
 
