@@ -43,15 +43,18 @@ const profileReducer = (state = initialState, action) => {
                 ],
             };
         case SET_PROFILE:
-            return  {...state,
+            return {
+                ...state,
                 profile: action.profile,
             };
         case SET_STATUS:
-            return  {...state,
+            return {
+                ...state,
                 status: action.status,
             };
         case UPDATE_STATUS:
-            return  {...state,
+            return {
+                ...state,
                 status: action.status,
             };
         default:
@@ -69,10 +72,12 @@ export let setProfile = (profile) => ({type: SET_PROFILE, profile})
 export let setStatus = (status) => ({type: SET_STATUS, status})
 
 
-// export let addPost = (newPostText) => {
-//     debugger
-//     return (dispatch) => {dispatch(addPostCreator(newPostText))
-// }}
+export let addPost = (newPostText) => {
+    debugger
+    return (dispatch) => {
+        dispatch(addPostCreator(newPostText))
+    }
+}
 
 export let getProfile = (userId) => (dispatch) => {
     profileAPI.getProfile(userId).then(response => {

@@ -1,7 +1,8 @@
-import {addPostCreator} from '../../../../redux/profileReducer';
+import {addPost} from '../../../../redux/profileReducer';
 import AddPost from './AddPost';
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {reduxForm} from "redux-form"
 
 
 let mapStateToProps = (state) => {
@@ -10,26 +11,11 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addPost: (newPostText) => dispatch(addPostCreator(newPostText))
-    }
-}
-
 const AddPostConrainer = compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    
-    )(AddPost)
-
-
-
-// export default reduxForm({
-//     form: 'addPost',
-//     onSubmit: values => {
-//         debugger
-//         console.log('sended', values)},
-//     // onSubmit: formData => AddPost.addNewPost(formData.newPostText)
-// })(AddPost);
-
+    connect(mapStateToProps, {addPost}),
+    reduxForm({
+        form: 'addPost',
+    })
+)(AddPost)
 
 export default AddPostConrainer;
