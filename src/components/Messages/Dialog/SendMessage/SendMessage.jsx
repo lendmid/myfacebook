@@ -6,7 +6,7 @@ import {required} from "../../../../utils/validators/validators";
 
 
 const SendMessage = (props) => {
-    const {handleSubmit, pristine, reset, submitting, sendMessage} = props
+    const {handleSubmit, pristine, reset, submitting, sendMessage} = props;
     
     let sendNewMessage = (formData) => {
         sendMessage(formData.newMessageText);

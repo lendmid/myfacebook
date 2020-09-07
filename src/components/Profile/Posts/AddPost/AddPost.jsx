@@ -6,7 +6,7 @@ import {TextAreaProfilePage} from "../../../common/FormValidator/FormValidator";
 
 
 let AddPost = (props) => {
-    const {handleSubmit, pristine, reset, submitting, addPost} = props
+    const {handleSubmit, pristine, reset, submitting, addPost} = props;
     
     let addNewPost = (formData) => {
         addPost(formData.newPostText);
@@ -14,7 +14,7 @@ let AddPost = (props) => {
     }
     
     return (
-        <div className={s.add_post_wrapper}>
+        <div className={s.wrapper}>
             <form onSubmit={handleSubmit(addNewPost)}>
                 <Field component={TextAreaProfilePage} className={s.textarea} name="newPostText" cols="30" rows="7" placeholder="Enter somesing..." validate={[required]}></Field>
                 <button className={s.button} type="submit" disabled={pristine || submitting}>Add post</button>

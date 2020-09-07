@@ -91,12 +91,10 @@ const messagesReducer = (state = initialState, action) => {
 
 export const sendMessageCreator = (newMessageText) => ({type: SEND_MESSAGE, newMessageText})
 
-
 export let sendMessage = (newPostText) => {
     return (dispatch) => {
         dispatch(sendMessageCreator(newPostText))
     }
 }
-
 
 export default messagesReducer;

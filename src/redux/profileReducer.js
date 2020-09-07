@@ -73,7 +73,6 @@ export let setStatus = (status) => ({type: SET_STATUS, status})
 
 
 export let addPost = (newPostText) => {
-    debugger
     return (dispatch) => {
         dispatch(addPostCreator(newPostText))
     }
