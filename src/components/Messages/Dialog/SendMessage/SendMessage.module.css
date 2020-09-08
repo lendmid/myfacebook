@@ -1,6 +1,6 @@
 .send_wrapper {
     grid-row: 3 / 3;
-    padding: 0 20px;
+    padding: 8px 20px;
     display: grid;
     grid-template-columns: 1fr 36px;
     grid-gap: 15px;

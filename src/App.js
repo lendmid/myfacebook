@@ -24,15 +24,8 @@ class App extends React.Component {
         // this.props.getStatus(userId);
     }
     
-    
     render() {
         if (!this.props.initialized) return <Preloader />
-    
-        if (!this.props.isAuth) return (
-            <div className="app-wrapper">
-                <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
-            </div>
-        )
         
         return (
             <div className="app-wrapper">
@@ -55,5 +48,5 @@ let mapStateToProps = (state) => ({
 export default compose(
     connect(mapStateToProps, {initializeApp, signOut, getProfile, getStatus, updateStatus, getAuthUserData}),
     withRouter,
-    // withAuthRedirect,
+    // withAuthRedirect, do not work. incorrect checking
 )(App)

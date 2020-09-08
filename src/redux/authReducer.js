@@ -28,7 +28,7 @@ export let getAuthUserData = () => (dispatch) => {
     return authAPI.me().then(response => {
         if (response.data.resultCode === 0) {
             let {id, login, email} = response.data.data;
-            return dispatch(setUserData(id, email, login, true))
+            dispatch(setUserData(id, email, login, true))
         }
     })
 }
@@ -39,7 +39,7 @@ export let signIn = (email, password, rememberMe) => (dispatch) => {
             dispatch(getAuthUserData());
         } else {
             let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-            return dispatch(stopSubmit("login", {_error: message}));
+            dispatch(stopSubmit("signIn", {_error: message}));
         }
     })
 }
@@ -47,7 +47,7 @@ export let signIn = (email, password, rememberMe) => (dispatch) => {
 export let signOut = () => (dispatch) => {
     return authAPI.signOut().then(response => {
         if (response.data.resultCode === 0) {
-            return dispatch(setUserData(null, null, null, false))
+            dispatch(setUserData(null, null, null, false))
         }
     })
 }

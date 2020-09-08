@@ -21,7 +21,8 @@ const Header = (props) => {
                 </ul>
             </nav>
             <button className={s.signOut} onClick={() => {
-                props.signOut().then(() => <Redirect to={"/"} />)
+                props.signOut();
+                return <Redirect to={"/"} />;
             }}>
                 <img src={signOutImg} alt="signOut" className={s.img}/>
                 <span className={s.span}>Signout</span>
