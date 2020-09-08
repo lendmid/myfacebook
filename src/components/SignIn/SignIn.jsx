@@ -1,7 +1,7 @@
 import React from "react"
 import s from './SignIn.module.css';
 import {Field, reduxForm} from "redux-form"
-import {InputLoginPage} from "../common/FormValidator/FormValidator";
+import {InputSignIn} from "../common/FormValidator/FormValidator";
 import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {signIn} from "../../redux/authReducer";
@@ -21,18 +21,17 @@ let SignIn = (props) => {
         <div className={s.wrapper}>
             <SignInFormRedux onSubmit={onSubmit} />
             <div className={s.line}></div>
-            <button className={`${s.button} ${s.sign_up}`}>Sign up</button>
+            <button className={`${s.button} ${s.signUp}`}>Signup</button>
         </div>
     )
 }
 
 let SignInForm = (props) => {
-    
     return (
         <form onSubmit={props.handleSubmit} className={`${s.form} ${props.error ? s.error : ""}`}>
-            <Field component={InputLoginPage} type="email" placeholder="Email" name="email" validate={[required]} className={s.input} />
-            <Field component={InputLoginPage} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} autocomplete="on" />
-            <button className={s.button}>Sign in</button>
+            <Field component={InputSignIn} type="email" placeholder="Email" name="email" validate={[required]} className={s.input} />
+            <Field component={InputSignIn} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} autocomplete="on" />
+            <button className={s.button}>Signin</button>
             {props.error ? <span className={s.error_message}>{props.error}</span> : ""}
         </form>
     )

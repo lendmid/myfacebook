@@ -42,7 +42,7 @@ class App extends React.Component {
                 <Route path='/messages' render={() => <Messages store={this.props.store} />} />
                 <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
                 <Route path='/users' render={() => <UsersContainer store={this.props.store} />} />
-                <Route path='/signIn' render={() => <SignInContainer store={this.props.store} />} />
+                <Route path='/signin' render={() => <SignInContainer store={this.props.store} />} />
             </div>
         )
     }

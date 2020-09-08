@@ -39,7 +39,7 @@ export let signIn = (email, password, rememberMe) => (dispatch) => {
             dispatch(getAuthUserData());
         } else {
             let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-            dispatch(stopSubmit("signIn", {_error: message}));
+            dispatch(stopSubmit("login", {_error: message}));
         }
     })
 }
