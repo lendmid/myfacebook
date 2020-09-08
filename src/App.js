@@ -39,10 +39,11 @@ class App extends React.Component {
         return (
             <div className="app-wrapper">
                 <Header store={this.props.store} />
-                <Route path='/messages' render={() => <Messages store={this.props.store} />} />
-                <Route path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
-                <Route path='/users' render={() => <UsersContainer store={this.props.store} />} />
-                <Route path='/signin' render={() => <SignInContainer store={this.props.store} />} />
+                <Route exact path='/messages' render={() => <Messages store={this.props.store} />} />
+                <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
+                <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
+                <Route exact path='/signin' render={() => <SignInContainer store={this.props.store} />} />
+                <Route path='*' render={() => <h1>Page not found</h1>}/>
             </div>
         )
     }

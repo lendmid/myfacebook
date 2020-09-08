@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 
 const Header = (props) => {
     
-    // if (!props.isAuth) return <Redirect to={"/signIn"} />;
+    if (!props.isAuth) return <Redirect to={"/signin"} />;
     
     return (
         <header className={s.header}>
