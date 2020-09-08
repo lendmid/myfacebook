@@ -28,26 +28,26 @@ export let getAuthUserData = () => (dispatch) => {
     return authAPI.me().then(response => {
         if (response.data.resultCode === 0) {
             let {id, login, email} = response.data.data;
-            dispatch(setUserData(id, email, login, true))
+            return dispatch(setUserData(id, email, login, true))
         }
     })
 }
 
 export let signIn = (email, password, rememberMe) => (dispatch) => {
-    authAPI.signIn(email, password, rememberMe).then(response => {
+    return authAPI.signIn(email, password, rememberMe).then(response => {
         if (response.data.resultCode === 0) {
             dispatch(getAuthUserData());
         } else {
             let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-            dispatch(stopSubmit("login", {_error: message}));
+            return dispatch(stopSubmit("login", {_error: message}));
         }
     })
 }
 
 export let signOut = () => (dispatch) => {
-    authAPI.signOut().then(response => {
+    return authAPI.signOut().then(response => {
         if (response.data.resultCode === 0) {
-            dispatch(setUserData(null, null, null, false))
+            return dispatch(setUserData(null, null, null, false))
         }
     })
 }

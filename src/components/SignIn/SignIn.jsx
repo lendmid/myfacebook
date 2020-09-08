@@ -21,7 +21,7 @@ let SignIn = (props) => {
         <div className={s.wrapper}>
             <SignInFormRedux onSubmit={onSubmit} />
             <div className={s.line}></div>
-            <button className={`${s.button} ${s.signUp}`}>Signup</button>
+            <button className={`${s.button} ${s.signUp}`}>Sign up</button>
         </div>
     )
 }
@@ -30,8 +30,8 @@ let SignInForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={`${s.form} ${props.error ? s.error : ""}`}>
             <Field component={InputSignIn} type="email" placeholder="Email" name="email" validate={[required]} className={s.input} />
-            <Field component={InputSignIn} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} autocomplete="on" />
-            <button className={s.button}>Signin</button>
+            <Field component={InputSignIn} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} autoComplete="on" />
+            <button className={s.button}>Sign in</button>
             {props.error ? <span className={s.error_message}>{props.error}</span> : ""}
         </form>
     )

@@ -18,7 +18,7 @@ class App extends React.Component {
     
     componentDidMount() {
         this.props.initializeApp();
-        // let userId = this.props.match.params.userId ? this.props.match.params.userId : 11132;
+        //deprecated
         // let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.authorizedUserId;
         // this.props.getProfile(userId);
         // this.props.getStatus(userId);
@@ -27,14 +27,12 @@ class App extends React.Component {
     
     render() {
         if (!this.props.initialized) return <Preloader />
-        // if (!this.props.isAuth) return <Redirect to={"/signIn"} />;
-        // debugger
-        // if (this.props.isAuth) return (
-        //     <div className="app-wrapper">
-        //         <Route path='/signIn' render={() => <SignInContainer store={this.props.store} />} />
-        //     </div>
-        // )
-        
+    
+        if (!this.props.isAuth) return (
+            <div className="app-wrapper">
+                <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
+            </div>
+        )
         
         return (
             <div className="app-wrapper">
@@ -42,8 +40,7 @@ class App extends React.Component {
                 <Route exact path='/messages' render={() => <Messages store={this.props.store} />} />
                 <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
                 <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
-                <Route exact path='/signin' render={() => <SignInContainer store={this.props.store} />} />
-                <Route path='*' render={() => <h1>Page not found</h1>}/>
+                <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
             </div>
         )
     }

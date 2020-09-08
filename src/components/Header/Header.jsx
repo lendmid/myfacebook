@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 
 const Header = (props) => {
     
-    if (!props.isAuth) return <Redirect to={"/signin"} />;
+    if (!props.isAuth) return <Redirect to={"/"} />;
     
     return (
         <header className={s.header}>
@@ -21,8 +21,7 @@ const Header = (props) => {
                 </ul>
             </nav>
             <button className={s.signOut} onClick={() => {
-                props.signOut();
-                return <Redirect to={"/signin"} />;
+                props.signOut().then(() => <Redirect to={"/"} />)
             }}>
                 <img src={signOutImg} alt="signOut" className={s.img}/>
                 <span className={s.span}>Signout</span>
