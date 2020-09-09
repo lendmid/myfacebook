@@ -78,13 +78,13 @@ export let addPost = (newPostText) => {
     }
 }
 
-export let getProfile = (userId) => (dispatch) => {
-    profileAPI.getProfile(userId).then(response => {
+export let requestProfile = (userId) => (dispatch) => {
+    profileAPI.requestProfile(userId).then(response => {
         dispatch(setProfile(response.data));
     })
 }
-export let getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId).then(response => {
+export let requestStatus = (userId) => (dispatch) => {
+    profileAPI.requestStatus(userId).then(response => {
         dispatch(setStatus(response.data));
     })
 }

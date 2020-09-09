@@ -10,7 +10,7 @@ let instance = axios.create({
 })
 
 export let usersAPI = {
-    getUsers(currentPage = 1, pageSize = 5) {
+    requestUsers(currentPage = 1, pageSize = 5) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
             return response.data
         })
@@ -18,10 +18,10 @@ export let usersAPI = {
 }
 
 export let profileAPI = {
-    getProfile(userId) {
+    requestProfile(userId) {
         return instance.get('profile/' + userId);
     },
-    getStatus(userId) {
+    requestStatus(userId) {
         return instance.get('profile/status/' + userId);
     },
     updateStatus(status) {

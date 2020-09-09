@@ -9,7 +9,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
     users: [],
-    pageSizae: 5,
+    pageSize: 5,
     totalUsersCount: 0,
     currentPage: 2,
     isFetching: false,
@@ -53,12 +53,12 @@ export let setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPa
 export let setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
 export let toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
-//getUsersThunkCreator
-export let getUsers = (currentPage = 1, pageSize = 5) => {
+//requestUsersThunkCreator
+export let requestUsers = (currentPage = 1, pageSize = 5) => {
     return (dispatch) => {
         dispatch(setCurrentPage(currentPage));
         dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
+        usersAPI.requestUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(data.items));
             dispatch(setUsersTotalCount(Math.ceil(data.totalCount / 100)));

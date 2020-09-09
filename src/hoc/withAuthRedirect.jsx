@@ -16,8 +16,8 @@ export let withAuthRedirect = (Component) => {
             // if (!userId) userId = this.props.authorizedUserId;
             // if (!userId) userId = 11132;
             //
-            // this.props.getProfile(userId);
-            // this.props.getStatus(userId);
+            // this.props.requestProfile(userId);
+            // this.props.requestStatus(userId);
             // if (!this.props.isAuth) return <Redirect to={"/"} />;
         }
     

@@ -11,7 +11,7 @@ import {getAuthUserData, signOut} from "./redux/authReducer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
-import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
+import {requestProfile, requestStatus, updateStatus} from "./redux/profileReducer";
 
 
 class App extends React.Component {
@@ -48,7 +48,7 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {initializeApp, signOut, getProfile, getStatus, updateStatus, getAuthUserData}),
+    connect(mapStateToProps, {initializeApp, signOut, getProfile: requestProfile, getStatus: requestStatus, updateStatus, getAuthUserData}),
     withRouter,
     // withAuthRedirect, // incorrectly checks authorization and done Redirect
 )(App)
