@@ -18,10 +18,12 @@ class App extends React.Component {
     
     componentDidMount() {
         this.props.initializeApp();
-        //deprecated
-        // let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.authorizedUserId;
-        // this.props.getProfile(userId);
-        // this.props.getStatus(userId);
+        let userId = this.props.match.params.userId;
+        if (!userId) userId = this.props.authorizedUserId;
+        if (!userId) userId = 11132;
+
+        this.props.getProfile(userId);
+        this.props.getStatus(userId);
     }
     
     render() {
@@ -48,5 +50,5 @@ let mapStateToProps = (state) => ({
 export default compose(
     connect(mapStateToProps, {initializeApp, signOut, getProfile, getStatus, updateStatus, getAuthUserData}),
     withRouter,
-    // withAuthRedirect, do not work. incorrect checking
+    // withAuthRedirect, // incorrectly checks authorization and done Redirect
 )(App)
