@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './ProfileHeader.module.css';
-import ProfileStatus from "./ProfileStatus"
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
 import avatar from "../../../assets/images/avatar.jpg"
 import avatar_bg from "../../../assets/images/avatar_background.jpg"
 
@@ -19,7 +19,7 @@ const ProfileHeader = (props) => {
             </div>
             <div className={s.short_biography}>
                 <span>Дорошенко Дмитрий</span>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     )
