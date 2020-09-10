@@ -8,7 +8,7 @@ let ProfileStatusWithHooks = props => {
     
     useEffect(() => {
         setStatus(props.status);
-        
+        setEditMode(false);
     }, [props.status])
     
     
@@ -25,7 +25,7 @@ let ProfileStatusWithHooks = props => {
         setEditMode(false);
         props.updateStatus(status);
     }
-    
+    // debugger
     return (
         <div>
             {!editMode &&
@@ -35,9 +35,7 @@ let ProfileStatusWithHooks = props => {
             {editMode &&
             <div>
                 <input type="text" onChange={onStatusChange} value={status} onBlur={deActivateEditMode} />
-                {/*<input type="text" onChange={onStatusChange} value={status} onBlur={deActivateEditMode} autoFocus={true} />*/}
-            </div>
-            }
+            </div>}
         </div>
     )
 }
