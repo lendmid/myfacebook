@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const SET_PROFILE = 'SET-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 const UPDATE_STATUS = 'UPDATE-STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialState = {
     posts: [
@@ -57,6 +58,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status,
             };
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.postId),
+            };
         default:
             return state
     }
@@ -70,6 +76,7 @@ function randomInteger(min, max) {
 export let addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export let setProfile = (profile) => ({type: SET_PROFILE, profile})
 export let setStatus = (status) => ({type: SET_STATUS, status})
+export let deletePost = (postId) => ({type: DELETE_POST, postId})
 
 
 export let addPost = (newPostText) => {
