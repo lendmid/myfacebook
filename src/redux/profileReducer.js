@@ -1,10 +1,10 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const SET_PROFILE = 'SET-PROFILE';
-const SET_STATUS = 'SET-STATUS';
-const UPDATE_STATUS = 'UPDATE-STATUS';
-const DELETE_POST = 'DELETE_POST';
+const ADD_POST      = 'myFacebook/profile/ADD-POST';
+const SET_PROFILE   = 'myFacebook/profile/SET-PROFILE';
+const SET_STATUS    = 'myFacebook/profile/SET-STATUS';
+const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
+const DELETE_POST   = 'myFacebook/profile/DELETE_POST';
 
 let initialState = {
     posts: [

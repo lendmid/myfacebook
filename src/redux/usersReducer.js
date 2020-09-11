@@ -1,11 +1,11 @@
 import {usersAPI} from "../api/api";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS';
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const FOLLOW = 'myFacebook/users/FOLLOW';
+const UNFOLLOW = 'myFacebook/users/UNFOLLOW';
+const SET_USERS = 'myFacebook/users/SET-USERS';
+const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'myFacebook/users/SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'myFacebook/users/TOGGLE_IS_FETCHING';
 
 let initialState = {
     users: [],

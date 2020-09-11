@@ -4,7 +4,7 @@ import avatar_3 from "./../assets/images/avatar_3.png"
 import avatar_4 from "./../assets/images/avatar_4.png"
 import avatar_5 from "./../assets/images/avatar_5.png"
 
-const SEND_MESSAGE = 'SEND-MESSAGE';
+const SEND_MESSAGE = 'myFacebook/message/SEND-MESSAGE';
 
 let initialState = {
     messagesData: [

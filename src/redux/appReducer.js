@@ -1,7 +1,7 @@
 import {getAuthUserData} from "./authReducer";
 
 
-const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+const INITIALIZED_SUCCESS = 'myFacebook/app/INITIALIZED_SUCCESS';
 
 let initialState = {
     initialized: false,
