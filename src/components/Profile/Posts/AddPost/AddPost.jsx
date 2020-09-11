@@ -5,8 +5,7 @@ import {required} from "../../../../utils/validators/validators";
 import {TextAreaProfilePage} from "../../../common/FormValidator/FormValidator";
 
 
-let AddPost = (props) => {
-    const {handleSubmit, pristine, reset, submitting, addPost} = props;
+let AddPost = ({handleSubmit, pristine, reset, submitting, addPost}) => {
     
     let addNewPost = (formData) => {
         addPost(formData.newPostText);

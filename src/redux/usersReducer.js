@@ -55,14 +55,14 @@ export let toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetc
 
 //requestUsersThunkCreator
 export let requestUsers = (page = 1, pageSize = 5) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setCurrentPage(page));
         dispatch(toggleIsFetching(true));
-        usersAPI.requestUsers(page, pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setUsersTotalCount(Math.ceil(data.totalCount / 100)));
-        })
+        let data = await usersAPI.requestUsers(page, pageSize)
+        
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setUsersTotalCount(Math.ceil(data.totalCount / 100)));
     }
 }
 

@@ -25,7 +25,7 @@ let ProfileStatusWithHooks = props => {
         setEditMode(false);
         props.updateStatus(status);
     }
-    // debugger
+    
     return (
         <div>
             {!editMode &&

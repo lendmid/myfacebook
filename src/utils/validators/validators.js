@@ -3,8 +3,9 @@ export let required = value => {
     return "Field is required";
 }
 
-export let minLenghtCreator = minLenght => value => {
-    if (value.length < minLenght) return `Min length is ${minLenght} symbols`;
-    return undefined;
-}
+// this analogize functional was in redux-form
+// export let minLenghtCreator = minLenght => value => {
+//     if (value.length < minLenght) return `Min length is ${minLenght} symbols`;
+//     return undefined;
+// }
 

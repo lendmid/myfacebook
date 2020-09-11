@@ -24,32 +24,30 @@ let authReducer = (state = initialState, action) => {
 }
 
 export let setUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
-export let getAuthUserData = () => (dispatch) => {
-    return authAPI.me().then(response => {
-        if (response.data.resultCode === 0) {
-            let {id, login, email} = response.data.data;
-            dispatch(setUserData(id, email, login, true))
-        }
-    })
+
+export let getAuthUserData = () => async (dispatch) => {
+    let response = await authAPI.me();
+    if (response.data.resultCode === 0) {
+        let {id, login, email} = response.data.data;
+        dispatch(setUserData(id, email, login, true))
+    }
 }
 
-export let signIn = (email, password, rememberMe) => (dispatch) => {
-    return authAPI.signIn(email, password, rememberMe).then(response => {
-        if (response.data.resultCode === 0) {
-            dispatch(getAuthUserData());
-        } else {
-            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-            dispatch(stopSubmit("signIn", {_error: message}));
-        }
-    })
+export let signIn = (email, password, rememberMe) => async (dispatch) => {
+    let response = await authAPI.signIn(email, password, rememberMe);
+    if (response.data.resultCode === 0) {
+        dispatch(getAuthUserData());
+    } else {
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+        dispatch(stopSubmit("signIn", {_error: message}));
+    }
 }
 
-export let signOut = () => (dispatch) => {
-    return authAPI.signOut().then(response => {
-        if (response.data.resultCode === 0) {
-            dispatch(setUserData(null, null, null, false))
-        }
-    })
+export let signOut = () => async (dispatch) => {
+    let response = await authAPI.signOut();
+    if (response.data.resultCode === 0) {
+        dispatch(setUserData(null, null, null, false))
+    }
 }
 
 export default authReducer;

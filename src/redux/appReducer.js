@@ -29,23 +29,4 @@ export let initializeApp = () => (dispatch) => {
     })
 }
 
-// export let signIn = (email, password, rememberMe) => (dispatch) => {
-//     authAPI.signIn(email, password, rememberMe).then(response => {
-//         if (response.data.resultCode === 0) {
-//             dispatch(getAuthUserData());
-//         } else {
-//             let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-//             dispatch(stopSubmit("signIn", {_error: message}));
-//         }
-//     })
-// }
-//
-// export let signOut = () => (dispatch) => {
-//     authAPI.signOut().then(response => {
-//         if (response.data.resultCode === 0) {
-//             dispatch(setUserData(null, null, null, false))
-//         }
-//     })
-// }
-
 export default appReducer;

@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Users.module.css';
 
 
-let Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, users}) => {
+    let pagesCount = Math.ceil(totalUsersCount / pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
@@ -13,11 +13,11 @@ let Users = (props) => {
         <div className={s.users}>
             {pages.length ? <div className={s.numbers}>
                 {pages.map(pageNumber => {
-                    return <span className={props.currentPage === pageNumber ? s.selectedPage : s.nonSelectedPage}
-                                 onClick={() => props.onPageChanged(pageNumber)}>{pageNumber}</span>
+                    return <span className={currentPage === pageNumber ? s.selectedPage : s.nonSelectedPage}
+                                 onClick={() => onPageChanged(pageNumber)}>{pageNumber}</span>
                 })}
             </div> : null}
-            {props.users}
+            {users}
         </div>
     )
 }

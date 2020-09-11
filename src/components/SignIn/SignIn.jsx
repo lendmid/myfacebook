@@ -8,12 +8,12 @@ import {signIn} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
 
 
-let SignIn = (props) => {
+let SignIn = ({signIn, isAuth}) => {
     let onSubmit = (formData) => {
-        props.signIn(formData.email, formData.password, true)
+        signIn(formData.email, formData.password, true)
     }
     
-    if (props.isAuth) return <Redirect to={"/profile"} />;
+    if (isAuth) return <Redirect to={"/profile"} />;
     
     return (
         <div className={s.wrapper}>
@@ -24,13 +24,13 @@ let SignIn = (props) => {
     )
 }
 
-let SignInForm = (props) => {
+let SignInForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit} className={`${s.form} ${props.error ? s.error : ""}`}>
+        <form onSubmit={handleSubmit} className={`${s.form} ${error ? s.error : ""}`}>
             <Field component={InputSignIn} type="email" placeholder="Email" name="email" validate={[required]} className={s.input} />
             <Field component={InputSignIn} type="password" placeholder="Password" name="password" validate={[required]} className={s.input} autoComplete="on" />
             <button className={s.button}>Sign in</button>
-            {props.error ? <span className={s.error_message}>{props.error}</span> : ""}
+            {error ? <span className={s.error_message}>{error}</span> : ""}
         </form>
     )
 }

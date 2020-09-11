@@ -80,26 +80,21 @@ export let deletePost = (postId) => ({type: DELETE_POST, postId})
 
 
 export let addPost = (newPostText) => {
-    return (dispatch) => {
-        dispatch(addPostCreator(newPostText))
-    }
+    return (dispatch) => dispatch(addPostCreator(newPostText));
 }
 
-export let requestProfile = (userId) => (dispatch) => {
-    profileAPI.requestProfile(userId).then(response => {
-        dispatch(setProfile(response.data));
-    })
+export let requestProfile = (userId) => async (dispatch) => {
+    let response = await profileAPI.requestProfile(userId);
+    dispatch(setProfile(response.data));
 }
-export let requestStatus = (userId) => (dispatch) => {
-    profileAPI.requestStatus(userId).then(response => {
-        dispatch(setStatus(response.data));
-    })
+export let requestStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.requestStatus(userId);
+    dispatch(setStatus(response.data));
 }
-export let updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status).then(response => {
-        if (response.data.resultCode !== 0) return;
-        dispatch(setStatus(response.data));
-    })
+export let updateStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status);
+    if (response.data.resultCode !== 0) return;
+    dispatch(setStatus(response.data));
 }
 
 export default profileReducer;
