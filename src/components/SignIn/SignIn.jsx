@@ -13,9 +13,7 @@ let SignIn = (props) => {
         props.signIn(formData.email, formData.password, true)
     }
     
-    if (props.isAuth) {
-        return <Redirect to={"/profile"} />
-    }
+    if (props.isAuth) return <Redirect to={"/profile"} />;
     
     return (
         <div className={s.wrapper}>

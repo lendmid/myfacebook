@@ -1,4 +1,5 @@
-TODO: added alert or error if newMessageText.length < 1
-TODO: added alert or error if newPostText.length < 1
-TODO: added LastMessagesContainer, wrap him connect an mapStateToProps for work provider in App.js
-TODO: in all files add unique key
+TODO: in all files add unique key in array
+TODO: refactor all container and pure component. Move logic to conteiner component
+TODO: Add in all (?check)  pure component extends React.memo
+TODO: Add in all (?check)  pure component extends React.memo
+

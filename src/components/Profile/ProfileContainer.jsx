@@ -8,12 +8,10 @@ import {compose} from "redux";
 import {getAuthUserData} from "../../redux/authReducer";
 
 
-class ProfileContainer extends React.Component {
-    render() {
-        return (
-            <Profile {...this.props}/>
-        )
-    }
+let ProfileContainer = props => {
+    return (
+        <Profile {...props} />
+    )
 }
 
 let mapStateToProps = (state) => ({
