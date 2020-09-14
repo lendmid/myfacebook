@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Post from '././Posts/Post';
 import Profile from "./Profile";
-import {requestProfile, requestStatus, updateStatus} from "../../redux/profileReducer";
+import {requestStatus, updateStatus} from "../../redux/profileReducer";
 import {compose} from "redux";
 import {getAuthUserData} from "../../redux/authReducer";
 
@@ -23,6 +23,6 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {getProfile: requestProfile, getStatus: requestStatus, updateStatus, getAuthUserData}),
+    connect(mapStateToProps, {requestStatus, updateStatus, getAuthUserData}),
     withRouter,
 )(ProfileContainer)

@@ -12,22 +12,18 @@ import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import {requestProfile, requestStatus, updateStatus} from "./redux/profileReducer";
-// import App from './App';
 import store from './redux/redux-store';
-// import {BrowserRouter} from "react-router-dom";
-// import {Provider} from "react-redux";
 
 
 class App extends React.Component {
-    
     componentDidMount() {
         this.props.initializeApp();
         let userId = this.props.match.params.userId;
         if (!userId) userId = this.props.authorizedUserId;
         if (!userId) userId = 11132;
 
-        this.props.getProfile(userId);
-        this.props.getStatus(userId);
+        this.props.requestProfile(userId);
+        this.props.requestStatus(userId);
     }
     
     render() {
@@ -53,19 +49,20 @@ let mapStateToProps = (state) => ({
 
 let AppContainer =  compose(
     withRouter,
-    connect(mapStateToProps, {initializeApp, signOut, getProfile: requestProfile, getStatus: requestStatus, updateStatus, getAuthUserData}),
+    connect(mapStateToProps, {initializeApp, signOut, requestProfile, requestStatus, updateStatus, getAuthUserData}),
     // withAuthRedirect, // incorrectly checks authorization and done Redirect
 )(App)
 
 const MyFacebook = (props) => {
     return (
-        <BrowserRouter>
-            <Provider store={store}>
-                <AppContainer store={store} />
-            </Provider>
-        </BrowserRouter>
+        <React.StrictMode>
+            <BrowserRouter>
+                <Provider store={store}>
+                    <AppContainer store={store} />
+                </Provider>
+            </BrowserRouter>
+        </React.StrictMode>
     )
 }
-
 
 export default MyFacebook;
