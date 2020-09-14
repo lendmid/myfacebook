@@ -11,14 +11,14 @@ const LastMessages = (props) => {
                                                                                  message={lastM.message} />)
     
     return (
-        <aside className={s.last_messages_wrapper}>
+        <div className={s.last_messages_wrapper}>
             <div className={s.last_messages_header}>
                 <h1>Чаты</h1>
             </div>
             <ul className={s.last_messages_list}>
                 {lastMessages}
             </ul>
-        </aside>
+        </div>
     )
 }
 

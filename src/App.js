@@ -6,7 +6,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import './App.css';
-import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
 import {getAuthUserData, signOut} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -14,6 +14,26 @@ import {initializeApp} from "./redux/appReducer";
 import {requestProfile, requestStatus, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
 
+
+let rendereWithNotAuth = () => {
+    return (
+        <Switch>
+            <Route  component={} store} />} />
+        </Switch>
+    )
+}
+
+let renderWithAuth = () => {
+    return (
+        <Switch>
+            <Header store={store} />
+            <Route exact path='/messages' render={() => <Messages store={store} />} />
+            <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={store} />} />
+            <Route exact path='/users' render={() => <UsersContainer store={store} />} />
+            <Route  render={() => <SignInContainer store={store} />} />
+        </Switch>
+    )
+}
 
 class App extends React.Component {
     componentDidMount() {
@@ -27,17 +47,23 @@ class App extends React.Component {
     }
     
     render() {
-        if (!this.props.initialized) return <Preloader />
+            if (!this.props.initialized) return <Preloader />
+            console.log(this.props.isAuth);
+            return (
+                <div className="app-wrapper">
+                    {this.props.isAuth ? renderWithAuth() : rendereWithNotAuth()}
+                </div>
+            )
         
-        return (
-            <div className="app-wrapper">
-                <Header store={this.props.store} />
-                <Route exact path='/messages' render={() => <Messages store={this.props.store} />} />
-                <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
-                <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
-                <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
-            </div>
-        )
+        // return (
+        //     <div className="app-wrapper">
+        //         <Header store={this.props.store} />
+        //         <Route exact path='/messages' render={() => <Messages store={this.props.store} />} />
+        //         <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
+        //         <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
+        //         <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
+        //     </div>
+        // )
     }
 }
 

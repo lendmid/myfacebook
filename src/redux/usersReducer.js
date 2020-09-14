@@ -62,7 +62,7 @@ export let requestUsers = (page = 1, pageSize = 5) => {
         
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.items));
-        dispatch(setUsersTotalCount(Math.ceil(data.totalCount / 100)));
+        dispatch(setUsersTotalCount(Math.ceil(data.totalCount)));
     }
 }
 

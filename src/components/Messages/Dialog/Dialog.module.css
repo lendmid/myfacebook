@@ -2,4 +2,5 @@
     display: grid;
     grid-template-rows: 60px 1fr 52px;
     overflow: hidden;
+    border-left: 1px solid #E8EAED;
 }

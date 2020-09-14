@@ -2,7 +2,7 @@
     grid-column: 1 / -1;
     grid-row: 2 / 2;
     display: grid;
-    grid-template-columns: 420fr 1500fr;
+    grid-template-columns: 420fr 1486fr;
     background-color: #fff;
     height: calc(100vh - 60px);
 }

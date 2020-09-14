@@ -2,7 +2,6 @@
 .last_messages_wrapper {
     min-width: 300px;
     max-width: 425px;
-    border-right: 1px solid #E8EAED;
     display: grid;
     grid-template-rows: 60px 1fr;
     height: 100%;
@@ -37,7 +36,7 @@ h1 {
 
 .last_messages_list:hover::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    background-color: rgba(153, 153, 153);
+    background-color: rgba(153, 153, 153, 0.7);
 }
 
 .last_messages_list li {
@@ -45,7 +44,7 @@ h1 {
     height: 64px;
     background-color: #f2f2f250;
     border-radius: 10px;
-    margin: 5px 0;
+    margin-bottom: 5px;
 }
 
 .last_messages_list li:hover {

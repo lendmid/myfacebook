@@ -1,5 +1,5 @@
 TODO: in all files add unique key in array
 TODO: refactor all container and pure component. Move logic to conteiner component
 TODO: Add in all (?check)  pure component extends React.memo
-TODO: Add in all (?check)  pure component extends React.memo
+TODO: Do transition in scrollbar in messagePage
 
