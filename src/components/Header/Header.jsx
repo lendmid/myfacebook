@@ -7,6 +7,8 @@ import {connect} from "react-redux";
 
 const Header = (props) => {
     
+    if (!props.isAuth) return <Redirect to={"/"} />;
+    
     return (
         <header className={s.header}>
             <nav className={s.nav}>

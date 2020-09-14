@@ -12,6 +12,9 @@ let Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, users}) => 
 
     return (
         <div className={s.users}>
+            <div className={s.users_header}>
+                <span>All users in system</span>
+            </div>
             {/*{pages.length ? <div className={s.numbers}>*/}
             {/*    {pages.map(pageNumber => {*/}
             {/*        return <span className={currentPage === pageNumber ? s.selectedPage : s.nonSelectedPage}*/}
