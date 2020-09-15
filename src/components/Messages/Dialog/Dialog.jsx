@@ -5,14 +5,14 @@ import DialogHistoryContainer from "./DialogHistory/DialogHistoryContainer";
 import DialogHeaderContainer from "./DialogHeader/DialogHeaderContainer";
 
 
-const Dialog = (props) => {
+const Dialog =  React.memo(() => {
     return (
         <div className={s.dialog_wrapper}>
-            <DialogHeaderContainer store={props.store} />
-            <DialogHistoryContainer store={props.store} />
-            <SendMessageContainer store={props.store} />
+            <DialogHeaderContainer />
+            <DialogHistoryContainer />
+            <SendMessageContainer />
         </div>
     )
-}
+})
 
 export default Dialog;

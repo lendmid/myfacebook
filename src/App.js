@@ -15,16 +15,16 @@ import {requestProfile, requestStatus, updateStatus} from "./redux/profileReduce
 import store from './redux/redux-store';
 
 import Messages from './components/Messages/Messages';
-// let Messages = React.lazy(() => import('./components/Messages/Messages'));
+// const Messages = React.lazy(() => import('./components/Messages/Messages'));
 
 
-// let rendereWithNotAuth = () => {
+// const rendereWithNotAuth = () => {
 //     return (
 //         <div>123124</div>
 //     )
 // }
 //
-// let renderWithAuth = () => {
+// const renderWithAuth = () => {
 //     return (
 //         <div className="app-wrapper">
 //             <Header store={this.props.store} />
@@ -39,17 +39,21 @@ import Messages from './components/Messages/Messages';
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp();
-        let userId = this.props.match.params.userId;
-        if (!userId) userId = this.props.authorizedUserId;
-        if (!userId) userId = 11132;
-        
+        let userId = this.findId();
         this.props.requestProfile(userId);
         this.props.requestStatus(userId);
     }
     
+    findId() {
+        let userId = this.props.match.params.userId;
+        if (!userId) userId = this.props.authorizedUserId;
+        if (!userId) userId = 11132;
+        return userId;
+    }
+    
     render() {
         if (!this.props.initialized) return <Preloader />
-        
+        let userId = this.findId();
         // return this.props.isAuth ? renderWithAuth : rendereWithNotAuth;
         return (
             <div className="app-wrapper">
@@ -63,8 +67,10 @@ class App extends React.Component {
                 {/*}*/}
                 {/*} />*/}
                 
-                <Route exact path='/messages' render={() => <Messages />} />
-                <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
+                {/*<Route exact path={`/messages/:${userId}`} render={() => <Messages />} />*/}
+                {/*<Route exact path={`/profile/:${userId}`} render={() => <ProfileContainer store={this.props.store} />} />*/}
+                <Route exact path={`/messages/:${userId}?`} render={() => <Messages />} />
+                <Route exact path={`/profile/:${userId}?`} render={() => <ProfileContainer store={this.props.store} />} />
                 <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
                 <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
             </div>
@@ -73,12 +79,12 @@ class App extends React.Component {
 }
 
 
-let mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     initialized: state.app.initialized,
 })
 
-let AppContainer = compose(
+const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp, signOut, requestProfile, requestStatus, updateStatus, getAuthUserData}),
     // withAuthRedirect, // incorrectly checks authorization and done Redirect

@@ -8,7 +8,7 @@ import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import appReducer from "./appReducer";
 
-let reducers = combineReducers({
+const reducers = combineReducers({
     profilePage: profileReducer,
     messagesPage: messegesReducer,
     usersPage: usersReducer,

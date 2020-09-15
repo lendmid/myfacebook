@@ -5,8 +5,7 @@ import {InputMessagesPage} from "../../../common/FormValidator/FormValidator";
 import {required} from "../../../../utils/validators/validators";
 
 
-const SendMessage = (props) => {
-    const {handleSubmit, pristine, reset, submitting, sendMessage} = props;
+const SendMessage = React.memo(({handleSubmit, pristine, reset, submitting, sendMessage}) => {
     
     let sendNewMessage = (formData) => {
         sendMessage(formData.newMessageText);
@@ -22,6 +21,6 @@ const SendMessage = (props) => {
             </form>
         </div>
     )
-}
+})
 
 export default SendMessage;

@@ -4,11 +4,9 @@ import Message from "./Message/Message";
 import DialogHistory from "./DialogHistory";
 
 
-let mapStateToProps = (state) => {
-    return {
-        historyMessages: state.messagesPage.historyMessages.map(message => <Message message={message.message} key={message.id}/>)
-    }
-}
+const mapStateToProps = (state) => ({
+    historyMessages: state.messagesPage.historyMessages.map(message => <Message message={message.message} key={message.id}/>)
+})
 
 const DialogHistoryContainer = connect(mapStateToProps)(DialogHistory);
 

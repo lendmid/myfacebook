@@ -2,7 +2,7 @@ import profileReducer, {addPostCreator, deletePost} from "./profileReducer";
 import React from "react";
 
 
-let state = {
+const state = {
     posts: [
         {
             id: 3,

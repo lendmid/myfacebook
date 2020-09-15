@@ -4,14 +4,14 @@ import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'myFacebook/auth/SET_USER_DATA';
 
-let initialState = {
+const initialState = {
     userId: null,
     email: null,
     login: null,
     isAuth: false,
 }
 
-let authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -23,9 +23,9 @@ let authReducer = (state = initialState, action) => {
     }
 }
 
-export let setUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
+export const setUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
 
-export let getAuthUserData = () => async (dispatch) => {
+export const getAuthUserData = () => async (dispatch) => {
     let response = await authAPI.me();
     if (response.data.resultCode === 0) {
         let {id, login, email} = response.data.data;
@@ -33,7 +33,7 @@ export let getAuthUserData = () => async (dispatch) => {
     }
 }
 
-export let signIn = (email, password, rememberMe) => async (dispatch) => {
+export const signIn = (email, password, rememberMe) => async (dispatch) => {
     let response = await authAPI.signIn(email, password, rememberMe);
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData());
@@ -43,7 +43,7 @@ export let signIn = (email, password, rememberMe) => async (dispatch) => {
     }
 }
 
-export let signOut = () => async (dispatch) => {
+export const signOut = () => async (dispatch) => {
     let response = await authAPI.signOut();
     if (response.data.resultCode === 0) {
         dispatch(setUserData(null, null, null, false))

@@ -4,14 +4,14 @@ import {connect} from "react-redux";
 import LastMessages from "./LastMessages";
 
 
-let LastMessagesContainer = props => {
+const LastMessagesContainer = props => {
     return (
         <LastMessages {...props} />
     )
 }
 
-let mapStateToProps = (state) => ({
-    lastMessages: state.messagesPage.messagesData.map(lastM => <LastMessage key={lastM.id} name={lastM.name} img={lastM.img} date={lastM.date} message={lastM.message} />)
+const mapStateToProps = (state) => ({
+    lastMessages: state.messagesPage.messagesData.map(lastM => <LastMessage key={lastM.id} userId={lastM.id} name={lastM.name} img={lastM.img} date={lastM.date} message={lastM.message} />)
 })
 
-export default connect(mapStateToProps, null)(LastMessagesContainer)
+export default connect(mapStateToProps)(LastMessagesContainer)

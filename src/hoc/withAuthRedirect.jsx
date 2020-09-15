@@ -3,12 +3,12 @@ import {connect} from "react-redux";
 import {Route} from "react-router-dom";
 import SignInContainer from "../components/SignIn/SignInContainer";
 
-
-let mapStateToPropsForRedirect = (state) => ({
+//do not work
+const mapStateToPropsForRedirect = (state) => ({
     isAuth: state.auth.isAuth,
 });
 
-export let withAuthRedirect = (Component) => {
+export const withAuthRedirect = (Component) => {
     class RedirectComponent extends React.Component {
         componentDidMount() {
             // this.props.initializeApp();

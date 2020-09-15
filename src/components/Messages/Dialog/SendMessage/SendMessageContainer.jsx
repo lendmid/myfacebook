@@ -5,17 +5,15 @@ import {compose} from "redux";
 import {reduxForm} from "redux-form"
 
 
-let mapStateToProps = (state) => {
-    return {
-        newMessageText: state.messagesPage.newMessageText,
-    }
-}
+const mapStateToProps = (state) => ({
+    newMessageText: state.messagesPage.newMessageText,
+})
 
 const SendMessageContainer = compose(
     connect(mapStateToProps, {sendMessage}),
     reduxForm({
         form: 'sendMessage',
-    })
+    }),
 )(SendMessage)
 
 export default SendMessageContainer;

@@ -2,9 +2,7 @@ import React from "react";
 import s from './LastMessages.module.css';
 
 
-const LastMessages = ({lastMessages}) => {
-    
-    
+const LastMessages = React.memo(({lastMessages}) => {
     return (
         <div className={s.last_messages_wrapper}>
             <div className={s.last_messages_header}>
@@ -15,6 +13,6 @@ const LastMessages = ({lastMessages}) => {
             </ul>
         </div>
     )
-}
+})
 
 export default LastMessages;

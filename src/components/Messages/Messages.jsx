@@ -4,13 +4,13 @@ import Dialog from "./Dialog/Dialog";
 import LastMessagesContainer from "./LastMessages/LastMessagesContainer";
 
 
-const Messages = (props) => {
+const Messages =  React.memo(() => {
     return (
         <div className={s.wrapper}>
-            <LastMessagesContainer store={props.store}/>
-            <Dialog store={props.store}/>
+            <LastMessagesContainer />
+            <Dialog />
         </div>
     )
-}
+})
 
 export default Messages;

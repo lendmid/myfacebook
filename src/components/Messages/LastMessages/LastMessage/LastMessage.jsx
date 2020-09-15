@@ -1,25 +1,27 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import s from './LastMessage.module.css';
 
-// import avatar_5 from "../../../../assets/images/avatar_1.png";
 
-const LastMessage = (props) => {
+const LastMessage =  React.memo(({img, name, message, date, userId}) => {
     return (
-        <li className={s.last_message_wrapper}>
-            <img src={props.img} alt="avatar" className={s.avatar} />
-            <div className={s.name}>
-                <span>{props.name}</span>
-            </div>
-            <div className={s.message}>
-                <div className={s.last_message}>
-                    <span>{props.message}</span>
+        <li>
+            <Link to={`/messages/${userId}?`} className={s.last_message_wrapper}>
+                <img src={img} alt="avatar" className={s.avatar} />
+                <div className={s.name}>
+                    <span>{name}</span>
                 </div>
-                <div className={s.date}>
-                    <span>{props.date}</span>
+                <div className={s.message}>
+                    <div className={s.last_message}>
+                        <span>{message}</span>
+                    </div>
+                    <div className={s.date}>
+                        <span>{date}</span>
+                    </div>
                 </div>
-            </div>
+            </Link>
         </li>
     )
-}
+})
 
 export default LastMessage;

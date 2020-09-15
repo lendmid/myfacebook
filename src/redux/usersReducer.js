@@ -7,7 +7,7 @@ const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'myFacebook/users/SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'myFacebook/users/TOGGLE_IS_FETCHING';
 
-let initialState = {
+const initialState = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
@@ -15,7 +15,7 @@ let initialState = {
     isFetching: false,
 }
 
-let usersReducer = (state = initialState, action) => {
+const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -46,15 +46,15 @@ let usersReducer = (state = initialState, action) => {
     }
 }
 // методы взыимодействия со state внутри store
-export let follow = (userId) => ({type: FOLLOW, userId});
-export let unfollow = (userId) => ({type: UNFOLLOW, userId});
-export let setUsers = (users) => ({type: SET_USERS, users});
-export let setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
-export let setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
-export let toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+export const follow = (userId) => ({type: FOLLOW, userId});
+export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 //requestUsersThunkCreator
-export let requestUsers = (page = 1, pageSize = 5) => {
+export const requestUsers = (page = 1, pageSize = 5) => {
     return async (dispatch) => {
         dispatch(setCurrentPage(page));
         dispatch(toggleIsFetching(true));

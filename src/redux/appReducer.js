@@ -3,11 +3,11 @@ import {getAuthUserData} from "./authReducer";
 
 const INITIALIZED_SUCCESS = 'myFacebook/app/INITIALIZED_SUCCESS';
 
-let initialState = {
+const initialState = {
     initialized: false,
 }
 
-let appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {
@@ -19,9 +19,9 @@ let appReducer = (state = initialState, action) => {
     }
 }
 
-export let initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
+export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
-export let initializeApp = () => (dispatch) => {
+export const initializeApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData());
     
     Promise.all([promise]).then(r => {

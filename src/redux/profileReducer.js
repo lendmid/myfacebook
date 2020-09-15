@@ -6,7 +6,7 @@ const SET_STATUS    = 'myFacebook/profile/SET-STATUS';
 const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
 const DELETE_POST   = 'myFacebook/profile/DELETE_POST';
 
-let initialState = {
+const initialState = {
     posts: [
         {
             id: 3,
@@ -73,25 +73,25 @@ function randomInteger(min, max) {
     return Math.floor(rand);
 }
 
-export let addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
-export let setProfile = (profile) => ({type: SET_PROFILE, profile})
-export let setStatus = (status) => ({type: SET_STATUS, status})
-export let deletePost = (postId) => ({type: DELETE_POST, postId})
+export const addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
+export const setProfile = (profile) => ({type: SET_PROFILE, profile})
+export const setStatus = (status) => ({type: SET_STATUS, status})
+export const deletePost = (postId) => ({type: DELETE_POST, postId})
 
 
-export let addPost = (newPostText) => {
+export const addPost = (newPostText) => {
     return (dispatch) => dispatch(addPostCreator(newPostText));
 }
 
-export let requestProfile = (userId) => async (dispatch) => {
+export const requestProfile = (userId) => async (dispatch) => {
     let response = await profileAPI.requestProfile(userId);
     dispatch(setProfile(response.data));
 }
-export let requestStatus = (userId) => async (dispatch) => {
+export const requestStatus = (userId) => async (dispatch) => {
     let response = await profileAPI.requestStatus(userId);
     dispatch(setStatus(response.data));
 }
-export let updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status);
     if (response.data.resultCode !== 0) return;
     dispatch(setStatus(response.data));
