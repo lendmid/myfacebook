@@ -5,7 +5,7 @@ import avatar from "../../../assets/images/avatar.jpg"
 import avatar_bg from "../../../assets/images/avatar_background.jpg"
 
 
-const ProfileHeader = (props) => {
+const ProfileHeader = React.memo(({status, updateStatus}) => {
     return (
         <div className={s.profile_header}>
             <div className={s.foto}>
@@ -14,15 +14,15 @@ const ProfileHeader = (props) => {
                     <img src={avatar_bg} alt="background"/>
                 </div>
                 <div className={s.face_photo}>
-                    <img src={avatar} alt="face_photo" />
+                    <img src={avatar} alt="user photo" />
                 </div>
             </div>
             <div className={s.short_biography}>
                 <span>Дорошенко Дмитрий</span>
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
         </div>
     )
-}
+})
 
 export default ProfileHeader;

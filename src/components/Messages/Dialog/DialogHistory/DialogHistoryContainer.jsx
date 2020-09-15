@@ -6,7 +6,7 @@ import DialogHistory from "./DialogHistory";
 
 const mapStateToProps = (state) => ({
     historyMessages: state.messagesPage.historyMessages.map(message => <Message message={message.message} key={message.id}/>)
-})
+});
 
 const DialogHistoryContainer = connect(mapStateToProps)(DialogHistory);
 

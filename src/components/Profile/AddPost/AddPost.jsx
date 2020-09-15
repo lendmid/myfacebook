@@ -1,11 +1,11 @@
 import React from "react";
 import s from './AddPost.module.css';
 import {Field} from "redux-form"
-import {required} from "../../../../utils/validators/validators";
-import {TextAreaProfilePage} from "../../../common/FormValidator/FormValidator";
+import {required} from "../../../utils/validators/validators";
+import {TextAreaProfilePage} from "../../common/FormValidator/FormValidator";
 
 
-let AddPost = ({handleSubmit, pristine, reset, submitting, addPost}) => {
+const AddPost = React.memo(({handleSubmit, pristine, reset, submitting, addPost}) => {
     
     let addNewPost = (formData) => {
         addPost(formData.newPostText);
@@ -20,6 +20,6 @@ let AddPost = ({handleSubmit, pristine, reset, submitting, addPost}) => {
             </form>
         </div>
     )
-}
+})
 
 export default AddPost;

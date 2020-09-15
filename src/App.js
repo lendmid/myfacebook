@@ -70,7 +70,7 @@ class App extends React.Component {
                 {/*<Route exact path={`/messages/:${userId}`} render={() => <Messages />} />*/}
                 {/*<Route exact path={`/profile/:${userId}`} render={() => <ProfileContainer store={this.props.store} />} />*/}
                 <Route exact path={`/messages/:${userId}?`} render={() => <Messages />} />
-                <Route exact path={`/profile/:${userId}?`} render={() => <ProfileContainer store={this.props.store} />} />
+                <Route exact path={`/profile/:${userId}?`} render={() => <ProfileContainer />} />
                 <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
                 <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
             </div>

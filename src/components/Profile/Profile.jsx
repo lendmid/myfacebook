@@ -1,11 +1,10 @@
 import React from 'react';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 import s from './Profile.module.css';
-import AddPostContainer from './Posts/AddPost/AddPostContainer';
+import AddPostContainer from './AddPost/AddPostContainer';
 
 
-const Profile = ({status, updateStatus, posts}) => {
-    
+const Profile = React.memo(({status, updateStatus, posts}) => {
     return (
         <div className={s.profile}>
             <ProfileHeader status={status} updateStatus={updateStatus}/>
@@ -15,6 +14,6 @@ const Profile = ({status, updateStatus, posts}) => {
             </div>
         </div>
     )
-}
+})
 
 export default Profile;

@@ -4,7 +4,7 @@ import Dialog from "./Dialog/Dialog";
 import LastMessagesContainer from "./LastMessages/LastMessagesContainer";
 
 
-const Messages =  React.memo(() => {
+const Messages = React.memo(() => {
     return (
         <div className={s.wrapper}>
             <LastMessagesContainer />

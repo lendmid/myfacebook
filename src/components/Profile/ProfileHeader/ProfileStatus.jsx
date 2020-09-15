@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class ProfileStatus extends React.Component {
+class ProfileStatus extends React.PureComponent {
     state = {
         editMode: false,
         status: this.props.status,
