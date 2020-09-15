@@ -1,6 +1,9 @@
-/*.link {*/
-/*    grid-column: 1 / 1;*/
-/*}*/
+.item {
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #FBFBFB;
+}
 
 .user {
     display: grid;

@@ -41,12 +41,14 @@
 .users_list li {
     height: 100px;
     border-radius: 10px;
-    /*border: 1px solid #DCDEE1;*/
     margin-bottom: 10px;
     background-color: #FBFBFB;
-    /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);*/
-    
 }
+
+.users_list li a:active {
+    background-color: #e5e5e5;
+}
+/*refactoring: doing active on a. Now it do not work*/
 
 .users_list li:hover {
     background-color: #f2f2f2;
