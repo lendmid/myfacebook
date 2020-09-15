@@ -2,7 +2,8 @@ import React from 'react';
 import s from './User.module.css';
 import {Link} from "react-router-dom";
 
-const User = (props) => {
+
+const User = React.memo((props) => {
     return (
         <li className={s.item}>
             <Link to={'/profile/' + props.id}>
@@ -13,6 +14,6 @@ const User = (props) => {
             </Link>
         </li>
     )
-}
+})
 
 export default User;

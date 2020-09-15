@@ -95,8 +95,7 @@ const MyFacebook = (props) => {
         <React.StrictMode>
             <BrowserRouter>
                 <Provider store={store}>
-                    <AppContainer store={store} />
-                    {/*    delet store in AppContaine*/}
+                    <AppContainer />
                 </Provider>
             </BrowserRouter>
         </React.StrictMode>
