@@ -3,13 +3,13 @@ import {connect} from "react-redux";
 import {Route} from "react-router-dom";
 import LogInConrainer from "../components/LogIn/LogInContainer";
 
-//do not work
+//do not work, refactoring or delete
 const mapStateToPropsForRedirect = (state) => ({
     isAuth: state.auth.isAuth,
 });
 
 export const withAuthRedirect = (Component) => {
-    class RedirectComponent extends React.Component {
+    class RedirectComponent extends React.PureComponent {
         componentDidMount() {
             // this.props.initializeApp();
             // let userId = this.props.match.params.userId;

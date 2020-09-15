@@ -36,7 +36,7 @@ import Messages from './components/Messages/Messages';
 //     )
 // }
 
-class App extends React.Component {
+class App extends React.PureComponent {
     componentDidMount() {
         this.props.initializeApp();
         let userId = this.findId();
@@ -71,8 +71,8 @@ class App extends React.Component {
                 {/*<Route exact path={`/profile/:${userId}`} render={() => <ProfileContainer store={this.props.store} />} />*/}
                 <Route exact path={`/messages/:${userId}?`} render={() => <Messages />} />
                 <Route exact path={`/profile/:${userId}?`} render={() => <ProfileContainer />} />
-                <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
-                <Route exact path='/' render={() => <LogInConrainer store={this.props.store} />} />
+                <Route exact path='/users' render={() => <UsersContainer />} />
+                <Route exact path='/' render={() => <LogInConrainer />} />
             </div>
         )
     }

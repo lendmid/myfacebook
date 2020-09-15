@@ -1,31 +1,12 @@
-.link {
-    grid-column: 2 / 2;
-}
+/*.link {*/
+/*    grid-column: 1 / 1;*/
+/*}*/
 
 .user {
-    margin-bottom: 20px;
-    padding: 10px;
-    max-height: 50px;
-    
-    background-color: white;
-    border: 1px solid #DCDEE1;
-    border-radius: 10px;
-    
     display: grid;
     place-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-.followed {
-    grid-column: 3 / 3;
-    width: auto;
-    height: 30px;
-    padding: 0 10px;
-    background-color: #797979;
-    color: white;
-    border: 1px black solid;
-    border-radius: 10px;
-    font-size: 15px;
+    height: 100%;
+    grid-template-columns: 1fr 2fr;
 }
 
 .status {

@@ -1,7 +1,5 @@
 import {usersAPI} from "../api/api";
 
-const FOLLOW = 'myFacebook/users/FOLLOW';
-const UNFOLLOW = 'myFacebook/users/UNFOLLOW';
 const SET_USERS = 'myFacebook/users/SET-USERS';
 const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'myFacebook/users/SET_TOTAL_USERS_COUNT';
@@ -9,7 +7,7 @@ const TOGGLE_IS_FETCHING = 'myFacebook/users/TOGGLE_IS_FETCHING';
 
 const initialState = {
     users: [],
-    pageSize: 5,
+    pageSize: 40,
     totalUsersCount: 0,
     currentPage: 2,
     isFetching: false,
@@ -17,22 +15,6 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) return {...u, followed: true}
-                    return u;
-                })
-            }
-        case UNFOLLOW:
-            return {
-                ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) return {...u, followed: false}
-                    return u;
-                })
-            }
         case SET_USERS:
             return {...state, users: action.users}
         case SET_CURRENT_PAGE:
@@ -46,15 +28,13 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 // методы взыимодействия со state внутри store
-export const follow = (userId) => ({type: FOLLOW, userId});
-export const unfollow = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 //requestUsersThunkCreator
-export const requestUsers = (page = 1, pageSize = 5) => {
+export const requestUsers = (page = 1, pageSize = 40) => {
     return async (dispatch) => {
         dispatch(setCurrentPage(page));
         dispatch(toggleIsFetching(true));

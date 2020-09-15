@@ -11,6 +11,7 @@ let instance = axios.create({
 
 export let usersAPI = {
     requestUsers(currentPage = 1, pageSize = 5) {
+        //most user without data. Need doing my Api for correct data users
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
             return response.data
         })
