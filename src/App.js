@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import Header from './components/Header/Header';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
@@ -14,8 +14,8 @@ import {initializeApp} from "./redux/appReducer";
 import {requestProfile, requestStatus, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
 
-// import Messages from './components/Messages/Messages';
-let Messages = React.lazy(() => import('./components/Messages/Messages'));
+import Messages from './components/Messages/Messages';
+// let Messages = React.lazy(() => import('./components/Messages/Messages'));
 
 
 // let rendereWithNotAuth = () => {
@@ -54,12 +54,16 @@ class App extends React.Component {
         return (
             <div className="app-wrapper">
                 <Header store={this.props.store} />
-                <Route exact path='/messages' render={() => {
-                    <Suspense fallback={<Preloader />}>
-                        <Messages />
-                    </Suspense>
-                }
-                } />
+                
+                {/*где-то тут ошибка*/}
+                {/*<Route exact path='/messages' render={() => {*/}
+                {/*    <Suspense fallback={<Preloader />}>*/}
+                {/*        <Messages />*/}
+                {/*    </Suspense>*/}
+                {/*}*/}
+                {/*} />*/}
+                
+                <Route exact path='/messages' render={() => <Messages />} />
                 <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
                 <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
                 <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />

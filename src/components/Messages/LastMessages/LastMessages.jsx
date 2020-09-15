@@ -1,14 +1,9 @@
 import React from "react";
 import s from './LastMessages.module.css';
-import LastMessage from "./LastMessage/LastMessage";
 
 
-const LastMessages = (props) => {
+const LastMessages = ({lastMessages}) => {
     
-    let state = props.store.getState();
-    let lastMessages = state.messagesPage.messagesData.map(lastM => <LastMessage key={lastM.id} name={lastM.name}
-                                                                                 img={lastM.img} date={lastM.date}
-                                                                                 message={lastM.message} />)
     
     return (
         <div className={s.last_messages_wrapper}>

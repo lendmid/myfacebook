@@ -4,14 +4,14 @@ import s from './Profile.module.css';
 import AddPostContainer from './Posts/AddPost/AddPostContainer';
 
 
-const Profile = (props) => {
+const Profile = ({status, updateStatus, posts}) => {
     
     return (
         <div className={s.profile}>
-            <ProfileHeader status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileHeader status={status} updateStatus={updateStatus}/>
             <div className={s.profile_information}>
                 <AddPostContainer />
-                {props.posts}
+                {posts}
             </div>
         </div>
     )
