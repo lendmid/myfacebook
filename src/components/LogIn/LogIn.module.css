@@ -34,7 +34,7 @@
     width: 350px;
     height: 52px;
     
-    /*border: 1px solid #dddfe2;  */
+    border: 1px solid #dddfe2;
     background-color: rgba(198, 198, 198, 0.10);
     
     font-size: 16px;
@@ -51,7 +51,7 @@
     font-size: 16px;
 }
 
-.signUp {
+.register {
     margin: 0;
     width: 200px;
     height: 40px;

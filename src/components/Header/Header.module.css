@@ -42,7 +42,7 @@
     background-color: #e5e5e5;
 }
 
-.signOut {
+.logOut {
     display: grid;
     place-items: center;
     grid-template: 1fr / 40px 80px;
@@ -55,7 +55,7 @@
     margin-right: 5px;
 }
 
-.signOut:hover {
+.logOut:hover {
     background-color: #f2f2f2;
     transition: ease 0.4s;
 }

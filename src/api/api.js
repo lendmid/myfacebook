@@ -34,10 +34,10 @@ export let authAPI = {
     me() {
         return instance.get('auth/me');
     },
-    signIn(email, password, rememberMe = true) {
+    logIn(email, password, rememberMe = true) {
         return instance.post('auth/login', {email, password, rememberMe});
     },
-    signOut() {
+    logOut() {
         return instance.delete('auth/login');
     }
     

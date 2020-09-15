@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './Header.module.css';
 import {NavLink, Redirect} from "react-router-dom";
-import signOutImg from "../../assets/images/signOut.svg"
-import {signOut} from "../../redux/authReducer";
+import logOutImg from "../../assets/images/logOut.svg"
+import {logOut} from "../../redux/authReducer";
 import {connect} from "react-redux";
 
-const Header = ({isAuth, signOut}) => {
+const Header = ({isAuth, logOut}) => {
     
     if (!isAuth) return <Redirect to={"/"} />;
     
@@ -20,12 +20,12 @@ const Header = ({isAuth, signOut}) => {
                     <li><NavLink to="">Settings</NavLink></li>
                 </ul>
             </nav>
-            <button className={s.signOut} onClick={() => {
-                signOut();
+            <button className={s.logOut} onClick={() => {
+                logOut();
                 return <Redirect to={"/"} />;
             }}>
-                <img src={signOutImg} alt="signOut" className={s.img}/>
-                <span className={s.span}>Sign out</span>
+                <img src={logOutImg} alt="log out" className={s.img}/>
+                <span className={s.span}>Log out</span>
             </button>
         </header>
     )
@@ -35,4 +35,4 @@ let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {signOut})(Header);
+export default connect(mapStateToProps, {logOut})(Header);

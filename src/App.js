@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './components/Header/Header';
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import SignInContainer from "./components/SignIn/SignInContainer";
+import LogInConrainer from "./components/LogIn/LogInContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import UsersContainer from "./components/Users/UsersContainer";
 
 import './App.css';
 import {BrowserRouter, Route, withRouter} from 'react-router-dom';
-import {getAuthUserData, signOut} from "./redux/authReducer";
+import {getAuthUserData, logOut} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
@@ -31,7 +31,7 @@ import Messages from './components/Messages/Messages';
 //             <Route exact path='/messages' render={() => <Messages store={this.props.store} />} />
 //             <Route exact path='/profile/:userId?' render={() => <ProfileContainer store={this.props.store} />} />
 //             <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
-//             <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
+//             <Route exact path='/' render={() => <LogInConrainer store={this.props.store} />} />
 //         </div>
 //     )
 // }
@@ -72,7 +72,7 @@ class App extends React.Component {
                 <Route exact path={`/messages/:${userId}?`} render={() => <Messages />} />
                 <Route exact path={`/profile/:${userId}?`} render={() => <ProfileContainer />} />
                 <Route exact path='/users' render={() => <UsersContainer store={this.props.store} />} />
-                <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
+                <Route exact path='/' render={() => <LogInConrainer store={this.props.store} />} />
             </div>
         )
     }
@@ -86,7 +86,7 @@ const mapStateToProps = (state) => ({
 
 const AppContainer = compose(
     withRouter,
-    connect(mapStateToProps, {initializeApp, signOut, requestProfile, requestStatus, updateStatus, getAuthUserData}),
+    connect(mapStateToProps, {initializeApp, logOut, requestProfile, requestStatus, updateStatus, getAuthUserData}),
     // withAuthRedirect, // incorrectly checks authorization and done Redirect
 )(App)
 

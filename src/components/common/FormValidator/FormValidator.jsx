@@ -14,4 +14,4 @@ let FormValidator = (InputType, showMessage, showErrorOnlyWhenFieldActive, {inpu
 
 export let TextAreaProfilePage = (props) => FormValidator("textarea", false, true, props);
 export let InputMessagesPage = (props) => FormValidator("input", false, true, props);
-export let InputSignIn = (props) => FormValidator("input", true, false, props);
+export let InputLogIn = (props) => FormValidator("input", true, false, props);

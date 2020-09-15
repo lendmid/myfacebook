@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {Route} from "react-router-dom";
-import SignInContainer from "../components/SignIn/SignInContainer";
+import LogInConrainer from "../components/LogIn/LogInContainer";
 
 //do not work
 const mapStateToPropsForRedirect = (state) => ({
@@ -24,7 +24,7 @@ export const withAuthRedirect = (Component) => {
         render() {
             if (!this.props.isAuth) return (
                 <div className="app-wrapper">
-                    <Route exact path='/' render={() => <SignInContainer store={this.props.store} />} />
+                    <Route exact path='/' render={() => <LogInConrainer store={this.props.store} />} />
                 </div>
             )
             return <Component {...this.props} />

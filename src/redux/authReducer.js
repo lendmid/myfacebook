@@ -33,18 +33,18 @@ export const getAuthUserData = () => async (dispatch) => {
     }
 }
 
-export const signIn = (email, password, rememberMe) => async (dispatch) => {
-    let response = await authAPI.signIn(email, password, rememberMe);
+export const logIn = (email, password, rememberMe) => async (dispatch) => {
+    let response = await authAPI.logIn(email, password, rememberMe);
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData());
     } else {
         let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-        dispatch(stopSubmit("signIn", {_error: message}));
+        dispatch(stopSubmit("logIn", {_error: message}));
     }
 }
 
-export const signOut = () => async (dispatch) => {
-    let response = await authAPI.signOut();
+export const logOut = () => async (dispatch) => {
+    let response = await authAPI.logOut();
     if (response.data.resultCode === 0) {
         dispatch(setUserData(null, null, null, false))
     }
