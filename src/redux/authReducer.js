@@ -5,7 +5,7 @@ import {stopSubmit} from "redux-form";
 const SET_USER_DATA = 'myFacebook/auth/SET_USER_DATA';
 
 const initialState = {
-    id: 11132,
+    id: null,
     email: null,
     login: null,
     isAuth: false,

@@ -22,16 +22,15 @@ import Messages from './components/Messages/Messages';
 class App extends React.PureComponent {
     componentDidMount() {
         this.props.initializeApp();
-        // this.props.requestProfile(this.props.id);
         this.props.requestStatus();
     }
     
     rendereWithNotAuth() {
         return (
             <Switch>
-            <Route exact path='/login' component={LogInConrainer} />
-            <Redirect to={'/login'}/>
-        </Switch>
+                <Route exact path='/login' component={LogInConrainer} />
+                <Redirect to={'/login'} />
+            </Switch>
         )
     }
     
@@ -42,27 +41,17 @@ class App extends React.PureComponent {
             <Switch>
                 <Route exact path='/login' component={LogInConrainer} />
                 <Route exact path={`/profile/:${id}`} component={ProfileContainer} />
-                <Route exact path={`/messages/:${id}`} component={Messages}/>
+                <Route exact path={`/messages/:${id}`} component={Messages} />
                 <Route exact path='/users' component={UsersContainer} />
-                <Route exact path='*' component={LogInConrainer} />
-                {/*<Redirect to={`/profile/:${id}`}/>*/}
+                <Redirect to={`/profile/${id}`} />
             </Switch>
         </>
         )
     }
     
-    // findId() {
-    //     // debugger
-    //     let id = this.props.match.params.id;
-    //     if (!id) id = this.props.id;
-    //     if (!id) id = 11132;
-    //     return id;
-    // }
-    
     render() {
         if (!this.props.initialized) return <Preloader />
-        // let id = this.findId();
-        // return this.props.isAuth ? renderWithAuth : rendereWithNotAuth;
+        
         return (
             <div className="app-wrapper">
                 {this.props.isAuth ? this.renderWithAuth(this.props.id) : this.rendereWithNotAuth()}
@@ -72,25 +61,6 @@ class App extends React.PureComponent {
 }
 
 
-{/*<div className="app-wrapper">*/}
-{/*    */}
-{/*    /!*где-то тут ошибка*!/*/}
-{/*    /!*<Route exact path='/messages' render={() => {*!/*/}
-{/*    /!*    <Suspense fallback={<Preloader />}>*!/*/}
-{/*    /!*        <Messages />*!/*/}
-{/*    /!*    </Suspense>*!/*/}
-{/*    /!*}*!/*/}
-{/*    /!*} />*!/*/}
-{/*    */}
-{/*    */}
-{/*    <Header />*/}
-{/*    <Switch>*/}
-{/*        <Route exact path='/login' component={LogInConrainer} />*/}
-{/*        <Route exact path={`/profile/:${id}`} component={ProfileContainer} />*/}
-{/*        <Route exact path={`/messages/:${id}`} component={Messages}/>*/}
-{/*        <Route exact path='/users' component={UsersContainer} />*/}
-{/*    </Switch>*/}
-{/*</div>*/}
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     id: state.auth.id,
@@ -116,3 +86,23 @@ const MyFacebook = () => {
 }
 
 export default MyFacebook;
+
+{/*<div className="app-wrapper">*/}
+{/*    */}
+{/*    /!*где-то тут ошибка*!/*/}
+{/*    /!*<Route exact path='/messages' render={() => {*!/*/}
+{/*    /!*    <Suspense fallback={<Preloader />}>*!/*/}
+{/*    /!*        <Messages />*!/*/}
+{/*    /!*    </Suspense>*!/*/}
+{/*    /!*}*!/*/}
+{/*    /!*} />*!/*/}
+{/*    */}
+{/*    */}
+{/*    <Header />*/}
+{/*    <Switch>*/}
+{/*        <Route exact path='/login' component={LogInConrainer} />*/}
+{/*        <Route exact path={`/profile/:${id}`} component={ProfileContainer} />*/}
+{/*        <Route exact path={`/messages/:${id}`} component={Messages}/>*/}
+{/*        <Route exact path='/users' component={UsersContainer} />*/}
+{/*    </Switch>*/}
+{/*</div>*/}
