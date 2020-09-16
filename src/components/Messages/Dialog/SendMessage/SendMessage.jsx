@@ -6,7 +6,6 @@ import {required} from "../../../../utils/validators/validators";
 
 
 const SendMessage = React.memo(({handleSubmit, pristine, reset, submitting, sendMessage}) => {
-    
     let sendNewMessage = (formData) => {
         sendMessage(formData.newMessageText);
         reset("sendMessage");

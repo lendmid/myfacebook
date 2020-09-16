@@ -1,7 +1,7 @@
 import * as axios from "axios";
 // it is DAL - date access layer
 
-let instance = axios.create({
+const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
@@ -9,7 +9,7 @@ let instance = axios.create({
     },
 })
 
-export let usersAPI = {
+export const usersAPI = {
     requestUsers(currentPage = 1, pageSize = 5) {
         //refactoring: most users without data. Need doing my Api for correct data users
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
@@ -18,7 +18,7 @@ export let usersAPI = {
     },
 }
 
-export let profileAPI = {
+export const profileAPI = {
     requestProfile(id) {
         return instance.get('profile/' + id);
     },
@@ -31,7 +31,7 @@ export let profileAPI = {
     }
 }
 
-export let authAPI = {
+export const authAPI = {
     me() {
         return instance.get('auth/me');
     },

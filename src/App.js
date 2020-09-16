@@ -4,6 +4,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import LogInConrainer from "./components/LogIn/LogInContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import UsersContainer from "./components/Users/UsersContainer";
+import Messages from './components/Messages/Messages';
 
 import './App.css';
 import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom';
@@ -13,10 +14,7 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import {requestProfile, requestStatus, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
-
-import Messages from './components/Messages/Messages';
-
-// const Messages = React.lazy(() => import('./components/Messages/Messages'));
+import {getTotalUsersCount} from "./redux/usersSelectors";
 
 
 class App extends React.PureComponent {
@@ -60,11 +58,11 @@ class App extends React.PureComponent {
     }
 }
 
-
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     id: state.auth.id,
     initialized: state.app.initialized,
+    totalUsersCount: getTotalUsersCount(state),
 })
 
 const AppContainer = compose(
@@ -86,23 +84,3 @@ const MyFacebook = () => {
 }
 
 export default MyFacebook;
-
-{/*<div className="app-wrapper">*/}
-{/*    */}
-{/*    /!*где-то тут ошибка*!/*/}
-{/*    /!*<Route exact path='/messages' render={() => {*!/*/}
-{/*    /!*    <Suspense fallback={<Preloader />}>*!/*/}
-{/*    /!*        <Messages />*!/*/}
-{/*    /!*    </Suspense>*!/*/}
-{/*    /!*}*!/*/}
-{/*    /!*} />*!/*/}
-{/*    */}
-{/*    */}
-{/*    <Header />*/}
-{/*    <Switch>*/}
-{/*        <Route exact path='/login' component={LogInConrainer} />*/}
-{/*        <Route exact path={`/profile/:${id}`} component={ProfileContainer} />*/}
-{/*        <Route exact path={`/messages/:${id}`} component={Messages}/>*/}
-{/*        <Route exact path='/users' component={UsersContainer} />*/}
-{/*    </Switch>*/}
-{/*</div>*/}
