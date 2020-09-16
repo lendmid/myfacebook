@@ -24,7 +24,6 @@ const initialState = {
             likesCount: randomInteger(5, 100)
         },
     ],
-    profile: null,
     status: ''
 }
 
@@ -83,12 +82,12 @@ export const addPost = (newPostText) => {
     return (dispatch) => dispatch(addPostCreator(newPostText));
 }
 
-export const requestProfile = (userId) => async (dispatch) => {
-    let response = await profileAPI.requestProfile(userId);
+export const requestProfile = (id) => async (dispatch) => {
+    let response = await profileAPI.requestProfile(id);
     dispatch(setProfile(response.data));
 }
-export const requestStatus = (userId) => async (dispatch) => {
-    let response = await profileAPI.requestStatus(userId);
+export const requestStatus = (id) => async (dispatch) => {
+    let response = await profileAPI.requestStatus(id);
     dispatch(setStatus(response.data));
 }
 export const updateStatus = (status) => async (dispatch) => {

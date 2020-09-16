@@ -11,7 +11,7 @@ let instance = axios.create({
 
 export let usersAPI = {
     requestUsers(currentPage = 1, pageSize = 5) {
-        //most user without data. Need doing my Api for correct data users
+        //refactoring: most users without data. Need doing my Api for correct data users
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
             return response.data
         })
@@ -19,12 +19,12 @@ export let usersAPI = {
 }
 
 export let profileAPI = {
-    requestProfile(userId) {
-        return instance.get('profile/' + userId);
+    requestProfile(id) {
+        return instance.get('profile/' + id);
     },
-    requestStatus(userId) {
-        return instance.get('profile/status/' + 2);
-        // return instance.get('profile/status/' + userId);
+    requestStatus(id = 2) {
+        return instance.get('profile/status/' + id);
+        // refactoring: do not work because profile/status/get/id not available
     },
     updateStatus(status) {
         return instance.put('profile/status/', {status});

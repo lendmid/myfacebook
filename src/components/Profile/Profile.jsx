@@ -4,10 +4,10 @@ import s from './Profile.module.css';
 import AddPostContainer from './AddPost/AddPostContainer';
 
 
-const Profile = React.memo(({status, updateStatus, posts}) => {
+const Profile = React.memo(({login, status, updateStatus, posts}) => {
     return (
         <div className={s.profile}>
-            <ProfileHeader status={status} updateStatus={updateStatus}/>
+            <ProfileHeader status={status} updateStatus={updateStatus} login={login}/>
             <div className={s.profile_information}>
                 <AddPostContainer />
                 {posts}

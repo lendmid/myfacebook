@@ -3,10 +3,10 @@ import {Link} from "react-router-dom";
 import s from './LastMessage.module.css';
 
 
-const LastMessage =  React.memo(({img, name, message, date, userId}) => {
+const LastMessage =  React.memo(({img, name, message, date, id}) => {
     return (
         <li>
-            <Link to={`/messages/${userId}?`} className={s.last_message_wrapper}>
+            <Link to={`/messages/${id}`} className={s.last_message_wrapper}>
                 <img src={img} alt="avatar" className={s.avatar} />
                 <div className={s.name}>
                     <span>{name}</span>

@@ -10,10 +10,10 @@ import {getAuthUserData} from "../../redux/authReducer";
 
 const mapStateToProps = (state) => ({
     posts: state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />),
-    profile: state.profilePage.profile,
     status: state.profilePage.status,
     isAuth: state.auth.isAuth,
-    authorizedUserId: state.auth.userId
+    id: state.auth.id,
+    login: state.auth.login
 });
 
 const ProfileContainer = compose(

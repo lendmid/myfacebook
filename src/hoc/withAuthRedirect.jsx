@@ -4,6 +4,7 @@ import {Route} from "react-router-dom";
 import LogInConrainer from "../components/LogIn/LogInContainer";
 
 //do not work, refactoring or delete
+// incorrectly checks authorization and done Redirect
 const mapStateToPropsForRedirect = (state) => ({
     isAuth: state.auth.isAuth,
 });

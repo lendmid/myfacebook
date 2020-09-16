@@ -28,14 +28,12 @@ class UsersContainer extends React.PureComponent {
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
-        users: getUsers(state).map(user => <User key={user.id} id={user.id} name={user.name} status={user.status} />),
-        pageSize: getPageSize(state),
-        totalUsersCount: getTotalUsersCount(state),
-        currentPage: getCurrentPage(state),
-        isFetching: getIsFetching(state),
-    }
-}
+const mapStateToProps = (state) => ({
+    users: getUsers(state).map(user => <User key={user.id} id={user.id} name={user.name} status={user.status} />),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+})
 
 export default connect(mapStateToProps, {requestUsers})(UsersContainer);
