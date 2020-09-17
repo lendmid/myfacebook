@@ -32,7 +32,7 @@ class App extends React.PureComponent {
         )
     }
     
-    renderWithAuth(userId) {
+    renderWithAuth(authorizedUserId) {
         return (
             <>
             <Header />
@@ -41,7 +41,7 @@ class App extends React.PureComponent {
                 <Route exact path="/profile/:userId" component={ProfileContainer} />
                 <Route exact path="/messages/:userId" component={Messages} />
                 <Route exact path='/users' component={UsersContainer} />
-                <Redirect to={`/profile/${userId}`} />
+                <Redirect to={`/profile/${authorizedUserId}`} />
             </Switch>
         </>
         )
@@ -52,7 +52,7 @@ class App extends React.PureComponent {
         
         return (
             <div className="app-wrapper">
-                {this.props.isAuth ? this.renderWithAuth(this.props.userId) : this.rendereWithNotAuth()}
+                {this.props.isAuth ? this.renderWithAuth(this.props.authorizedUserId) : this.rendereWithNotAuth()}
             </div>
         )
     }
@@ -60,7 +60,7 @@ class App extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    userId: state.auth.userId,
+    authorizedUserId: state.auth.authorizedUserId,
     initialized: state.app.initialized,
     totalUsersCount: getTotalUsersCount(state),
 })

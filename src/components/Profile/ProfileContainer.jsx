@@ -26,33 +26,40 @@ import Preloader from "../common/Preloader/Preloader";
 // export default ProfileContainer;
 
 
-const ProfileContainer = React.memo((props) => {
-
-    
-    
-    if (!props.profile) return <Preloader/>
-    return <Profile {...props} />;
-})
-
-export default ProfileContainer;
-
-// class ProfileContainer extends React.PureComponent {
-//     componentDidMount() {
-//         let userId = this.props.match.params.userId;
-//         this.props.requestProfile(userId);
-//         this.props.requestStatus(userId);
-//     }
+// const ProfileContainer = React.memo((props) => {
 //
-//     render() {
-//         if (!this.props.profile) return <Preloader/>
-//         return <Profile {...this.props} />;
-//     }
-// }
+//
+//
+//     if (!props.profile) return <Preloader/>
+//     return <Profile {...props} />;
+// })
+//
+// export default ProfileContainer;
+
+class ProfileContainer extends React.PureComponent {
+    componentDidMount() {
+        let userId = this.props.match.params.userId;
+        if (!Number.isInteger(userId)) userId = this.props.authorizedUserId;
+        this.props.requestProfile(userId);
+        this.props.requestStatus(userId);
+        debugger
+    }
+    
+    componentDidUpdate(prevProps, prevState, snapshot) {
+    
+    }
+    
+    render() {
+        if (!this.props.profile) return <Preloader/>
+        return <Profile {...this.props} />;
+    }
+}
 
 let mapStateToProps = (state) => ({
     posts: state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />),
     profile: state.profilePage.profile,
     status: state.profilePage.status,
+    authorizedUserId: state.auth.authorizedUserId,
 })
 
 export default compose(
