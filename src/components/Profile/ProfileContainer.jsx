@@ -6,6 +6,7 @@ import Profile from "./Profile";
 import {requestProfile, requestStatus, updateStatus} from "../../redux/profileReducer";
 import {compose} from "redux";
 import {getAuthUserData} from "../../redux/authReducer";
+import Preloader from "../common/Preloader/Preloader";
 
 
 // const mapStateToProps = (state) => ({
@@ -25,30 +26,36 @@ import {getAuthUserData} from "../../redux/authReducer";
 // export default ProfileContainer;
 
 
-class ProfileContainer extends React.Component {
-    componentDidMount() {
-        let userId = this.props.match.params.userId;
-        this.props.requestProfile(userId);
-    }
+const ProfileContainer = React.memo((props) => {
+
     
-    render() {
-        return (
-            <Profile {...this.props} fullName={this.props.profile ? this.props.profile.fullName : ""}/>
-        )
-    }
-}
+    
+    if (!props.profile) return <Preloader/>
+    return <Profile {...props} />;
+})
+
+export default ProfileContainer;
+
+// class ProfileContainer extends React.PureComponent {
+//     componentDidMount() {
+//         let userId = this.props.match.params.userId;
+//         this.props.requestProfile(userId);
+//         this.props.requestStatus(userId);
+//     }
+//
+//     render() {
+//         if (!this.props.profile) return <Preloader/>
+//         return <Profile {...this.props} />;
+//     }
+// }
 
 let mapStateToProps = (state) => ({
     posts: state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />),
     profile: state.profilePage.profile,
-    // isAuth: state.auth.isAuth,
     status: state.profilePage.status,
-    // userId: state.auth.userId,
-    // login: state.auth.login
 })
 
 export default compose(
     connect(mapStateToProps, {requestProfile, requestStatus, updateStatus, getAuthUserData}),
     withRouter,
-    // withAuthRedirect,
 )(ProfileContainer)

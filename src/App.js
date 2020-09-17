@@ -7,7 +7,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import Messages from './components/Messages/Messages';
 
 import './App.css';
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {getAuthUserData, logOut} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -21,7 +21,6 @@ class App extends React.PureComponent {
     componentDidMount() {
         this.props.initializeApp();
         this.props.getAuthUserData();
-        // this.props.requestStatus();
     }
     
     rendereWithNotAuth() {
@@ -68,8 +67,7 @@ const mapStateToProps = (state) => ({
 
 const AppContainer = compose(
     connect(mapStateToProps, {initializeApp, logOut, requestProfile, requestStatus, updateStatus, getAuthUserData}),
-    withRouter,
-    // withAuthRedirect, // incorrectly checks authorization and done Redirect
+    // withRouter,
 )(App)
 
 const MyFacebook = () => {

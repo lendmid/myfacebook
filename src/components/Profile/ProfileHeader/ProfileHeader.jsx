@@ -6,7 +6,6 @@ import avatar_bg from "../../../assets/images/avatar_background.jpg"
 
 
 const ProfileHeader = React.memo(({fullName, status, updateStatus}) => {
-    debugger
     return (
         <div className={s.profile_header}>
             <div className={s.foto}>

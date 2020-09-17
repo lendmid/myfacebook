@@ -22,7 +22,7 @@ export const profileAPI = {
     getProfile(userId) {
         return instance.get('profile/' + userId);
     },
-    getStatus(userId = 2) {
+    getStatus(userId) {
         return instance.get('profile/status/' + userId);
         // refactoring: do not work because profile/status/get/id not available
     },

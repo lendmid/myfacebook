@@ -16,7 +16,6 @@ const ProfileStatusWithHooks = React.memo((props) => {
         setEditMode(true);
     }
     
-    
     let onStatusChange = (e) => {
         setStatus(e.currentTarget.value);
     }
