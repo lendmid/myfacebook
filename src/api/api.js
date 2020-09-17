@@ -19,11 +19,11 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    requestProfile(id) {
-        return instance.get('profile/' + id);
+    getProfile(userId) {
+        return instance.get('profile/' + userId);
     },
-    requestStatus(id = 2) {
-        return instance.get('profile/status/' + id);
+    getStatus(userId = 2) {
+        return instance.get('profile/status/' + userId);
         // refactoring: do not work because profile/status/get/id not available
     },
     updateStatus(status) {

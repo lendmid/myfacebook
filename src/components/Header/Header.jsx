@@ -5,13 +5,13 @@ import logOutImg from "../../assets/images/logOut.svg"
 import {logOut} from "../../redux/authReducer";
 import {connect} from "react-redux";
 
-const Header = ({logOut, id}) => {
+const Header = ({logOut, userId}) => {
     return (
         <header className={s.header}>
             <nav className={s.nav}>
                 <ul className={s.list}>
-                    <li><Link to={`/profile/${id}`}>Profile</Link></li>
-                    <li><Link to={`/messages/${id}`}>Messages</Link></li>
+                    <li><Link to={`/profile/${userId}`}>Profile</Link></li>
+                    <li><Link to={`/messages/${userId}`}>Messages</Link></li>
                     <li><Link to="/users">Users</Link></li>
                 </ul>
             </nav>
@@ -28,7 +28,7 @@ const Header = ({logOut, id}) => {
 
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    id: state.auth.id,
+    userId: state.auth.userId,
 })
 
 export default connect(mapStateToProps, {logOut})(Header);

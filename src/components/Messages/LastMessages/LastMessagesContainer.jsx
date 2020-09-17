@@ -5,7 +5,7 @@ import LastMessages from "./LastMessages";
 
 
 const mapStateToProps = (state) => ({
-    lastMessages: state.messagesPage.messagesData.map(lastM => <LastMessage key={lastM.id} id={lastM.id} name={lastM.name} img={lastM.img} date={lastM.date} message={lastM.message} />)
+    lastMessages: state.messagesPage.messagesData.map(lastM => <LastMessage key={lastM.id} userId={lastM.id} name={lastM.name} img={lastM.img} date={lastM.date} message={lastM.message} />)
 })
 
 const LastMessagesContainer = connect(mapStateToProps)(LastMessages);

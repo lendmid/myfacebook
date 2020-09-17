@@ -20,7 +20,8 @@ import {getTotalUsersCount} from "./redux/usersSelectors";
 class App extends React.PureComponent {
     componentDidMount() {
         this.props.initializeApp();
-        this.props.requestStatus();
+        this.props.getAuthUserData();
+        // this.props.requestStatus();
     }
     
     rendereWithNotAuth() {
@@ -32,16 +33,16 @@ class App extends React.PureComponent {
         )
     }
     
-    renderWithAuth(id) {
+    renderWithAuth(userId) {
         return (
             <>
             <Header />
             <Switch>
                 <Route exact path='/login' component={LogInConrainer} />
-                <Route exact path={`/profile/:${id}`} component={ProfileContainer} />
-                <Route exact path={`/messages/:${id}`} component={Messages} />
+                <Route exact path="/profile/:userId" component={ProfileContainer} />
+                <Route exact path="/messages/:userId" component={Messages} />
                 <Route exact path='/users' component={UsersContainer} />
-                <Redirect to={`/profile/${id}`} />
+                <Redirect to={`/profile/${userId}`} />
             </Switch>
         </>
         )
@@ -52,7 +53,7 @@ class App extends React.PureComponent {
         
         return (
             <div className="app-wrapper">
-                {this.props.isAuth ? this.renderWithAuth(this.props.id) : this.rendereWithNotAuth()}
+                {this.props.isAuth ? this.renderWithAuth(this.props.userId) : this.rendereWithNotAuth()}
             </div>
         )
     }
@@ -60,7 +61,7 @@ class App extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    id: state.auth.id,
+    userId: state.auth.userId,
     initialized: state.app.initialized,
     totalUsersCount: getTotalUsersCount(state),
 })

@@ -5,7 +5,7 @@ import {stopSubmit} from "redux-form";
 const SET_USER_DATA = 'myFacebook/auth/SET_USER_DATA';
 
 const initialState = {
-    id: null,
+    userId: null,
     email: null,
     login: null,
     isAuth: false,
@@ -23,7 +23,7 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserData = (id, email, login, isAuth) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}});
+export const setUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
 
 export const getAuthUserData = () => async (dispatch) => {
     let response = await authAPI.me();
