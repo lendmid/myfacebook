@@ -83,12 +83,12 @@ export const addPost = (newPostText) => {
     return (dispatch) => dispatch(addPostCreator(newPostText));
 }
 
-export const requestProfile = (userId) => async (dispatch) => {
-    let response = await profileAPI.getProfile(userId);
+export const getProfile = (userId) => async (dispatch) => {
+    let response = await profileAPI.requestProfile(userId);
     dispatch(setProfile(response.data));
 }
-export const requestStatus = (userId) => async (dispatch) => {
-    let response = await profileAPI.getStatus(userId);
+export const getStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.requestStatus(userId);
     dispatch(setStatus(response.data));
 }
 export const updateStatus = (status) => async (dispatch) => {

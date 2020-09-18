@@ -13,16 +13,20 @@ export const usersAPI = {
     requestUsers(currentPage = 1, pageSize = 5) {
         //refactoring: most users without data. Need doing my Api for correct data users
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
-            return response.data
+            //refactoring: not optimized code. Need only for this API
+            if (response.data) {
+                let users = response.data.items.filter(user => !!user.status)
+                return [users, response.data.totalCount];
+            }
         })
     },
 }
 
 export const profileAPI = {
-    getProfile(userId) {
+    requestProfile(userId) {
         return instance.get('profile/' + userId);
     },
-    getStatus(userId) {
+    requestStatus(userId) {
         return instance.get('profile/status/' + userId);
         // refactoring: do not work because profile/status/get/id not available
     },

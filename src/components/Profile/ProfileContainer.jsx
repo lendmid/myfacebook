@@ -3,54 +3,29 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Post from './Post/Post';
 import Profile from "./Profile";
-import {requestProfile, requestStatus, updateStatus} from "../../redux/profileReducer";
+import {getProfile, getStatus, updateStatus} from "../../redux/profileReducer";
 import {compose} from "redux";
-import {getAuthUserData} from "../../redux/authReducer";
 import Preloader from "../common/Preloader/Preloader";
 
 
-// const mapStateToProps = (state) => ({
-//     profile: state.profilePage.profile,
-//     posts: state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />),
-//     status: state.profilePage.status,
-//     isAuth: state.auth.isAuth,
-//     userId: state.auth.userId,
-//     login: state.auth.login
-// });
-//
-// const ProfileContainer = compose(
-//     connect(mapStateToProps, {requestStatus, updateStatus, getAuthUserData}),
-//     withRouter,
-// )(Profile);
-//
-// export default ProfileContainer;
-
-
-// const ProfileContainer = React.memo((props) => {
-//
-//
-//
-//     if (!props.profile) return <Preloader/>
-//     return <Profile {...props} />;
-// })
-//
-// export default ProfileContainer;
-
 class ProfileContainer extends React.PureComponent {
-    componentDidMount() {
+    refreshProfile = () => {
         let userId = this.props.match.params.userId;
-        if (!Number.isInteger(userId)) userId = this.props.authorizedUserId;
-        this.props.requestProfile(userId);
-        this.props.requestStatus(userId);
-        debugger
+        if (!Number(userId)) userId = this.props.authorizedUserId;
+        this.props.getProfile(userId);
+        this.props.getStatus(userId);
     }
     
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidMount = () => {
+        this.refreshProfile();
+    };
     
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
     }
     
     render() {
-        if (!this.props.profile) return <Preloader/>
+        if (!this.props.profile) return <Preloader />
         return <Profile {...this.props} />;
     }
 }
@@ -63,6 +38,6 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {requestProfile, requestStatus, updateStatus, getAuthUserData}),
+    connect(mapStateToProps, {getProfile, getStatus, updateStatus}),
     withRouter,
 )(ProfileContainer)

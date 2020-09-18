@@ -7,7 +7,7 @@ const TOGGLE_IS_FETCHING = 'myFacebook/users/TOGGLE_IS_FETCHING';
 
 const initialState = {
     users: [],
-    pageSize: 40,
+    pageSize: 100,
     totalUsersCount: 0,
     currentPage: 2,
     isFetching: false,
@@ -34,15 +34,15 @@ export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_C
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 //requestUsersThunkCreator
-export const requestUsers = (page = 1, pageSize = 40) => {
+export const requestUsers = (page = 1, pageSize = 100) => {
     return async (dispatch) => {
         dispatch(setCurrentPage(page));
         dispatch(toggleIsFetching(true));
-        let data = await usersAPI.requestUsers(page, pageSize)
+        let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)
         
         dispatch(toggleIsFetching(false));
-        dispatch(setUsers(data.items));
-        dispatch(setUsersTotalCount(Math.ceil(data.totalCount)));
+        dispatch(setUsers(users));
+        dispatch(setUsersTotalCount(Math.ceil(totalCount)));
     }
 }
 

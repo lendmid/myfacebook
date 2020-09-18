@@ -12,7 +12,7 @@ import {getAuthUserData, logOut} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
-import {requestProfile, requestStatus, updateStatus} from "./redux/profileReducer";
+import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
 import {getTotalUsersCount} from "./redux/usersSelectors";
 
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => ({
 })
 
 const AppContainer = compose(
-    connect(mapStateToProps, {initializeApp, logOut, requestProfile, requestStatus, updateStatus, getAuthUserData}),
+    connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getAuthUserData}),
     // withRouter,
 )(App)
 
