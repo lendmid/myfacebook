@@ -29,7 +29,7 @@ class UsersContainer extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    users: getUsers(state).map(user => <User key={user.id} userId={user.id} name={user.name} status={user.status} />),
+    users: getUsers(state).map(user => <User key={user.id} userId={user.id} name={user.name} status={user.status} photo={user.photos.large} />),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
