@@ -1,6 +1,71 @@
-.wrapper {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background-color: #000;
+.background {
+    z-index: 1;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    display: grid;
+    place-items: center;
+    
+    background-color: #f3f4f3ab;
+    place-self: stretch;
 }
+
+.wrapper {
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    background-color: #fff;
+    display: grid;
+    place-items: center;
+}
+
+/*.input {*/
+/*    width: 0;*/
+/*    height: 0;*/
+/*}*/
+/*.input__wrapper {*/
+/*    width: 100%;*/
+/*    position: relative;*/
+/*    text-align: center;*/
+/*    padding-bottom: 20px;*/
+/*}*/
+
+/*.input__file {*/
+/*    opacity: 0;*/
+/*    visibility: hidden;*/
+/*    position: absolute;*/
+/*}*/
+
+/*.input__file_icon_wrapper {*/
+/*    height: 60px;*/
+/*    width: 60px;*/
+/*    margin-right: 15px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    border-right: 1px solid #fff;*/
+/*}*/
+/*.input__file_icon {*/
+/*    width: 25px;*/
+/*    height: 25px;*/
+/*}*/
+
+/*.input__file_button_text {*/
+/*    line-height: 1;*/
+/*    margin-top: 1px;*/
+/*}*/
+
+/*.input__file_button {*/
+/*    width: 100%;*/
+/*    max-width: 290px;*/
+/*    height: 60px;*/
+/*    background: #a4a6a87c;*/
+/*    color: #fff;*/
+/*    font-size: 1.125rem;*/
+/*    font-weight: 700;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-start;*/
+/*    border-radius: 3px;*/
+/*    cursor: pointer;*/
+/*    margin: 0 auto;*/
+/*}*/
