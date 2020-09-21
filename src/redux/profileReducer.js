@@ -5,6 +5,7 @@ const SET_PROFILE   = 'myFacebook/profile/SET-PROFILE';
 const SET_STATUS    = 'myFacebook/profile/SET-STATUS';
 const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
 const DELETE_POST   = 'myFacebook/profile/DELETE_POST';
+const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
 
 const initialState = {
     posts: [
@@ -63,6 +64,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 posts: state.posts.filter(p => p.id !== action.postId),
             };
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            };
         default:
             return state
     }
@@ -77,6 +83,7 @@ export const addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export const setProfile = (profile) => ({type: SET_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
+export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 
 export const addPost = (newPostText) => {
@@ -95,6 +102,11 @@ export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status);
     if (response.data.resultCode !== 0) return;
     dispatch(setStatus(response.data));
+}
+export const savePhoto = (file) => async (dispatch) => {
+    let response = await profileAPI.updatePhoto(file);
+    if (response.data.resultCode !== 0) return;
+    dispatch(savePhotoSuccess(response.data.photos));
 }
 
 export default profileReducer;

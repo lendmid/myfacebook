@@ -10,7 +10,7 @@
     background: white linear-gradient(to top, transparent 50%, #C6CCCA 100%);
 }
 
-.foto {
+.photo_wrapper {
     width: 100%;
     grid-column: 2 / 2;
     grid-row: 1 / 1;
