@@ -10,8 +10,8 @@ import Preloader from "../common/Preloader/Preloader";
 
 class ProfileContainer extends React.PureComponent {
     refreshProfile = () => {
-        let userId = this.props.match.params.userId;
-        if (!Number(userId)) userId = this.props.authorizedUserId;
+        let userId = Number(this.props.match.params.userId);
+        if (!userId) userId = this.props.authorizedUserId;
         this.props.getProfile(userId);
         this.props.getStatus(userId);
     }
@@ -26,7 +26,7 @@ class ProfileContainer extends React.PureComponent {
     
     render() {
         if (!this.props.profile) return <Preloader />
-        return <Profile {...this.props} />;
+        return <Profile {...this.props} isOwner={this.props.authorizedUserId === Number(this.props.match.params.userId)} />;
     }
 }
 

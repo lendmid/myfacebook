@@ -8,7 +8,7 @@ const User = React.memo(({userId, name, status, photo}) => {
         <li className={s.item}>
             <Link to={`/profile/${userId}`}>
                 <div className={s.user}>
-                        <img src={photo ? photo : users_avatar} className={s.photo}></img>
+                        <img src={photo ? photo : users_avatar} className={s.photo} alt="users_avatar"></img>
                         <div className={s.name}>{name}</div>
                         <div className={s.status}>{`${status}`}</div>
                 </div>

@@ -48,18 +48,40 @@
     height: 100%;
 }
 
-.face_photo {
+.photo {
     position: absolute;
     width: 176px;
     height: 176px;
     bottom: -15px;
+    
+    border-radius: 50%;
 }
 
-.face_photo img {
+.user_photo {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     border: 4px solid #fff;
+}
+
+.user_photo:active {
+    border: 5px solid #fff;
+}
+
+.user_photo:hover {
+    filter: brightness(80%);
+    transition: ease 0.3s;
+}
+
+.camera_icon {
+    background-color: #E4E6EB;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 73%;
+    right: 6%;
 }
 
 .short_biography {
