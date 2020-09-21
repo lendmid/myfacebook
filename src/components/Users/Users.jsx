@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Users.module.css';
+import Paginator from "../common/Paginator/Paginator";
 
 
 const Users = React.memo(({totalUsersCount, pageSize, currentPage, onPageChanged, users}) => {
@@ -8,7 +9,7 @@ const Users = React.memo(({totalUsersCount, pageSize, currentPage, onPageChanged
         <div className={s.users}>
             <div className={s.users_header}>
                 <h2>All users in system</h2>
-                {/*<Paginator totalItemsCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged}/>*/}
+                <Paginator totalItemsCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChanged={onPageChanged} />
                 
             </div>
             <ul className={s.users_list}>

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from './Paginator.module.css';
 
 
-const Paginator = React.memo(({totalItemsCount, pageSize, currentPage, onPageChanged, kitSize = 10}) => {
+const Paginator = React.memo(({totalItemsCount, pageSize, currentPage, onPageChanged, kitSize = 7}) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize);
     
     let pages = [];
@@ -16,13 +16,13 @@ const Paginator = React.memo(({totalItemsCount, pageSize, currentPage, onPageCha
     let rightKitPageNumber = kitNumber * kitSize;
 
     return (
-        <div className={s.paginator}>
+        <div className={s.wrapper}>
             {kitCount > 1 &&
             <button className={s.button}
                     onClick={() => setKitNumber(kitNumber - 1)}>Prev</button>
             }
-            
-            <div className="numbers">
+        
+            <div className={s.numbers}>
                 {pages.filter(pageNumber => pageNumber >= leftKitPageNumber && pageNumber <= rightKitPageNumber)
                     .map((pageNumber) => {
                         return <span className={currentPage === pageNumber ? s.selectedPage : s.nonSelectedPage}

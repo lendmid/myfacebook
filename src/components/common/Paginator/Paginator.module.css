@@ -1,13 +1,12 @@
-.paginator{
+.wrapper {
     grid-column: 1 / 1;
     align-self: center;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 50px 200px 50px;
     place-items: center;
     
     padding: 10px;
-    
     background-color: white;
     border: 1px solid #DCDEE1;
     border-radius: 10px;
@@ -15,28 +14,28 @@
 
 .selectedPage {
     font-weight: bold;
-    padding: 0 10px;
+    padding: 0 5px;
     cursor: pointer;
 }
 
 .nonSelectedPage {
     display: inline-block;
-    padding: 0 10px;
+    padding: 0 5px;
     cursor: pointer;
 }
 
 .numbers {
     grid-column: 2 / 2;
     display: flex;
-    padding: 20px;
+    max-width: 180px;
     background-color: #fff;
     place-self: center;
-    margin: 20px;
+    margin: 10px;
 }
 
 .button {
     padding: 10px;
     border-radius: 8px;
     background-color: #a4a6a87c;
-    width: 120px;
+    width: 50px;
 }
