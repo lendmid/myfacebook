@@ -16,41 +16,43 @@ const UpdateUserPhoto = React.memo(({setIsUpdatePhotoPopup, savePhoto}) => {
         let countFiles = '';
         if (input.files && input.files.length >= 1) {
             countFiles = input.files.length;
-            label.children.input_file_button_text.innerText = `Выбрано файлов: ${countFiles}`;
-            // let inputWrapper = input.parentElement;
+            label.children.pick_file.innerText = `Выбрано файлов: ${countFiles}`;
+            let inputWrapper = input.parentElement;
             let file = input.files[0];
-            let div = document.createElement("div");
-            // div.className = "list-group-item";
-            div.innerHTML = `Имя Файла ${file.name} <br> Тип Файла: ${file.type} <br> Размер Файла: ${fileSize(file.size)}`;
-            document.getElementById('input_file_wrapper').appendChild(div);
+            inputWrapper.lastChild.innerHTML = `<span><b>File name: </b>${file.name}</span><span><b>Type file: </b>${file.type}</span><span><b>Size file: </b>${fileSize(file.size)}</span>`
+    
+            
         }
     }
     
-    
     let onPhotoSelected = (e) => {
+        debugger
         if (e.target.files.length) savePhoto(e.target.files[0])
     }
     
-    //refactoring: need will doing modal window with close
+    
     return (
         <div className={s.background}>
-        {/*<div className={s.background} onClick={(event) => setUpdatingPhoto(false)}>*/}
-            {/*    <div className={s.wrapper} >*/}
-            <div className={s.wrapper}>
+            <div className={s.wrapper_popup}>
                 <div className={s.header}>
                     <h2>Updating photo profile</h2>
                     <button className={s.close_icon} onClick={() => setIsUpdatePhotoPopup(false)}>╳</button>
                 </div>
     
-                {/*<button onChange={onPhotoSelected}>Update photo</button>*/}
-                <div className={s.input_wrapper} id="input_file_wrapper">
-                   <input name="file" type="file" id="input_file" className={s.input + " " + s.input_file} onChange={showFile} />
-                   <label htmlFor="input_file" className={s.input_file_button}>
-                      <span className={s.input_file_icon_wrapper}><img className={s.input_file_icon} src={add_icon} alt="Pick file" /></span>
-                      <span className={s.input_file_button_text} id="input_file_button_text">Выберите файл</span>
+                <div className={s.input_wrapper} id="input_photo_wrapper">
+                   <input type="file" id="input_file" className={s.input} onChange={showFile} />
+                   <label htmlFor="input_file" className={s.label_input_file}>
+                      <img className={s.input_icon} src={add_icon} alt="Pick file" />
+                      <span className={s.pick_file} id="pick_file">Выберите файл</span>
                    </label>
+                    <div className={s.properties}>
+                        <span><b>File name: </b></span>
+                        <span><b>Type file: </b></span>
+                        <span><b>Size file: </b></span>
+                    </div>
                 </div>
-                
+    
+                <button className={s.button} onChange={onPhotoSelected}>Update photo</button>
                 
             </div>
             <div className={s.closer} onClick={() => setIsUpdatePhotoPopup(false)}></div>
