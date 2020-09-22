@@ -72,13 +72,11 @@ const AppContainer = compose(
 
 const MyFacebook = () => {
     return (
-        <React.StrictMode>
-            <BrowserRouter>
-                <Provider store={store}>
-                    <AppContainer />
-                </Provider>
-            </BrowserRouter>
-        </React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <AppContainer />
+            </Provider>
+        </BrowserRouter>
     )
 }
 

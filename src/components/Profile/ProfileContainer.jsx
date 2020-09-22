@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import Post from './Post/Post';
 import Profile from "./Profile";
-import {getProfile, getStatus, savePhoto, updateStatus} from "../../redux/profileReducer";
+import {deletePostThunk, getProfile, getStatus, savePhoto, updateStatus} from "../../redux/profileReducer";
 import {compose} from "redux";
 import Preloader from "../common/Preloader/Preloader";
+import PostConrainer from "./Post/PostContainer";
 
 
 class ProfileContainer extends React.PureComponent {
@@ -31,13 +31,13 @@ class ProfileContainer extends React.PureComponent {
 }
 
 let mapStateToProps = (state) => ({
-    posts: state.profilePage.posts.map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />),
+    posts: state.profilePage.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount} key={post.id} id={post.id} />),
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.authorizedUserId,
 })
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, updateStatus, savePhoto}),
+    connect(mapStateToProps, {getProfile, getStatus, updateStatus, savePhoto, deletePostThunk}),
     withRouter,
 )(ProfileContainer)

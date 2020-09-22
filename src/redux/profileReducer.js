@@ -83,11 +83,14 @@ export const addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export const setProfile = (profile) => ({type: SET_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
-export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
+export const savePhotoCreator = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 
 export const addPost = (newPostText) => {
     return (dispatch) => dispatch(addPostCreator(newPostText));
+}
+export const deletePostThunk = (postId) => {
+    return (dispatch) => dispatch(deletePost(postId));
 }
 
 export const getProfile = (userId) => async (dispatch) => {
@@ -106,7 +109,7 @@ export const updateStatus = (status) => async (dispatch) => {
 export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.updatePhoto(file);
     if (response.data.resultCode !== 0) return;
-    dispatch(savePhotoSuccess(response.data.photos));
+    dispatch(savePhotoCreator(response.data.photos));
 }
 
 export default profileReducer;

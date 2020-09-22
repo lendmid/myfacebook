@@ -1,13 +1,14 @@
 import React from "react";
 import s from './Post.module.css';
+import user_avatar from "../../../assets/images/user_avatar.png"
 
-
-const Post = React.memo(({message, likesCount}) => {
+const Post = React.memo((props) => {
     return (
         <div className={s.post_wrapper}>
-            <img src="https://mestart.ru/wp-content/uploads/2015/02/kvadratnaya.gif" alt="photo_writer" />
-            {message}
-            <div className={s.likes}>{likesCount} Likes</div>
+            <img src={user_avatar} alt="photo_writer" />
+            {props.message}
+            <div className={s.likes}>{props.likesCount} Likes</div>
+            <button className={s.close_icon} onClick={() => props.deletePostThunk(props.id)}>╳</button>
         </div>
     )
 })

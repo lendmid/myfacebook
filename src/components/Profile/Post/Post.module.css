@@ -1,7 +1,6 @@
 .post_wrapper {
     grid-column: 3 / 3;
-    align-self: stretch;
-    justify-self: stretch;
+    place-self: stretch;
     padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -11,6 +10,7 @@
 
     display: grid;
     grid-template-columns: 60px 1fr;
+    position: relative;
 }
 
 .post_wrapper img {
@@ -23,4 +23,16 @@
 .likes {
     align-self: end;
     grid-column: -1 / -1;
+}
+
+.close_icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ededed;
+    border: 1px solid #999;
+    font-size: 6px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }

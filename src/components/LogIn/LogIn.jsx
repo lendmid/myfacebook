@@ -28,7 +28,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 {error ? <span className={s.error_message}>{error}</span> : ""}
             </form>
             <div className={s.line}></div>
-            <a href="https://social-network.samuraijs.com/signUp" className={`${s.button} ${s.register}`} onClick={registerForm} target="_blank">Register</a>
+            <a href="https://social-network.samuraijs.com/signUp" className={`${s.button} ${s.register}`} onClick={registerForm} target="_blank" rel="noopener noreferrer">Register</a>
         </div>
     )
 })
