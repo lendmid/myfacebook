@@ -6,15 +6,15 @@ import AddPostContainer from './AddPost/AddPostContainer';
 
 const Profile = React.memo(({status, updateStatus, posts, profile, isOwner, savePhoto}) => {
     
-    let [updatingPhoto, setUpdatingPhoto] = useState(false);
+    let [isUpdatePhotoPopup, setIsUpdatePhotoPopup] = useState(false);
     return (
         <div className={s.profile}>
             <ProfileHeader status={status}
                            updateStatus={updateStatus}
                            profile={profile}
                            isOwner={isOwner}
-                           updatingPhoto={updatingPhoto}
-                           setUpdatingPhoto={setUpdatingPhoto}
+                           isUpdatePhotoPopup={isUpdatePhotoPopup}
+                           setIsUpdatePhotoPopup={setIsUpdatePhotoPopup}
                            savePhoto={savePhoto} />
             <div className={s.profile_information}>
                 <AddPostContainer />
