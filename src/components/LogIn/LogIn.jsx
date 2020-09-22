@@ -6,11 +6,15 @@ import {required} from "../../utils/validators/validators";
 import {Redirect} from "react-router-dom";
 
 
-const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isAuth}) => {
-    if (isAuth) return <Redirect to={"/profile"} />;
+const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isAuth, authorizedUserId}) => {
+    if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     //refactoring: add id in redirect
     //refactoring: create registrationPage
-
+    
+    let registerForm = () => {
+        return <Redirect to={"https://social-network.samuraijs.com/signUp"} />
+    }
+    
     let tryLogIn = (formData) => {
         logIn(formData.email, formData.password, true);
     }
@@ -24,7 +28,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 {error ? <span className={s.error_message}>{error}</span> : ""}
             </form>
             <div className={s.line}></div>
-            <button className={`${s.button} ${s.register}`}>Register</button>
+            <a href="https://social-network.samuraijs.com/signUp" className={`${s.button} ${s.register}`} onClick={registerForm} target="_blank">Register</a>
         </div>
     )
 })

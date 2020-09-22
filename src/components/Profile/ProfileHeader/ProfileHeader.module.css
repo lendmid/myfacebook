@@ -88,6 +88,8 @@
     grid-column: 2 / 2;
     grid-row: 2 / 2;
     align-self: center;
+    display: grid;
+    place-items: center;
 }
 
 .short_biography span {

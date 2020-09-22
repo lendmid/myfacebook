@@ -100,8 +100,8 @@
 .button {
     grid-row: 5 /5;
     padding: 10px;
-    width: 300px;
-    height: 60px;
+    width: 200px;
+    height: 50px;
     border-radius: 8px;
     font-size: 18px;
     font-weight: 700;

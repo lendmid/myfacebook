@@ -7,6 +7,7 @@ import LogIn from "./LogIn";
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
+    authorizedUserId: state.auth.authorizedUserId,
 });
 
 const LogInConrainer = compose(
