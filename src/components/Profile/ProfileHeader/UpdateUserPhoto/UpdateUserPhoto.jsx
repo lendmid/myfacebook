@@ -25,8 +25,14 @@ const UpdateUserPhoto = React.memo(({setIsUpdatePhotoPopup, savePhoto}) => {
     
     let photoSelected = () => {
         let input = document.getElementById('input_file');
-        if (input.files.length) savePhoto(input.files[0]);
-        setIsUpdatePhotoPopup(false);
+        if (input.files.length) {
+            savePhoto(input.files[0]);
+            setIsUpdatePhotoPopup(false);
+            //refactoring: remove alert after cahnge API
+            alert("Soon this function will be work")
+        } else {
+            alert("Please added file")
+        }
     }
     
     

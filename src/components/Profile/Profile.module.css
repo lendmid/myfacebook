@@ -10,5 +10,5 @@
     display: grid;
     align-self: start;
     justify-self: center;
-    grid-template-columns: 330px 480px;
+    grid-template-columns: 360px 15px 500px;
 }

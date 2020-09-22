@@ -1,5 +1,5 @@
 .post_wrapper {
-    grid-column: 2 / -1;
+    grid-column: 3 / 3;
     align-self: stretch;
     justify-self: stretch;
     padding: 15px;
