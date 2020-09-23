@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
+import s from './ProfileStatus.module.css';
 
 
-const ProfileStatusWithHooks = React.memo((props) => {
+const ProfileStatus = React.memo((props) => {
     
     let [editMode, setEditMode] = useState({editMode: false});
     let [status, setStatus] = useState({status: props.status});
@@ -26,17 +27,14 @@ const ProfileStatusWithHooks = React.memo((props) => {
     }
     
     return (
-        <div>
-            {!editMode &&
-            <div>
-                <span onDoubleClick={activateEditMode}>{status || "undefined"}</span>
-            </div>}
-            {editMode &&
-            <div>
-                <input type="text" onChange={onStatusChange} value={status} onBlur={deActivateEditMode} />
-            </div>}
-        </div>
+        <>
+            {editMode ?
+                <input type="text" onChange={onStatusChange} value={status} onBlur={deActivateEditMode} className={s.input} />
+                :
+                <span onDoubleClick={activateEditMode} className={s.span}>{status || "user have not status"}</span>
+            }
+        </>
     )
 })
 
-export default ProfileStatusWithHooks;
+export default ProfileStatus;

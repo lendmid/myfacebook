@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {requestUsers} from "../../redux/usersReducer";
 import User from "./User/User";
 import Users from "./Users";
-import Preloader from "../common/Preloader/Preloader";
 import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
 
 
@@ -17,10 +16,7 @@ class UsersContainer extends React.PureComponent {
     }
 
     render() {
-        return <>
-            {this.props.isFetching ? <Preloader /> : null}
-            <Users {...this.props} onPageChanged={this.onPageChanged} />
-        </>
+        return <Users {...this.props} onPageChanged={this.onPageChanged} />
     }
 }
 
@@ -33,25 +29,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {requestUsers})(UsersContainer);
-
-
-// const UsersContainer = React.memo((props) => {
-//     //refactoring: сделать, чтобы по клику на пользователя отображался профиль пользователя в области справа. По умолчанию выбран первый пользователь
-//     useEffect(() => {
-//         debugger
-//         if (!props.users.length) {props.requestUsers(props.currentPage, props.pageSize)}
-//     })
-//
-//         let onPageChanged = (pageNumber) => {
-//         props.requestUsers(pageNumber, props.pageSize);
-//     }
-//
-//
-//     return (
-//         <>
-//             {props.isFetching ? <Preloader /> : null}
-//             <Users {...props} onPageChanged={onPageChanged} />
-//         </>
-//     )
-// })
-

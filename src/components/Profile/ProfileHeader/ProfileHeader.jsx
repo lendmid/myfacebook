@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './ProfileHeader.module.css';
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
+import ProfileStatus from "./ProfileStatus/ProfileStatus"
 import UpdateUserPhoto from "./UpdateUserPhoto/UpdateUserPhoto"
 import user_avatar from "../../../assets/images/user_avatar.png"
 import avatar_bg from "../../../assets/images/avatar_background.jpg"
@@ -26,7 +26,7 @@ const ProfileHeader = React.memo(({profile, status, updateStatus, isOwner, saveP
             </div>
             <div className={s.short_biography}>
                 <span>{profile.fullName}</span>
-                <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
+                <ProfileStatus status={status} updateStatus={updateStatus} />
             </div>
         </div>
     )

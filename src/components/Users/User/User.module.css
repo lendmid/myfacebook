@@ -5,6 +5,15 @@
     background-color: #FBFBFB;
 }
 
+.item:hover {
+    background-color: #f2f2f2;
+    transition: ease-out 0.2s;
+}
+
+.item:active {
+    background-color: #e5e5e5;
+}
+
 .user {
     display: grid;
     align-items: center;
@@ -19,7 +28,6 @@
     max-width: 80px;
     max-height: 80px;
     border-radius: 50%;
-    
 }
 
 .name {
@@ -32,4 +40,23 @@
 .status {
     grid-column: 2 / 2;
     grid-row: 2 / 2;
+}
+
+.empty_photo {
+    grid-column: 1 / 1;
+    grid-row: 1 / -1;
+    justify-self: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #F2F3F6;
+}
+
+.empty_name {
+    grid-column: 2 / 2;
+    grid-row: 1 / -1;
+    border-radius: 8px;
+    width: 220px;
+    height: 16px;
+    background-color: #F2F3F6;
 }

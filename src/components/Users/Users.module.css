@@ -1,14 +1,22 @@
 .users{
+    grid-column: 1 / -1;
+    
+    display: grid;
+    
+    grid-template: 1fr / 360px 1fr;
+    height: calc(100vh - 60px);
+}
+
+.users_list_wrapper {
     grid-column: 1 / 1;
+    grid-row: 1;
     
     display: grid;
     grid-template-rows: 60px 1fr;
     
     width: 360px;
-    height: calc(100vh - 60px);
     background-color: white;
     border: 1px solid #DCDEE1;
-    
     overflow: hidden;
 }
 
@@ -22,6 +30,7 @@
     border-bottom: 1px solid #E8EAED;
     padding: 10px 15px;
 }
+
 .users_list {
     grid-row: 2 / 2;
     overflow: auto;
@@ -38,20 +47,28 @@
     background-color: rgba(153, 153, 153, 0.7);
 }
 
-.users_list li {
-    height: 100px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    background-color: #FBFBFB;
+.profile_preview {
+    grid-column: 2 / 2;
+    grid-row: 1;
+    
+    background-color: #F0F2F5;
+    display: grid;
+    place-items: center;
 }
 
-.users_list li a:active {
-    background-color: #e5e5e5;
-}
-/*refactoring: doing active on a. Now it do not work*/
-
-.users_list li:hover {
-    background-color: #f2f2f2;
-    transition: ease-out 0.2s;
+.icon_people {
+    width: 112px;
+    height: 112px;
 }
 
+.not_picked_profile {
+    display: grid;
+    place-items: center;
+}
+
+.not_picked_profile_span {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(101, 103, 107);
+    margin-top: 10px;
+}
