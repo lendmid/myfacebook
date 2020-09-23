@@ -2,7 +2,7 @@
     grid-column: 1 / 1;
     
     display: grid;
-    grid-template-rows: 200px 1fr;
+    grid-template-rows: 60px 1fr;
     
     width: 360px;
     height: calc(100vh - 60px);
