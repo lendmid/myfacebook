@@ -15,7 +15,7 @@ export const usersAPI = {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
             //refactoring: not optimized code. Need only for this API
             if (response.data) {
-                let users = response.data.items.filter(user => !!user.status)
+                let users = response.data.items.filter(user => !!user.status && !!user.photos.large)
                 return [users, response.data.totalCount];
             }
         })

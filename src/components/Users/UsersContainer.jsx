@@ -9,21 +9,17 @@ import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers
 
 class UsersContainer extends React.PureComponent {
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        if (!this.props.users.length) this.props.requestUsers(this.props.currentPage, this.props.pageSize)
     }
-    
+
     onPageChanged = (pageNumber) => {
         this.props.requestUsers(pageNumber, this.props.pageSize);
     }
-    
+
     render() {
         return <>
             {this.props.isFetching ? <Preloader /> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   onPageChanged={this.onPageChanged}
-                   users={this.props.users} />
+            <Users {...this.props} onPageChanged={this.onPageChanged} />
         </>
     }
 }
@@ -37,3 +33,25 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {requestUsers})(UsersContainer);
+
+
+// const UsersContainer = React.memo((props) => {
+//     //refactoring: сделать, чтобы по клику на пользователя отображался профиль пользователя в области справа. По умолчанию выбран первый пользователь
+//     useEffect(() => {
+//         debugger
+//         if (!props.users.length) {props.requestUsers(props.currentPage, props.pageSize)}
+//     })
+//
+//         let onPageChanged = (pageNumber) => {
+//         props.requestUsers(pageNumber, props.pageSize);
+//     }
+//
+//
+//     return (
+//         <>
+//             {props.isFetching ? <Preloader /> : null}
+//             <Users {...props} onPageChanged={onPageChanged} />
+//         </>
+//     )
+// })
+
