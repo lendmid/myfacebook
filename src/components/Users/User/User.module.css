@@ -50,7 +50,7 @@
     height: 80px;
     border-radius: 50%;
     background-color: #F2F3F6;
-    animation: loading 0.7s ease-in-out infinite alternate;
+    animation: loading 0.6s ease-in-out infinite alternate;
 }
 
 .empty_name {
@@ -60,7 +60,7 @@
     width: 220px;
     height: 16px;
     background-color: #F2F3F6;
-    animation: loading 0.7s ease-in-out infinite alternate;
+    animation: loading 0.6s ease-in infinite alternate;
 }
 
 @keyframes loading {
@@ -69,6 +69,5 @@
     }
     100% {
         background-color: #cbcccd;
-        
     }
 }
