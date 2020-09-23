@@ -29,7 +29,7 @@ const ProfileStatus = React.memo((props) => {
     return (
         <>
             {editMode ?
-                <input type="text" onChange={onStatusChange} value={status} onBlur={deActivateEditMode} className={s.input} />
+                <textarea onChange={onStatusChange} value={status} onBlur={deActivateEditMode} className={s.textarea} />
                 :
                 <span onDoubleClick={activateEditMode} className={s.span}>{status || "user have not status"}</span>
             }

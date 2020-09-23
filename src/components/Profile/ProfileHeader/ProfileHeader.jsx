@@ -25,7 +25,7 @@ const ProfileHeader = React.memo(({profile, status, updateStatus, isOwner, saveP
                 </button>
             </div>
             <div className={s.short_biography}>
-                <span>{profile.fullName}</span>
+                <span className={s.fullName}>{profile.fullName}</span>
                 <ProfileStatus status={status} updateStatus={updateStatus} />
             </div>
         </div>

@@ -1,7 +1,21 @@
 .span {
     text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    max-width: 700px;
 }
 
-.input {
-
+.textarea {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    resize: none;
+    min-height: 60px;
+    max-height: 60px;
+    min-width: 700px;
+    max-width: 700px;
+    background-color: rgba(220, 222, 225, 0.3);
+    border: 1px #DDDFE2 solid;
+    padding: 5px;
+    border-radius: 8px;
 }
