@@ -13,7 +13,7 @@ const Users = React.memo(({isFetching, onPageChanged, currentPage, users, ...pro
         let uL = document.getElementById('usersList');
         if ((uL.clientHeight + uL.scrollTop) === uL.scrollHeight) onPageChanged(currentPage + 1);
     }
-    
+    // debugger
     return (
         <div className={s.users}>
             <div className={s.users_list_wrapper}>

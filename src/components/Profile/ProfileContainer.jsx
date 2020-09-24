@@ -10,6 +10,7 @@ import PostConrainer from "./Post/PostContainer";
 
 class ProfileContainer extends React.PureComponent {
     refreshProfile = () => {
+        if (!this.props.match.params.userId) return
         let userId = Number(this.props.match.params.userId);
         if (!userId) userId = this.props.authorizedUserId;
         this.props.getProfile(userId);

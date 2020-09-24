@@ -9,7 +9,7 @@ import camera_icon from "../../../assets/images/camera_icon.png"
 
 const ProfileHeader = React.memo(({profile, status, updateStatus, isOwner, savePhoto, updatePhotoPopup, setUpdatePhotoPopup}) => {
     //refactorinf : do preview photo when isOwner = false
-
+    // debugger
     return (
         <div className={s.profile_header}>
             {updatePhotoPopup && <UpdatePhotoPopup setUpdatePhotoPopup={setUpdatePhotoPopup} savePhoto={savePhoto} />}

@@ -1,10 +1,10 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST      = 'myFacebook/profile/ADD-POST';
-const SET_PROFILE   = 'myFacebook/profile/SET-PROFILE';
-const SET_STATUS    = 'myFacebook/profile/SET-STATUS';
+const ADD_POST = 'myFacebook/profile/ADD-POST';
+const SET_PROFILE = 'myFacebook/profile/SET-PROFILE';
+const SET_STATUS = 'myFacebook/profile/SET-STATUS';
 const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
-const DELETE_POST   = 'myFacebook/profile/DELETE_POST';
+const DELETE_POST = 'myFacebook/profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
 
 const initialState = {
@@ -89,23 +89,31 @@ export const savePhotoCreator = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const addPost = (newPostText) => {
     return (dispatch) => dispatch(addPostCreator(newPostText));
 }
+
 export const deletePostThunk = (postId) => {
     return (dispatch) => dispatch(deletePost(postId));
+}
+
+export const resetProfile = (profile) => {
+    return (dispatch) => dispatch(setProfile(profile));
 }
 
 export const getProfile = (userId) => async (dispatch) => {
     let response = await profileAPI.requestProfile(userId);
     dispatch(setProfile(response.data));
 }
+
 export const getStatus = (userId) => async (dispatch) => {
     let response = await profileAPI.requestStatus(userId);
     dispatch(setStatus(response.data));
 }
+
 export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status);
     if (response.data.resultCode !== 0) return;
     dispatch(setStatus(response.data));
 }
+
 export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.updatePhoto(file);
     if (response.data.resultCode !== 0) return;

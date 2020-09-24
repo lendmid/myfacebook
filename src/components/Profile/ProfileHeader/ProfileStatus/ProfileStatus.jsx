@@ -27,20 +27,21 @@ const ProfileStatus = React.memo((props) => {
     }
     
     
-    return (
-        <>
-            if (props.isOwner) {
-            editMode ?
+    if (props.isOwner) {
+        return (
+            <>
+            {editMode ?
                 <>
-                    <textarea onChange={onStatusChange} onBlur={deActivateEditMode} value={status ? status : ""} className={s.textarea} placeholder="Enter new status..." maxLength="140" autoFocus />
-                    <button className={s.save} onClick={deActivateEditMode}>Save</button>
-                </>
+                <textarea onChange={onStatusChange} onBlur={deActivateEditMode} value={status ? status : ""} className={s.textarea} placeholder="Enter new status..." maxLength="140" autoFocus />
+                <button className={s.save} onClick={deActivateEditMode}>Save</button>
+            </>
                 : <span onClick={activateEditMode} className={status ? s.ownerStatus : s.empty}>{status || "Change status"}</span>
-        } else {
-            <span className={status ? s.notOwnerStatus : s.empty}>{status || "User have not status"}</span>
             }
         </>
-    )
+        )
+    } else {
+        return <span className={status ? s.notOwnerStatus : s.empty}>{status || "User have not status"}</span>
+    }
 })
 
 export default ProfileStatus;

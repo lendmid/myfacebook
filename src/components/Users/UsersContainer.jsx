@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {requestUsers} from "../../redux/usersReducer";
 import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
-import {getProfile, getStatus} from "../../redux/profileReducer";
+import {getProfile, getStatus, resetProfile} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
 import PostConrainer from "../Profile/Post/PostContainer";
@@ -12,7 +12,10 @@ import PostConrainer from "../Profile/Post/PostContainer";
 
 class UsersContainer extends React.PureComponent {
     refreshProfile = () => {
-        if (!this.props.match.params.userId) return;
+        if (!this.props.match.params.userId) {
+        
+            return resetProfile(null);
+        }
         let userId = Number(this.props.match.params.userId);
         this.props.getProfile(userId);
         this.props.getStatus(userId);
@@ -24,6 +27,7 @@ class UsersContainer extends React.PureComponent {
     }
     
     componentDidUpdate(prevProps, prevState, snapshot) {
+        // if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
         if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
     }
     
@@ -48,6 +52,6 @@ const mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, requestUsers}),
+    connect(mapStateToProps, {getProfile, getStatus, requestUsers, resetProfile}),
     withRouter,
 )(UsersContainer)
