@@ -1,16 +1,16 @@
 import React from 'react';
-import s from './UpdateUserPhoto.module.css';
+import s from './UpdatePhotoPopup.module.css';
 import add_icon from "../../../../assets/images/add_icon.svg"
 
 
-const UpdateUserPhoto = React.memo(({setIsUpdatePhotoPopup, savePhoto}) => {
+const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}) => {
     
     let fileSize = (size) => {
         let i = Math.floor(Math.log(size) / Math.log(1024));
         return (size / Math.pow(1024, i)).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
     }
     
-    let showFileProps = () => {
+    let showFileProperties = () => {
         let input = document.getElementById('input_file');
         let label = input.nextElementSibling;
         let countFiles = '';
@@ -27,7 +27,7 @@ const UpdateUserPhoto = React.memo(({setIsUpdatePhotoPopup, savePhoto}) => {
         let input = document.getElementById('input_file');
         if (input.files.length) {
             savePhoto(input.files[0]);
-            setIsUpdatePhotoPopup(false);
+            setUpdatePhotoPopup(false);
             //refactoring: remove alert after change API
             alert("Soon this function will be work")
         } else {
@@ -35,17 +35,16 @@ const UpdateUserPhoto = React.memo(({setIsUpdatePhotoPopup, savePhoto}) => {
         }
     }
     
-    
     return (
         <div className={s.background}>
             <div className={s.wrapper_popup}>
                 <div className={s.header}>
                     <h2>Updating photo profile</h2>
-                    <button className={s.close_icon} onClick={() => setIsUpdatePhotoPopup(false)}>╳</button>
+                    <button className={s.close_icon} onClick={() => setUpdatePhotoPopup(false)}>╳</button>
                 </div>
     
                 <div className={s.input_wrapper} id="input_photo_wrapper">
-                   <input type="file" id="input_file" className={s.input} onChange={showFileProps} />
+                   <input type="file" id="input_file" className={s.input} onChange={showFileProperties} />
                    <label htmlFor="input_file" className={s.label_input_file}>
                       <img className={s.input_icon} src={add_icon} alt="Pick file" />
                       <span className={s.pick_file} id="pick_file">Select file</span>
@@ -58,9 +57,9 @@ const UpdateUserPhoto = React.memo(({setIsUpdatePhotoPopup, savePhoto}) => {
                 </div>
                 <button className={s.button} onClick={photoSelected}>Update photo</button>
             </div>
-            <div className={s.closer} onClick={() => setIsUpdatePhotoPopup(false)}></div>
+            <div className={s.closer} onClick={() => setUpdatePhotoPopup(false)}></div>
         </div>
     )
 })
 
-export default UpdateUserPhoto;
+export default UpdatePhotoPopup;

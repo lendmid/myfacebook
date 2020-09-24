@@ -7,13 +7,13 @@ import ShortInformation from "./ShortInformation/ShortInformation";
 
 const Profile = React.memo((props) => {
     
-    let [isUpdatePhotoPopup, setIsUpdatePhotoPopup] = useState(false);
+    let [updatePhotoPopup, setUpdatePhotoPopup] = useState(false);
     
     return (
         <div className={s.profile}>
             <ProfileHeader {...props}
-                           isUpdatePhotoPopup={isUpdatePhotoPopup}
-                           setIsUpdatePhotoPopup={setIsUpdatePhotoPopup} />
+                           updatePhotoPopup={updatePhotoPopup}
+                           setUpdatePhotoPopup={setUpdatePhotoPopup} />
             <div className={s.profile_information}>
                 <ShortInformation {...props} />
                 <AddPostContainer />

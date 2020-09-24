@@ -2,6 +2,7 @@
     grid-column: 1 / -1;
     display: grid;
     grid-template: 510px 1fr / 1fr 940px 1fr;
+    overflow: auto;
 }
 
 .profile_information {
@@ -11,4 +12,14 @@
     align-self: start;
     justify-self: center;
     grid-template-columns: 360px 15px 500px;
+}
+
+.profile::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+.profile:hover::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(153, 153, 153, 0.7);
 }

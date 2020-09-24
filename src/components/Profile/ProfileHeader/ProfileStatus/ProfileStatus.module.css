@@ -1,5 +1,6 @@
 .empty,
-.status {
+.ownerStatus,
+.notOwnerStatus {
     grid-row: 2 / 2;
     grid-column: 1 / -1;
     text-align: center;
@@ -16,14 +17,15 @@
 }
 
 .empty:hover,
-.status:hover {
+.ownerStatus:hover {
     background-color: #F4F5F6;
     margin: 1px;
     cursor: pointer;
     transition: ease 0.2s;
 }
 
-.status {
+.ownerStatus,
+.notOwnerStatus {
     color: black;
     font-weight: 600;
 }
@@ -60,4 +62,10 @@
     border-radius: 8px;
     font-size: 18px;
     margin-left: 5px;
+}
+
+.notOwnerStatus:hover {
+    color: black;
+    margin: 1px;
+    cursor: auto;
 }

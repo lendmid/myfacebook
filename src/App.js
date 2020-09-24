@@ -10,7 +10,6 @@ import './App.css';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {getAuthUserData, logOut} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
-import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
@@ -40,7 +39,7 @@ class App extends React.PureComponent {
                 <Route exact path='/login' component={LogInConrainer} />
                 <Route exact path="/profile/:userId" component={ProfileContainer} />
                 <Route exact path="/messages/:userId" component={Messages} />
-                <Route exact path='/users' component={UsersContainer} />
+                <Route exact path='/users/:userId?' component={UsersContainer} />
                 <Redirect to={`/profile/${authorizedUserId}`} />
             </Switch>
         </>
@@ -65,9 +64,7 @@ const mapStateToProps = (state) => ({
     totalUsersCount: getTotalUsersCount(state),
 })
 
-const AppContainer = compose(
-    connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getAuthUserData}),
-    // withRouter,
+const AppContainer = connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getAuthUserData}
 )(App)
 
 const MyFacebook = () => {

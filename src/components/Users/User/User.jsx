@@ -6,7 +6,7 @@ const User = React.memo(({userId, name, status, photo}) => {
     return (
         <li className={s.item}>
             {userId ?
-                <Link to={`/profile/${userId}`}>
+                <Link to={`/users/${userId}`}>
                 <div className={s.user}>
                     <img src={photo} className={s.photo} alt="users avatar"></img>
                     <div className={s.name}>{name}</div>

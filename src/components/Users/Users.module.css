@@ -38,13 +38,38 @@
 }
 
 .users_list::-webkit-scrollbar {
-    -webkit-appearance: none;
     width: 7px;
+    -webkit-appearance: none;
+    animation: loading 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes loading {
+    0% {
+        background-color: #F2F3F6;
+    }
+    100% {
+        background-color: #cbcccd;
+    }
 }
 
 .users_list:hover::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: rgba(153, 153, 153, 0.7);
+    transition: background-color 2s ease;
+}
+
+.users_list::-webkit-scrollbar-thumb:hover {
+    width: 10px;
+    border-radius: 5px;
+    background-color: rgba(153, 153, 153, 0.85);
+    transition: background-color 2s ease;
+}
+
+.users_list::-webkit-scrollbar-thumb:active {
+    width: 10px;
+    border-radius: 5px;
+    background-color: rgb(153, 153, 153);
+    transition: background-color 2s ease;
 }
 
 .profile_preview {
@@ -53,15 +78,17 @@
     
     background-color: #F0F2F5;
     display: grid;
-    place-items: center;
+    overflow: hidden;
 }
 
 .icon_people {
     width: 112px;
     height: 112px;
+    place-self: center;
 }
 
 .not_picked_profile {
+    place-self: center;
     display: grid;
     place-items: center;
 }
