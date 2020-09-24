@@ -69,8 +69,7 @@
 }
 
 .user_photo:hover {
-    filter: brightness(80%);
-    transition: ease 0.3s;
+    filter: brightness(70%);
 }
 
 .camera_icon {

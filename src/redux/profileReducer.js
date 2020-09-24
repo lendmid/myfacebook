@@ -6,6 +6,7 @@ const SET_STATUS = 'myFacebook/profile/SET-STATUS';
 const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
 const DELETE_POST = 'myFacebook/profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
+const LOADING_PROFILE = 'myFacebook/profile/LOADING_PROFILE';
 
 const initialState = {
     posts: [
@@ -26,7 +27,8 @@ const initialState = {
         },
     ],
     profile: null,
-    status: ''
+    status: '',
+    isLoading: false,
 }
 
 
@@ -44,10 +46,16 @@ const profileReducer = (state = initialState, action) => {
                     ...state.posts
                 ],
             };
+        case LOADING_PROFILE:
+            return {
+                ...state,
+                isLoading: true
+            };
         case SET_PROFILE:
             return {
                 ...state,
                 profile: action.profile,
+                isLoading: false
             };
         case SET_STATUS:
             return {
@@ -81,6 +89,7 @@ function randomInteger(min, max) {
 
 export const addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export const setProfile = (profile) => ({type: SET_PROFILE, profile})
+export const loadProfile = () => ({type: LOADING_PROFILE})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const savePhotoCreator = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
@@ -95,11 +104,13 @@ export const deletePostThunk = (postId) => {
 }
 
 export const getProfile = (userId) => async (dispatch) => {
+    dispatch(loadProfile());
     let response = await profileAPI.requestProfile(userId);
     dispatch(setProfile(response.data));
 }
 
 export const getStatus = (userId) => async (dispatch) => {
+    dispatch(loadProfile());
     let response = await profileAPI.requestStatus(userId);
     dispatch(setStatus(response.data));
 }

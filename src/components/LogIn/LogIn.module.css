@@ -1,10 +1,15 @@
 .wrapper {
     grid-row: 1 / -1;
-    place-self: center;
-    grid-column: 2 / 2;
-    display: grid;
-    place-items: center;
+    grid-column: 1 / -1;
     
+    display: grid;
+    grid-template: 1fr 210px 80px 320px 1fr 90px / 1fr 400px 1fr 410px 1fr;
+    place-items: center;
+}
+
+.wrapper_login {
+    grid-row: 2 / 2;
+    grid-column: 4 / 4;
     
     border-radius: 8px;
     padding: 20px;
@@ -12,13 +17,36 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 }
 
-.form {
+.login {
     display: grid;
     grid-gap: 10px;
-    
     border-radius: 10px;
-    padding: 15px;
 }
+
+.wrapper_register {
+    grid-row: 4 / 4;
+    grid-column: 4 / 4;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.wraper_description {
+    grid-row: 2 / 5;
+    grid-column: 2 / 2;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+}
+
+.footer {
+    grid-row: 6 / 6;
+    grid-column: 1 / -1;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
 
 .error {
     border: 1px red solid;
@@ -31,40 +59,39 @@
 .input {
     padding: 10px;
     border-radius: 6px;
-    width: 350px;
-    height: 52px;
+    width: 370px;
+    height: 50px;
     
     border: 1px solid #dddfe2;
     background-color: rgba(198, 198, 198, 0.10);
     
     font-size: 16px;
-    margin-bottom: 5px;
 }
 
 .button {
     place-self: center;
-    width: 350px;
-    height: 48px;
+    width: 370px;
+    height: 50px;
     border-radius: 8px;
     padding: 10px;
     background-color: #a4a6a87c;
     font-size: 16px;
 }
 
-.register {
-    margin: 0;
-    width: 200px;
-    height: 40px;
-    background-color: rgba(16, 87, 23, 0.3);
-    display: grid;
-    place-items: center;
-}
+/*.register {*/
+/*    margin: 0;*/
+/*    width: 200px;*/
+/*    height: 40px;*/
+/*    background-color: rgba(16, 87, 23, 0.3);*/
+/*    display: grid;*/
+/*    place-items: center;*/
+/*}*/
 
-.line {
-    content: "";
-    background-color: #a4a6a87c;
-    width: 350px;
-    height: 1px;
-    place-self: center;
-    margin: 10px 0 15px 0;
-}
+/*.line {*/
+/*    content: "";*/
+/*    background-color: #a4a6a87c;*/
+/*    width: 350px;*/
+/*    height: 1px;*/
+/*    place-self: center;*/
+/*    margin: 10px 0 15px 0;*/
+/*}*/

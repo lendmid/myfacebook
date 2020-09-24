@@ -28,14 +28,15 @@ export const profileAPI = {
     },
     requestStatus(userId) {
         return instance.get('profile/status/' + userId);
-        // refactoring: do not work because profile/status/get/id not available
     },
     updateStatus(status) {
         return instance.put('profile/status/', {status});
+        // refactoring: do not work because profile/status/get/id not available with put method; remove alert after change API
     },
     updatePhoto(photoFile) {
         const formData = new FormData();
         formData.append("image", photoFile)
+        debugger
         return instance.put('profile/photo', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'

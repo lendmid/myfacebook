@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {requestUsers} from "../../redux/usersReducer";
-import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
+import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
 import {getProfile, getStatus} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
@@ -17,12 +17,12 @@ class UsersContainer extends React.PureComponent {
         this.props.getProfile(userId);
         this.props.getStatus(userId);
     }
-
+    
     componentDidMount() {
         if (!this.props.users.length) this.props.requestUsers(this.props.currentPage, this.props.pageSize)
         this.refreshProfile();
     }
-
+    
     componentDidUpdate = prevProps => {
         if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
     };
@@ -43,10 +43,10 @@ const mapStateToProps = (state) => ({
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
-    isFetching: getIsFetching(state),
     posts: state.profilePage.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount} key={post.id} id={post.id} />),
     profile: state.profilePage.profile,
     status: state.profilePage.status,
+    isLoading: state.profilePage.isLoading,
 })
 
 export default compose(

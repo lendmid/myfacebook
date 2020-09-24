@@ -26,8 +26,9 @@ class ProfileContainer extends React.PureComponent {
     }
     
     render() {
-        if (!this.props.profile) return <Preloader />
-        return <Profile {...this.props} isOwner={this.props.authorizedUserId === Number(this.props.match.params.userId)} />;
+        if (!this.props.profile || this.props.isLoading) return <Preloader />
+        return <Profile {...this.props}
+                        isOwner={this.props.authorizedUserId === Number(this.props.match.params.userId)} />;
     }
 }
 
@@ -37,6 +38,7 @@ let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.authorizedUserId,
+    isLoading: state.profilePage.isLoading,
 })
 
 export default compose(

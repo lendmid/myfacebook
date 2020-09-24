@@ -6,7 +6,7 @@ import PreloaderUsers from "../common/PreloaderUsers/Preloader";
 import Profile from "../Profile/Profile";
 
 
-const Users = React.memo(({isFetching, onPageChanged, currentPage, users, ...props}) => {
+const Users = React.memo(({onPageChanged, currentPage, users, isLoading, ...props}) => {
     
     let onScrollHandler = (e) => {
         let uL = document.getElementById('usersList');
@@ -26,12 +26,8 @@ const Users = React.memo(({isFetching, onPageChanged, currentPage, users, ...pro
                 </ul>
             </div>
             <div className={s.profile_preview}>
-                {props.profile && !props.isFetching &&
-                <Profile {...props} isOwner={false} />
-                }
-                {props.isFetching &&
-                <PreloaderUsers />
-                }
+                {isLoading && <PreloaderUsers />}
+                {props.profile && !isLoading && <Profile {...props} isOwner={false} />}
                 {!props.profile &&
                 <>
                         <div className={s.not_picked_profile}>
