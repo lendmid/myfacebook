@@ -7,13 +7,12 @@ import Profile from "../Profile/Profile";
 
 
 const Users = React.memo(({isFetching, onPageChanged, currentPage, users, ...props}) => {
-    //refactoring: сделать, чтобы по клику на пользователя отображался профиль пользователя в области справа. По умолчанию выбран первый пользователь
     
     let onScrollHandler = (e) => {
         let uL = document.getElementById('usersList');
         if ((uL.clientHeight + uL.scrollTop) === uL.scrollHeight) onPageChanged(currentPage + 1);
     }
-    // debugger
+    
     return (
         <div className={s.users}>
             <div className={s.users_list_wrapper}>

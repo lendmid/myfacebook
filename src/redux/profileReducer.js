@@ -3,6 +3,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = 'myFacebook/profile/ADD-POST';
 const SET_PROFILE = 'myFacebook/profile/SET-PROFILE';
 const SET_STATUS = 'myFacebook/profile/SET-STATUS';
+const RESET_PROFILE = 'myFacebook/profile/RESET_PROFILE';
 const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
 const DELETE_POST = 'myFacebook/profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
@@ -49,6 +50,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile,
             };
+        case RESET_PROFILE:
+            return {
+                ...state,
+                profile: action.profile,
+            };
         case SET_STATUS:
             return {
                 ...state,
@@ -81,6 +87,7 @@ function randomInteger(min, max) {
 
 export const addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export const setProfile = (profile) => ({type: SET_PROFILE, profile})
+export const resetProfileAC = (profile) => ({type: RESET_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const savePhotoCreator = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
@@ -94,8 +101,8 @@ export const deletePostThunk = (postId) => {
     return (dispatch) => dispatch(deletePost(postId));
 }
 
-export const resetProfile = (profile) => {
-    return (dispatch) => dispatch(setProfile(profile));
+export const resetProfile = () => {
+    return (dispatch) => dispatch(resetProfileAC(null));
 }
 
 export const getProfile = (userId) => async (dispatch) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
-import {deletePostThunk, getProfile, getStatus, savePhoto, updateStatus} from "../../redux/profileReducer";
+import {getProfile, getStatus, savePhoto, updateStatus} from "../../redux/profileReducer";
 import {compose} from "redux";
 import Preloader from "../common/Preloader/Preloader";
 import PostConrainer from "./Post/PostContainer";
@@ -39,6 +39,6 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, updateStatus, savePhoto, deletePostThunk}),
+    connect(mapStateToProps, {getProfile, getStatus, updateStatus, savePhoto}),
     withRouter,
 )(ProfileContainer)

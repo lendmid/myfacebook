@@ -12,10 +12,7 @@ import PostConrainer from "../Profile/Post/PostContainer";
 
 class UsersContainer extends React.PureComponent {
     refreshProfile = () => {
-        if (!this.props.match.params.userId) {
-        
-            return resetProfile(null);
-        }
+        if (!this.props.match.params.userId) return;
         let userId = Number(this.props.match.params.userId);
         this.props.getProfile(userId);
         this.props.getStatus(userId);
@@ -26,17 +23,18 @@ class UsersContainer extends React.PureComponent {
         this.refreshProfile();
     }
     
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        // if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
+    componentDidUpdate = prevProps => {
         if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
-    }
+    };
     
     onPageChanged = (pageNumber) => {
         this.props.requestUsers(pageNumber, this.props.pageSize);
     }
     
     render() {
-        return <Users {...this.props} onPageChanged={this.onPageChanged} />
+        return <Users {...this.props}
+                      profile={!this.props.match.params.userId ? null : this.props.profile}
+                      onPageChanged={this.onPageChanged} />
     }
 }
 
