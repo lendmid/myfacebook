@@ -89,11 +89,12 @@
     grid-row: 2 / 2;
     align-self: center;
     display: grid;
-    grid-template-rows: 40px 80px;
+    grid-template: 40px 80px / 1fr 95px;
     place-items: center;
 }
 
 .fullName {
+    grid-column: 1 / -1;
     font-size: 30px;
     font-weight: 700;
 }

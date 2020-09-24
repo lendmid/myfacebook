@@ -2,7 +2,7 @@ body {
   margin: 0;
     /*font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Roboto', 'Oxygen',*/
     /*  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', sans-serif;*/
-    font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;

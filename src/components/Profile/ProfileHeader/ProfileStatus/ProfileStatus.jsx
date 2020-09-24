@@ -23,15 +23,18 @@ const ProfileStatus = React.memo((props) => {
     
     let deActivateEditMode = () => {
         setEditMode(false);
-        props.updateStatus(status);
+        if (status && status.length > 0) props.updateStatus(status);
     }
     
     return (
         <>
             {editMode ?
-                <textarea onChange={onStatusChange} value={status} onBlur={deActivateEditMode} className={s.textarea} />
+                <>
+                    <textarea onChange={onStatusChange} onBlur={deActivateEditMode} value={status ? status : ""} className={s.textarea} placeholder="Enter new status..." maxLength="140" autoFocus />
+                    <button className={s.save} onClick={deActivateEditMode}>Save</button>
+                </>
                 :
-                <span onDoubleClick={activateEditMode} className={s.span}>{status || "user have not status"}</span>
+                <span onClick={activateEditMode} className={status ? s.status : s.empty}>{status || "Change status"}</span>
             }
         </>
     )
