@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {requestUsers} from "../../redux/usersReducer";
 import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
-import {getProfile, getStatus, resetProfile} from "../../redux/profileReducer";
+import {getProfile, getStatus} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
 import PostConrainer from "../Profile/Post/PostContainer";
@@ -17,12 +17,12 @@ class UsersContainer extends React.PureComponent {
         this.props.getProfile(userId);
         this.props.getStatus(userId);
     }
-    
+
     componentDidMount() {
         if (!this.props.users.length) this.props.requestUsers(this.props.currentPage, this.props.pageSize)
         this.refreshProfile();
     }
-    
+
     componentDidUpdate = prevProps => {
         if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
     };
@@ -50,6 +50,30 @@ const mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, requestUsers, resetProfile}),
+    connect(mapStateToProps, {getProfile, getStatus, requestUsers}),
     withRouter,
 )(UsersContainer)
+
+
+// tried writing on Hook; will rewrite later; showed warning:
+// "React Hook useEffect has a missing dependency: 'props'. Either include it or remove the dependency array.
+// However, 'props' will change when *any* prop changes, so the preferred fix is to destructure the 'props' object outside of the useEffect call and refer to those specific props inside useEffect  react-hooks/exhaustive-deps"
+
+// const UsersContainer = React.memo((props) => {
+//
+//     useEffect(() => {
+//         if (!props.users.length) props.requestUsers(props.currentPage, props.pageSize)
+//         if (!props.match.params.userId) return;
+//         let userId = Number(props.match.params.userId);
+//         props.getProfile(userId);
+//         props.getStatus(userId);
+//     }, [props.match.params.userId])
+//
+//     let onPageChanged = (pageNumber) => {
+//         props.requestUsers(pageNumber, props.pageSize);
+//     }
+//
+//     return <Users {...props}
+//                   profile={!props.match.params.userId ? null : props.profile}
+//                   onPageChanged={onPageChanged} />
+// })

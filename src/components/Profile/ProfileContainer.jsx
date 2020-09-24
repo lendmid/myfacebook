@@ -31,6 +31,7 @@ class ProfileContainer extends React.PureComponent {
     }
 }
 
+
 let mapStateToProps = (state) => ({
     posts: state.profilePage.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount} key={post.id} id={post.id} />),
     profile: state.profilePage.profile,
@@ -42,3 +43,25 @@ export default compose(
     connect(mapStateToProps, {getProfile, getStatus, updateStatus, savePhoto}),
     withRouter,
 )(ProfileContainer)
+
+
+// tried writing on Hook; will rewrite later; showed warning:
+// "React Hook useEffect has a missing dependency: 'props'. Either include it or remove the dependency array.
+// However, 'props' will change when *any* prop changes, so the preferred fix is to destructure the 'props' object outside of the useEffect call and refer to those specific props inside useEffect  react-hooks/exhaustive-deps"
+
+// const ProfileContainer = React.memo(({profile, authorizedUserId, ...props}) => {
+//
+//     useEffect(() => {
+//         if (!props.match.params.userId) return;
+//         if (profile && profile.userId === authorizedUserId) return;
+//         let userId = Number(props.match.params.userId);
+//         props.getProfile(userId);
+//         props.getStatus(userId);
+//     }, [profile, authorizedUserId])
+//
+//     if (!profile) return <Preloader/>
+//
+//     return <Profile {...props}
+//                     profile={profile}
+//                     isOwner={authorizedUserId === Number(props.match.params.userId)} />;
+// })
