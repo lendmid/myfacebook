@@ -51,8 +51,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                        placeholder="Email"
                        name="email"
                        validate={[required]}
-                       className={s.input}
-                       autoFocus />
+                       className={s.input} />
                 <Field component={InputLogIn} type="password"
                        placeholder="Password"
                        name="password"

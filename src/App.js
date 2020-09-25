@@ -7,7 +7,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import Messages from './components/Messages/Messages';
 
 import './App.css';
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {getAuthUserData, logOut} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
@@ -69,11 +69,11 @@ const AppContainer = connect(mapStateToProps, {initializeApp, logOut, getProfile
 
 const MyFacebook = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <AppContainer />
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

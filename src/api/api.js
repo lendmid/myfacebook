@@ -34,9 +34,9 @@ export const profileAPI = {
         // refactoring: do not work because profile/status/get/id not available with put method; remove alert after change API
     },
     updatePhoto(photoFile) {
+        // refactoring: do not work; rewrite after change API
         const formData = new FormData();
         formData.append("image", photoFile)
-        debugger
         return instance.put('profile/photo', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
