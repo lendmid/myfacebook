@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/myfacebook/static/css/main.5c074c2c.chunk.css",
+    "main.js": "/myfacebook/static/js/main.dba1ad98.chunk.js",
+    "main.js.map": "/myfacebook/static/js/main.dba1ad98.chunk.js.map",
+    "runtime-main.js": "/myfacebook/static/js/runtime-main.8c626f2f.js",
+    "runtime-main.js.map": "/myfacebook/static/js/runtime-main.8c626f2f.js.map",
+    "static/js/2.ee5d6be5.chunk.js": "/myfacebook/static/js/2.ee5d6be5.chunk.js",
+    "static/js/2.ee5d6be5.chunk.js.map": "/myfacebook/static/js/2.ee5d6be5.chunk.js.map",
+    "index.html": "/myfacebook/index.html",
+    "precache-manifest.5242967a0c697dba63290fcad54c8c7c.js": "/myfacebook/precache-manifest.5242967a0c697dba63290fcad54c8c7c.js",
+    "service-worker.js": "/myfacebook/service-worker.js",
+    "static/css/main.5c074c2c.chunk.css.map": "/myfacebook/static/css/main.5c074c2c.chunk.css.map",
+    "static/js/2.ee5d6be5.chunk.js.LICENSE.txt": "/myfacebook/static/js/2.ee5d6be5.chunk.js.LICENSE.txt",
+    "static/media/Preloader.svg": "/myfacebook/static/media/Preloader.58c73352.svg",
+    "static/media/add_icon.svg": "/myfacebook/static/media/add_icon.e01b7d2b.svg",
+    "static/media/avatar_3.png": "/myfacebook/static/media/avatar_3.6d68e718.png",
+    "static/media/avatar_background.jpg": "/myfacebook/static/media/avatar_background.0811f40d.jpg",
+    "static/media/logOut.svg": "/myfacebook/static/media/logOut.04a04731.svg",
+    "static/media/preview_profile.svg": "/myfacebook/static/media/preview_profile.8c0f81a2.svg",
+    "static/media/user_avatar.png": "/myfacebook/static/media/user_avatar.f07d66e0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8c626f2f.js",
+    "static/js/2.ee5d6be5.chunk.js",
+    "static/css/main.5c074c2c.chunk.css",
+    "static/js/main.dba1ad98.chunk.js"
+  ]
+}
