@@ -28,7 +28,7 @@ const Users = React.memo(({onPageChanged, currentPage, users, isLoading, ...prop
             <div className={s.profile_preview}>
                 {isLoading && <PreloaderUsers />}
                 {props.profile && !isLoading && <Profile {...props} isOwner={false} />}
-                {!props.profile &&
+                {!props.profile && !isLoading &&
                 <>
                         <div className={s.not_picked_profile}>
                             <img src={preview_profile} alt="Profile preview" className={s.icon_people} />

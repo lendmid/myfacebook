@@ -28,8 +28,6 @@ const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}) => {
         if (input.files.length) {
             savePhoto(input.files[0]);
             setUpdatePhotoPopup(false);
-            //refactoring: remove alert after change API
-            alert("Soon this function will be work")
         } else {
             alert("Please added file")
         }

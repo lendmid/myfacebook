@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pet project №3: Myfacebook
+### https://lendmid.github.io/myfacebook/
 
-## Available Scripts
+### `Основная задача проекта:`
+Обучение технологиям React, Redux и сопутствующих npm пакетов, через копирования функционала и дизайна самой популярной социальной сети facebook с упрощением функционала; практика верстки на гридах и знакомоство с Flux архитектурой
 
-In the project directory, you can run:
+### `Краткое описание проекта:`
+Социальная сеть myfacebook написана на основе [Create React App](https://github.com/facebook/create-react-app), имеет 4 страницы: login, profile, messages и users, настроен роутинг и редиректы. Всё приложение написно с использованием стороннего API, в том числе модуль авторизации. В процессе написание собственное API. Вся верстка выполнена на гридах, активно использовались методы обработки событий и работа с асинхронными запросами на сервер через axios
 
-### `npm start`
+### `Что сделано:`
+##### Функционал по каждой странице:
+* login:
+    * Авторизация через и выход из системы через стороннее API <br/>
+     Данные для входа:<br/> 
+     Email: `free@samuraijs.com` <br/>
+     Password: `free`
+* profile:
+    * Возможность обновить фотографию и/или статус у авторизованного пользователя (функционал может не рабоать из-за ограничений стороннего API)
+    * Возможность добавить или удалить пост со стены. Стена общая для всех пользователей из-за ограничений API
+* messages:
+    * Возможность отправить сообщение в чат выбранному по умолчанию пользователю
+    * История сообщений генерируется после каждой перезагрузки
+    * Автоматический скролл при открытии страницы и при отправке сообщения
+* users:
+    * Автоподгрузка пользователей при скролле списка пользователей 
+    * Анимация пользователей и прелоадер загрузки страницы
+    * Возможность перейти на страницу пользователя, посмотреть в его профиле фотографию, имя и статус
+  
+### `Что планируется сделать:`
+* Типизировать весь текущий код с использование TypeScript
+* Написать собственное API для корректной работы функционала и для расширения возможностей проекта:
+    * profile: добавить возможность изменения фона, сохранения постов у каждого пользователя и возможность указать место работы и город проживания
+    * messages: добавить возможность выбора пользователя из всех доступных и начать с ним переписку
+    * login: изменить верстку, вынести форму регистрации в отдельное окно или попап
+* Покрыть код большим колчеством unit тестов, далее написать некоторое количество интеграционных тестов
+* Сделать адаптивную верстку для всего проекта
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `Технологии:`
+- Html 5
+- CSS 3 (grid layout) + CSS анимация (transition, animation)
+- Css modules
+- React
+- Redux
+- React-redux
+- React-router-dom (роутинг)
+- Redux-form 
+- Redux-thunk 
+- Reselect
+- mongodb (новое API)
+- Node js (новое API)
+- Express (новое API)
+- Jest
+- Axios
+- Git 
+- Верстка из Figma
+- npm
+- Активная работа в терминале
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ 

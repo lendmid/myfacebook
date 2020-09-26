@@ -18,11 +18,8 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
     }
     
     let tryRegister = () => {
-        alert(`    When you press ok, will onen site with registration form.
-    After registration return on this window ang refresh page. You will be log in.
-    
-    My congratulations and thank you for you time!`)
-        return <Redirect to={"https://social-network.samuraijs.com/signUp"} />
+        alert(`Unfortunately now registration do not work. It function will be work soon`);
+        // return <Redirect to={"https://social-network.samuraijs.com/signUp"} />
     }
     
     return (
@@ -33,16 +30,17 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                     <h3 className={s.about_title}>About project</h3>
                     <p className={s.about_text}>
                         What is this? It is my project whole wrote with library React, Redux and with other small librarys. Now project on stady develop and active development. <br /><br />
-                        Now you can only enter my project through this <a href="https://social-network.samuraijs.com/signUp" className={s.samurai}>site</a>, because so far this project is based on their API.
-                        In the future I will writing my API. <br />
-                        After registration return on this window ang refresh page. You will be log in.<br /><br />
-                        My congratulations and thank you for you time!
+                        You can enter in my project using data: <br />
+                        <b>Email:</b> free@samuraijs.com <br />
+                        <b>Password:</b> free <br /> <br />
+                        Today functional in this project work through other API.. In the future I will writing my API. <br />
+                        Thank you for your interest to my work and your time!
                     </p>
                 </div>
                 <div className={s.links}>
                     <span className={s.made_by}>made by <strong>Dima Doroshenko</strong></span>
-                    <a href="https://github.com/lendmid"><img src={hh} alt="github logo" className={s.portfolio} /></a>
-                    <a href="https://hh.ru/resume/d8a7fb57ff07de8d7f0039ed1f77765778734a"><img src={github} alt="headhunter logo" className={s.portfolio} /></a>
+                    <a href="https://hh.ru/resume/d8a7fb57ff07de8d7f0039ed1f77765778734a"><img src={hh} alt="github logo" className={s.portfolio} /></a>
+                    <a href="https://github.com/lendmid"><img src={github} alt="headhunter logo" className={s.portfolio} /></a>
                 </div>
             </div>
             
@@ -62,7 +60,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 {error && <span className={s.error_message}>{error}</span>}
             </form>
     
-            <a href="https://social-network.samuraijs.com/signUp" className={s.register_link} onClick={tryRegister}>
+            <div className={s.register_link} onClick={tryRegister}>
                 <div className={s.register}>
                     <div className={s.temp_input}>Your email</div>
                     <div className={s.temp_input}>Your password</div>
@@ -102,7 +100,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                     <button className={s.button + " " + s.button_register}>Register</button>
                     {/*{error && <span className={s.error_message}>{error}</span>}*/}
                 </div>
-            </a>
+            </div>
 
             <div className={s.footer}>
                 <span className={s.myfacebook}>myfacebook © 2020</span>

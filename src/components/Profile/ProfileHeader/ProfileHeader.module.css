@@ -97,3 +97,43 @@
     font-size: 30px;
     font-weight: 700;
 }
+
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+/*.popup_show {*/
+/*    display: block;*/
+/*    position: fixed;*/
+/*    z-index: 6;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    bottom: 0;*/
+/*    right: 0;*/
+/*    background: rgba(0,0,0,0.9);*/
+/*    cursor: pointer;*/
+/*}*/
+.full_img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3);
+}
+
+/*.popup {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    right: 20px;*/
+/*    font-size: 30px;*/
+/*    text-decoration: none;*/
+/*    color: red;*/
+/*}*/
