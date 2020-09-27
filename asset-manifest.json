@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/myfacebook/static/css/main.7e87e900.chunk.css",
-    "main.js": "/myfacebook/static/js/main.73fa2013.chunk.js",
-    "main.js.map": "/myfacebook/static/js/main.73fa2013.chunk.js.map",
+    "main.css": "/myfacebook/static/css/main.9483893f.chunk.css",
+    "main.js": "/myfacebook/static/js/main.e1f8b3c0.chunk.js",
+    "main.js.map": "/myfacebook/static/js/main.e1f8b3c0.chunk.js.map",
     "runtime-main.js": "/myfacebook/static/js/runtime-main.8c626f2f.js",
     "runtime-main.js.map": "/myfacebook/static/js/runtime-main.8c626f2f.js.map",
     "static/js/2.273a0232.chunk.js": "/myfacebook/static/js/2.273a0232.chunk.js",
     "static/js/2.273a0232.chunk.js.map": "/myfacebook/static/js/2.273a0232.chunk.js.map",
     "index.html": "/myfacebook/index.html",
-    "precache-manifest.a3e3698a7bc86f52b26c212d6262bf25.js": "/myfacebook/precache-manifest.a3e3698a7bc86f52b26c212d6262bf25.js",
+    "precache-manifest.6f0aa1efec00f00f7de44ea0059a16a3.js": "/myfacebook/precache-manifest.6f0aa1efec00f00f7de44ea0059a16a3.js",
     "service-worker.js": "/myfacebook/service-worker.js",
-    "static/css/main.7e87e900.chunk.css.map": "/myfacebook/static/css/main.7e87e900.chunk.css.map",
+    "static/css/main.9483893f.chunk.css.map": "/myfacebook/static/css/main.9483893f.chunk.css.map",
     "static/js/2.273a0232.chunk.js.LICENSE.txt": "/myfacebook/static/js/2.273a0232.chunk.js.LICENSE.txt",
     "static/media/Preloader.svg": "/myfacebook/static/media/Preloader.58c73352.svg",
     "static/media/add_icon.svg": "/myfacebook/static/media/add_icon.e01b7d2b.svg",
@@ -23,7 +23,7 @@
   "entrypoints": [
     "static/js/runtime-main.8c626f2f.js",
     "static/js/2.273a0232.chunk.js",
-    "static/css/main.7e87e900.chunk.css",
-    "static/js/main.73fa2013.chunk.js"
+    "static/css/main.9483893f.chunk.css",
+    "static/js/main.e1f8b3c0.chunk.js"
   ]
 }
