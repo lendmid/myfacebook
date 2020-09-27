@@ -13,8 +13,9 @@ class ProfileContainer extends React.PureComponent {
         if (!this.props.match.params.userId) return
         let userId = Number(this.props.match.params.userId);
         if (!userId) userId = this.props.authorizedUserId;
-        this.props.getProfile(userId);
-        this.props.getStatus(userId);
+        this.props.getProfile(userId).then(() => {
+            this.props.getStatus(userId);
+        });
     }
     
     componentDidMount = () => {

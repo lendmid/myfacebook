@@ -14,8 +14,9 @@ class UsersContainer extends React.PureComponent {
     refreshProfile = () => {
         if (!this.props.match.params.userId) return;
         let userId = Number(this.props.match.params.userId);
-        this.props.getProfile(userId);
-        this.props.getStatus(userId);
+        this.props.getProfile(userId).then(() => {
+            this.props.getStatus(userId);
+        });
     }
     
     componentDidMount() {

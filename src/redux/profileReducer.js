@@ -55,12 +55,12 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.profile,
-                isLoading: false
             };
         case SET_STATUS:
             return {
                 ...state,
                 status: action.status,
+                isLoading: false
             };
         case UPDATE_STATUS:
             return {
@@ -110,7 +110,6 @@ export const getProfile = (userId) => async (dispatch) => {
 }
 
 export const getStatus = (userId) => async (dispatch) => {
-    //refactoring: combine two requests (profile and status). Now loadind work incorrect. Do it after change API
     dispatch(loadProfile());
     let response = await profileAPI.requestStatus(userId);
     dispatch(setStatus(response.data));

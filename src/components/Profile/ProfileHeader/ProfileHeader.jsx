@@ -18,7 +18,7 @@ const ProfileHeader = React.memo(({profile, status, updateStatus, isOwner, saveP
         let popup = document.getElementById('userPhoto');
         popup.style.display = "none";
     }
-    
+
     return (
         <div className={s.profile_header}>
             {updatePhotoPopup && <UpdatePhotoPopup setUpdatePhotoPopup={setUpdatePhotoPopup} savePhoto={savePhoto} />}
@@ -30,7 +30,7 @@ const ProfileHeader = React.memo(({profile, status, updateStatus, isOwner, saveP
                     <img src={avatar_bg} alt="background" />
                 </div>
                 <button className={s.photo} onClick={() => isOwner ? setUpdatePhotoPopup(true) : openPhoto()}>
-                    <img src={profile.photos.large || user_avatar} className={s.user_photo} alt="user_photo" />
+                    <img src={(profile.photos && profile.photos.large) ? profile.photos.large : user_avatar} className={s.user_photo} alt="user_photo" />
                     {isOwner && <img src={camera_icon} alt="camera icon" className={s.camera_icon} />}
                 </button>
                 {!isOwner &&
