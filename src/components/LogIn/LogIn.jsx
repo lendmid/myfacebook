@@ -39,7 +39,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 </div>
                 <div className={s.links}>
                     <span className={s.made_by}>made by <strong>Dima Doroshenko</strong></span>
-                    <a href="https://hh.ru/resume/d8a7fb57ff07de8d7f0039ed1f77765778734a"><img src={hh} alt="github logo" className={s.portfolio} /></a>
+                    <a href="https://hh.ru/applicant/resumes/view?resume=82f7c7b9ff08590b540039ed1f6d6a69644645"><img src={hh} alt="github logo" className={s.portfolio} /></a>
                     <a href="https://github.com/lendmid"><img src={github} alt="headhunter logo" className={s.portfolio} /></a>
                 </div>
             </div>
