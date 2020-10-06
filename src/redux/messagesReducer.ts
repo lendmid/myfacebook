@@ -6,6 +6,14 @@ import avatar_5 from "./../assets/images/avatar_5.png"
 
 const SEND_MESSAGE = 'myFacebook/message/SEND-MESSAGE';
 
+type MessagesDataType = {
+    id: number
+    name: string
+    img: string
+    message: Array<string>
+    date: string
+}
+
 const initialState = {
     messagesData: [
         {
@@ -53,11 +61,13 @@ const initialState = {
             ],
             date: "15 mar",
         },
-    ],
+    ] as Array<MessagesDataType>,
     historyMessages: generateHistoryMessages(15)
 }
 
-function generateHistoryMessages(n) {
+export type InitialStateType = typeof initialState;
+
+function generateHistoryMessages(n: number) {
     let historyMessages = [];
     let words1 = ["Amet delectus dolor,", "Vitae possimus,", "Autem officiis aut,", "Veritatis quo,", "Ab molestiae dolore,", "Aperiam debitis mollitia,", "Laudantium, odit iure,", "Doloribus culpa"];
     let words2 = ["error cumque. Laudantium,", "ad voluptates laborum,", "dicta quasi excepturi hic,", "facilis corrupti obcaecati,", "cum soluta nobis est eligendi,", "explicabo tempore,", "velit qui porro incidunt,"];
@@ -77,7 +87,7 @@ function generateHistoryMessages(n) {
     return historyMessages;
 }
 
-const messagesReducer = (state = initialState, action) => {
+const messagesReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SEND_MESSAGE:
             return {
@@ -89,10 +99,18 @@ const messagesReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessageCreator = (newMessageText) => ({type: SEND_MESSAGE, newMessageText})
+type sendMessageCreatorType = {
+    type: typeof SEND_MESSAGE
+    newMessageText: string
+}
 
-export const sendMessage = (newPostText) => {
-    return (dispatch) => {
+export const sendMessageCreator = (newMessageText: string): sendMessageCreatorType => ({
+    type: SEND_MESSAGE,
+    newMessageText
+})
+
+export const sendMessage = (newPostText: string) => {
+    return (dispatch: any) => {
         dispatch(sendMessageCreator(newPostText))
     }
 }

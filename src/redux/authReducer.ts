@@ -5,18 +5,12 @@ import {authAPI} from "../api/api";
 const SET_USER_DATA = 'myFacebook/auth/SET_USER_DATA';
 
 
-export type InitialStateType = {
-    authorizedUserId: number | null,
-    email: string | null,
-    login: string | null,
-    isAuth: boolean | false,
-}
+export type InitialStateType = typeof initialState;
 
-
-const initialState: InitialStateType = {
-    authorizedUserId: null,
-    email: null,
-    login: null,
+const initialState = {
+    authorizedUserId: null as number | null,
+    email: null as string | null,
+    login: null as string | null,
     isAuth: false,
 }
 
@@ -73,5 +67,4 @@ export const logOut = () => async (dispatch: any) => {
     }
 }
 
-// @ts-ignore
 export default authReducer;
