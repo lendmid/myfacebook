@@ -8,6 +8,20 @@ const DELETE_POST = 'myFacebook/profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
 const LOADING_PROFILE = 'myFacebook/profile/LOADING_PROFILE';
 
+
+type PostType = {
+    id: number
+    message: string
+    likesCount: number
+}
+
+type ProfileType = {
+    userId: number
+    fullName: string
+    status: string
+}
+
+
 const initialState = {
     posts: [
         {
@@ -25,12 +39,13 @@ const initialState = {
             message: "Temporibus quos culpa molestiae quasi perspiciatis voluptatum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla illum quam a magnam alias perferendis laudantium, beatae cum, debitis necessitatibus reiciendis, sint dignissimos at iusto voluptate perspiciatis nam temporibus sunt.",
             likesCount: randomInteger(5, 100)
         },
-    ],
-    profile: null,
+    ] as Array<PostType>,
+    profile: null as ProfileType | null,
     status: '',
     isLoading: false,
 }
 
+export type initialStateType = typeof initialState;
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -82,7 +97,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-function randomInteger(min, max) {
+function randomInteger(min: number, max: number): number {
     let rand = min + Math.random() * (max + 1 - min);
     return Math.floor(rand);
 }
