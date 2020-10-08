@@ -19,6 +19,12 @@ type ProfileType = {
     userId: number
     fullName: string
     status: string
+    photos: PhotosType
+}
+
+type PhotosType = {
+    small: string | null
+    large: string | null
 }
 
 
@@ -47,7 +53,7 @@ const initialState = {
 
 export type initialStateType = typeof initialState;
 
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case ADD_POST:
             return {
@@ -90,7 +96,7 @@ const profileReducer = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS:
             return {
                 ...state,
-                profile: {...state.profile, photos: action.photos}
+                profile: {...state.profile, photos: action.photos} as ProfileType
             };
         default:
             return state
@@ -102,39 +108,63 @@ function randomInteger(min: number, max: number): number {
     return Math.floor(rand);
 }
 
-export const addPostCreator = (newPostText) => ({type: ADD_POST, newPostText})
-export const setProfile = (profile) => ({type: SET_PROFILE, profile})
+type addPostCreatorType = {
+    type: typeof ADD_POST
+    newPostText: string
+}
+export const addPostCreator = (newPostText: string): addPostCreatorType => ({type: ADD_POST, newPostText})
+
+type setProfileType = {
+    type: typeof SET_PROFILE
+    profile: ProfileType
+}
+export const setProfile = (profile: ProfileType): setProfileType => ({type: SET_PROFILE, profile})
 export const loadProfile = () => ({type: LOADING_PROFILE})
-export const setStatus = (status) => ({type: SET_STATUS, status})
-export const deletePost = (postId) => ({type: DELETE_POST, postId})
-export const savePhotoCreator = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
+
+type setStatusType = {
+    type: typeof SET_STATUS
+    status: string
+}
+export const setStatus = (status: string): setStatusType => ({type: SET_STATUS, status})
+
+type deletePostType = {
+    type: typeof DELETE_POST
+    postId: number
+}
+export const deletePost = (postId: number): deletePostType => ({type: DELETE_POST, postId})
+
+type savePhotoCreatorType = {
+    type: typeof SAVE_PHOTO_SUCCESS
+    photos: PhotosType
+}
+export const savePhotoCreator = (photos: PhotosType): savePhotoCreatorType => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 
-export const addPost = (newPostText) => {
-    return (dispatch) => dispatch(addPostCreator(newPostText));
+export const addPost = (newPostText: string) => {
+    return (dispatch: any) => dispatch(addPostCreator(newPostText));
 }
 
-export const deletePostThunk = (postId) => {
-    return (dispatch) => dispatch(deletePost(postId));
+export const deletePostThunk = (postId: number) => {
+    return (dispatch: any) => dispatch(deletePost(postId));
 }
 
-export const getProfile = (userId) => async (dispatch) => {
+export const getProfile = (userId: number) => async (dispatch: any) => {
     dispatch(loadProfile());
     let response = await profileAPI.requestProfile(userId);
     dispatch(setProfile(response.data));
 }
 
-export const getStatus = (userId) => async (dispatch) => {
+export const getStatus = (userId: number) => async (dispatch: any) => {
     dispatch(loadProfile());
     let response = await profileAPI.requestStatus(userId);
     dispatch(setStatus(response.data));
 }
 
-export const updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status: string) => async () => {
     await profileAPI.updateStatus(status);
 }
 
-export const savePhoto = (file) => async (dispatch) => {
+export const savePhoto = (file: any) => async (dispatch: any) => {
     let response = await profileAPI.updatePhoto(file);
     if (response.data.resultCode !== 0) return;
     dispatch(savePhotoCreator(response.data.photos));
