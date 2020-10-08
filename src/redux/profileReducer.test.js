@@ -1,4 +1,4 @@
-import profileReducer, {addPostCreator, deletePost} from "./profileReducer";
+import profileReducer, {addPostCreator, deletePostCreator} from "./profileReducer";
 import React from "react";
 
 
@@ -39,7 +39,7 @@ it('message of new posts should be correct', () => {
 
 it('after deleting length of message should be decrement', () => {
     // 1. test data
-    let action = deletePost(1);
+    let action = deletePostCreator(1);
     // 2. action
     let newState = profileReducer(state, action);
     // 3. expectation

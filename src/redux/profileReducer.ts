@@ -60,7 +60,7 @@ const profileReducer = (state = initialState, action: any): initialStateType => 
                 ...state,
                 posts: [
                     {
-                        id: Number(`${state.posts[0].id}`) + 1,
+                        id: state.posts[0] ? state.posts[0].id + 1 : 1,
                         message: action.newPostText,
                         likesCount: randomInteger(5, 100),
                     },
@@ -131,7 +131,7 @@ type deletePostType = {
     type: typeof DELETE_POST
     postId: number
 }
-export const deletePost = (postId: number): deletePostType => ({type: DELETE_POST, postId})
+export const deletePostCreator = (postId: number): deletePostType => ({type: DELETE_POST, postId})
 
 type savePhotoCreatorType = {
     type: typeof SAVE_PHOTO_SUCCESS
@@ -144,8 +144,8 @@ export const addPost = (newPostText: string) => {
     return (dispatch: any) => dispatch(addPostCreator(newPostText));
 }
 
-export const deletePostThunk = (postId: number) => {
-    return (dispatch: any) => dispatch(deletePost(postId));
+export const deletePost = (postId: number) => {
+    return (dispatch: any) => dispatch(deletePostCreator(postId));
 }
 
 export const getProfile = (userId: number) => async (dispatch: any) => {
