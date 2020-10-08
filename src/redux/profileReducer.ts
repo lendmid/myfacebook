@@ -1,4 +1,6 @@
 import {profileAPI} from "../api/api";
+import {PhotosType, PostType, ProfileType} from "../types/types";
+
 
 const ADD_POST = 'myFacebook/profile/ADD-POST';
 const SET_PROFILE = 'myFacebook/profile/SET-PROFILE';
@@ -7,25 +9,6 @@ const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
 const DELETE_POST = 'myFacebook/profile/DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
 const LOADING_PROFILE = 'myFacebook/profile/LOADING_PROFILE';
-
-
-type PostType = {
-    id: number
-    message: string
-    likesCount: number
-}
-
-type ProfileType = {
-    userId: number
-    fullName: string
-    status: string
-    photos: PhotosType
-}
-
-type PhotosType = {
-    small: string | null
-    large: string | null
-}
 
 
 const initialState = {
@@ -119,7 +102,10 @@ type setProfileType = {
     profile: ProfileType
 }
 export const setProfile = (profile: ProfileType): setProfileType => ({type: SET_PROFILE, profile})
-export const loadProfile = () => ({type: LOADING_PROFILE})
+
+
+type loadProfileType = { type: typeof LOADING_PROFILE }
+export const loadProfile = (): loadProfileType => ({type: LOADING_PROFILE})
 
 type setStatusType = {
     type: typeof SET_STATUS

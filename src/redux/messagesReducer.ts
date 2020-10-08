@@ -105,8 +105,7 @@ type sendMessageCreatorType = {
 }
 
 export const sendMessageCreator = (newMessageText: string): sendMessageCreatorType => ({
-    type: SEND_MESSAGE,
-    newMessageText
+    type: SEND_MESSAGE, newMessageText
 })
 
 export const sendMessage = (newPostText: string) => {

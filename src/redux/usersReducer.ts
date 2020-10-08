@@ -1,19 +1,23 @@
 import {usersAPI} from "../api/api";
+import {UserType} from "../types/types";
 
 const SET_USERS = 'myFacebook/users/SET-USERS';
 const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'myFacebook/users/SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'myFacebook/users/TOGGLE_IS_FETCHING';
 
+
 const initialState = {
-    users: [],
+    users: [] as Array<UserType>,
     pageSize: 100,
     totalUsersCount: 0,
-    currentPage: 7,
+    currentPage: 10,
     isFetching: false,
 }
 
-const usersReducer = (state = initialState, action) => {
+export type initialStateType = typeof initialState;
+
+const usersReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case SET_USERS:
             return {...state, users: [...state.users, ...action.users]}
@@ -28,15 +32,37 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 // методы взыимодействия со state внутри store
-export const setUsers = (users) => ({type: SET_USERS, users});
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
-export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+type setUsersType = {
+    type: typeof SET_USERS
+    users: Array<UserType>
+}
+export const setUsers = (users: Array<UserType>): setUsersType => ({type: SET_USERS, users});
+
+type setCurrentPageType = {
+    type: typeof SET_CURRENT_PAGE
+    currentPage: number
+}
+export const setCurrentPage = (currentPage: number): setCurrentPageType => ({type: SET_CURRENT_PAGE, currentPage});
+
+type setUsersTotalCountType = {
+    type: typeof SET_TOTAL_USERS_COUNT
+    totalUsersCount: number
+}
+export const setUsersTotalCount = (totalUsersCount: number): setUsersTotalCountType => ({
+    type: SET_TOTAL_USERS_COUNT,
+    totalUsersCount
+});
+
+type toggleIsFetchingType = {
+    type: typeof TOGGLE_IS_FETCHING
+    isFetching: boolean
+}
+export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 
 //requestUsersThunkCreator
 export const requestUsers = (page = 1, pageSize = 100) => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         dispatch(setCurrentPage(page));
         dispatch(toggleIsFetching(true));
         let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)

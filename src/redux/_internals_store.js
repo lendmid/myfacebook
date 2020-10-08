@@ -1,7 +1,9 @@
-import profileReducer from './profileReducer'
-import messagesReducer from './messagesReducer'
+// in is store from Redux library
 
-let _exapmle_store = {
+// import profileReducer from './profileReducer'
+// import messagesReducer from './messagesReducer'
+
+let _internals_store = {
     _state: {
         profilePage: {
             posts: [{
@@ -42,33 +44,6 @@ let _exapmle_store = {
                     ],
                     date: "1 jun",
                 },
-                {
-                    id: 3,
-                    name: "Stephanie Lillian Coleman",
-                    img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-24.png",
-                    message: [
-                        "Recusandae, ea maiores? Nostrum perspiciatis obcaecati id autem dicta, debitis expedita accusamus deserunt quos fugiat ipsam eveniet!",
-                    ],
-                    date: "18 may",
-                },
-                {
-                    id: 4,
-                    name: "Kimberly Stephanie Reed",
-                    img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-20.png",
-                    message: [
-                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis pariatur delectus ullam?",
-                    ],
-                    date: "12 apr",
-                },
-                {
-                    id: 5,
-                    name: "Ethan Ian Clark",
-                    img: "https://instamir.info/wp-content/uploads/2019/04/instami-avatarka-v-instagram-13.png",
-                    message: [
-                        "At, voluptatibus consequatur sit asperiores cupiditate libero optio ipsam possimus commodi nostrum quos maiores illo vitae nisi quasi?",
-                    ],
-                    date: "15 mar",
-                },
             ],
             newMessageText: '',
             historyMessages: [
@@ -78,12 +53,6 @@ let _exapmle_store = {
                 "Autem officiis aut labore dolorum voluptatem enim dicta exercitationem veniam.",
                 "Quam quo quae beatae facilis doloribus. Temporibus, qui!",
                 "Saepe animi aliquam accusamus reiciendis, assumenda eum sunt.",
-                "Veritatis quo explicabo ad voluptates laborum, quos accusantium facere tempore quibusdam velit qui porro incidunt alias aliquid",
-                "Cum reiciendis perferendis eum vel odio adipisci eos ex. Doloribus culpa incidunt esse necessitatibus tenetur corrupti neque ut, beatae ab.",
-                "Minima expedita eaque repellendus dicta quasi excepturi hic deleniti blanditiis iure, odio repellat iusto ducimus voluptatibus porro asperiores.",
-                "Suscipit, accusamus quo. Nemo velit rerum excepturi modi omnis. Cupiditate aperiam debitis mollitia explicabo tempore!",
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nemo, voluptatum voluptates pariatur, voluptatibus sit",
-                "Ab molestiae dolore accusamus quidem quia quos facilis corrupti obcaecati deserunt autem eligendi repudiandae! Rerum!",
             ],
         }
     },
@@ -97,11 +66,11 @@ let _exapmle_store = {
         console.log('State change')
     },
     dispatch(action) {
-        this._state.profilePage  = profileReducer(this._state.profilePage, action);
-        this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
+        // this._state.profilePage  = profileReducer(this._state.profilePage, action);
+        // this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
 
         this._callSubscriber(this._state);
     }
 }
 
-export default _exapmle_store;
+// export default _internals _store;
