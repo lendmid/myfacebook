@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {requestUsers} from "../../redux/usersReducer";
-import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
+import {getCurrentPage, getPageSize, getTotalUsersCount, getUsersSelector} from "../../redux/usersSelectors";
 import {getProfile, getStatus} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
@@ -40,7 +40,7 @@ class UsersContainer extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    users: getUsers(state).map(user => <User key={user.id} userId={user.id} name={user.name} status={user.status} photo={user.photos.large} />),
+    users: getUsersSelector(state).map(user => <User key={user.id} userId={user.id} name={user.name} status={user.status} photo={user.photos.large} />),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),

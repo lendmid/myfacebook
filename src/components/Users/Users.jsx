@@ -7,7 +7,7 @@ import Profile from "../Profile/Profile";
 
 
 const Users = React.memo(({onPageChanged, currentPage, users, isLoading, ...props}) => {
-    
+
     let onScrollHandler = (e) => {
         let uL = document.getElementById('usersList');
         if ((uL.clientHeight + uL.scrollTop) === uL.scrollHeight) onPageChanged(currentPage + 1);
@@ -17,7 +17,7 @@ const Users = React.memo(({onPageChanged, currentPage, users, isLoading, ...prop
         <div className={s.users}>
             <div className={s.users_list_wrapper}>
                 <div className={s.users_header}>
-                    <h2>All users in myFacebook</h2>
+                    <h2>Total count users in myFacebook: {props.totalUsersCount}</h2>
                 </div>
                 <ul className={s.users_list} id="usersList" onScroll={onScrollHandler}>
                     {users}
