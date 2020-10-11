@@ -31,7 +31,7 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
             return state
     }
 }
-// методы взыимодействия со state внутри store
+
 type setUsersType = {
     type: typeof SET_USERS
     users: Array<UserType>
