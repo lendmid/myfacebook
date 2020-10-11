@@ -3,17 +3,21 @@ export type PostType = {
     message: string
     likesCount: number
 }
+
 export type ProfileType = {
     //will be more properties
     userId: number
     fullName: string
     status: string
     photos: PhotosType
+    isOwner: any
 }
+
 export type PhotosType = {
     small: string | null
     large: string | null
 }
+
 export type UserType = {
     id: number
     name: string

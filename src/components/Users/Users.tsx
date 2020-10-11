@@ -1,23 +1,35 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './Users.module.css';
 import preview_profile from "../../assets/images/preview_profile.svg"
 import User from "./User/User";
 import PreloaderUsers from "../common/PreloaderUsers/Preloader";
 import Profile from "../Profile/Profile";
+import {ProfileType, UserType} from "../../types/types";
 
 
-const Users = React.memo(({onPageChanged, currentPage, users, isLoading, ...props}) => {
+type PropsType = {
+    onPageChanged: (pageNumber: number) => void
+    currentPage: number
+    users: Array<UserType>
+    isLoading: boolean
+    totalUsersCount: number
+    profile: ProfileType
+    isOwner: any
 
-    let onScrollHandler = (e) => {
-        let uL = document.getElementById('usersList');
-        if ((uL.clientHeight + uL.scrollTop) === uL.scrollHeight) onPageChanged(currentPage + 1);
+}
+
+const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isLoading, totalUsersCount, ...props}) => {
+
+    let onScrollHandler = (e: any) => {
+        let usersList: any = document.getElementById('usersList');
+        if ((usersList.clientHeight + usersList.scrollTop) === usersList.scrollHeight) onPageChanged(currentPage + 1);
     }
     
     return (
         <div className={s.users}>
             <div className={s.users_list_wrapper}>
                 <div className={s.users_header}>
-                    <h2>Total count users in myFacebook: {props.totalUsersCount}</h2>
+                    <h2>Total count users in myFacebook: {totalUsersCount}</h2>
                 </div>
                 <ul className={s.users_list} id="usersList" onScroll={onScrollHandler}>
                     {users}
