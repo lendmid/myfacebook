@@ -14,8 +14,6 @@ type PropsType = {
     isLoading: boolean
     totalUsersCount: number
     profile: ProfileType
-    isOwner: any
-
 }
 
 const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isLoading, totalUsersCount, ...props}) => {
@@ -39,7 +37,7 @@ const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isL
             </div>
             <div className={s.profile_preview}>
                 {isLoading && <PreloaderUsers />}
-                {props.profile && !isLoading && <Profile {...props} isOwner={false} />}
+                {props.profile && !isLoading && <Profile {...props} />}
                 {!props.profile && !isLoading &&
                 <>
                         <div className={s.not_picked_profile}>

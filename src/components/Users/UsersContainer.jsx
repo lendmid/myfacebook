@@ -35,7 +35,8 @@ class UsersContainer extends React.PureComponent {
     render() {
         return <Users {...this.props}
                       profile={!this.props.match.params.userId ? null : this.props.profile}
-                      onPageChanged={this.onPageChanged} />
+                      onPageChanged={this.onPageChanged}
+                      isOwner={false} />
     }
 }
 

@@ -10,7 +10,6 @@ export type ProfileType = {
     fullName: string
     status: string
     photos: PhotosType
-    isOwner: any
 }
 
 export type PhotosType = {
