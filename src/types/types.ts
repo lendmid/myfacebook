@@ -10,7 +10,7 @@ export type ProfileType = {
     fullName: string
     status: string
     photos: PhotosType
-}
+} | null
 
 export type PhotosType = {
     small: string | null

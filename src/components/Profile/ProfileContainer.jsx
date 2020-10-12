@@ -48,7 +48,7 @@ export default compose(
 )(ProfileContainer)
 
 
-// tried writing on Hook; will rewrite later; showed warning:
+// tried writing on Hook; will refactoring later; showed warning:
 // "React Hook useEffect has a missing dependency: 'props'. Either include it or remove the dependency array.
 // However, 'props' will change when *any* prop changes, so the preferred fix is to destructure the 'props' object outside of the useEffect call and refer to those specific props inside useEffect  react-hooks/exhaustive-deps"
 
