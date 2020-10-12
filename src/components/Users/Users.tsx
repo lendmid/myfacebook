@@ -10,7 +10,7 @@ import {ProfileType, UserType} from "../../types/types";
 type PropsType = {
     onPageChanged: (pageNumber: number) => void
     currentPage: number
-    users: Array<UserType>
+    users: UserType[]
     isLoading: boolean
     totalUsersCount: number
     profile: ProfileType

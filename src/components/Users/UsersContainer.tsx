@@ -3,29 +3,44 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {requestUsers} from "../../redux/usersReducer";
-import {getCurrentPage, getPageSize, getTotalUsersCount, getUsersSelector} from "../../redux/usersSelectors";
+import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
 import {getProfile, getStatus} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
 import PostConrainer from "../Profile/Post/PostContainer";
-import {ProfileType, UserType} from "../../types/types";
+import {PostType, ProfileType, UserType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-store";
 
+interface UsersType {
+    userId: number
+    name: string
+    status: string
+}
 
-type PropsType = {
-    match: any
+type MapStatePropsType = {
+    users: UserType[] | any
+    posts: PostType[] | any
+    profile: ProfileType
+    status: string
+
     currentPage: number
     pageSize: number
-    users: Array<UserType>
-    profile: ProfileType
+    isLoading: boolean
+    totalUsersCount: number
+}
 
+type MapDispatchPropsType = {
     getProfile(userId: number | string): any | void
     getStatus(userId: number | string): void
     requestUsers(currentPage: number, pageSize: number): void
-
-    // isOwner: boolean
-    // userId: number
 }
+
+type OwnPropsType = {
+    match: any
+
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
 
 class UsersContainer extends React.PureComponent<PropsType> {
     refreshProfile = () => {
@@ -53,13 +68,14 @@ class UsersContainer extends React.PureComponent<PropsType> {
         return <Users {...this.props}
                       profile={!this.props.match.params.userId ? null : this.props.profile}
                       onPageChanged={this.onPageChanged}
-                      isOwner={false} />
+            // isOwner={false} />
+        />
     }
 }
 
-const mapStateToProps = (state: AppStateType) => ({
-    users: getUsersSelector(state).map((user: UserType) => <User key={user.id} userId={user.id} name={user.name}
-                                                                 status={user.status} photo={user.photos.large} />),
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+    users: getUsers(state).map((user) => <User key={user.id} userId={user.id} name={user.name}
+                                               status={user.status} photo={user.photos.large} />),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),

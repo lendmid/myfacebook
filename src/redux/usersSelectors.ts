@@ -3,11 +3,11 @@ import {AppStateType} from "./redux-store";
 import {UserType} from "../types/types";
 
 
-const getUsers = (state: AppStateType) => {
+const getUsersSelector = (state: AppStateType) => {
     return state.usersPage.users;
 }
 
-export const getUsersSelector = createSelector(getUsers, (users: Array<UserType>) => {
+export const getUsers = createSelector(getUsersSelector, (users: UserType[]) => {
     return users.filter(user => !!user.status && !!user.photos.large);
 })
 

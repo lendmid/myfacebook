@@ -8,7 +8,7 @@ const TOGGLE_IS_FETCHING = 'myFacebook/users/TOGGLE_IS_FETCHING';
 
 
 const initialState = {
-    users: [] as Array<UserType>,
+    users: [] as UserType[],
     pageSize: 100,
     totalUsersCount: 0,
     currentPage: 10,
@@ -34,9 +34,9 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
 
 type setUsersType = {
     type: typeof SET_USERS
-    users: Array<UserType>
+    users: UserType[]
 }
-export const setUsers = (users: Array<UserType>): setUsersType => ({type: SET_USERS, users});
+export const setUsers = (users: UserType[]): setUsersType => ({type: SET_USERS, users});
 
 type setCurrentPageType = {
     type: typeof SET_CURRENT_PAGE
