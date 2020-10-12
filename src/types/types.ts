@@ -10,6 +10,7 @@ export type ProfileType = {
     fullName: string
     status: string
     photos: PhotosType
+    isOwner: boolean
 } | null
 
 export type PhotosType = {

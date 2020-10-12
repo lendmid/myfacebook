@@ -19,11 +19,12 @@ type PropsType = {
     users: Array<UserType>
     profile: ProfileType
 
-    getProfile: (userId: number | string) => any
-    getStatus: (userId: number | string) => void
-    requestUsers: (currentPage: number, pageSize: number) => void
+    getProfile(userId: number | string): any | void
+    getStatus(userId: number | string): void
+    requestUsers(currentPage: number, pageSize: number): void
 
-    isOwner: any
+    // isOwner: boolean
+    // userId: number
 }
 
 class UsersContainer extends React.PureComponent<PropsType> {
@@ -57,8 +58,8 @@ class UsersContainer extends React.PureComponent<PropsType> {
 }
 
 const mapStateToProps = (state: AppStateType) => ({
-    users: getUsersSelector(state).map((user: any) => <User key={user.id} userId={user.id} name={user.name}
-                                                            status={user.status} photo={user.photos.large} />),
+    users: getUsersSelector(state).map((user: UserType) => <User key={user.id} userId={user.id} name={user.name}
+                                                                 status={user.status} photo={user.photos.large} />),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
