@@ -8,41 +8,9 @@ import {getProfile, getStatus} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
 import PostConrainer from "../Profile/Post/PostContainer";
-import {PostType, ProfileType, UserType} from "../../types/types";
-import {AppStateType} from "../../redux/redux-store";
 
-interface UsersType {
-    userId: number
-    name: string
-    status: string
-}
 
-type MapStatePropsType = {
-    users: UserType[] | any
-    posts: PostType[] | any
-    profile: ProfileType
-    status: string
-
-    currentPage: number
-    pageSize: number
-    isLoading: boolean
-    totalUsersCount: number
-}
-
-type MapDispatchPropsType = {
-    getProfile(userId: number | string): any | void
-    getStatus(userId: number | string): void
-    requestUsers(currentPage: number, pageSize: number): void
-}
-
-type OwnPropsType = {
-    match: any
-
-}
-
-type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
-
-class UsersContainer extends React.PureComponent<PropsType> {
+class UsersContainer extends React.PureComponent {
     refreshProfile = () => {
         if (!this.props.match.params.userId) return;
         let userId = Number(this.props.match.params.userId);
@@ -55,12 +23,12 @@ class UsersContainer extends React.PureComponent<PropsType> {
         if (!this.props.users.length) this.props.requestUsers(this.props.currentPage, this.props.pageSize)
         this.refreshProfile();
     }
-
-    componentDidUpdate = (prevProps: any) => {
+    
+    componentDidUpdate = (prevProps) => {
         if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
     };
-
-    onPageChanged = (pageNumber: number) => {
+    
+    onPageChanged = (pageNumber) => {
         this.props.requestUsers(pageNumber, this.props.pageSize);
     }
     
@@ -68,12 +36,12 @@ class UsersContainer extends React.PureComponent<PropsType> {
         return <Users {...this.props}
                       profile={!this.props.match.params.userId ? null : this.props.profile}
                       onPageChanged={this.onPageChanged}
-            // isOwner={false} />
+            // isOwner={false}
         />
     }
 }
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+const mapStateToProps = (state) => ({
     users: getUsers(state).map((user) => <User key={user.id} userId={user.id} name={user.name}
                                                status={user.status} photo={user.photos.large} />),
     pageSize: getPageSize(state),
