@@ -4,7 +4,7 @@ import {Redirect} from "react-router-dom";
 import s from './LogIn.module.css';
 import {required} from "../../utils/validators/validators";
 import {InputLogIn} from "../common/FormValidator/FormValidator";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
 

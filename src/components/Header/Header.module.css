@@ -72,3 +72,13 @@
     grid-row: 1 / 1;
     grid-column: 2 / 2;
 }
+
+.logo_link {
+    justify-self: baseline;
+    display: grid;
+    margin-left: 15px;
+}
+
+.logo {
+    height: 40px;
+}
