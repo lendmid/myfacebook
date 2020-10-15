@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 100fr;
     align-items: end;
+    color: #000000;
 }
 
 .avatar {
