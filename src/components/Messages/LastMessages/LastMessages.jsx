@@ -8,7 +8,7 @@ const LastMessages = React.memo(({lastMessages}) => {
             <div className={s.last_messages_header}>
                 <h1>Чаты</h1>
             </div>
-            <ul className={s.last_messages_list}>
+            <ul className={s.last_messages_list} onClick={(event) => {if (event.target.tagName !== "UL") alert("History with this user will be available soon")}}>
                 {lastMessages}
             </ul>
         </div>

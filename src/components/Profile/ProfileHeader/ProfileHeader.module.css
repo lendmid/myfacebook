@@ -8,6 +8,7 @@
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #E8EAED;
     background: white linear-gradient(to top, transparent 50%, #C6CCCA 100%);
+    color: black;
 }
 
 .photo_wrapper {

@@ -27,7 +27,8 @@ const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isL
         <div className={s.users}>
             <div className={s.users_list_wrapper}>
                 <div className={s.users_header}>
-                    <h2>Total count users in myFacebook: {totalUsersCount}</h2>
+                    <span className={s.total_users_count_wrapper}>Total count users in myFacebook: <span
+                        className={s.total_users_count}>{totalUsersCount}</span></span>
                 </div>
                 <ul className={s.users_list} id="usersList" onScroll={onScrollHandler}>
                     {users}
