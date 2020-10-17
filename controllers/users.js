@@ -1,4 +1,4 @@
-let Users = require('../models/users');
+let Users = require('../models/User');
 
 exports.all = (req, res) => {
     Users.all((err, docs) => {

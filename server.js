@@ -8,7 +8,10 @@ const usersController = require('./controllers/users');
 const mongoose = require('mongoose');
 const config = require('config');
 
-const PORT = config.get('port') || 5000
+
+app.use('/api/auth', require('./routes/auth.routes'))
+
+const PORT = config.get('port') || 3012;
 
 async function start() {
     try {
