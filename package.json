@@ -3,18 +3,19 @@
   "version": "1.0.0",
   "description": "Практика применения React, Redux и сопутствующих npm пакетов",
   "main": "index.js",
+  "author": "lendmid",
+  "license": "ISC",
+  "homepage": "https://github.com/lendmid/facebook#readme",
   "scripts": {
     "client": "npm run start --prefix client",
-    "server": "npm run server --prefix server"
+    "server": "npm run server --prefix server",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\" "
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lendmid/facebook.git"
   },
-  "author": "lendmid",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lendmid/facebook/issues"
-  },
-  "homepage": "https://github.com/lendmid/facebook#readme"
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
 }
