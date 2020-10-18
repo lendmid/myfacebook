@@ -1,0 +1,5 @@
+{
+  "port": 5002,
+  "jwtSecret": "fwZzdAgWQFjxqHJYre5mGh9k",
+  "mongoUri": "mongodb+srv://lendmid:JZaDz1tCMC8l7z8X@clustermyfacebook.zjsk1.azure.mongodb.net/myfacebook?retryWrites=true&w=majority"
+}

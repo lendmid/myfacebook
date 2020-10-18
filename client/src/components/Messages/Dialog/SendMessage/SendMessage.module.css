@@ -1,0 +1,22 @@
+.send_wrapper {
+    grid-row: 3 / 3;
+    padding: 8px 20px;
+    display: grid;
+    grid-template-columns: 1fr 36px;
+    grid-gap: 15px;
+    place-items: center;
+}
+
+.send {
+    width: 30px;
+    height: 30px;
+    background: no-repeat center/100% url(https://image.flaticon.com/icons/svg/2948/2948197.svg);
+}
+
+.input {
+    background-color: #F2F2F2;
+    border-radius: 36px;
+    padding: 0 16px;
+    height: 36px;
+    width: 100%;
+}

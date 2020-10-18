@@ -1,0 +1,113 @@
+.background {
+    z-index: 6;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    place-items: center;
+    background-color: #f3f4f3ab;
+}
+
+.wrapper_popup {
+    z-index: 7;
+    position: relative;
+    border-radius: 8px;
+    width: 600px;
+    height: 400px;
+    background-color: #fff;
+    display: grid;
+    grid-template-rows: 60px 1fr 192px 1fr 60px 1fr;
+    place-items: center;
+}
+
+.header {
+    justify-self: stretch;
+    border-bottom: 1px solid #EAEAEA;
+    position: relative;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.close_icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ededed;
+    border: 1px solid #999;
+    font-size: 15px;
+    position: absolute;
+    right: 20px;
+}
+
+.closer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.input {
+    display: none
+}
+
+.input_wrapper {
+    grid-row: 3 / 3;
+    display: grid;
+    grid-template-rows: 60px 90px;
+    grid-gap: 10px;
+    
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid #EAEAEA;
+    min-width: 300px;
+    font-size: 18px;
+}
+
+.label_input_file {
+    width: 100%;
+    max-width: 290px;
+    height: 60px;
+    border-radius: 8px;
+    font-weight: 700;
+    
+    display: grid;
+    place-items: center;
+    grid-template: 1fr / 60px 1fr;
+    cursor: pointer;
+    border: 1px solid #b4b4b4;
+    background-color: #F4F5F6;
+}
+
+.input_icon {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+}
+
+.properties {
+    display: grid;
+    font-size: 16px;
+}
+
+.button {
+    grid-row: 5 /5;
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid #b4b4b4;
+    background-color: #a4a6a87c;
+}
+
+.pick_file {
+    justify-self: start;
+}

@@ -1,0 +1,163 @@
+.wrapper {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    
+    display: grid;
+    grid-template: 1fr 210px 40px 390px 1fr 80px / 2fr 400px 1fr 400px 2fr;
+    place-items: center;
+}
+
+.login {
+    grid-row: 2 / 2;
+    grid-column: 4 / 4;
+    
+    display: grid;
+    grid-gap: 10px;
+    
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 50px 2px rgba(238, 143, 102, 0.3);
+}
+
+.wraper_description {
+    grid-row: 2 / 5;
+    grid-column: 2 / 2;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.logo {
+    width: 400px;
+    height: 70px;
+}
+
+.about_title {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 40px;
+}
+
+.about_text {
+    font-size: 18px;
+}
+
+.links {
+    display: grid;
+    align-self: end;
+    grid-template-rows: 40px 100px;
+    width: 250px;
+}
+
+.made_by {
+    grid-column: 1 / 3;
+    font-size: 18px;
+}
+
+.made_by::after {
+    content: "";
+    display: block;
+    background-color: #EE8F66;
+    height: 2px;
+    width: 150px;
+    margin-left: 74px;
+}
+
+.register_link {
+    grid-row: 4 / 4;
+    grid-column: 4 / 4;
+    cursor: pointer;
+}
+
+.register {
+    width: 100%;
+    height: 100%;
+    
+    display: grid;
+    grid-gap: 10px;
+    
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.footer {
+    grid-row: 6 / 6;
+    grid-column: 1 / -1;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.myfacebook {
+    font-weight: 900;
+    font-size: 14px;
+}
+
+
+.error {
+    border: 1px red solid;
+}
+
+.error_message {
+    color: red;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 6px;
+    width: 360px;
+    height: 50px;
+    
+    border: 1px solid #dddfe2;
+    background-color: white;
+    
+    font-size: 13px;
+}
+
+.temp_input {
+    padding: 10px;
+    border-radius: 6px;
+    width: 360px;
+    height: 50px;
+    
+    border: 1px solid #dddfe2;
+    background-color: white;
+    
+    font-size: 13px;
+    
+    display: grid;
+    align-items: center;
+}
+
+.button {
+    place-self: center;
+    width: 360px;
+    height: 50px;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #EE8F66;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.button:hover {
+    box-shadow: 0 0 20px 2px rgba(238, 143, 102, 0.3);
+}
+
+.button_register {
+    background-color: #DDDFE2;
+}
+
+.button_register:hover {
+    background-color: #DDDFE2;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio:hover {
+    box-shadow: 0 0 50px 2px rgba(238, 143, 102, 0.3);
+    border-radius: 50%;
+}

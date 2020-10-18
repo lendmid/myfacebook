@@ -1,0 +1,140 @@
+.profile_header {
+    grid-column: 1 / -1;
+    grid-row: 1 / 1;
+    display: grid;
+    justify-items: center;
+    grid-template: 350px 1fr / 1fr 940px 1fr;
+    
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #E8EAED;
+    background: white linear-gradient(to top, transparent 50%, #C6CCCA 100%);
+    color: black;
+}
+
+.photo_wrapper {
+    width: 100%;
+    grid-column: 2 / 2;
+    grid-row: 1 / 1;
+    position: relative;
+    display: grid;
+    justify-items: center;
+}
+
+.background_photo {
+    position: absolute;
+    opacity: 0.5;
+    width: 100%;
+    grid-column: 2 / 2;
+}
+
+.background_photo img {
+    height: 350px;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+}
+
+.gradient {
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    bottom: 4px;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.second_gradient {
+    background-size: cover;
+    background: linear-gradient(to top, black 0%, transparent 100%) center;
+    width: 100%;
+    height: 100%;
+}
+
+.photo {
+    position: absolute;
+    width: 176px;
+    height: 176px;
+    bottom: -15px;
+    
+    border-radius: 50%;
+}
+
+.user_photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+
+.user_photo:active {
+    border: 5px solid #fff;
+}
+
+.user_photo:hover {
+    filter: brightness(70%);
+}
+
+.camera_icon {
+    background-color: #E4E6EB;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 73%;
+    right: 6%;
+}
+
+.short_biography {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    align-self: center;
+    display: grid;
+    grid-template: 40px 80px / 1fr 95px;
+    place-items: center;
+}
+
+.fullName {
+    grid-column: 1 / -1;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+/*.popup_show {*/
+/*    display: block;*/
+/*    position: fixed;*/
+/*    z-index: 6;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    bottom: 0;*/
+/*    right: 0;*/
+/*    background: rgba(0,0,0,0.9);*/
+/*    cursor: pointer;*/
+/*}*/
+.full_img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3);
+}
+
+/*.popup {*/
+/*    position: absolute;*/
+/*    top: 20px;*/
+/*    right: 20px;*/
+/*    font-size: 30px;*/
+/*    text-decoration: none;*/
+/*    color: red;*/
+/*}*/

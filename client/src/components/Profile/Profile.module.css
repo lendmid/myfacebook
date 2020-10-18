@@ -1,0 +1,32 @@
+.profile {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template: 510px 1fr / 1fr 940px 1fr;
+    overflow: auto;
+    color: transparent;
+    transition: color 0.4s ease-in-out;
+}
+
+/*changed color for animation scrollbar. For child this block color - black*/
+.profile:hover {
+    color: rgb(153, 153, 153);
+}
+
+.profile::-webkit-scrollbar {
+    width: 7px;
+}
+
+.profile::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 10px;
+}
+
+.profile_information {
+    margin-top: 15px;
+    grid-column: 2 / 2;
+    display: grid;
+    align-self: start;
+    justify-self: center;
+    grid-template-columns: 360px 15px 500px;
+    color: black;
+}
