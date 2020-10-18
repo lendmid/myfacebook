@@ -67,7 +67,7 @@ const mapStateToProps = (state) => ({
 const AppContainer = connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getAuthUserData}
 )(App)
 
-// //for gitHub
+// //for build on gitHub
 // const MyFacebook = () => {
 //     return (
 //         <HashRouter>
