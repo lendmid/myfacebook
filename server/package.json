@@ -1,6 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "main": "server.js",
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "body-parser": "^1.19.0",
     "mongodb": "^3.6.1",
