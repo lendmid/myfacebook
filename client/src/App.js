@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header/Header';
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import LogInConrainer from "./components/LogIn/LogInContainer";
+import LogInContainer from "./components/LogIn/LogInContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import UsersContainer from "./components/Users/UsersContainer";
 import Messages from './components/Messages/Messages';
@@ -22,10 +22,10 @@ class App extends React.PureComponent {
         this.props.getAuthUserData();
     }
     
-    rendereWithNotAuth() {
+    renderWithNotAuth() {
         return (
             <Switch>
-                <Route exact path='/login' component={LogInConrainer} />
+                <Route exact path='/login' component={LogInContainer} />
                 <Redirect to={'/login'} />
             </Switch>
         )
@@ -36,7 +36,7 @@ class App extends React.PureComponent {
             <>
             <Header />
             <Switch>
-                <Route exact path='/login' component={LogInConrainer} />
+                <Route exact path='/login' component={LogInContainer} />
                 <Route exact path="/profile/:userId" component={ProfileContainer} />
                 <Route exact path="/messages/:userId" component={Messages} />
                 <Route exact path='/users/:userId?' component={UsersContainer} />
@@ -47,11 +47,11 @@ class App extends React.PureComponent {
     }
     
     render() {
-        if (!this.props.initialized) return <Preloader />
+        if (!this.props.initialized) return <Preloader />;
         
         return (
             <div className="app-wrapper">
-                {this.props.isAuth ? this.renderWithAuth(this.props.authorizedUserId) : this.rendereWithNotAuth()}
+                {this.props.isAuth ? this.renderWithAuth(this.props.authorizedUserId) : this.renderWithNotAuth()}
             </div>
         )
     }
@@ -62,10 +62,10 @@ const mapStateToProps = (state) => ({
     authorizedUserId: state.auth.authorizedUserId,
     initialized: state.app.initialized,
     totalUsersCount: getTotalUsersCount(state),
-})
+});
 
 const AppContainer = connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getAuthUserData}
-)(App)
+)(App);
 
 // //for build on gitHub
 // const MyFacebook = () => {
@@ -87,6 +87,6 @@ const MyFacebook = () => {
             </Provider>
         </BrowserRouter>
     )
-}
+};
 
 export default MyFacebook;

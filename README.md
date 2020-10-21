@@ -38,20 +38,20 @@
 * Сделать адаптивную верстку для всего проекта
 
 ### `Технологии:`
+- JavaScript
+- TypeScript
 - Html 5
 - CSS 3 (grid layout) + CSS анимация (transition, animation)
-- Css modules
+- Styled-components
 - React
+- Redux
 - React HOC
 - React Hook
-- Redux
 - React-redux
 - React-router-dom (роутинг)
 - Redux-form. Все формы сделаны с помощью этой библиотеки, в том числе валидация
 - Redux-thunk 
 - Reselect 
-- Styled-components
-- TypeScript
 - mongodb (новое API)
 - Node js (новое API)
 - Express (новое API)
