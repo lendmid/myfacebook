@@ -15,21 +15,21 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
     
     let tryLogIn = (formData) => {
         logIn(formData.email, formData.password, true);
-    }
+    };
     
     let tryRegister = () => {
+        
         alert(`Unfortunately now registration do not work. It function will be work soon`);
-        // return <Redirect to={"https://social-network.samuraijs.com/signUp"} />
-    }
+    };
     
     return (
         <div className={s.wrapper}>
-            <div className={s.wraper_description}>
-                <a href="../login"><img src={logo} alt="logo" className={s.logo} /></a>
+            <div className={s.wrapper_description}>
+                <a href="#"><img src={logo} alt="logo" className={s.logo} /></a>
                 <div>
                     <h3 className={s.about_title}>About project</h3>
                     <p className={s.about_text}>
-                        What is this? It is my project whole wrote with library React, Redux and with other small librarys. Now project on stady develop and active development. <br /><br />
+                        What is this? It is my project whole wrote with library React, Redux and with other small library's. Now project on stage develop and active development. <br /><br />
                         You can enter in my project using data: <br />
                         <b>Email:</b> free@samuraijs.com <br />
                         <b>Password:</b> free <br /> <br />
@@ -108,6 +108,6 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 
         </div>
     )
-})
+});
 
 export default LogIn;

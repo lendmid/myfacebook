@@ -20,7 +20,7 @@
     box-shadow: 0 0 50px 2px rgba(238, 143, 102, 0.3);
 }
 
-.wraper_description {
+.wrapper_description {
     grid-row: 2 / 5;
     grid-column: 2 / 2;
     width: 100%;
@@ -96,7 +96,6 @@
     font-weight: 900;
     font-size: 14px;
 }
-
 
 .error {
     border: 1px red solid;

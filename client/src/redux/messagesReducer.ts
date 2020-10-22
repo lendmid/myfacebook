@@ -63,7 +63,7 @@ const initialState = {
         },
     ] as Array<MessagesDataType>,
     historyMessages: generateHistoryMessages(15)
-}
+};
 
 export type InitialStateType = typeof initialState;
 
@@ -100,7 +100,7 @@ const messagesReducer = (state = initialState, action: any): InitialStateType =>
         default:
             return state;
     }
-}
+};
 
 type sendMessageCreatorType = {
     type: typeof SEND_MESSAGE
@@ -109,12 +109,12 @@ type sendMessageCreatorType = {
 
 export const sendMessageCreator = (newMessageText: string): sendMessageCreatorType => ({
     type: SEND_MESSAGE, newMessageText
-})
+});
 
 export const sendMessage = (newPostText: string) => {
     return (dispatch: any) => {
         dispatch(sendMessageCreator(newPostText))
     }
-}
+};
 
 export default messagesReducer;

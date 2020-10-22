@@ -1,4 +1,4 @@
-import {authAPI} from "../api/api";
+import {authAPI, newAuthAPI} from "../api/api";
 // import {stopSubmit} from "redux-form";
 
 
@@ -12,7 +12,7 @@ const initialState = {
     email: null as string | null,
     login: null as string | null,
     isAuth: false,
-}
+};
 
 const authReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
@@ -20,11 +20,11 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
             return {
                 ...state,
                 ...action.payload,
-            }
+            };
         default:
             return state
     }
-}
+};
 
 type setUserDataType = {
     type: typeof SET_USER_DATA,
@@ -47,7 +47,7 @@ export const getAuthUserData = () => async (dispatch: any) => {
         let {id, email, login} = response.data.data;
         dispatch(setUserData(id, email, login, true));
     }
-}
+};
 
 export const logIn = (email: string, password: string, rememberMe: boolean) => async (dispatch: any) => {
     let response = await authAPI.logIn(email, password, rememberMe);
@@ -58,13 +58,24 @@ export const logIn = (email: string, password: string, rememberMe: boolean) => a
     //     let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
     //     dispatch(stopSubmit("logIn", {_error: message}));
     // }
-}
+};
 
 export const logOut = () => async (dispatch: any) => {
     let response = await authAPI.logOut();
     if (response.data.resultCode === 0) {
         dispatch(setUserData(null, null, null, false));
     }
-}
+};
+
+
+//new API
+// export const register = (email: string, password: string, firstName: string, lastName: string) => async (dispatch: any) => {
+//     let response = await newAuthAPI.register(email, password, firstName, lastName);
+    // if (response.data.resultCode === 0) dispatch(setUserData(id, email, login, true));
+    // else {
+    //     let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+    //     dispatch(stopSubmit("logIn", {_error: message}));
+    // }
+// };
 
 export default authReducer;
