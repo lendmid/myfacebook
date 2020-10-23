@@ -6,7 +6,7 @@ let FormValidator = (InputType, showMessage, showErrorOnlyWhenFieldActive, {inpu
     let hasError = meta.touched && meta.error && (showErrorOnlyWhenFieldActive ? meta.active : true);
     return (
         <>
-            <InputType {...input} {...props} className={className + " " + (hasError ? s.error : s.simpleBorder)}></InputType>
+            <InputType {...input} {...props} className={className + " " + (hasError ? s.error : s.simpleBorder)} />
             {hasError && showMessage && <span className={s.span}>{meta.error}</span>}
         </>
     )

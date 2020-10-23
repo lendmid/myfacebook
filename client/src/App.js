@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header/Header';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LogInContainer from "./components/LogIn/LogInContainer";
+import RegisterContainer from "./components/Register/RegisterContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import UsersContainer from "./components/Users/UsersContainer";
 import Messages from './components/Messages/Messages';
@@ -26,6 +27,7 @@ class App extends React.PureComponent {
         return (
             <Switch>
                 <Route exact path='/login' component={LogInContainer} />
+                <Route exact path='/register' component={RegisterContainer} />
                 <Redirect to={'/login'} />
             </Switch>
         )
@@ -37,6 +39,7 @@ class App extends React.PureComponent {
             <Header />
             <Switch>
                 <Route exact path='/login' component={LogInContainer} />
+                <Route exact path='/register' component={RegisterContainer} />
                 <Route exact path="/profile/:userId" component={ProfileContainer} />
                 <Route exact path="/messages/:userId" component={Messages} />
                 <Route exact path='/users/:userId?' component={UsersContainer} />

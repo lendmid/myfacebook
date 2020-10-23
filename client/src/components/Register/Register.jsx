@@ -1,7 +1,7 @@
 import React from "react"
 import {Field} from "redux-form"
-import {Link, Redirect} from "react-router-dom";
-import s from './LogIn.module.css';
+import {Redirect} from "react-router-dom";
+import s from './Register.module.css';
 import {required} from "../../utils/validators/validators";
 import {InputLogIn} from "../common/FormValidator/FormValidator";
 import logo from "../../assets/images/logo.svg";
@@ -10,7 +10,7 @@ import github from "../../assets/images/github.png";
 import {useHttp} from "../../hooks/http.hook";
 
 
-const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isAuth, authorizedUserId}) => {
+const Register = React.memo(({handleSubmit, pristine, submitting, error, logIn, isAuth, authorizedUserId}) => {
     const {loading, newAPIError, request} = useHttp();
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
@@ -18,6 +18,17 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
     let tryLogIn = (formData) => {
         logIn(formData.email, formData.password, true);
     };
+    
+    let tryRegister = async (formData) => {
+        debugger
+        const data = await request('/api/auth/register', 'POST', {...formData});
+        // alert(`Unfortunately now registration do not work. It function will be work soon`);
+    };
+    
+    // const removeFocus = (event) => {
+    //     debugger
+    //     this.removeAttribute('readonly')
+    // }
     
     return (
         <div className={s.wrapper}>
@@ -41,23 +52,35 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 </div>
             </div>
             
-            <form onSubmit={handleSubmit(tryLogIn)} className={`${s.login} ${error ? s.error : ""}`}>
-                <Field component={InputLogIn} type="email"
-                       placeholder="Email"
-                       name="email"
-                       validate={[required]}
-                       className={s.input} />
-                <Field component={InputLogIn} type="password"
-                       placeholder="Password"
-                       name="password"
-                       validate={[required]}
+            <form className={s.register} onSubmit={handleSubmit(tryRegister)} >
+                <input type="email"
+                       placeholder="Your email"
+                       name="emailRegister"
                        className={s.input}
-                       autoComplete="on" />
-                <button type="submit" disabled={pristine || submitting} className={s.button}>Log in</button>
-                {error && <span className={s.error_message}>{error}</span>}
-                <Link to={"/register"} className={s.button + " " + s.button_register}>Register</Link>
+                       autoComplete="new-password"
+                       disabled={loading} />
+                <input type="password"
+                       placeholder="Your password"
+                       name="passwordRegister"
+                       className={s.input}
+                       autoComplete="new-password"
+                       disabled={loading} />
+                <input type="text"
+                       placeholder="First name"
+                       name="firstName"
+                       className={s.input}
+                       autoComplete="new-password"
+                       disabled={loading} />
+                <input type="text"
+                       placeholder="Last name"
+                       name="lastName"
+                       className={s.input}
+                       autoComplete="new-password"
+                       disabled={loading}/>
+                <button className={s.button + " " + s.button_register}>Register</button>
+                {/*{error && <span className={s.error_message}>{error}</span>}*/}
             </form>
-    
+
             <div className={s.footer}>
                 <span className={s.myfacebook}>myfacebook © 2020</span>
             </div>
@@ -66,4 +89,4 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
     )
 });
 
-export default LogIn;
+export default Register;

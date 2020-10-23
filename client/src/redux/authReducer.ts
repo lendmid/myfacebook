@@ -1,4 +1,4 @@
-import {authAPI, newAuthAPI} from "../api/api";
+import {authAPI} from "../api/api";
 // import {stopSubmit} from "redux-form";
 
 
@@ -54,6 +54,7 @@ export const logIn = (email: string, password: string, rememberMe: boolean) => a
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData());
     }
+    //refactoring: TS do not work with redux-form
     // else {
     //     let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
     //     dispatch(stopSubmit("logIn", {_error: message}));
@@ -67,15 +68,9 @@ export const logOut = () => async (dispatch: any) => {
     }
 };
 
-
-//new API
+// new API
 // export const register = (email: string, password: string, firstName: string, lastName: string) => async (dispatch: any) => {
 //     let response = await newAuthAPI.register(email, password, firstName, lastName);
-    // if (response.data.resultCode === 0) dispatch(setUserData(id, email, login, true));
-    // else {
-    //     let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-    //     dispatch(stopSubmit("logIn", {_error: message}));
-    // }
 // };
 
 export default authReducer;

@@ -3,7 +3,7 @@
     grid-column: 1 / -1;
     
     display: grid;
-    grid-template: 1fr 600px 1fr 80px / 2fr 400px 1fr 400px 2fr;
+    grid-template: 1fr 210px 100px 330px 1fr 80px / 2fr 400px 1fr 400px 2fr;
     place-items: center;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .wrapper_description {
-    grid-row: 2 / 3;
+    grid-row: 2 / 5;
     grid-column: 2 / 2;
     width: 100%;
     height: 100%;
@@ -79,7 +79,7 @@
 }
 
 .footer {
-    grid-row: 4 / 4;
+    grid-row: 6 / 6;
     grid-column: 1 / -1;
     background-color: white;
     width: 100%;
@@ -144,11 +144,6 @@
 }
 
 .button_register {
-    display: grid;
-    place-items: center;
-    width: 250px;
-    height: 35px;
-    padding: 5px;
     background-color: #DDDFE2;
 }
 

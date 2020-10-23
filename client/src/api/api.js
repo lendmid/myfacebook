@@ -1,10 +1,5 @@
 import * as axios from "axios";
-import {useHttp} from "../hooks/http.hook";
 // it is DAL - date access layer
-
-//new API
-// const {loading, request} = useHttp();
-
 
 
 const instance = axios.create({
@@ -63,13 +58,17 @@ export const authAPI = {
     }
     
 };
-export const newAuthAPI = {
-    async register(email, password, firstName, lastName) {
-        try {
-            const data = await request('/api/auth/register', 'POST', {email, password, firstName, lastName});
-        } catch (e) {}
-    
-        // {loading, request, error, clearError}
-        // return instance.post('auth/login', {email, password});
-    },
-};
+
+// //new API
+// export const newAuthAPI = {
+//
+//     async register(email, password, firstName, lastName) {
+//         try {
+//             const {loading, request} = useHttp();
+//             const data = await request('/api/auth/register', 'POST', {email, password, firstName, lastName});
+//         } catch (e) {}
+//
+//         // {loading, request, error, clearError}
+//         // return instance.post('auth/login', {email, password});
+//     },
+// };
