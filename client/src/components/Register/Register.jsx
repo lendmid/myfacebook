@@ -11,7 +11,7 @@ import github from "../../assets/images/github.png";
 
 const Register = React.memo(({isAuth, authorizedUserId}) => {
     const {loading, newAPIError, request} = useHttp();
-    const [form, setForm] = useState({emailRegister: '', passwordRegister: '', firstName: '', lastName: ''});
+    const [form, setForm] = useState({email: '', password: '', firstName: '', lastName: ''});
     
     const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
     
@@ -25,7 +25,7 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
     return (
         <div className={s.wrapper}>
             <div className={s.wrapper_description}>
-                <img src={logo} alt="logo" className={s.logo} />
+                 <Link to={"/login"}><img src={logo} alt="logo" className={s.logo} /></Link>
                 <div>
                     <h3 className={s.about_title}>About project</h3>
                     <p className={s.about_text}>
@@ -44,34 +44,42 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
                 </div>
             </div>
             
-            <form className={s.register}>
+            <form className={s.register} >
                 <input type="email"
                        placeholder="Your email"
-                       name="emailRegister"
+                       name="email"
                        className={s.input}
-                       autoComplete="new-password"
                        disabled={loading}
+                       autoComplete="off"
+                       readOnly
+                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
                        onChange={changeHandler} />
                 <input type="password"
                        placeholder="Your password"
-                       name="passwordRegister"
+                       name="password"
                        className={s.input}
-                       autoComplete="new-password"
                        disabled={loading}
+                       autoComplete="off"
+                       readOnly
+                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
                        onChange={changeHandler} />
                 <input type="text"
                        placeholder="First name"
                        name="firstName"
                        className={s.input}
-                       autoComplete="new-password"
                        disabled={loading}
+                       autoComplete="off"
+                       readOnly
+                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
                        onChange={changeHandler} />
                 <input type="text"
                        placeholder="Last name"
                        name="lastName"
                        className={s.input}
-                       autoComplete="new-password"
                        disabled={loading}
+                       autoComplete="off"
+                       readOnly
+                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
                        onChange={changeHandler} />
                 <button type="button" className={s.button} onClick={tryRegister}>Register</button>
                 <Link to={"/login"} className={s.button + " " + s.button_login}>Return to login page</Link>

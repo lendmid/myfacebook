@@ -1,19 +1,22 @@
 const express = require('express');
 const app = express();
+
 // require first API
 // const bodyParser = require('body-parser');
 // const dataBase = require('./dataBase');
 // const usersController = require('./controllers/users');
+
 // require new API
 const mongoose = require('mongoose');
 const config = require('config');
 
 
-app.use('/api/auth', require('./routes/auth.routes'))
+app.use(express.json({extended: true}));
+app.use('/api/auth', require('./routes/auth.routes'));
 
 const PORT = config.get('port') || 3012;
 
-async function start() {
+(async function start() {
     try {
         await mongoose.connect(config.get('mongoUri'), {
             useNewUrlParser: true,
@@ -25,13 +28,9 @@ async function start() {
         console.log('Server Error', e.message);
         process.exit(1);
     }
-}
-
-start();
+})();
 
 
-//mongoDB, login: lendmid, pass: JZaDz1tCMC8l7z8X
-/////
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: true}));
 //

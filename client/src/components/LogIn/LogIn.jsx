@@ -7,11 +7,9 @@ import {InputLogIn} from "../common/FormValidator/FormValidator";
 import logo from "../../assets/images/logo.svg";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
-import {useHttp} from "../../hooks/http.hook";
 
 
 const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isAuth, authorizedUserId}) => {
-    const {loading, newAPIError, request} = useHttp();
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
@@ -22,7 +20,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
     return (
         <div className={s.wrapper}>
             <div className={s.wrapper_description}>
-                <img src={logo} alt="logo" className={s.logo} />
+                 <Link to={"/login"}><img src={logo} alt="logo" className={s.logo} /></Link>
                 <div>
                     <h3 className={s.about_title}>About project</h3>
                     <p className={s.about_text}>
