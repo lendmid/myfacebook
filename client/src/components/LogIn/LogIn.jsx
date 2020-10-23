@@ -22,11 +22,11 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
     return (
         <div className={s.wrapper}>
             <div className={s.wrapper_description}>
-                <a href="#"><img src={logo} alt="logo" className={s.logo} /></a>
+                <img src={logo} alt="logo" className={s.logo} />
                 <div>
                     <h3 className={s.about_title}>About project</h3>
                     <p className={s.about_text}>
-                        What is this? It is my project whole wrote with library React, Redux and with other small library's. Now project on stage develop and active development. <br /><br />
+                        What is this? It is my project whole wrote with library React, Redux and with other library's. Now project on stage develop and active development. <br /><br />
                         You can enter in my project using data: <br />
                         <b>Email:</b> free@samuraijs.com <br />
                         <b>Password:</b> free <br /> <br />
@@ -36,8 +36,8 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 </div>
                 <div className={s.links}>
                     <span className={s.made_by}>made by <strong>Dima Doroshenko</strong></span>
-                    <a href="https://hh.ru/applicant/resumes/view?resume=82f7c7b9ff08590b540039ed1f6d6a69644645"><img src={hh} alt="github logo" className={s.portfolio} /></a>
-                    <a href="https://github.com/lendmid"><img src={github} alt="headhunter logo" className={s.portfolio} /></a>
+                    <a href="https://hh.ru/applicant/resumes/view?resume=82f7c7b9ff08590b540039ed1f6d6a69644645"><img src={hh} alt="headhunter logo" className={s.portfolio} /></a>
+                    <a href="https://github.com/lendmid/myfacebook"><img src={github} alt="github logo" className={s.portfolio} /></a>
                 </div>
             </div>
             

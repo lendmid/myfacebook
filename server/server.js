@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-// requare first API
-const bodyParser = require('body-parser');
-const dataBase = require('./dataBase');
-const usersController = require('./controllers/users');
-// requare new API
+// require first API
+// const bodyParser = require('body-parser');
+// const dataBase = require('./dataBase');
+// const usersController = require('./controllers/users');
+// require new API
 const mongoose = require('mongoose');
 const config = require('config');
 

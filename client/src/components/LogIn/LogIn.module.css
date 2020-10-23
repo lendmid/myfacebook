@@ -3,7 +3,7 @@
     grid-column: 1 / -1;
     
     display: grid;
-    grid-template: 1fr 600px 1fr 80px / 2fr 400px 1fr 400px 2fr;
+    grid-template: 1fr 600px 1fr 80px / 2fr 400px 1fr 390px 2fr;
     place-items: center;
 }
 
@@ -15,7 +15,7 @@
     grid-gap: 10px;
     
     border-radius: 8px;
-    padding: 20px;
+    padding: 15px;
     background-color: #fff;
     box-shadow: 0 0 50px 2px rgba(238, 143, 102, 0.3);
 }
@@ -62,20 +62,6 @@
     height: 2px;
     width: 150px;
     margin-left: 74px;
-}
-
-.register {
-    grid-row: 4 / 4;
-    grid-column: 4 / 4;
-    width: 100%;
-    height: 100%;
-    
-    display: grid;
-    grid-gap: 10px;
-    
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
 }
 
 .footer {
@@ -146,10 +132,21 @@
 .button_register {
     display: grid;
     place-items: center;
-    width: 250px;
-    height: 35px;
+    width: 120px;
+    height: 50px;
     padding: 5px;
     background-color: #DDDFE2;
+    position: relative;
+    margin-top: 30px;
+}
+
+.button_register::before {
+    content: "";
+    height: 1px;
+    width: 360px;
+    position: absolute;
+    top: -20px;
+    background-color: #EE8F66;
 }
 
 .button_register:hover {

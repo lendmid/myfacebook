@@ -1,43 +1,35 @@
-import React from "react"
-import {Field} from "redux-form"
-import {Redirect} from "react-router-dom";
+import React, {useState} from "react";
+import {Link, Redirect} from "react-router-dom";
+
+import {useHttp} from "../../hooks/http.hook";
 import s from './Register.module.css';
-import {required} from "../../utils/validators/validators";
-import {InputLogIn} from "../common/FormValidator/FormValidator";
+
 import logo from "../../assets/images/logo.svg";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
-import {useHttp} from "../../hooks/http.hook";
 
 
-const Register = React.memo(({handleSubmit, pristine, submitting, error, logIn, isAuth, authorizedUserId}) => {
+const Register = React.memo(({isAuth, authorizedUserId}) => {
     const {loading, newAPIError, request} = useHttp();
+    const [form, setForm] = useState({emailRegister: '', passwordRegister: '', firstName: '', lastName: ''});
+    
+    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
-    let tryLogIn = (formData) => {
-        logIn(formData.email, formData.password, true);
+    const tryRegister = async () => {
+        const data = await request('/api/auth/register', 'POST', {...form});
+        console.log('Data', data)
     };
-    
-    let tryRegister = async (formData) => {
-        debugger
-        const data = await request('/api/auth/register', 'POST', {...formData});
-        // alert(`Unfortunately now registration do not work. It function will be work soon`);
-    };
-    
-    // const removeFocus = (event) => {
-    //     debugger
-    //     this.removeAttribute('readonly')
-    // }
     
     return (
         <div className={s.wrapper}>
             <div className={s.wrapper_description}>
-                <a href="#"><img src={logo} alt="logo" className={s.logo} /></a>
+                <img src={logo} alt="logo" className={s.logo} />
                 <div>
                     <h3 className={s.about_title}>About project</h3>
                     <p className={s.about_text}>
-                        What is this? It is my project whole wrote with library React, Redux and with other small library's. Now project on stage develop and active development. <br /><br />
+                        What is this? It is my project whole wrote with library React, Redux and with other library's. Now project on stage develop and active development. <br /><br />
                         You can enter in my project using data: <br />
                         <b>Email:</b> free@samuraijs.com <br />
                         <b>Password:</b> free <br /> <br />
@@ -52,33 +44,37 @@ const Register = React.memo(({handleSubmit, pristine, submitting, error, logIn, 
                 </div>
             </div>
             
-            <form className={s.register} onSubmit={handleSubmit(tryRegister)} >
+            <form className={s.register}>
                 <input type="email"
                        placeholder="Your email"
                        name="emailRegister"
                        className={s.input}
                        autoComplete="new-password"
-                       disabled={loading} />
+                       disabled={loading}
+                       onChange={changeHandler} />
                 <input type="password"
                        placeholder="Your password"
                        name="passwordRegister"
                        className={s.input}
                        autoComplete="new-password"
-                       disabled={loading} />
+                       disabled={loading}
+                       onChange={changeHandler} />
                 <input type="text"
                        placeholder="First name"
                        name="firstName"
                        className={s.input}
                        autoComplete="new-password"
-                       disabled={loading} />
+                       disabled={loading}
+                       onChange={changeHandler} />
                 <input type="text"
                        placeholder="Last name"
                        name="lastName"
                        className={s.input}
                        autoComplete="new-password"
-                       disabled={loading}/>
-                <button className={s.button + " " + s.button_register}>Register</button>
-                {/*{error && <span className={s.error_message}>{error}</span>}*/}
+                       disabled={loading}
+                       onChange={changeHandler} />
+                <button type="button" className={s.button} onClick={tryRegister}>Register</button>
+                <Link to={"/login"} className={s.button + " " + s.button_login}>Return to login page</Link>
             </form>
 
             <div className={s.footer}>
