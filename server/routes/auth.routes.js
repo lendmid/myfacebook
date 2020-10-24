@@ -16,7 +16,6 @@ router.post('/register',
     ],
     async (req, res) => {
         try {
-            console.log(req.body);
             // if validation failed => return
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
@@ -66,7 +65,7 @@ router.post('/login',
                 {userId: user.id},
                 config.get('jwtSecret'),
                 {expiresIn: '1h'} // lifetime token
-            )
+            );
             res.json({token, userId: user.id})
             
         } catch (e) {

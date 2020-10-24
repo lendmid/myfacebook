@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, Redirect} from "react-router-dom";
 
 import {useHttp} from "../../hooks/http.hook";
@@ -10,12 +10,19 @@ import github from "../../assets/images/github.png";
 
 
 const Register = React.memo(({isAuth, authorizedUserId}) => {
-    const {loading, newAPIError, request} = useHttp();
+    const {loading, error, request, clearError} = useHttp();
     const [form, setForm] = useState({email: '', password: '', firstName: '', lastName: ''});
     
-    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
+    useEffect(() => {
+        console.log(error);
+        //refactoring: in the future will be need display error message
+        clearError();
+    }, [error, clearError]);
+    
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
+    
+    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
     
     const tryRegister = async () => {
         const data = await request('/api/auth/register', 'POST', {...form});
