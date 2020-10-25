@@ -7,17 +7,18 @@ import s from './Register.module.css';
 import logo from "../../assets/images/logo.svg";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
+import {useMessage} from "../../hooks/message.hook";
 
 
 const Register = React.memo(({isAuth, authorizedUserId}) => {
+    const message = useMessage();
     const {loading, error, request, clearError} = useHttp();
     const [form, setForm] = useState({email: '', password: '', firstName: '', lastName: ''});
     
     useEffect(() => {
-        console.log(error);
-        //refactoring: in the future will be need display error message
+        message(error);
         clearError();
-    }, [error, clearError]);
+    }, [error, message, clearError]);
     
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
@@ -25,10 +26,13 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
     const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
     
     const tryRegister = async () => {
-        const data = await request('/api/auth/register', 'POST', {...form});
-        console.log('Data', data)
+        try {
+            const data = await request('/api/auth/register', 'POST', {...form});
+            console.log('Data', data);
+            message(data.message);
+        } catch (e) {}
     };
-    
+
     return (
         <div className={s.wrapper}>
             <div className={s.wrapper_description}>

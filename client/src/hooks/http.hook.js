@@ -14,15 +14,16 @@ export const useHttp = () => {
             const response = await fetch(url, {method, body, headers});
             const data = await response.json();
             
-            if (!response.ok) new Error(data.message || 'Something went wrong');
-            
+            if (!response.ok) {
+                setError(data.message);
+                new Error(data.message || 'Something went wrong');
+            }
             return data;
         } catch (e) {
             setError(e.message);
             throw e;
-    
         } finally {
-            setLoading(true);
+            setLoading(false);
         }
     }, []);
     

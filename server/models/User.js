@@ -4,10 +4,12 @@ const {Schema, model, Types} = require('mongoose');
 const schema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
     posts: [{type: Types.ObjectId, refs: 'Post'}]
-})
+});
 
-model.exports = model('User', schema)
+module.exports = model('User', schema );
 
 
 // let dataBase = require('../dataBase');
