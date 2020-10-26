@@ -16,7 +16,6 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
     const [form, setForm] = useState({email: '', password: '', firstName: '', lastName: ''});
     
     useEffect(() => {
-        message(error);
         clearError();
     }, [error, message, clearError]);
     

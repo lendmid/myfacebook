@@ -67,7 +67,7 @@ router.post('/login',
                 config.get('jwtSecret'),
                 {expiresIn: '1h'} // lifetime token
             );
-            res.json({token, userId: user.id})
+            await res.json({token, userId: user.id})
             
         } catch (e) {
             res.status(500).json({message: 'Something went wrong, please try again'});

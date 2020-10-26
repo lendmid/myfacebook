@@ -1,4 +1,6 @@
-import React from "react"
+import React, {useEffect, useState} from "react";
+import {useMessage} from "../../hooks/message.hook";
+import {useHttp} from "../../hooks/http.hook";
 import {Field} from "redux-form"
 import {Link, Redirect} from "react-router-dom";
 import s from './LogIn.module.css';
@@ -9,12 +11,26 @@ import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
 
 
-const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isAuth, authorizedUserId}) => {
+const LogIn = React.memo(({logIn, isAuth, authorizedUserId}) => {
+    const message = useMessage();
+    const {loading, error, request, clearError} = useHttp();
+    const [form, setForm] = useState({email: '', password: ''});
+    
+    useEffect(() => {
+        clearError();
+    }, [error, message, clearError]);
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
-    let tryLogIn = (formData) => {
-        logIn(formData.email, formData.password, true);
+    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
+    
+    const tryLogIn = async () => {
+        try {
+            debugger
+            const data = await request('/api/auth/login', 'POST', {...form});
+            console.log('Data', data);
+            message(data.message);
+        } catch (e) {}
     };
     
     return (
@@ -39,19 +55,20 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
                 </div>
             </div>
             
-            <form onSubmit={handleSubmit(tryLogIn)} className={`${s.login} ${error ? s.error : ""}`}>
-                <Field component={InputLogIn} type="email"
-                       placeholder="Email"
+            <form className={s.register} className={`${s.login} ${error ? s.error : ""}`}>
+                <input type="email"
+                       placeholder="Your email"
                        name="email"
-                       validate={[required]}
-                       className={s.input} />
-                <Field component={InputLogIn} type="password"
-                       placeholder="Password"
-                       name="password"
-                       validate={[required]}
                        className={s.input}
-                       autoComplete="on" />
-                <button type="submit" disabled={pristine || submitting} className={s.button}>Log in</button>
+                       disabled={loading}
+                       onChange={changeHandler} />
+                <input type="password"
+                       placeholder="Your password"
+                       name="password"
+                       className={s.input}
+                       disabled={loading}
+                       onChange={changeHandler} />
+                <button type="button" onClick={tryLogIn} className={s.button}>Log in</button>
                 {error && <span className={s.error_message}>{error}</span>}
                 <Link to={"/register"} className={s.button + " " + s.button_register}>Register</Link>
             </form>
@@ -59,7 +76,7 @@ const LogIn = React.memo(({handleSubmit, pristine, submitting, error, logIn, isA
             <div className={s.footer}>
                 <span className={s.myfacebook}>myfacebook © 2020</span>
             </div>
-                
+            
         </div>
     )
 });
