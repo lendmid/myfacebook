@@ -10,11 +10,6 @@ const mapStateToProps = (state) => ({
     authorizedUserId: state.auth.authorizedUserId,
 });
 
-const LogInContainer = compose(
-    connect(mapStateToProps, {logIn}),
-    reduxForm({
-        form: 'logIn',
-    }),
-)(LogIn);
+const LogInContainer = connect(mapStateToProps, {logIn})(LogIn);
 
 export default LogInContainer;

@@ -13,8 +13,8 @@ exports.connect = (url, options, callback) => {
         state.dataBase = client.db('27017');
         callback();
     })
-}
+};
 
 exports.get = function () {
     return state.dataBase;
-}
+};

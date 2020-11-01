@@ -11,8 +11,7 @@ router.post('/register',
     //middleware for validation
     [
         check('email', 'Incorrect email').isEmail(),
-        check('password', 'Minimum length password is 6 symbol').
-            isLength({min: 6})
+        check('password', 'Minimum length password is 6 symbol').isLength({min: 6})
     ],
     async (req, res) => {
         try {
@@ -24,17 +23,18 @@ router.post('/register',
                     message: "Incorrect data during registration"
                 })
             }
-
+            
             const {email, password, firstName, lastName} = req.body;
             const candidate = await User.findOne({email});
+            
             if (candidate) return res.status(400).json({message: 'This user already exists'});
-        
+            
             const hashedPassword = await bcrypt.hash(password, 12);
             const user = new User({email, password: hashedPassword, firstName, lastName});
-        
+            
             await user.save();
             res.status(201).json({message: 'User created'})
-        
+            
         } catch (e) {
             console.log(e);
             res.status(500).json({message: 'Something went wrong, please try again'});
@@ -58,6 +58,10 @@ router.post('/login',
                     message: "incorrect data during login"
                 })
             }
+            const {email, password} = req.body;
+            
+            const user = await User.findOne({email});
+            if (!user) return res.status(400).json({ message: "Email or password is incorrect"});
             
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) res.status(400).json({message: 'Email or password is incorrect'});
@@ -72,6 +76,6 @@ router.post('/login',
         } catch (e) {
             res.status(500).json({message: 'Something went wrong, please try again'});
         }
-    })
+    });
 
 module.exports = router;

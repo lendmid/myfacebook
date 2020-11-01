@@ -1,36 +1,32 @@
 import React, {useEffect, useState} from "react";
 import {useMessage} from "../../hooks/message.hook";
 import {useHttp} from "../../hooks/http.hook";
-import {Field} from "redux-form"
-import {Link, Redirect} from "react-router-dom";
+
 import s from './LogIn.module.css';
-import {required} from "../../utils/validators/validators";
-import {InputLogIn} from "../common/FormValidator/FormValidator";
+import {Link, Redirect} from "react-router-dom";
+
 import logo from "../../assets/images/logo.svg";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
 
 
-const LogIn = React.memo(({logIn, isAuth, authorizedUserId}) => {
+const LogIn = React.memo(({isAuth, authorizedUserId}) => {
+    //refactoring: need will doing validation input
     const message = useMessage();
     const {loading, error, request, clearError} = useHttp();
-    const [form, setForm] = useState({email: '', password: ''});
     
-    useEffect(() => {
-        clearError();
-    }, [error, message, clearError]);
+    const [form, setForm] = useState({email: '', password: ''});
+    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
+    
+    useEffect(() => {clearError();}, [error, message, clearError]);
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
-    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
-    
+    //refactoring: move action from here
     const tryLogIn = async () => {
-        try {
-            debugger
-            const data = await request('/api/auth/login', 'POST', {...form});
-            console.log('Data', data);
-            message(data.message);
-        } catch (e) {}
+        const data = await request('/api/auth/login', 'POST', {...form});
+        console.log('Data', data);
+        message(data.message);
     };
     
     return (
@@ -55,17 +51,19 @@ const LogIn = React.memo(({logIn, isAuth, authorizedUserId}) => {
                 </div>
             </div>
             
-            <form className={s.register} className={`${s.login} ${error ? s.error : ""}`}>
+            <form className={`${s.login} ${error ? s.error : ""}`}>
                 <input type="email"
                        placeholder="Your email"
                        name="email"
                        className={s.input}
+                       required
                        disabled={loading}
                        onChange={changeHandler} />
                 <input type="password"
                        placeholder="Your password"
                        name="password"
                        className={s.input}
+                       required
                        disabled={loading}
                        onChange={changeHandler} />
                 <button type="button" onClick={tryLogIn} className={s.button}>Log in</button>

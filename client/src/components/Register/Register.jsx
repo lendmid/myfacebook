@@ -1,35 +1,32 @@
 import React, {useEffect, useState} from "react";
-import {Link, Redirect} from "react-router-dom";
-
+import {useMessage} from "../../hooks/message.hook";
 import {useHttp} from "../../hooks/http.hook";
+
 import s from './Register.module.css';
+import {Link, Redirect} from "react-router-dom";
 
 import logo from "../../assets/images/logo.svg";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
-import {useMessage} from "../../hooks/message.hook";
 
 
 const Register = React.memo(({isAuth, authorizedUserId}) => {
+    //refactoring: need will doing validation input
     const message = useMessage();
     const {loading, error, request, clearError} = useHttp();
+    
     const [form, setForm] = useState({email: '', password: '', firstName: '', lastName: ''});
+    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
     
-    useEffect(() => {
-        clearError();
-    }, [error, message, clearError]);
-    
+    useEffect(() => {clearError()}, [error, message, clearError]);
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
-    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
-    
+    //refactoring: move action from here
     const tryRegister = async () => {
-        try {
-            const data = await request('/api/auth/register', 'POST', {...form});
-            console.log('Data', data);
-            message(data.message);
-        } catch (e) {}
+        const data = await request('/api/auth/register', 'POST', {...form});
+        console.log('Data', data);
+        message(data.message);
     };
 
     return (
@@ -59,6 +56,7 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
                        placeholder="Your email"
                        name="email"
                        className={s.input}
+                       required
                        disabled={loading}
                        autoComplete="off"
                        readOnly
@@ -68,6 +66,7 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
                        placeholder="Your password"
                        name="password"
                        className={s.input}
+                       required
                        disabled={loading}
                        autoComplete="off"
                        readOnly
@@ -77,6 +76,7 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
                        placeholder="First name"
                        name="firstName"
                        className={s.input}
+                       required
                        disabled={loading}
                        autoComplete="off"
                        readOnly
@@ -86,6 +86,7 @@ const Register = React.memo(({isAuth, authorizedUserId}) => {
                        placeholder="Last name"
                        name="lastName"
                        className={s.input}
+                       required
                        disabled={loading}
                        autoComplete="off"
                        readOnly
