@@ -10,7 +10,7 @@ import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
 
 
-const LogIn = React.memo(({isAuth, authorizedUserId}) => {
+const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     //refactoring: need will doing validation input
     const message = useMessage();
     const {loading, error, request, clearError} = useHttp();

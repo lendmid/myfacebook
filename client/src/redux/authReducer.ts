@@ -42,11 +42,11 @@ export const setUserData = (authorizedUserId: number | null, email: string | nul
 });
 
 export const getAuthUserData = () => async (dispatch: any) => {
-    // let response = await authAPI.me();
-    // if (response.data.resultCode === 0) {
-    //     let {id, email, login} = response.data.data;
-    //     dispatch(setUserData(id, email, login, true));
-    // }
+    let response = await authAPI.me();
+    if (response.data.resultCode === 0) {
+        let {id, email, login} = response.data.data;
+        dispatch(setUserData(id, email, login, true));
+    }
 };
 
 export const logIn = (email: string, password: string, rememberMe: boolean) => async (dispatch: any) => {
