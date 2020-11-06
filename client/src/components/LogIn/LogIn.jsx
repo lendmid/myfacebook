@@ -23,11 +23,13 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
     //refactoring: move action from here
-    const tryLogIn = async () => {
-        const data = await request('/api/auth/login', 'POST', {...form});
-        console.log('Data', data);
-        message(data.message);
-    };
+    // const tryLogIn = async () => {
+    //     const data = await request('/api/auth/login', 'POST', {...form});
+    //     console.log('Data', data);
+    //     message(data.message);
+    // };
+    let tryLogIn = (formData) => logIn(form.email, form.password, true);
+    
     
     return (
         <div className={s.wrapper}>
@@ -51,7 +53,7 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                 </div>
             </div>
             
-            <form className={`${s.login} ${error ? s.error : ""}`}>
+            <form className={`${s.login} ${error ? s.error : ""}`} onSubmit={tryLogIn}>
                 <input type="email"
                        placeholder="Your email"
                        name="email"
@@ -66,7 +68,8 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                        required
                        disabled={loading}
                        onChange={changeHandler} />
-                <button type="button" onClick={tryLogIn} className={s.button}>Log in</button>
+                <button type="submit" className={s.button}>Log in</button>
+                {/*<button type="button" onClick={tryLogIn} className={s.button}>Log in</button>*/}
                 {error && <span className={s.error_message}>{error}</span>}
                 <Link to={"/register"} className={s.button + " " + s.button_register}>Register</Link>
             </form>
