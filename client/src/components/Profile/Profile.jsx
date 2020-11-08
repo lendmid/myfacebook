@@ -6,7 +6,7 @@ import ShortInformation from "./ShortInformation/ShortInformation";
 
 
 const Profile = React.memo((props) => {
-    
+    let {posts} = props;
     let [updatePhotoPopup, setUpdatePhotoPopup] = useState(false);
     
     return (
@@ -17,7 +17,7 @@ const Profile = React.memo((props) => {
             <div className={s.profile_information}>
                 <ShortInformation {...props} />
                 <AddPostContainer />
-                {props.posts}
+                {posts}
             </div>
         </div>
     )

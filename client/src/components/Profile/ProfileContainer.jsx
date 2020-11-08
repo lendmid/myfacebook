@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
@@ -8,30 +8,24 @@ import Preloader from "../common/Preloader/Preloader";
 import PostConrainer from "./Post/PostContainer";
 
 
-class ProfileContainer extends React.PureComponent {
-    refreshProfile = () => {
-        if (!this.props.match.params.userId) return
-        let userId = Number(this.props.match.params.userId);
-        if (!userId) userId = this.props.authorizedUserId;
-        this.props.getProfile(userId).then(() => {
-            this.props.getStatus(userId);
+const ProfileContainer = React.memo((props) => {
+    
+    let {match, authorizedUserId, profile, isLoading, getProfile, getStatus} = props;
+    
+    useEffect(() => {
+        if (!match.params.userId) return;
+        let userId = Number(match.params.userId);
+        if (!userId) userId = authorizedUserId;
+        getProfile(userId).then(() => {
+            getStatus(userId);
         });
-    }
+    }, [match.params.userId]);
     
-    componentDidMount = () => {
-        this.refreshProfile();
-    };
+    if (!profile || isLoading) return <Preloader/>
     
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
-    }
-    
-    render() {
-        if (!this.props.profile || this.props.isLoading) return <Preloader />
-        return <Profile {...this.props}
-                        isOwner={this.props.authorizedUserId === Number(this.props.match.params.userId)} />;
-    }
-}
+    return <Profile {...props}
+                    isOwner={authorizedUserId === Number(match.params.userId)} />;
+});
 
 
 let mapStateToProps = (state) => ({
@@ -40,31 +34,9 @@ let mapStateToProps = (state) => ({
     status: state.profilePage.status,
     authorizedUserId: state.auth.authorizedUserId,
     isLoading: state.profilePage.isLoading,
-})
+});
 
 export default compose(
     connect(mapStateToProps, {getProfile, getStatus, updateStatus, savePhoto}),
     withRouter,
 )(ProfileContainer)
-
-
-// tried writing on Hook; will refactoring later; showed warning:
-// "React Hook useEffect has a missing dependency: 'props'. Either include it or remove the dependency array.
-// However, 'props' will change when *any* prop changes, so the preferred fix is to destructure the 'props' object outside of the useEffect call and refer to those specific props inside useEffect  react-hooks/exhaustive-deps"
-
-// const ProfileContainer = React.memo(({profile, authorizedUserId, ...props}) => {
-//
-//     useEffect(() => {
-//         if (!props.match.params.userId) return;
-//         if (profile && profile.userId === authorizedUserId) return;
-//         let userId = Number(props.match.params.userId);
-//         props.getProfile(userId);
-//         props.getStatus(userId);
-//     }, [profile, authorizedUserId])
-//
-//     if (!profile) return <Preloader/>
-//
-//     return <Profile {...props}
-//                     profile={profile}
-//                     isOwner={authorizedUserId === Number(props.match.params.userId)} />;
-// })
