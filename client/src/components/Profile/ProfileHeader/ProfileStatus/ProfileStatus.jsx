@@ -2,63 +2,46 @@ import React, {useEffect, useState} from 'react';
 import s from './ProfileStatus.module.css';
 
 
-const ProfileStatus = React.memo((props) => {
+const ProfileStatus = React.memo(({status, updateStatus, isOwner}) => {
     
     const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(props.status);
-    // debugger
-    
+    const [newStatus, setNewStatus] = useState(status);
     
     useEffect(() => {
-        setStatus(props.status);
+        setNewStatus(status);
         setEditMode(false);
-    }, [props.status])
-    
+    }, [status]);
     
     let activateEditMode = () => {
         setEditMode(true);
-    }
+    };
     
     let onStatusChange = (e) => {
-        setStatus(e.currentTarget.value);
-    }
+        setNewStatus(e.currentTarget.value)
+    };
     
     let deActivateEditMode = () => {
         setEditMode(false);
-        if (status && status.length > 0) props.updateStatus(status);
-    }
+        if (newStatus && newStatus.length > 0) updateStatus(status);
+    };
     
     return (
         <>
-            {editMode && props.isOwner &&
+            {editMode && isOwner &&
             <>
-                    <textarea onChange={onStatusChange} onBlur={deActivateEditMode} value={status ? status : ""} className={s.textarea} placeholder="Enter new status..." maxLength="140" autoFocus />
+                    <textarea onChange={onStatusChange} onBlur={deActivateEditMode} value={newStatus ? newStatus : ""} className={s.textarea} placeholder="Enter new status..." maxLength="140" autoFocus />
                     <button className={s.save} onClick={deActivateEditMode}>Save</button>
                 </>
             }
-            {!editMode && props.isOwner &&
-            <span onClick={activateEditMode} className={status ? s.ownerStatus : s.empty}>{status || "Change status"}</span>
+            {!editMode && isOwner &&
+            <span onClick={activateEditMode} className={newStatus ? s.ownerStatus : s.empty}>{status || "Change status"}</span>
             }
-            {!props.isOwner &&
-            <span className={status ? s.notOwnerStatus : s.empty}>{status || "User have not status"}</span>
+            {!isOwner &&
+            <span className={newStatus ? s.notOwnerStatus : s.empty}>{newStatus || "User have not status"}</span>
             }
         </>
     )
     
-})
+});
+
 export default ProfileStatus;
-
-
-//         <>
-//         {editMode ?
-//             <>
-//             <textarea onChange={onStatusChange} onBlur={deActivateEditMode} value={status ? status : ""} className={s.textarea} placeholder="Enter new status..." maxLength="140" autoFocus />
-//             <button className={s.save} onClick={deActivateEditMode}>Save</button>
-//         </>
-//             : <span onClick={activateEditMode} className={status ? s.ownerStatus : s.empty}>{status || "Change status"}</span>
-//         }
-//     </>
-//     )
-// } else {
-//     return <span className={status ? s.notOwnerStatus : s.empty}>{status || "User have not status"}</span>
-// }

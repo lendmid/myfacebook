@@ -27,6 +27,9 @@
 .notOwnerStatus {
     color: black;
     font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .textarea {
