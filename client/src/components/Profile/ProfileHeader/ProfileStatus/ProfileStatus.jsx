@@ -41,7 +41,6 @@ const ProfileStatus = React.memo(({status, updateStatus, isOwner}) => {
             }
         </>
     )
-    
 });
 
 export default ProfileStatus;
