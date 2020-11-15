@@ -30,33 +30,36 @@
   
 ### `Что планируется сделать:`
 * Типизировать весь текущий код с использование TypeScript
+* Отказаться от библиотеки Redux-form, переписать формы
 * Написать собственное API для корректной работы функционала и для расширения возможностей проекта:
     * profile: добавить возможность изменения фона, сохранения постов у каждого пользователя и возможность указать место работы и город проживания
     * messages: добавить возможность выбора пользователя из всех доступных и начать с ним переписку
-    * login: изменить верстку, вынести форму регистрации в отдельное окно или попап
-* Покрыть код большим колчеством unit тестов, далее написать некоторое количество интеграционных тестов
+* Покрыть код бОльшим колчеством unit тестов, далее написать некоторое количество интеграционных тестов
 * Сделать адаптивную верстку для всего проекта
 
 ### `Технологии:`
-- JavaScript
-- TypeScript
-- Html 5
-- CSS 3 (grid layout) + CSS анимация (transition, animation)
-- Styled-components
-- React
-- Redux
-- React HOC
-- React Hook
-- React-redux
-- React-router-dom (роутинг)
-- Redux-form. Все формы сделаны с помощью этой библиотеки, в том числе валидация
-- Redux-thunk 
-- Reselect 
-- mongodb (новое API)
-- Node js (новое API)
-- Express (новое API)
-- Jest
-- Axios
-- Git 
-- Верстка из Figma
-- npm
+- Основные:
+    - React
+    - JavaScript
+    - TypeScript
+    - mongodb (пишу новое API)
+    - Node js (пишу новое API)
+    - Express (пишу новое API)
+    - Html 5
+    - CSS 3 (grid layout) + CSS анимация
+- Прочее:
+    - react Creat App
+    - Redux
+    - Styled-components
+    - Redux-thunk 
+    - Reselect 
+    - React hook's
+    - React-redux
+    - React-router-dom
+    - Redux-form. Буду переписывать на натив
+    - React HOC
+    - Jest
+    - Axios
+    - Git 
+    - Верстка из Figma
+    - npm
