@@ -39,18 +39,14 @@
 
 ### `Технологии:`
 - Основные:
-    - React
+    - React / Redux
     - JavaScript
     - TypeScript
-    - mongodb (пишу новое API)
+    - MongoDB (пишу новое API)
     - Node js (пишу новое API)
     - Express (пишу новое API)
-    - Html 5
-    - CSS 3 (grid layout) + CSS анимация
+    - Html 5 + CSS 3 (grid layout) + CSS анимация + Styled-components
 - Прочее:
-    - react Creat App
-    - Redux
-    - Styled-components
     - Redux-thunk 
     - Reselect 
     - React hook's
