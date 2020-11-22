@@ -21,7 +21,7 @@ const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isL
     let onScrollHandler = (e: any) => {
         let usersList: any = document.getElementById('usersList');
         if ((usersList.clientHeight + usersList.scrollTop) === usersList.scrollHeight) onPageChanged(currentPage + 1);
-    }
+    };
 
     return (
         <div className={s.users}>
@@ -50,6 +50,6 @@ const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isL
             </div>
         </div>
     )
-})
+});
 
 export default Users;
