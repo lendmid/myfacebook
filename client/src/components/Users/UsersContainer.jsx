@@ -21,7 +21,7 @@ const UsersContainer = React.memo((props) => {
         getProfile(userId).then(() => {
             getStatus(userId);
         });
-    }, [match.params.userId]);
+    }, [match.params.userId, users.length, currentPage, pageSize, getProfile, getStatus, requestUsers]);
     
     let onPageChanged = (pageNumber) => {
         requestUsers(pageNumber, pageSize);

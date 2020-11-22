@@ -19,9 +19,9 @@ const ProfileContainer = React.memo((props) => {
         getProfile(userId).then(() => {
             getStatus(userId);
         });
-    }, [match.params.userId]);
+    }, [match.params.userId, authorizedUserId, getProfile, getStatus]);
     
-    if (!profile || isLoading) return <Preloader/>
+    if (!profile || isLoading) return <Preloader/>;
     
     return <Profile {...props}
                     isOwner={authorizedUserId === Number(match.params.userId)} />;

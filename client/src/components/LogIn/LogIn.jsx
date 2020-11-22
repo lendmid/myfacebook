@@ -19,7 +19,7 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     const [form, setForm] = useState({email: '', password: ''});
     const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
     
-    useEffect(() => {clearError();}, [error, message, clearError]);
+    useEffect(() => {clearError()}, [error, message, clearError]);
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     

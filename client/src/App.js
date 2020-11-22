@@ -21,7 +21,7 @@ const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, g
     useEffect(() => {
         initializeApp();
         getAuthUserData();
-    }, []);
+    }, [initializeApp, getAuthUserData]);
     
     let renderWithNotAuth = () => {
         return (
