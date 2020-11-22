@@ -1,6 +1,4 @@
 import {connect} from "react-redux";
-import {compose} from "redux";
-import {reduxForm} from "redux-form"
 import {logIn} from "../../redux/authReducer";
 import LogIn from "./LogIn";
 

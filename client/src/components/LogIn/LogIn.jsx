@@ -13,7 +13,8 @@ import github from "../../assets/images/github.png";
 const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     //refactoring: need will doing validation input
     const message = useMessage();
-    const {loading, error, request, clearError} = useHttp();
+    const {loading, error, clearError} = useHttp();
+    // const {loading, error, request, clearError} = useHttp();
     
     const [form, setForm] = useState({email: '', password: ''});
     const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
@@ -28,7 +29,9 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     //     console.log('Data', data);
     //     message(data.message);
     // };
-    let tryLogIn = (formData) => logIn(form.email, form.password, true);
+    let tryLogIn = () => {
+        logIn(form.email, form.password, true)
+    };
     
     
     return (
@@ -53,23 +56,24 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                 </div>
             </div>
             
-            <form className={`${s.login} ${error ? s.error : ""}`} onSubmit={tryLogIn}>
+            <form className={`${s.login} ${error ? s.error : ""}`}>
                 <input type="email"
                        placeholder="Your email"
                        name="email"
                        className={s.input}
                        required
                        disabled={loading}
-                       onChange={changeHandler} />
+                       onChange={changeHandler}
+                       autoComplete="on" />
                 <input type="password"
                        placeholder="Your password"
                        name="password"
                        className={s.input}
                        required
                        disabled={loading}
-                       onChange={changeHandler} />
-                <button type="submit" className={s.button}>Log in</button>
-                {/*<button type="button" onClick={tryLogIn} className={s.button}>Log in</button>*/}
+                       onChange={changeHandler}
+                       autoComplete="on" />
+                <button type="button" onClick={tryLogIn} className={s.button}>Log in</button>
                 {error && <span className={s.error_message}>{error}</span>}
                 <Link to={"/register"} className={s.button + " " + s.button_register}>Register</Link>
             </form>
