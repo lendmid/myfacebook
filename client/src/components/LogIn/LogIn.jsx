@@ -13,8 +13,8 @@ import github from "../../assets/images/github.png";
 const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     //refactoring: need will doing validation input
     const message = useMessage();
-    const {loading, error, clearError} = useHttp();
-    // const {loading, error, request, clearError} = useHttp();
+    // const {loading, error, clearError} = useHttp();
+    const {loading, error, request, clearError} = useHttp();
     
     const [form, setForm] = useState({email: '', password: ''});
     const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
@@ -23,15 +23,15 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
-    //refactoring: move action from here
-    // const tryLogIn = async () => {
-    //     const data = await request('/api/auth/login', 'POST', {...form});
-    //     console.log('Data', data);
-    //     message(data.message);
-    // };
-    let tryLogIn = () => {
-        logIn(form.email, form.password, true)
+    // refactoring: move action from here
+    const tryLogIn = async () => {
+        const data = await request('/api/auth/login', 'POST', {...form});
+        console.log('Data', data);
+        message(data.message);
     };
+    // let tryLogIn = () => {
+    //     logIn(form.email, form.password, true)
+    // };
     
     
     return (

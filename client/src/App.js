@@ -54,52 +54,10 @@ const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, g
     return (
         <div className="app-wrapper">
             {isAuth ? renderWithAuth(authorizedUserId) : renderWithNotAuth()}
+            <div id="alerts" className="alerts"/>
         </div>
     )
 });
-
-// class App extends React.PureComponent {
-//     componentDidMount() {
-//         this.props.initializeApp();
-//         this.props.getAuthUserData();
-//     }
-//
-//     renderWithNotAuth() {
-//         return (
-//             <Switch>
-//                 <Route exact path='/login' component={LogInContainer} />
-//                 <Route exact path='/register' component={RegisterContainer} />
-//                 <Redirect to={'/login'} />
-//             </Switch>
-//         )
-//     }
-//
-//     renderWithAuth(authorizedUserId) {
-//         return (
-//             <>
-//             <Header />
-//             <Switch>
-//                 <Route exact path='/login' component={LogInContainer} />
-//                 <Route exact path='/register' component={RegisterContainer} />
-//                 <Route exact path="/profile/:userId" component={ProfileContainer} />
-//                 <Route exact path="/messages/:userId" component={Messages} />
-//                 <Route exact path='/users/:userId?' component={UsersContainer} />
-//                 <Redirect to={`/profile/${authorizedUserId}`} />
-//             </Switch>
-//         </>
-//         )
-//     }
-//
-//     render() {
-//         if (!this.props.initialized) return <Preloader />;
-//
-//         return (
-//             <div className="app-wrapper">
-//                 {this.props.isAuth ? this.renderWithAuth(this.props.authorizedUserId) : this.renderWithNotAuth()}
-//             </div>
-//         )
-//     }
-// }
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
