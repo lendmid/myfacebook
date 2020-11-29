@@ -81,7 +81,6 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
             <div className={s.footer}>
                 <span className={s.myfacebook}>myfacebook © 2020</span>
             </div>
-            
         </div>
     )
 });
