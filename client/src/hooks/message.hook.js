@@ -9,6 +9,9 @@ export const useMessage = () => {
         div.className = "alert";
         div.innerHTML = `${text}`;
         wrapper.append(div);
-        setTimeout(() => div.remove(), 5000)
+        setTimeout(() => {
+            div.style.opacity = "0";
+            setTimeout(() => div.remove(), 1000)
+        }, 5000)
     }, [])
 };
