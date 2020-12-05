@@ -41,11 +41,11 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                 <div>
                     <h3 className={s.about_title}>About project</h3>
                     <p className={s.about_text}>
-                        What is this? It is my project whole wrote with library React, Redux and with other library's. Now project on stage develop and active development. <br /><br />
+                        What is this? It is my project whole wrote with library React, Redux and with other library's. Now project on stage develop. <br /><br />
                         You can enter in my project using data: <br />
                         <b>Email:</b> free@samuraijs.com <br />
                         <b>Password:</b> free <br /> <br />
-                        Today functional in this project work through other API. In the future I will writing my API. <br />
+                        Today functional in this project work through other API. My API in stage develop. <br />
                         Thank you for your interest to my work and your time!
                     </p>
                 </div>
