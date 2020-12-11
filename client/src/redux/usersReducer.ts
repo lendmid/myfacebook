@@ -59,7 +59,6 @@ type toggleIsFetchingType = {
 }
 export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching});
 
-
 //requestUsersThunkCreator
 export const requestUsers = (page = 1, pageSize = 100) => {
     return async (dispatch: any) => {
