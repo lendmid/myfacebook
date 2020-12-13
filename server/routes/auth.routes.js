@@ -74,7 +74,7 @@ router.post('/login',
             await res.json({token, userId: user.id})
             
         } catch (e) {
-            res.status(500).json({message: 'Something went wrong, please try again'});
+            await res.status(500).json({message: 'Something went wrong, please try again'});
         }
     });
 
