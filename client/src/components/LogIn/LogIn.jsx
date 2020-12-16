@@ -26,7 +26,6 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     // refactoring: move action from here
     const tryLogIn = async () => {
         const data = await request('/api/auth/login', 'POST', {...form});
-        console.log('Data', data);
         message(data.message);
     };
     // let tryLogIn = () => {
