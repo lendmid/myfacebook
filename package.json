@@ -1,7 +1,7 @@
 {
   "name": "myfacebook",
   "version": "1.0.0",
-  "description": "Практика применения React, Redux и сопутствующих npm пакетов",
+  "description": "Pet project on React/Redux",
   "main": "index.js",
   "author": "lendmid",
   "license": "ISC",
