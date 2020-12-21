@@ -160,15 +160,28 @@
     border-radius: 42%;
 }
 
-/* Large desktops and laptops */
-@media (min-width: 1200px) {
-
-}
 
 /* Landscape tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (max-width: 992px) {
+
+    .wrapper {
+        grid-template: 1fr 50px / 1fr;
+    }
+
+    .wrapper_description,
+    .login {
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+
+        margin: 30px;
+    }
+
+    .footer {
+        grid-row: 2 / 2;
+    }
 
 }
+
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
