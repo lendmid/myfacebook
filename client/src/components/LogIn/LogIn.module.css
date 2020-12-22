@@ -165,19 +165,28 @@
 @media (max-width: 992px) {
 
     .wrapper {
-        grid-template: 1fr 50px / 1fr;
+        grid-template: none;
     }
 
     .wrapper_description,
     .login {
-        grid-row: 1 / 1;
-        grid-column: 1 / 1;
+        grid-row: auto;
+        grid-column: auto;
+    }
+
+    .login {
 
         margin: 30px;
     }
 
+    .wrapper_description {
+        padding: 30px;
+    }
+
     .footer {
-        grid-row: 2 / 2;
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 50px;
     }
 
 }
