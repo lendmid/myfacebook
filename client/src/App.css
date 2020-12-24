@@ -5,6 +5,7 @@
     height: 100%;
     min-height: 100vh;
 }
+
 .alert {
     background-color: #dff0d8;
     color: #3c763d;
@@ -15,9 +16,22 @@
     border: 1px solid #bcd0b4;
     transition: opacity 1s;
 }
+
 .alerts {
     position: absolute;
     top: 0;
     right: 0;
     padding: 15px;
 }
+
+
+
+
+/* Landscape tablets and medium desktops */
+@media (max-width: 992px) {
+    .app-wrapper {
+        grid-template: 60px 1fr / 1fr;
+    }
+
+}
+
