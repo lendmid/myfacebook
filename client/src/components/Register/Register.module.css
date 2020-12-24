@@ -10,20 +10,16 @@
 .wrapper_description {
     grid-row: 2 / 3;
     grid-column: 2 / 2;
-    width: 100%;
     height: 100%;
     display: grid;
+    grid-gap: 20px;
 }
-
-/*.logo {*/
-/*    width: 400px;*/
-/*    height: 70px;*/
-/*}*/
 
 .about_title {
     font-size: 20px;
     font-weight: 900;
     line-height: 40px;
+    justify-self: start;
 }
 
 .about_text {
@@ -33,6 +29,7 @@
 .links {
     display: grid;
     align-self: end;
+    justify-items: center;
     grid-template-rows: 40px 100px;
     width: 250px;
 }
@@ -54,7 +51,6 @@
 .register {
     grid-row: 2 / 2;
     grid-column: 4 / 4;
-    width: 100%;
     
     display: grid;
     grid-gap: 10px;
@@ -144,4 +140,54 @@
 .portfolio:hover {
     box-shadow: 0 0 50px 2px rgba(238, 143, 102, 0.3);
     border-radius: 42%;
+}
+
+
+/* Landscape tablets and medium desktops */
+@media (max-width: 992px) {
+
+    .wrapper {
+        grid-template: none;
+    }
+
+    .wrapper_description,
+    .register {
+        grid-row: auto;
+        grid-column: auto;
+    }
+
+    .register {
+        margin: 30px;
+    }
+
+    .wrapper_description {
+        padding: 30px;
+        place-items: center;
+    }
+
+    .footer {
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 50px;
+    }
+
+    .about_title {
+        justify-self: center;
+    }
+
+    .logo {
+        width: 200px;
+        height: 35px;
+    }
+}
+
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    .input,
+    .button,
+    .button_login::before,
+    .button_login {
+        width: 180px;
+    }
 }

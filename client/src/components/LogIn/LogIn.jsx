@@ -5,7 +5,7 @@ import {useHttp} from "../../hooks/http.hook";
 import s from './LogIn.module.css';
 import {Link, Redirect} from "react-router-dom";
 
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo.png";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
 

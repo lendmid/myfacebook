@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Header.module.css';
 import {Link, Redirect} from "react-router-dom";
 import logOutImg from "../../assets/images/logOut.svg"
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/logo.png";
 import {logOut} from "../../redux/authReducer";
 import {connect} from "react-redux";
 
