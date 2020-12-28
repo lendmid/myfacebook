@@ -82,7 +82,7 @@
 }
 
 .error {
-    border: 1px red solid;
+    color: red;
 }
 
 .error_message {

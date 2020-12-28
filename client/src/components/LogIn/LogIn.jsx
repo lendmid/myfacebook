@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useMessage} from "../../hooks/message.hook";
 import {useHttp} from "../../hooks/http.hook";
+import useValidation from "./useValidation";
 
 import s from './LogIn.module.css';
 import {Link, Redirect} from "react-router-dom";
@@ -11,28 +12,23 @@ import github from "../../assets/images/github.png";
 
 
 const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
-    //refactoring: need will doing validation input
+
     const message = useMessage();
-    // const {loading, error, clearError} = useHttp();
+
     const {loading, error, request, clearError} = useHttp();
-    
-    const [form, setForm] = useState({email: '', password: ''});
-    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
-    
     useEffect(() => {clearError()}, [error, message, clearError]);
-    
+
+
+    const { handleChange, handleSubmit, values, errors } = useValidation(logIn);
+
     if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
     
     // refactoring: move action from here
-    const tryLogIn = async () => {
-        const data = await request('/api/auth/login', 'POST', {...form});
-        message(data.message);
-    };
-    // let tryLogIn = () => {
-    //     logIn(form.email, form.password, true)
+    // const tryLogIn = async () => {
+    //     const data = await request('/api/auth/login', 'POST', {...form});
+    //     message(data.message);
     // };
-    
-    
+
     return (
         <div className={s.wrapper}>
             <div className={s.wrapper_description}>
@@ -55,25 +51,30 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                 </div>
             </div>
             
-            <form className={`${s.login} ${error ? s.error : ""}`}>
-                <input type="email"
-                       placeholder="Your email"
-                       name="email"
-                       className={s.input}
-                       required
-                       disabled={loading}
-                       onChange={changeHandler}
-                       autoComplete="on" />
-                <input type="password"
-                       placeholder="Your password"
-                       name="password"
-                       className={s.input}
-                       required
-                       disabled={loading}
-                       onChange={changeHandler}
-                       autoComplete="on" />
-                <button type="button" onClick={tryLogIn} className={s.button}>Log in</button>
-                {error && <span className={s.error_message}>{error}</span>}
+            <form className={`${s.login} ${error ? s.error : ""}`} onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    placeholder="Your email"
+                    name="email"
+                    className={s.input}
+                    value={values.email}
+                    onChange={handleChange}
+                    autoComplete="on"
+                    required
+                />
+                {errors.email && <span className={s.error}>{errors.email}</span>}
+                <input
+                    type="password"
+                    placeholder="Your password"
+                    name="password"
+                    className={s.input}
+                    value={values.password}
+                    onChange={handleChange}
+                    autoComplete="on"
+                    required
+                />
+                {errors.password && <span className={s.error}>{errors.password}</span>}
+                <button type="submit" className={s.button}>Log in</button>
                 <Link to={"/register"} className={s.button + " " + s.button_register}>Register</Link>
             </form>
     
