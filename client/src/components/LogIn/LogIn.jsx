@@ -51,7 +51,7 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                 </div>
             </div>
             
-            <form className={`${s.login} ${error ? s.error : ""}`} onSubmit={handleSubmit}>
+            <form className={`${s.login}`} onSubmit={handleSubmit}>
                 <input
                     type="email"
                     placeholder="Your email"
