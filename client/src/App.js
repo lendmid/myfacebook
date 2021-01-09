@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Header from './components/Header/Header';
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import LogInContainer from "./components/LogIn/LogInContainer";
+import LogIn from "./components/LogIn/LogIn";
 import RegisterContainer from "./components/Register/RegisterContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -18,6 +18,7 @@ import {getTotalUsersCount} from "./redux/usersSelectors";
 
 
 const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, getAuthUserData}) => {
+
     useEffect(() => {
         initializeApp();
         getAuthUserData();
@@ -26,7 +27,7 @@ const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, g
     let renderWithNotAuth = () => {
         return (
             <Switch>
-                <Route exact path='/login' component={LogInContainer} />
+                <Route exact path='/login' component={LogIn} />
                 <Route exact path='/register' component={RegisterContainer} />
                 <Redirect to={'/login'} />
             </Switch>
@@ -38,7 +39,6 @@ const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, g
             <>
             <Header />
             <Switch>
-                <Route exact path='/login' component={LogInContainer} />
                 <Route exact path='/register' component={RegisterContainer} />
                 <Route exact path="/profile/:userId" component={ProfileContainer} />
                 <Route exact path="/messages/:userId" component={Messages} />

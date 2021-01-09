@@ -12,6 +12,6 @@ export const useMessage = () => {
         setTimeout(() => {
             div.style.opacity = "0";
             setTimeout(() => div.remove(), 1000)
-        }, 5000)
+        }, 20000)
     }, [])
 };

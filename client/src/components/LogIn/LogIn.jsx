@@ -1,33 +1,19 @@
-import React, {useEffect} from "react";
-import {useMessage} from "../../hooks/message.hook";
-import {useHttp} from "../../hooks/http.hook";
+import React from "react";
 import useValidation from "./useValidation";
 
 import s from './LogIn.module.css';
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
 import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
+import {connect} from "react-redux";
+import {logIn} from "../../redux/authReducer";
 
 
-const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
+const LogIn = React.memo(({logIn}) => {
 
-    const message = useMessage();
-
-    const {loading, error, request, clearError} = useHttp();
-    useEffect(() => {clearError()}, [error, message, clearError]);
-
-
-    const { handleChange, handleSubmit, values, errors } = useValidation(logIn);
-
-    if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
-    
-    // refactoring: move action from here
-    // const tryLogIn = async () => {
-    //     const data = await request('/api/auth/login', 'POST', {...form});
-    //     message(data.message);
-    // };
+    const { handleChange, handleSubmit, values, clientErrors } = useValidation(logIn);
 
     return (
         <div className={s.wrapper}>
@@ -45,7 +31,7 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                 </p>
 
                 <div className={s.links}>
-                    <span className={s.made_by}>made by <strong>Dima Doroshenko</strong></span>
+                    <span className={s.made_by}>made by <strong>Dimitry Doroshenko</strong></span>
                     <a href="https://hh.ru/applicant/resumes/view?resume=82f7c7b9ff08590b540039ed1f6d6a69644645"><img src={hh} alt="headhunter logo" className={s.portfolio} /></a>
                     <a href="https://github.com/lendmid/myfacebook"><img src={github} alt="github logo" className={s.portfolio} /></a>
                 </div>
@@ -62,7 +48,7 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                     autoComplete="on"
                     required
                 />
-                {errors.email && <span className={s.error}>{errors.email}</span>}
+                {clientErrors.email && <span className={s.error}>{clientErrors.email}</span>}
                 <input
                     type="password"
                     placeholder="Your password"
@@ -73,8 +59,11 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
                     autoComplete="on"
                     required
                 />
-                {errors.password && <span className={s.error}>{errors.password}</span>}
-                <button type="submit" className={s.button}>Log in</button>
+                {clientErrors.password && <span className={s.error}>{clientErrors.password}</span>}
+                <button type="submit"
+                        className={s.button}
+                        // disabled={loading}
+                >Log in</button>
                 <Link to={"/register"} className={s.button + " " + s.button_register}>Register</Link>
             </form>
     
@@ -85,4 +74,5 @@ const LogIn = React.memo(({isAuth, authorizedUserId, logIn}) => {
     )
 });
 
-export default LogIn;
+export default connect(null, {logIn})(LogIn);
+

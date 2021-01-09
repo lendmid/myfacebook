@@ -7,7 +7,7 @@ function checkValidity(values) {
   if (!values.email) {
     errors.email = 'Введите email';
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-    errors.email = 'Email некорректный';
+    errors.email = 'Email адрес некорректен';
   }
   if (!values.password) {
     errors.password = 'Введите пароль';
@@ -20,7 +20,7 @@ function checkValidity(values) {
 
 const useValidation = (callback) => {
   const [values, setValues] = useState({email: '', password: '',});
-  const [errors, setErrors] = useState({email: '', password: ''});
+  const [clientErrors, setClientErrors] = useState({email: '', password: ''});
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -29,16 +29,16 @@ const useValidation = (callback) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setErrors(checkValidity(values));
+    setClientErrors(checkValidity(values));
   };
 
   useEffect(() => {
-      if (Object.keys(errors).length === 0) callback(values.email, values.password);
+      if (Object.keys(clientErrors).length === 0) callback(values.email, values.password);
     },
-    [errors, callback]
+    [clientErrors]
   );
 
-  return { handleChange, handleSubmit, values, errors };
+  return { handleChange, handleSubmit, values, clientErrors };
 };
 
 export default useValidation;
