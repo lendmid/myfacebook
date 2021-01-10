@@ -87,7 +87,7 @@ function generateHistoryMessages(n: number) {
     return historyMessages;
 }
 
-const messagesReducer = (state = initialState, action: any): InitialStateType => {
+export function messagesReducer(state: InitialStateType = initialState, action: any): InitialStateType {
     switch (action.type) {
         case SEND_MESSAGE:
             return {
@@ -100,21 +100,11 @@ const messagesReducer = (state = initialState, action: any): InitialStateType =>
         default:
             return state;
     }
-};
-
-type sendMessageCreatorType = {
-    type: typeof SEND_MESSAGE
-    newMessageText: string
 }
 
-export const sendMessageCreator = (newMessageText: string): sendMessageCreatorType => ({
-    type: SEND_MESSAGE, newMessageText
-});
+// 7
+export const sendMessage = (newPostText: string) => (dispatch: any) => {
+    dispatch({type: SEND_MESSAGE, newPostText})
+}
 
-export const sendMessage = (newPostText: string) => {
-    return (dispatch: any) => {
-        dispatch(sendMessageCreator(newPostText))
-    }
-};
-
-export default messagesReducer;
+// 8 get history message with user

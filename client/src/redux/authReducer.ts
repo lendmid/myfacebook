@@ -64,7 +64,6 @@ export const getUserData = () => async (dispatch: any) => {
         const {userId, email} = res.payload;
         dispatch({type: SET_USER_DATA, userId, email, isAuth: true});
     }
-    // if (!res.success) dispatch({type: SET_ERROR, error: res.error});
 
     dispatch({type: LOADING_END});
 };

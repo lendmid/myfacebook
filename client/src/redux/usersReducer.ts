@@ -32,44 +32,15 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
     }
 }
 
-type setUsersType = {
-    type: typeof SET_USERS
-    users: UserType[]
-}
-export const setUsers = (users: UserType[]): setUsersType => ({type: SET_USERS, users});
+// 6
+export const requestUsers = (page = 1, pageSize = 100) => async (dispatch: any) => {
+    dispatch({type: SET_CURRENT_PAGE, page});
+    dispatch({type: TOGGLE_IS_FETCHING, isFetching: true});
+    let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)
 
-type setCurrentPageType = {
-    type: typeof SET_CURRENT_PAGE
-    currentPage: number
-}
-export const setCurrentPage = (currentPage: number): setCurrentPageType => ({type: SET_CURRENT_PAGE, currentPage});
-
-type setUsersTotalCountType = {
-    type: typeof SET_TOTAL_USERS_COUNT
-    totalUsersCount: number
-}
-export const setUsersTotalCount = (totalUsersCount: number): setUsersTotalCountType => ({
-    type: SET_TOTAL_USERS_COUNT,
-    totalUsersCount
-});
-
-type toggleIsFetchingType = {
-    type: typeof TOGGLE_IS_FETCHING
-    isFetching: boolean
-}
-export const toggleIsFetching = (isFetching: boolean): toggleIsFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching});
-
-//requestUsersThunkCreator
-export const requestUsers = (page = 1, pageSize = 100) => {
-    return async (dispatch: any) => {
-        dispatch(setCurrentPage(page));
-        dispatch(toggleIsFetching(true));
-        let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)
-
-        dispatch(toggleIsFetching(false));
-        dispatch(setUsers(users));
-        dispatch(setUsersTotalCount(Math.ceil(totalCount)));
-    }
+    dispatch({type: TOGGLE_IS_FETCHING, isFetching: false});
+    dispatch({type: SET_USERS, users});
+    dispatch({type: SET_TOTAL_USERS_COUNT, totalUsersCount: Math.ceil(totalCount)});
 }
 
 export default usersReducer;

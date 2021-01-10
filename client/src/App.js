@@ -9,20 +9,18 @@ import Messages from './components/Messages/Messages';
 
 import './App.css';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
-import {getUserData, logOut} from "./redux/authReducer";
+import {getUserData} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
-import {initializeApp} from "./redux/appReducer";
 import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
-import {getTotalUsersCount} from "./redux/usersSelectors";
+import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
 
 
-const App = React.memo(({isAuth, userId, initialized, initializeApp, getUserData}) => {
+const App = React.memo(({isAuth, userId, getUserData}) => {
 
     useEffect(() => {
-        initializeApp();
         getUserData();
-    }, [initializeApp, getUserData]);
+    }, [getUserData]);
 
     let renderWithNotAuth = () => {
         return (
@@ -47,9 +45,8 @@ const App = React.memo(({isAuth, userId, initialized, initializeApp, getUserData
             </>
         )
     };
-    
-    if (!initialized) return <Preloader />;
-    
+
+    if (!isAuth) return <Preloader/>;
     return (
         <div className="app-wrapper">
             {isAuth ? renderWithAuth(userId) : renderWithNotAuth()}
@@ -61,11 +58,10 @@ const App = React.memo(({isAuth, userId, initialized, initializeApp, getUserData
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     userId: state.auth.userId,
-    initialized: state.app.initialized,
     totalUsersCount: getTotalUsersCount(state),
 });
 
-const AppContainer = connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getUserData}
+const AppContainer = connect(mapStateToProps, {getProfile, getStatus, updateStatus, getUserData}
 )(App);
 
 // //for build on gitHub

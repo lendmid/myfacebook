@@ -1,5 +1,5 @@
 import {profileAPI} from "../api/api";
-import {PhotosType, PostType, ProfileType} from "../types/types";
+import {PostType, ProfileType} from "../types/types";
 
 
 const ADD_POST = 'myFacebook/profile/ADD-POST';
@@ -91,69 +91,31 @@ function randomInteger(min: number, max: number): number {
     return Math.floor(rand);
 }
 
-type addPostCreatorType = {
-    type: typeof ADD_POST
-    newPostText: string
-}
-export const addPostCreator = (newPostText: string): addPostCreatorType => ({type: ADD_POST, newPostText})
+// 1
+export const addPost = (newPostText: string) => (dispatch: any) => dispatch({type: ADD_POST, newPostText});
+// 2
+export const deletePost = (postId: number) => (dispatch: any) => dispatch({type: DELETE_POST, postId});
 
-type setProfileType = {
-    type: typeof SET_PROFILE
-    profile: ProfileType
-}
-export const setProfile = (profile: ProfileType): setProfileType => ({type: SET_PROFILE, profile})
-
-
-type loadProfileType = { type: typeof LOADING_PROFILE }
-export const loadProfile = (): loadProfileType => ({type: LOADING_PROFILE})
-
-type setStatusType = {
-    type: typeof SET_STATUS
-    status: string
-}
-export const setStatus = (status: string): setStatusType => ({type: SET_STATUS, status})
-
-type deletePostType = {
-    type: typeof DELETE_POST
-    postId: number
-}
-export const deletePostCreator = (postId: number): deletePostType => ({type: DELETE_POST, postId})
-
-type savePhotoCreatorType = {
-    type: typeof SAVE_PHOTO_SUCCESS
-    photos: PhotosType
-}
-export const savePhotoCreator = (photos: PhotosType): savePhotoCreatorType => ({type: SAVE_PHOTO_SUCCESS, photos})
-
-
-export const addPost = (newPostText: string) => {
-    return (dispatch: any) => dispatch(addPostCreator(newPostText));
-}
-
-export const deletePost = (postId: number) => {
-    return (dispatch: any) => dispatch(deletePostCreator(postId));
-}
-
+//3
 export const getProfile = (userId: number) => async (dispatch: any) => {
-    dispatch(loadProfile());
+    dispatch({type: LOADING_PROFILE});
     let response = await profileAPI.requestProfile(userId);
-    dispatch(setProfile(response.data));
+    dispatch({type: SET_PROFILE, profile: response.data});
 }
 
 export const getStatus = (userId: number) => async (dispatch: any) => {
-    dispatch(loadProfile());
-    let response = await profileAPI.requestStatus(userId);
-    dispatch(setStatus(response.data));
+    dispatch({type: LOADING_PROFILE});
+    let status = await profileAPI.requestStatus(userId).data;
+    dispatch({type: SET_STATUS, status});
 }
+// 4
+export const updateStatus = (status: string) => async () => await profileAPI.updateStatus(status);
 
-export const updateStatus = (status: string) => async () => {
-    await profileAPI.updateStatus(status);
-}
-
+// 5
 export const savePhoto = (file: any) => async (dispatch: any) => {
     let response = await profileAPI.updatePhoto(file);
     if (response.data.resultCode !== 0) return;
-    dispatch(savePhotoCreator(response.data.photos));
+    dispatch({type: SAVE_PHOTO_SUCCESS, photos: response.data.photos});
 }
 
 export default profileReducer;

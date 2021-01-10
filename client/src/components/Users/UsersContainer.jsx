@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {requestUsers} from "../../redux/usersReducer";
-import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../redux/usersSelectors";
+import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../redux/selectors/usersSelectors";
 import {getProfile, getStatus} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";

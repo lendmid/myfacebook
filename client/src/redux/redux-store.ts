@@ -3,10 +3,9 @@ import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form"
 
 import profileReducer from "./profileReducer";
-import messagesReducer from "./messagesReducer";
+import {messagesReducer} from "./messagesReducer";
 import usersReducer from "./usersReducer";
 import {authReducer} from "./authReducer";
-import appReducer from "./appReducer";
 import logger from "redux-logger";
 
 
@@ -16,7 +15,6 @@ const rootReducer = combineReducers({
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
-    app: appReducer,
 });
 
 
