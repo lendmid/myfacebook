@@ -1,0 +1,79 @@
+.wrapper_description {
+    grid-row: 2 / 3;
+    grid-column: 2 / 2;
+    height: 100%;
+    display: grid;
+    grid-gap: 20px;
+}
+
+.logo {
+    width: 400px;
+    height: 70px;
+}
+
+.about_title {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 40px;
+    justify-self: start;
+}
+
+.about_text {
+    font-size: 18px;
+}
+
+.links {
+    display: grid;
+    align-self: end;
+    justify-items: center;
+    grid-template-rows: 40px 100px;
+    width: 250px;
+}
+
+.made_by {
+    grid-column: 1 / 3;
+    font-size: 18px;
+}
+
+.made_by::after {
+    content: "";
+    display: block;
+    background-color: #EE8F66;
+    height: 2px;
+    width: 150px;
+    margin-left: 74px;
+}
+
+.myfacebook {
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.portfolio:hover {
+    box-shadow: 0 0 50px 2px rgba(238, 143, 102, 0.3);
+    border-radius: 42%;
+}
+
+
+/* Landscape tablets and medium desktops */
+@media (max-width: 992px) {
+
+    .wrapper_description {
+        grid-row: auto;
+        grid-column: auto;
+        padding: 30px;
+        place-items: center;
+    }
+
+    .wrapper_description {
+    }
+
+    .about_title {
+        justify-self: center;
+    }
+
+    .logo {
+        width: 200px;
+        height: 35px;
+    }
+}

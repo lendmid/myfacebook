@@ -45,20 +45,20 @@ export const profileAPI = {
         });
     }
 };
-
-export const authAPI = {
-    me() {
-        return instance.get('auth/me');
-    },
-    logIn(email, password, rememberMe = true) {
-        return instance.post('auth/login', {email, password, rememberMe});
-    },
-    logOut() {
-        return instance.delete('auth/login');
-    }
-    
-};
-
+//
+// export const authAPI = {
+//     me() {
+//         return instance.get('auth/me');
+//     },
+//     logIn(email, password, rememberMe = true) {
+//         return instance.post('auth/login', {email, password, rememberMe});
+//     },
+//     logOut() {
+//         return instance.delete('auth/login');
+//     }
+//
+// };
+//
 // //new API
 // export const newAuthAPI = {
 //

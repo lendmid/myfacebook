@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Header from './components/Header/Header';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LogIn from "./components/LogIn/LogIn";
-import RegisterContainer from "./components/Register/RegisterContainer";
+import Register from "./components/Register/Register";
 import Preloader from "./components/common/Preloader/Preloader";
 import UsersContainer from "./components/Users/UsersContainer";
 import Messages from './components/Messages/Messages';
@@ -28,7 +28,7 @@ const App = React.memo(({isAuth, userId, initialized, initializeApp, getUserData
         return (
             <Switch>
                 <Route exact path='/login' component={LogIn}/>
-                <Route exact path='/register' component={RegisterContainer}/>
+                <Route exact path='/register' component={Register}/>
                 <Redirect to={'/login'}/>
             </Switch>
         )
@@ -39,7 +39,6 @@ const App = React.memo(({isAuth, userId, initialized, initializeApp, getUserData
             <>
                 <Header/>
                 <Switch>
-                    <Route exact path='/register' component={RegisterContainer}/>
                     <Route exact path="/profile/:userId" component={ProfileContainer}/>
                     <Route exact path="/messages/:userId" component={Messages}/>
                     <Route exact path='/users/:userId?' component={UsersContainer}/>

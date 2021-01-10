@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F8D7DA;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c17d83;
+    left: 100px;
+    margin-top: 10px;
+    max-width: 360px;
+}
+
+.close {
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    .wrapper {
+        max-width: 180px;
+    }
+}

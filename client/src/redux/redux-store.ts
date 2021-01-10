@@ -1,31 +1,35 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import thunkMiddleware from "redux-thunk";
+import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form"
 
 import profileReducer from "./profileReducer";
-import messegesReducer from "./messagesReducer";
+import messagesReducer from "./messagesReducer";
 import usersReducer from "./usersReducer";
-import authReducer from "./authReducer";
+import {authReducer} from "./authReducer";
 import appReducer from "./appReducer";
+import logger from "redux-logger";
 
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,
-    messagesPage: messegesReducer,
+    messagesPage: messagesReducer,
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
     app: appReducer,
 });
 
-type RootReducerType = typeof rootReducer;
-export type AppStateType = ReturnType<RootReducerType>
 
-// @ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
+export const composeEnhancers = (
+    window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+) || compose;
 
-// @ts-ignore
-window.store = store;
+const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(thunk, logger))
+);
 
 export default store;
+export type AppStateType = ReturnType<typeof rootReducer>
+
+

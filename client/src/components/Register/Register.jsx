@@ -1,109 +1,110 @@
-import React, {useEffect, useState} from "react";
-import {useMessage} from "../../hooks/message.hook";
-import {useHttp} from "../../hooks/http.hook";
+import React from "react";
 
 import s from './Register.module.css';
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-import logo from "../../assets/images/logo.png";
-import hh from "../../assets/images/hh.png";
-import github from "../../assets/images/github.png";
+import {connect} from "react-redux";
+import {register} from "../../redux/authReducer";
+import useValidation from "./useValidation";
+import Description from "../common/Description/Description";
+import Footer from "../common/Footer/Footer";
+import FormAlert from "../common/FormAlert/FormAlert";
 
 
-const Register = React.memo(({isAuth, userId}) => {
-    //refactoring: need will doing validation input
-    const message = useMessage();
-    const {loading, error, request, clearError} = useHttp();
+const Register = React.memo(({isLoading, register, serverError}) => {
 
-    const [form, setForm] = useState({email: '', password: '', firstName: '', lastName: ''});
-    const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
-
-    useEffect(() => {
-        clearError()
-    }, [error, message, clearError]);
-
-    if (isAuth) return <Redirect to={`/profile/${userId}`}/>;
-
-    //refactoring: move action from here
-    const tryRegister = async () => {
-        const data = await request('/api/auth/register', 'POST', {...form});
-        console.log('Data', data);
-        message(data.message);
-    };
+    const {handleChange, handleSubmit, values, clientErrors} = useValidation(register);
 
     return (
         <div className={s.wrapper}>
-            <div className={s.wrapper_description}>
-                 <Link to={"/login"}><img src={logo} alt="logo" className={s.logo} /></Link>
-                <div>
-                    <h3 className={s.about_title}>About project</h3>
-                    <p className={s.about_text}>
-                        What is this? It is my project whole wrote with library React, Redux and with other library's. Now project on stage develop and active development. <br /><br />
-                        You can enter in my project using data: <br />
-                        <b>Email:</b> free@samuraijs.com <br />
-                        <b>Password:</b> free <br /> <br />
-                        Today functional in this project work through other API. In the future I will writing my API. <br />
-                        Thank you for your interest to my work and your time!
-                    </p>
-                </div>
-                <div className={s.links}>
-                    <span className={s.made_by}>made by <strong>Dima Doroshenko</strong></span>
-                    <a href="https://hh.ru/applicant/resumes/view?resume=82f7c7b9ff08590b540039ed1f6d6a69644645"><img src={hh} alt="github logo" className={s.portfolio} /></a>
-                    <a href="https://github.com/lendmid"><img src={github} alt="headhunter logo" className={s.portfolio} /></a>
-                </div>
-            </div>
-            
-            <form className={s.register} >
-                <input type="email"
-                       placeholder="Your email"
-                       name="email"
-                       className={s.input}
-                       required
-                       disabled={loading}
-                       autoComplete="off"
-                       readOnly
-                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
-                       onChange={changeHandler} />
-                <input type="password"
-                       placeholder="Your password"
-                       name="password"
-                       className={s.input}
-                       required
-                       disabled={loading}
-                       autoComplete="off"
-                       readOnly
-                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
-                       onChange={changeHandler} />
-                <input type="text"
-                       placeholder="First name"
-                       name="firstName"
-                       className={s.input}
-                       required
-                       disabled={loading}
-                       autoComplete="off"
-                       readOnly
-                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
-                       onChange={changeHandler} />
-                <input type="text"
-                       placeholder="Last name"
-                       name="lastName"
-                       className={s.input}
-                       required
-                       disabled={loading}
-                       autoComplete="off"
-                       readOnly
-                       onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
-                       onChange={changeHandler} />
-                <button type="button" className={s.button} onClick={tryRegister}>Register</button>
-                <Link to={"/login"} className={s.button + " " + s.button_login}>Return to login page</Link>
+
+            <Description/>
+
+            <form className={s.register} onSubmit={handleSubmit}>
+                <label className={s.label}>
+                    Email
+                    <input
+                        type="email"
+                        name="email"
+                        className={s.input}
+                        value={values.email}
+                        onChange={handleChange}
+                        autoComplete="off"
+                        readOnly
+                        onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
+                        required
+                    />
+                </label>
+                {clientErrors.email && <span className={s.error}>{clientErrors.email}</span>}
+
+                <label className={s.label}>
+                    Password
+                    <input
+                        type="password"
+                        name="password"
+                        className={s.input}
+                        value={values.password}
+                        onChange={handleChange}
+                        autoComplete="off"
+                        readOnly
+                        onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
+                        required
+                    />
+                </label>
+                {clientErrors.password && <span className={s.error}>{clientErrors.password}</span>}
+
+                <label className={s.label}>
+                    FirstName
+                    <input
+                        type="text"
+                        name="firstName"
+                        className={s.input}
+                        value={values.firstName}
+                        onChange={handleChange}
+                        autoComplete="off"
+                        readOnly
+                        onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
+                        required
+                    />
+                </label>
+                {clientErrors.firstName && <span className={s.error}>{clientErrors.firstName}</span>}
+
+                <label className={s.label}>
+                    LastName
+                    <input
+                        type="text"
+                        name="lastName"
+                        className={s.input}
+                        value={values.lastName}
+                        onChange={handleChange}
+                        autoComplete="off"
+                        readOnly
+                        onFocus={(e) => e.currentTarget.removeAttribute('readonly')}
+                        required
+                    />
+                </label>
+                {clientErrors.lastName && <span className={s.error}>{clientErrors.lastName}</span>}
+
+                <button type="submit"
+                        className={s.button}
+                        disabled={isLoading}
+                >Register
+                </button>
+
+                {serverError && <FormAlert error={serverError}/>}
+                <div className={s.button_login_underline}></div>
+
+                <Link to={"/login"} className={s.button + " " + s.button_login}>Login</Link>
             </form>
 
-            <div className={s.footer}>
-                <span className={s.myfacebook}>myfacebook © 2020</span>
-            </div>
-                
+            <Footer/>
         </div>
     )
 });
 
-export default Register;
+const mapStateToProps = (state) => ({
+    isLoading: state.auth.isLoading,
+    serverError: state.auth.serverError,
+});
+
+export default connect(mapStateToProps, {register})(Register);

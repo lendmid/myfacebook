@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 
 function checkValidity(values) {
@@ -14,16 +14,21 @@ function checkValidity(values) {
   } else if (values.password.length < 6) {
     errors.password = 'Minimum password length 6 characters';
   }
-
+  if (!values.firstName) {
+    errors.firstName = 'Enter first name';
+  }
+  if (!values.lastName) {
+    errors.lastName = 'Enter last name';
+  }
   return errors;
 }
 
 const useValidation = (callback) => {
-  const [values, setValues] = useState({email: '', password: ''});
-  const [clientErrors, setClientErrors] = useState({email: '', password: ''});
+  const [values, setValues] = useState({email: '', password: '', firstName: '', lastName: ''});
+  const [clientErrors, setClientErrors] = useState({email: '', password: '', firstName: '', lastName: ''});
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setValues({...values, [name]: value});
   };
 
@@ -33,12 +38,14 @@ const useValidation = (callback) => {
   };
 
   useEffect(() => {
-      if (Object.keys(clientErrors).length === 0) callback(values.email, values.password);
-    },
+        if (Object.keys(clientErrors).length === 0) {
+          callback(values.email, values.password, values.firstName, values.lastName);
+        }
+      },
       [clientErrors, callback]
   );
 
-  return { handleChange, handleSubmit, values, clientErrors };
+  return {handleChange, handleSubmit, values, clientErrors};
 };
 
 export default useValidation;
