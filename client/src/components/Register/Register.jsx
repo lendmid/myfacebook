@@ -10,18 +10,20 @@ import hh from "../../assets/images/hh.png";
 import github from "../../assets/images/github.png";
 
 
-const Register = React.memo(({isAuth, authorizedUserId}) => {
+const Register = React.memo(({isAuth, userId}) => {
     //refactoring: need will doing validation input
     const message = useMessage();
     const {loading, error, request, clearError} = useHttp();
-    
+
     const [form, setForm] = useState({email: '', password: '', firstName: '', lastName: ''});
     const changeHandler = (event) => setForm({...form, [event.target.name]: event.target.value});
-    
-    useEffect(() => {clearError()}, [error, message, clearError]);
-    
-    if (isAuth) return <Redirect to={`/profile/${authorizedUserId}`} />;
-    
+
+    useEffect(() => {
+        clearError()
+    }, [error, message, clearError]);
+
+    if (isAuth) return <Redirect to={`/profile/${userId}`}/>;
+
     //refactoring: move action from here
     const tryRegister = async () => {
         const data = await request('/api/auth/register', 'POST', {...form});

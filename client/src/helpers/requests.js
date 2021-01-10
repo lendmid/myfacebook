@@ -9,10 +9,10 @@ const handleError = ( status ) => {
       errorMessage = 'Поступившие данные некорректны';
       break;
     case 401:
-      errorMessage = 'Неверный email адрес или пароль';
+      errorMessage = 'Для доступа к ресурсу необходима авторизация';
       break;
     case 403:
-      errorMessage = 'Доступа к запрашиваемому ресурсу запрещен';
+      errorMessage = 'Доступ к запрашиваемому ресурсу запрещен';
       break;
     case 404:
       errorMessage = 'Неверный запрос';
@@ -31,7 +31,9 @@ async function httpRequest(url, method = 'GET', data = null, headers = {}) {
 
   try {
     const response = await axios.request({url, method, data, headers});
-    return { success: true, payload: response.data }
+    if (response.data.token) Cookies.set("token", response.data.token);
+
+    return {success: true, payload: response.data}
   } catch (e) {
     let error = handleError(e.response.status);
     return { success: false, error }

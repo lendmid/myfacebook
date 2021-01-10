@@ -6,16 +6,16 @@ import logo from "../../assets/images/logo.png";
 import {logOut} from "../../redux/authReducer";
 import {connect} from "react-redux";
 
-const Header = ({logOut, authorizedUserId}) => {
+const Header = ({logOut, userId}) => {
     return (
         <header className={s.header}>
-            <Link to={`/profile/${authorizedUserId}`} className={s.logo_link}>
-                <img src={logo} alt="company logo" className={s.logo} />
+            <Link to={`/profile/${userId}`} className={s.logo_link}>
+                <img src={logo} alt="company logo" className={s.logo}/>
             </Link>
             <nav className={s.nav}>
                 <ul className={s.list}>
-                    <li><Link to={`/profile/${authorizedUserId}`}>Profile</Link></li>
-                    <li><Link to={`/messages/${authorizedUserId}`}>Messages</Link></li>
+                    <li><Link to={`/profile/${userId}`}>Profile</Link></li>
+                    <li><Link to={`/messages/${userId}`}>Messages</Link></li>
                     <li><Link to="/users">Users</Link></li>
                 </ul>
             </nav>
@@ -32,7 +32,7 @@ const Header = ({logOut, authorizedUserId}) => {
 
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    authorizedUserId: state.auth.authorizedUserId,
+    userId: state.auth.userId,
 })
 
 export default connect(mapStateToProps, {logOut})(Header);

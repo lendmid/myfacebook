@@ -4,7 +4,7 @@ import Register from "./Register";
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    authorizedUserId: state.auth.authorizedUserId,
+    userId: state.auth.userId,
 });
 
 const RegisterContainer = connect(mapStateToProps)(Register);

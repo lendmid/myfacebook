@@ -1,4 +1,4 @@
-import {getAuthUserData} from "./authReducer";
+import {getUserData} from "./authReducer";
 
 
 const INITIALIZED_SUCCESS = 'myFacebook/app/INITIALIZED_SUCCESS';
@@ -30,9 +30,9 @@ type initializedSuccessType = {
 export const initializedSuccess = (): initializedSuccessType => ({type: INITIALIZED_SUCCESS});
 
 export const initializeApp = () => (dispatch: any) => {
-    let promise = dispatch(getAuthUserData());
+    let promise = dispatch(getUserData());
 
-    Promise.all([promise]).then(r => {
+    Promise.all([promise]).then(() => {
         dispatch(initializedSuccess());
     })
 }

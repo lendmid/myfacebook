@@ -9,7 +9,7 @@ import Messages from './components/Messages/Messages';
 
 import './App.css';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
-import {getAuthUserData, logOut} from "./redux/authReducer";
+import {getUserData, logOut} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
@@ -17,35 +17,35 @@ import store from './redux/redux-store';
 import {getTotalUsersCount} from "./redux/usersSelectors";
 
 
-const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, getAuthUserData}) => {
+const App = React.memo(({isAuth, userId, initialized, initializeApp, getUserData}) => {
 
     useEffect(() => {
         initializeApp();
-        getAuthUserData();
-    }, [initializeApp, getAuthUserData]);
-    
+        getUserData();
+    }, [initializeApp, getUserData]);
+
     let renderWithNotAuth = () => {
         return (
             <Switch>
-                <Route exact path='/login' component={LogIn} />
-                <Route exact path='/register' component={RegisterContainer} />
-                <Redirect to={'/login'} />
+                <Route exact path='/login' component={LogIn}/>
+                <Route exact path='/register' component={RegisterContainer}/>
+                <Redirect to={'/login'}/>
             </Switch>
         )
     };
-    
-    let renderWithAuth = (authorizedUserId) => {
+
+    let renderWithAuth = (userId) => {
         return (
             <>
-            <Header />
-            <Switch>
-                <Route exact path='/register' component={RegisterContainer} />
-                <Route exact path="/profile/:userId" component={ProfileContainer} />
-                <Route exact path="/messages/:userId" component={Messages} />
-                <Route exact path='/users/:userId?' component={UsersContainer} />
-                <Redirect to={`/profile/${authorizedUserId}`} />
-            </Switch>
-        </>
+                <Header/>
+                <Switch>
+                    <Route exact path='/register' component={RegisterContainer}/>
+                    <Route exact path="/profile/:userId" component={ProfileContainer}/>
+                    <Route exact path="/messages/:userId" component={Messages}/>
+                    <Route exact path='/users/:userId?' component={UsersContainer}/>
+                    <Redirect to={`/profile/${userId}`}/>
+                </Switch>
+            </>
         )
     };
     
@@ -53,7 +53,7 @@ const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, g
     
     return (
         <div className="app-wrapper">
-            {isAuth ? renderWithAuth(authorizedUserId) : renderWithNotAuth()}
+            {isAuth ? renderWithAuth(userId) : renderWithNotAuth()}
             <div id="alerts" className="alerts"/>
         </div>
     )
@@ -61,12 +61,12 @@ const App = React.memo(({isAuth, authorizedUserId, initialized, initializeApp, g
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    authorizedUserId: state.auth.authorizedUserId,
+    userId: state.auth.userId,
     initialized: state.app.initialized,
     totalUsersCount: getTotalUsersCount(state),
 });
 
-const AppContainer = connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getAuthUserData}
+const AppContainer = connect(mapStateToProps, {initializeApp, logOut, getProfile, getStatus, updateStatus, getUserData}
 )(App);
 
 // //for build on gitHub

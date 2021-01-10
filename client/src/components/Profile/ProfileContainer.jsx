@@ -9,30 +9,31 @@ import PostConrainer from "./Post/PostContainer";
 
 
 const ProfileContainer = React.memo((props) => {
-    
-    let {match, authorizedUserId, profile, isLoading, getProfile, getStatus} = props;
-    
+
+    let {match, userId, profile, isLoading, getProfile, getStatus} = props;
+
     useEffect(() => {
         if (!match.params.userId) return;
         let userId = Number(match.params.userId);
-        if (!userId) userId = authorizedUserId;
+        // if (!userId) userId = userId;
         getProfile(userId).then(() => {
             getStatus(userId);
         });
-    }, [match.params.userId, authorizedUserId, getProfile, getStatus]);
+    }, [match.params.userId, userId, getProfile, getStatus]);
     
     if (!profile || isLoading) return <Preloader/>;
-    
+
     return <Profile {...props}
-                    isOwner={authorizedUserId === Number(match.params.userId)} />;
+                    isOwner={userId === Number(match.params.userId)}/>;
 });
 
 
 let mapStateToProps = (state) => ({
-    posts: state.profilePage.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount} key={post.id} id={post.id} />),
+    posts: state.profilePage.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount}
+                                                              key={post.id} id={post.id}/>),
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    authorizedUserId: state.auth.authorizedUserId,
+    userId: state.auth.userId,
     isLoading: state.profilePage.isLoading,
 });
 
