@@ -7,7 +7,7 @@ import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../r
 import {getProfile, getStatus} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
-import PostConrainer from "../Profile/Post/PostContainer";
+// import PostConrainer from "../Profile/Post/PostContainer";
 
 
 const UsersContainer = React.memo((props) => {
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => ({
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
-    posts: state.profilePage.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount} key={post.id} id={post.id} />),
+    // posts: state.profilePage.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount} key={post.id} id={post.id} />),
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     isLoading: state.profilePage.isLoading,

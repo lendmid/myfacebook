@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import Header from './components/Header/Header';
-import ProfileContainer from "./components/Profile/ProfileContainer";
+import Profile from "./components/Profile/Profile";
 import LogIn from "./components/LogIn/LogIn";
 import Register from "./components/Register/Register";
-import Preloader from "./components/common/Preloader/Preloader";
 import UsersContainer from "./components/Users/UsersContainer";
 import Messages from './components/Messages/Messages';
 
@@ -37,7 +36,7 @@ const App = React.memo(({isAuth, userId, getUserData}) => {
             <>
                 <Header/>
                 <Switch>
-                    <Route exact path="/profile/:userId" component={ProfileContainer}/>
+                    <Route exact path="/profile/:userId" component={Profile}/>
                     <Route exact path="/messages/:userId" component={Messages}/>
                     <Route exact path='/users/:userId?' component={UsersContainer}/>
                     <Redirect to={`/profile/${userId}`}/>
@@ -46,7 +45,6 @@ const App = React.memo(({isAuth, userId, getUserData}) => {
         )
     };
 
-    if (!isAuth) return <Preloader/>;
     return (
         <div className="app-wrapper">
             {isAuth ? renderWithAuth(userId) : renderWithNotAuth()}

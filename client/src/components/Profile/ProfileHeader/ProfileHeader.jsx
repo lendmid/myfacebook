@@ -30,18 +30,18 @@ const ProfileHeader = React.memo(({profile, status, updateStatus, isOwner, saveP
                     <img src={avatar_bg} alt="background" />
                 </div>
                 <button className={s.photo} onClick={() => isOwner ? setUpdatePhotoPopup(true) : openPhoto()}>
-                    <img src={(profile.photos && profile.photos.large) ? profile.photos.large : user_avatar} className={s.user_photo} alt="user_photo" />
-                    {isOwner && <img src={camera_icon} alt="camera icon" className={s.camera_icon} />}
+                    <img src={profile.photo ? profile.photo : user_avatar} className={s.user_photo} alt="user_photo"/>
+                    {isOwner && <img src={camera_icon} alt="camera icon" className={s.camera_icon}/>}
                 </button>
                 {!isOwner &&
                 <div onClick={closePhoto} id="userPhoto" className={s.popup}>
-                        <img className={s.full_img} src={profile.photos.large || user_avatar} alt="" />
-                    </div>
+                    <img className={s.full_img} src={profile.photo || user_avatar} alt=""/>
+                </div>
                 }
             </div>
             <div className={s.short_biography}>
-                <span className={s.fullName}>{profile.fullName}</span>
-                <ProfileStatus status={status} updateStatus={updateStatus} isOwner={isOwner} />
+                <span className={s.fullName}>{`${profile.firstName} ${profile.lastName}`}</span>
+                <ProfileStatus status={status} updateStatus={updateStatus} isOwner={isOwner}/>
             </div>
         </div>
     )

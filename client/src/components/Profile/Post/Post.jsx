@@ -1,16 +1,28 @@
 import React from "react";
 import s from './Post.module.css';
 import user_avatar from "../../../assets/images/user_avatar.png"
+import cross_post from "../../../assets/images/cross_post.svg"
+import {connect} from "react-redux";
+import {deletePost} from "../../../redux/profileReducer";
 
-const Post = React.memo((props) => {
+const Post = React.memo(({id, message, date, deletePost, firstName, lastName}) => {
+
+
     return (
-        <div className={s.post_wrapper}>
-            <img src={user_avatar} alt="photo_writer" />
-            {props.message}
-            <div className={s.likes}>{props.likesCount} Likes</div>
-            <button className={s.close_icon} onClick={() => props.deletePostThunk(props.id)}>╳</button>
+        <div className={s.wrapper}>
+            <div className={s.header}>
+                <img src={user_avatar} alt="photo_writer" className={s.avatar}/>
+                <div>
+                    <span className={s.fullName}>{`${firstName} ${lastName}`}</span>
+                    <p className={s.date}>{new Date(date).toLocaleDateString()}</p>
+                </div>
+                <img className={s.close_icon} src={cross_post} alt="cross"/>
+            </div>
+
+            <p>{message}</p>
         </div>
     )
 })
 
-export default Post;
+export default connect(null, {deletePost})(Post);
+

@@ -3,37 +3,32 @@ import Cookies from "js-cookie";
 
 
 const SET_USER_DATA = 'myFacebook/auth/SET_USER_DATA';
-const SET_ERROR = 'myFacebook/auth/SET_ERROR';
-const CLEAR_ERROR = 'myFacebook/auth/CLEAR_ERROR';
 const LOADING_START = 'myFacebook/auth/LOADING_START';
 const LOADING_END = 'myFacebook/auth/LOADING_END';
+const SET_ERROR = 'myFacebook/auth/SET_ERROR';
+const CLEAR_ERROR = 'myFacebook/auth/CLEAR_ERROR';
 
 
 interface IAuth {
-    isLoading: boolean;
-    isAuth: boolean;
-    email: string | null;
-    userId: string | null;
-    serverError: string | null;
+    isLoading: boolean
+    isAuth: boolean
+    email: string | null
+    userId: string | null
+    serverError: string | null
 }
 
 const initialState: IAuth = {
     isLoading: false,
+    serverError: null,
+
     isAuth: false,
     email: null,
     userId: null,
-    serverError: null,
 };
 
 
 export function authReducer(state: IAuth = initialState, action: any): IAuth {
     switch (action.type) {
-        case LOADING_START: {
-            return {...state, isLoading: true}
-        }
-        case LOADING_END: {
-            return {...state, isLoading: false}
-        }
         case SET_USER_DATA:
             return {
                 ...state,
@@ -51,6 +46,12 @@ export function authReducer(state: IAuth = initialState, action: any): IAuth {
                 ...state,
                 serverError: null
             };
+        case LOADING_START: {
+            return {...state, isLoading: true}
+        }
+        case LOADING_END: {
+            return {...state, isLoading: false}
+        }
         default:
             return state
     }

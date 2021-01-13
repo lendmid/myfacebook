@@ -83,15 +83,14 @@ router.post('/register',
     });
 
 // /api/auth/userData
-router.get('/userData', auth,
-    async (req, res) => {
-        try {
-            const user = await User.findById(req.user.userId);
-            if (!user) return res.status(403).json({message: "Authorization required"});
-            await res.json({userId: req.user.userId, email: user.email})
-        } catch (e) {
-            await res.status(500).json({message: 'Something went wrong, please try again'});
-        }
-    });
+router.get('/userData', auth, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId);
+        if (!user) return res.status(403).json({message: "Authorization required"});
+        await res.json({userId: req.user.userId, email: user.email})
+    } catch (e) {
+        await res.status(500).json({message: 'Something went wrong, please try again'});
+    }
+});
 
 module.exports = router;

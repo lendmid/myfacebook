@@ -5,22 +5,16 @@ export type PostType = {
 }
 
 export type ProfileType = {
-    //will be more properties
-    userId: number
+    id: number
     fullName: string
-    status: string
-    photos: PhotosType
+    status: string | null
+    photos: string | null
     isOwner: boolean
 } | null
-
-export type PhotosType = {
-    small: string | null
-    large: string | null
-}
 
 export type UserType = {
     id: number
     name: string
     status: string
-    photos: PhotosType
+    photos: string | null
 }
