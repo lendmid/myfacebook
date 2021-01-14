@@ -1,25 +1,31 @@
 import React from "react";
 import s from './AddPost.module.css';
-import {Field} from "redux-form"
-import {required} from "../../../utils/validators/validators";
-import {TextAreaProfilePage} from "../../common/FormValidator/FormValidator";
+import {connect} from "react-redux";
+import {addPost} from "../../../redux/profileReducer";
 
 
 const AddPost = React.memo(({handleSubmit, pristine, reset, submitting, addPost}) => {
-    
+
     let addNewPost = (formData) => {
         addPost(formData.newPostText);
         reset("addPost");
     }
-    
+
     return (
         <div className={s.wrapper}>
-            <form onSubmit={handleSubmit(addNewPost)}>
-                <Field component={TextAreaProfilePage} className={s.textarea} name="newPostText" cols="30" rows="7" placeholder="Enter somesing..." validate={[required]}></Field>
+            {/*<form onSubmit={handleSubmit(addNewPost)}>*/}
+            <form>
+                <textarea className={s.textarea} name="newPostText" cols="30" rows="7" placeholder="Enter somesing..."/>
                 <button className={s.button} type="submit" disabled={pristine || submitting}>Add post</button>
             </form>
         </div>
     )
 })
 
-export default AddPost;
+
+const mapStateToProps = (state) => ({
+    newPostText: state.profilePage.newPostText,
+});
+
+export default connect(mapStateToProps, {addPost})(AddPost);
+

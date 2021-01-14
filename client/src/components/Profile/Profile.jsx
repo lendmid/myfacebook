@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ProfileHeader from './ProfileHeader/ProfileHeader';
 import s from './Profile.module.css';
-import AddPostContainer from './AddPost/AddPostContainer';
+import AddPost from './AddPost/AddPost';
 import ShortInformation from "./ShortInformation/ShortInformation";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -35,7 +35,7 @@ const Profile = React.memo((props) => {
                            setUpdatePhotoPopup={setUpdatePhotoPopup}/>
             <div className={s.profile_information}>
                 <ShortInformation {...props} />
-                <AddPostContainer/>
+                <AddPost/>
                 {profile && profile.posts &&
                 profile.posts.map(p => <Post message={p.message} key={p.id} date={p.date} firstName={profile.firstName}
                                              lastName={profile.lastName}/>)}
