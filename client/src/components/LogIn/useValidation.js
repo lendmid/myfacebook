@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 function validate(values) {
@@ -21,6 +21,7 @@ function validate(values) {
 const useValidation = (callback) => {
   const [values, setValues] = useState({email: '', password: ''});
   const [clientErrors, setClientErrors] = useState({email: '', password: ''});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = e => {
     const {name, value} = e.target;
@@ -30,15 +31,16 @@ const useValidation = (callback) => {
   const handleSubmit = e => {
     e.preventDefault();
     setClientErrors(validate(values));
+    setIsSubmitting(true);
   };
 
-  const callbackExecute = useCallback(() => {
-    callback(values.email, values.password)
-  })
-
   useEffect(() => {
-    if (Object.keys(clientErrors).length === 0) callbackExecute();
-  }, [clientErrors, callbackExecute]);
+    if (Object.keys(clientErrors).length === 0 && isSubmitting) {
+      callback(values.email, values.password)
+      setIsSubmitting(false);
+    }
+    ;
+  }, [clientErrors, isSubmitting, callback, values.email, values.password]);
 
   return {handleChange, handleSubmit, values, clientErrors};
 };

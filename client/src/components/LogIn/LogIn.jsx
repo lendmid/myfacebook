@@ -50,10 +50,8 @@ const LogIn = React.memo(({logIn, isLoading, serverError}) => {
                 </label>
                 {clientErrors.password && <span className={s.error}>{clientErrors.password}</span>}
 
-                <button type="submit"
-                        className={s.button}
-                        disabled={isLoading}
-                >Log in
+                <button type="submit" className={s.button} disabled={isLoading}>
+                    Log in
                 </button>
 
                 {serverError && <FormAlert error={serverError}/>}
