@@ -15,9 +15,10 @@ const Profile = React.memo((props) => {
 
 
     let [updatePhotoPopup, setUpdatePhotoPopup] = useState(false);
-    let {match, userId, profile, isLoading, getProfile, getStatus} = props;
+    let {profile, getProfile} = props;
+    // let {match, userId, profile, isLoading, getProfile, getStatus} = props;
 
-    useEffect(() => getProfile(), []);
+    useEffect(() => getProfile(), [getProfile]);
 
     // props.posts = profile && profile.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount}
     //                         key={post.id} id={post.id}/>)
