@@ -4,23 +4,18 @@ import {useEffect, useState} from 'react';
 function validate(values) {
   let errors = {};
 
-  if (!values.email) {
-    errors.email = 'Enter email';
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-    errors.email = 'Email incorrect';
+  if (!values.newPostText) {
+    errors.newPostText = 'Post can not be empty';
   }
-  if (!values.password) {
-    errors.password = 'Enter password';
-  } else if (values.password.length < 6) {
-    errors.password = 'Minimum password length 6 characters';
+  if (values.newPostText.length < 10) {
+    errors.password = 'Minimum post length 10 characters';
   }
-
   return errors;
 }
 
 const useValidation = (callback) => {
-  const [values, setValues] = useState({email: '', password: ''});
-  const [clientErrors, setClientErrors] = useState({email: '', password: ''});
+  const [values, setValues] = useState({newPostText: ''});
+  const [clientErrors, setClientErrors] = useState({newPostText: ''});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = e => {
@@ -31,12 +26,13 @@ const useValidation = (callback) => {
   const handleSubmit = e => {
     e.preventDefault();
     setClientErrors(validate(values));
+    debugger
     setIsSubmitting(true);
   };
 
   useEffect(() => {
     if (Object.keys(clientErrors).length === 0 && isSubmitting) {
-      callback(values.email, values.password)
+      callback(values.newPostText)
       setIsSubmitting(false);
     }
     ;

@@ -11,7 +11,7 @@ const Post = React.memo(({id, message, date, deletePost, firstName, lastName}) =
     return (
         <div className={s.wrapper}>
             <div className={s.header}>
-                <img src={user_avatar} alt="photo_writer" className={s.avatar}/>
+                <img src={user_avatar} alt="user avatar" className={s.avatar}/>
                 <div>
                     <span className={s.fullName}>{`${firstName} ${lastName}`}</span>
                     <p className={s.date}>{new Date(date).toLocaleDateString()}</p>

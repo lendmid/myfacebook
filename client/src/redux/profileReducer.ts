@@ -47,7 +47,6 @@ const initialState: IProfile = {
 export function profileReducer(state = initialState, action: any): IProfile {
     switch (action.type) {
         case SET_PROFILE_DATA:
-            console.log(action.profile)
             return {
                 ...state,
                 profile: action.profile
@@ -128,7 +127,8 @@ export const addPost = (postText: string) => async (dispatch: any) => {
 
     let res = await request('/api/profile/addPost', 'POST', {postText});
     console.log(res)
-    dispatch({type: ADD_POST, postText});
+    debugger
+    // dispatch({type: ADD_POST, postText});
     dispatch({type: LOADING_END});
 }
 // 3

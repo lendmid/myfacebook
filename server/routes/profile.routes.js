@@ -39,7 +39,7 @@ router.post('/addPost', auth, async (req, res) => {
         const post = new Post({message: req.body.postText, owner: user.id});
         await post.save();
 
-        await res.status(201).json({date: post.date});
+        await res.status(201).json({post});
     } catch (e) {
         await res.status(500).json({message: 'Something went wrong, please try again'});
     }

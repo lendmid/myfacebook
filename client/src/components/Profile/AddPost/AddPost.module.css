@@ -16,6 +16,7 @@
     resize: none;
     height: 150px;
     width: 100%;
+    margin-top: 10px;
 }
 
 .button {
@@ -24,4 +25,13 @@
     margin-top: 15px;
     background-color: #a4a6a87c;
     width: 100%;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.error {
+    color: red;
 }
