@@ -9,11 +9,6 @@ const AddPost = React.memo(({addPost}) => {
 
     const {handleChange, handleSubmit, values, clientErrors, isLoading} = useValidation(addPost);
 
-    // let addNewPost = (formData) => {
-    //     addPost(formData.newPostText);
-    //     reset("addPost");
-    // }
-
     return (
         <div className={s.wrapper}>
             <form onSubmit={handleSubmit}>
