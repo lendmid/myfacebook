@@ -28,7 +28,6 @@ const AddPost = React.memo(({addPost}) => {
                 {clientErrors.newPostText && <span className={s.error}>{clientErrors.newPostText}</span>}
                 <button className={s.button} type="submit" disabled={isLoading}>Add post</button>
             </form>
-            {/*Задача организации, в особенности же новая модель организационной деятельности требуют от нас анализа систем массового участия. Значимость этих проблем настолько очевидна, что консультация с широким активом представляет собой интересный эксперимент проверки систем массового участия.*/}
         </div>
     )
 })
