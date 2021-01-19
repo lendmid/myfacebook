@@ -54,13 +54,8 @@ export function profileReducer(state = initialState, action: any): IProfile {
         case ADD_POST:
             return {
                 ...state,
-                // posts: [
-                //     {
-                //         id: state.posts[0] ? state.posts[0].id + 1 : 1,
-                //         message: action.newPostText,
-                //     },
-                //     ...state.posts
-                // ],
+                // profile.posts: action.post
+                // state.profile.posts: action
             };
         // case LOADING_PROFILE:
         //     return {
@@ -110,25 +105,22 @@ export function profileReducer(state = initialState, action: any): IProfile {
     }
 }
 
-//1
 export const getProfile = () => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     let res = await request('/api/profile', 'GET');
-
+    console.log(res)
     if (res.success) dispatch({type: SET_PROFILE_DATA, profile: res.payload});
     if (!res.success) dispatch({type: SET_ERROR, error: res.error});
 
     dispatch({type: LOADING_END});
 }
 
-// 2
 export const addPost = (postText: string) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
 
     let res = await request('/api/profile/addPost', 'POST', {postText});
-    console.log(res)
-    debugger
-    // dispatch({type: ADD_POST, postText});
+
+    // if(res.success) dispatch({type: ADD_POST, post: res.payload.post});
     dispatch({type: LOADING_END});
 }
 // 3

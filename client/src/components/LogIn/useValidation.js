@@ -2,25 +2,25 @@ import {useEffect, useState} from 'react';
 
 
 function validate(values) {
-  let errors = {};
+  let clientErrors = {};
 
   if (!values.email) {
-    errors.email = 'Enter email';
+    clientErrors.email = 'Enter email';
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-    errors.email = 'Email incorrect';
+    clientErrors.email = 'Email incorrect';
   }
   if (!values.password) {
-    errors.password = 'Enter password';
+    clientErrors.password = 'Enter password';
   } else if (values.password.length < 6) {
-    errors.password = 'Minimum password length 6 characters';
+    clientErrors.password = 'Minimum password length 6 characters';
   }
 
-  return errors;
+  return clientErrors;
 }
 
 const useValidation = (callback) => {
   const [values, setValues] = useState({email: '', password: ''});
-  const [clientErrors, setClientErrors] = useState({email: '', password: ''});
+  const [clientErrors, setClientErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = e => {
@@ -39,7 +39,6 @@ const useValidation = (callback) => {
       callback(values.email, values.password)
       setIsSubmitting(false);
     }
-    ;
   }, [clientErrors, isSubmitting, callback, values.email, values.password]);
 
   return {handleChange, handleSubmit, values, clientErrors};

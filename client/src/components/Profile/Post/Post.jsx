@@ -14,7 +14,7 @@ const Post = React.memo(({id, message, date, deletePost, firstName, lastName}) =
                 <img src={user_avatar} alt="user avatar" className={s.avatar}/>
                 <div>
                     <span className={s.fullName}>{`${firstName} ${lastName}`}</span>
-                    <p className={s.date}>{new Date(date).toLocaleDateString()}</p>
+                    <p className={s.date}>{date}</p>
                 </div>
                 <img className={s.close_icon} src={cross_post} alt="cross"/>
             </div>

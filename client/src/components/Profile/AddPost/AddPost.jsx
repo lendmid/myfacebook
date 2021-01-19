@@ -26,7 +26,7 @@ const AddPost = React.memo(({addPost}) => {
                     />
                 </label>
                 {clientErrors.newPostText && <span className={s.error}>{clientErrors.newPostText}</span>}
-                <button className={s.button} type="submit" disabled={isLoading}>Add post</button>
+                <button className={s.add_post} type="submit" disabled={isLoading}>Add post</button>
             </form>
         </div>
     )
