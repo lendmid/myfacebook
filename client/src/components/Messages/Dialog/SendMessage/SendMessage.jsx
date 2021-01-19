@@ -2,7 +2,6 @@ import React from "react";
 import s from './SendMessage.module.css';
 import {Field} from "redux-form"
 import {InputMessagesPage} from "../../../common/FormValidator/FormValidator";
-import {required} from "../../../../utils/validators/validators";
 
 
 const SendMessage = React.memo(({handleSubmit, pristine, reset, submitting, sendMessage}) => {
@@ -15,7 +14,8 @@ const SendMessage = React.memo(({handleSubmit, pristine, reset, submitting, send
         <div>
             <form onSubmit={handleSubmit(sendNewMessage)}
                   className={s.send_wrapper}>
-                <Field component={InputMessagesPage} className={s.input} name="newMessageText" placeholder="Enter somesing..." validate={[required]}></Field>
+                <Field component={InputMessagesPage} className={s.input} name="newMessageText"
+                       placeholder="Enter somesing..."></Field>
                 <button className={s.send} type="submit" disabled={pristine || submitting}></button>
             </form>
         </div>
