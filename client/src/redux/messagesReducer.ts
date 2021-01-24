@@ -102,9 +102,9 @@ export function messagesReducer(state: InitialStateType = initialState, action: 
     }
 }
 
-// 7
+// 5
 export const sendMessage = (newPostText: string) => (dispatch: any) => {
     dispatch({type: SEND_MESSAGE, newPostText})
 }
 
-// 8 get history message with user
+// 6 get history message with user

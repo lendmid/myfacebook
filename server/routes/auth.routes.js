@@ -10,14 +10,12 @@ const auth = require('../middleware/auth.middleware');
 
 // /api/auth/login
 router.post('/login',
-    //middleware for validation
     [
         check('email', 'Email or password is incorrect').isEmail(),
         check('password', 'Email or password is incorrect').exists()
     ],
     async (req, res) => {
         try {
-            // if validation failed => return
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(400).json({
@@ -47,7 +45,6 @@ router.post('/login',
 
 // /api/auth/register
 router.post('/register',
-    //middleware for validation
     [
         check('email', 'Incorrect email').isEmail(),
         check('password', 'Minimum length password is 6 symbol').isLength({min: 6}),
@@ -56,7 +53,6 @@ router.post('/register',
     ],
     async (req, res) => {
         try {
-            // if validation failed => return
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 return res.status(400).json({
@@ -77,7 +73,6 @@ router.post('/register',
             await res.status(201).json({userId: user._id})
 
         } catch (e) {
-            console.log(e);
             await res.status(500).json({message: 'Something went wrong, please try again'});
         }
     });

@@ -28,20 +28,27 @@ interface IProfile {
     isLoading: boolean
     serverError: string | null
     profile: {
-        userId: string
-        firstName: string
-        lastName: string
+        userId: string | null
+        firstName: string | null
+        lastName: string | null
         status: string | null
         photo: string | null
         posts: IPost[] | []
-    } | {} //null
+    }
 }
 
 
 const initialState: IProfile = {
     isLoading: false,
     serverError: null,
-    profile: {}
+    profile: {
+        userId: '',
+        firstName: '',
+        lastName: '',
+        status: null,
+        photo: null,
+        posts: []
+    }
 }
 
 export function profileReducer(state = initialState, action: any): IProfile {
@@ -54,8 +61,18 @@ export function profileReducer(state = initialState, action: any): IProfile {
         case ADD_POST:
             return {
                 ...state,
-                // profile.posts: action.post
-                // state.profile.posts: action
+                profile: {
+                    ...state.profile,
+                    posts: [action.post, ...state.profile.posts]
+                }
+            };
+        case DELETE_POST:
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    posts: state.profile && state.profile.posts.filter((p: IPost) => p.id !== action.postId),
+                }
             };
         // case LOADING_PROFILE:
         //     return {
@@ -72,11 +89,6 @@ export function profileReducer(state = initialState, action: any): IProfile {
         //     return {
         //         ...state,
         //         // status: action.status,
-        //     };
-        // case DELETE_POST:
-        //     return {
-        //         ...state,
-        //         // posts: state.posts.filter(p => p.id !== action.postId),
         //     };
         // case SAVE_PHOTO_SUCCESS:
         //     return {
@@ -118,24 +130,27 @@ export const getProfile = () => async (dispatch: any) => {
 export const addPost = (postText: string) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
 
-    let res = await request('/api/profile/addPost', 'POST', {postText});
-
-    // if(res.success) dispatch({type: ADD_POST, post: res.payload.post});
+    let res = await request('/api/profile/post', 'POST', {postText});
+    if (res.success) dispatch({type: ADD_POST, post: res.payload});
     dispatch({type: LOADING_END});
 }
-// 3
-export const deletePost = (postId: number) => (dispatch: any) => dispatch({type: DELETE_POST, postId});
 
+export const deletePost = (postId: string) => async (dispatch: any) => {
+    let res = await request('/api/profile/post', 'DELETE', {postId});
+    if (res.success) dispatch({type: DELETE_POST, postId});
+}
+
+// 1
 export const getStatus = (userId: number) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     // let status = await profileAPI.requestStatus(userId).data;
     // dispatch({type: SET_STATUS, status});
     dispatch({type: LOADING_END});
 }
-// 4
+// 2
 export const updateStatus = (status: string) => async () => await profileAPI.updateStatus(status);
 
-// 5
+// 3
 export const savePhoto = (file: any) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     // let res = await profileAPI.updatePhoto(file);

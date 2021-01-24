@@ -5,9 +5,19 @@ import cross_post from "../../../assets/images/cross_post.svg"
 import {connect} from "react-redux";
 import {deletePost} from "../../../redux/profileReducer";
 
-const Post = React.memo(({id, message, date, deletePost, firstName, lastName}) => {
+
+interface IProps {
+    id: string
+    message: string
+    date: string
+    firstName: string
+    lastName: string
+
+    deletePost(id: string): void
+}
 
 
+const Post = React.memo(({id, message, date, firstName, lastName, deletePost}: IProps) => {
     return (
         <div className={s.wrapper}>
             <div className={s.header}>
@@ -16,7 +26,9 @@ const Post = React.memo(({id, message, date, deletePost, firstName, lastName}) =
                     <span className={s.fullName}>{`${firstName} ${lastName}`}</span>
                     <p className={s.date}>{date}</p>
                 </div>
-                <img className={s.close_icon} src={cross_post} alt="cross"/>
+                <button type="button" className={s.close} onClick={() => deletePost(id)}>
+                    <img className={s.close_icon} src={cross_post} alt="cross"/>
+                </button>
             </div>
 
             <p>{message}</p>
@@ -25,4 +37,3 @@ const Post = React.memo(({id, message, date, deletePost, firstName, lastName}) =
 })
 
 export default connect(null, {deletePost})(Post);
-

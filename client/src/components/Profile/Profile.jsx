@@ -37,8 +37,10 @@ const Profile = React.memo((props) => {
                 <ShortInformation {...props} />
                 <AddPost/>
                 {profile && profile.posts &&
-                profile.posts.map(p => <Post message={p.message} key={p.id} date={p.date} firstName={profile.firstName}
-                                             lastName={profile.lastName}/>)}
+                profile.posts.map(p => {
+                    return <Post message={p.message} key={p.id} id={p.id} date={p.date} firstName={profile.firstName}
+                                 lastName={profile.lastName}/>
+                })}
             </div>
         </div>
     )

@@ -31,7 +31,8 @@ const useValidation = (callback) => {
 
   useEffect(() => {
     if (Object.keys(clientErrors).length === 0 && isSubmitting) {
-      callback(values.newPostText)
+      callback(values.newPostText);
+      setValues({newPostText: ''});
       setIsSubmitting(false);
     }
   }, [clientErrors, isSubmitting, callback, values]);

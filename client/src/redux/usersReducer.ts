@@ -32,7 +32,7 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
     }
 }
 
-// 6
+// 4
 export const requestUsers = (page = 1, pageSize = 100) => async (dispatch: any) => {
     dispatch({type: SET_CURRENT_PAGE, page});
     dispatch({type: TOGGLE_IS_FETCHING, isFetching: true});

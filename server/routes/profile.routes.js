@@ -30,8 +30,8 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-// /api/profile/addPost
-router.post('/addPost', auth, async (req, res) => {
+// /api/profile/post
+router.post('/post', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.userId);
         if (!user) return res.status(403).json({message: "Authorization required"});
@@ -39,7 +39,18 @@ router.post('/addPost', auth, async (req, res) => {
         const post = new Post({message: req.body.postText, owner: user.id});
         await post.save();
 
-        await res.status(201).json({post});
+        console.log(post)
+
+        await res.status(201).json({id: post._id, message: post.message, date: post.date});
+    } catch (e) {
+        await res.status(500).json({message: 'Something went wrong, please try again'});
+    }
+});
+
+router.delete('/post', auth, async (req, res) => {
+    try {
+        await Post.deleteOne({_id: req.body.postId, owner: req.user.userId})
+        await res.sendStatus(200);
     } catch (e) {
         await res.status(500).json({message: 'Something went wrong, please try again'});
     }
