@@ -36,10 +36,8 @@ router.post('/post', auth, async (req, res) => {
         const user = await User.findById(req.user.userId);
         if (!user) return res.status(403).json({message: "Authorization required"});
 
-        const post = new Post({message: req.body.postText, owner: user.id});
+        const post = new Post({message: req.body.postText, owner: user.id, date: req.body.date});
         await post.save();
-
-        console.log(post)
 
         await res.status(201).json({id: post._id, message: post.message, date: post.date});
     } catch (e) {

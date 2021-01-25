@@ -130,7 +130,10 @@ export const getProfile = () => async (dispatch: any) => {
 export const addPost = (postText: string) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
 
-    let res = await request('/api/profile/post', 'POST', {postText});
+    let res = await request('/api/profile/post', 'POST',
+        {
+            postText, date: new Date(Date.now()).toLocaleString()
+        });
     if (res.success) dispatch({type: ADD_POST, post: res.payload});
     dispatch({type: LOADING_END});
 }
