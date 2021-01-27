@@ -12,7 +12,6 @@ interface IProps {
     date: string
     firstName: string
     lastName: string
-
     deletePost(id: string): void
 }
 
