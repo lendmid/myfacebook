@@ -27,6 +27,7 @@ const Profile = React.memo((props: IProps) => {
     let [updatePhotoPopup, setUpdatePhotoPopup] = useState(false);
     let {profile, getProfile, userId, match} = props;
 
+
     let isOwner = (userId === match.params.userId);
     debugger
     // let {match, userId, profile, isLoading, getProfile, getStatus} = props;
