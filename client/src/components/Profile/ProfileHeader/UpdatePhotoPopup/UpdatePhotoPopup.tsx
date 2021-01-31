@@ -3,29 +3,42 @@ import s from './UpdatePhotoPopup.module.css';
 import add_icon from "../../../../assets/images/add_icon.svg"
 
 
-const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}) => {
-    
-    let fileSize = (size) => {
-        let i = Math.floor(Math.log(size) / Math.log(1024));
-        return (size / Math.pow(1024, i)).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+interface IProps {
+    setUpdatePhotoPopup(arg0: boolean): void
+
+    savePhoto(): void
+}
+
+
+const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}: IProps) => {
+
+    let fileSize = (size: number) => {
+        // let i = Math.floor(Math.log(size) / Math.log(1024));
+        // return `${(size / Math.pow(1024, i)).toFixed(2) * 1 ['B', 'kB', 'MB', 'GB', 'TB'][i]}`;
     }
-    
+
     let showFileProperties = () => {
-        let input = document.getElementById('input_file');
-        let label = input.nextElementSibling;
-        let countFiles = '';
-        if (input.files && input.files.length >= 1) {
-            countFiles = input.files.length;
-            label.children.pick_file.innerText = `Picked file: ${countFiles}`;
-            let inputWrapper = input.parentElement;
-            let file = input.files[0];
-            inputWrapper.lastChild.innerHTML = `<span><b>File name: </b>${file.name}</span><span><b>Type file: </b>${file.type}</span><span><b>Size file: </b>${fileSize(file.size)}</span>`
-        }
+        // let input = document.getElementById('input_file');
+        // let label = input.nextElementSibling;
+        // let countFiles = '';
+        // if (input.files && input.files.length >= 1) {
+        //     countFiles = input.files.length;
+        //     label.children.pick_file.innerText = `Picked file: ${countFiles}`;
+        //     let inputWrapper = input.parentElement;
+        //     let file = input.files[0];
+        //     inputWrapper.lastChild.innerHTML = `
+        //         <span><b>File name: </b>${file.name}</span>
+        //         <span><b>Type file: </b>${file.type}</span>
+        //         <span><b>Size file: </b>${fileSize(file.size)}</span>`
+        // }
     }
     
     let photoSelected = () => {
         let input = document.getElementById('input_file');
+        if (!input) return
+        // @ts-ignore
         if (input.files.length) {
+            // @ts-ignore
             savePhoto(input.files[0]);
             setUpdatePhotoPopup(false);
         } else {
@@ -45,7 +58,7 @@ const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}) => {
                    <input type="file" id="input_file" className={s.input} onChange={showFileProperties} />
                    <label htmlFor="input_file" className={s.label_input_file}>
                       <img className={s.input_icon} src={add_icon} alt="Pick file" />
-                      <span className={s.pick_file} id="pick_file">Select file</span>
+                       <span className={s.pick_file} id="pick_file">Select file</span>
                    </label>
                     <div className={s.properties}>
                         <span><b>File name: </b></span>
@@ -55,7 +68,7 @@ const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}) => {
                 </div>
                 <button className={s.button} onClick={photoSelected}>Update photo</button>
             </div>
-            <div className={s.closer} onClick={() => setUpdatePhotoPopup(false)}></div>
+            <div className={s.closer} onClick={() => setUpdatePhotoPopup(false)}/>
         </div>
     )
 })

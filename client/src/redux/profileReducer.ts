@@ -12,37 +12,40 @@ const LOADING_END = 'myFacebook/profile/LOADING_END';
 const SET_ERROR = 'myFacebook/profile/SET_ERROR';
 const CLEAR_ERROR = 'myFacebook/profile/CLEAR_ERROR';
 
-// const SET_STATUS = 'myFacebook/profile/SET-STATUS';
 // const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
 //
 // const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
 // const LOADING_PROFILE = 'myFacebook/profile/LOADING_PROFILE';
 
-interface IPost {
+export interface IPost {
     id: string
+    firstName: string
+    lastName: string
     message: string
     date: string
 }
 
-interface IProfile {
+export interface IProfile {
+    userId: string | null
+    firstName: string
+    lastName: string
+    status: string | null
+    photo: string | null
+    posts: IPost[] | []
+}
+
+interface IProfileReducer {
     isLoading: boolean
     serverError: string | null
-    profile: {
-        userId: string | null
-        firstName: string | null
-        lastName: string | null
-        status: string | null
-        photo: string | null
-        posts: IPost[] | []
-    }
+    profile: IProfile
 }
 
 
-const initialState: IProfile = {
+const initialState: IProfileReducer = {
     isLoading: false,
     serverError: null,
     profile: {
-        userId: '',
+        userId: null,
         firstName: '',
         lastName: '',
         status: null,
@@ -51,7 +54,7 @@ const initialState: IProfile = {
     }
 }
 
-export function profileReducer(state = initialState, action: any): IProfile {
+export function profileReducer(state = initialState, action: any): IProfileReducer {
     switch (action.type) {
         case SET_PROFILE_DATA:
             return {
@@ -79,12 +82,6 @@ export function profileReducer(state = initialState, action: any): IProfile {
         //         ...state,
         //         isLoading: true
         //     };
-        // case SET_STATUS:
-        //     return {
-        //         ...state,
-        //         // status: action.status,
-        //         isLoading: false
-        //     };
         // case UPDATE_STATUS:
         //     return {
         //         ...state,
@@ -97,15 +94,9 @@ export function profileReducer(state = initialState, action: any): IProfile {
         //     };
 
         case SET_ERROR:
-            return {
-                ...state,
-                serverError: action.error
-            };
+            return {...state, serverError: action.error};
         case CLEAR_ERROR:
-            return {
-                ...state,
-                serverError: null
-            };
+            return {...state, serverError: null};
         case LOADING_START: {
             return {...state, isLoading: true}
         }
@@ -143,13 +134,6 @@ export const deletePost = (postId: string) => async (dispatch: any) => {
     if (res.success) dispatch({type: DELETE_POST, postId});
 }
 
-// 1
-export const getStatus = (userId: number) => async (dispatch: any) => {
-    dispatch({type: LOADING_START});
-    // let status = await profileAPI.requestStatus(userId).data;
-    // dispatch({type: SET_STATUS, status});
-    dispatch({type: LOADING_END});
-}
 // 2
 export const updateStatus = (status: string) => async () => await profileAPI.updateStatus(status);
 

@@ -5,57 +5,59 @@ import AddPost from './AddPost/AddPost';
 import ShortInformation from "./ShortInformation/ShortInformation";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getProfile, getStatus, savePhoto, updateStatus} from "../../redux/profileReducer";
-import {withRouter} from "react-router-dom";
+import {getProfile, IPost, IProfile, savePhoto, updateStatus} from "../../redux/profileReducer";
+import {withRouter, RouteComponentProps} from "react-router-dom";
 import Post from "./Post/Post";
 import {AppStateType} from "../../redux/redux-store";
+import Preloader from "../common/Preloader/Preloader";
 
 // import Preloader from "../common/Preloader/Preloader";
 
-interface IProps {
-    id: string
+interface IProps extends RouteComponentProps {
     userId: string
-    match: any
+    profile: IProfile
+    isLoading: boolean
 
     getProfile(): void
+
+    updateStatus(): void
+
+    savePhoto(): void
 }
 
 
-const Profile = React.memo((props: IProps) => {
+const Profile = React.memo(({isLoading, match, userId, profile, getProfile, updateStatus, savePhoto}: IProps) => {
 
+    useEffect(getProfile, [getProfile]);
+    if (!profile || isLoading) return <Preloader/>;
 
-    let [updatePhotoPopup, setUpdatePhotoPopup] = useState(false);
-    let {profile, getProfile, userId, match} = props;
-
-
-    let isOwner = (userId === match.params.userId);
+    //,
     debugger
-    // let {match, userId, profile, isLoading, getProfile, getStatus} = props;
-
-    useEffect(() => getProfile(), [getProfile]);
-
-    // props.posts = profile && profile.posts.map(post => <PostConrainer message={post.message} likesCount={post.likesCount}
-    //                         key={post.id} id={post.id}/>)
-
-    // if (!profile || isLoading) return <Preloader/>;
-
-    // let {posts} = props;
+    // @ts-ignore
+    let isOwner = (userId === match.params.userId);
 
     return (
         <div className={s.profile}>
-            <ProfileHeader {...props}
-                           updatePhotoPopup={updatePhotoPopup}
-                           setUpdatePhotoPopup={setUpdatePhotoPopup}
+            <ProfileHeader photo={profile.photo}
+                           firstName={profile.firstName}
+                           lastName={profile.lastName}
+                           status={profile.status}
+                           updateStatus={updateStatus}
+                           savePhoto={savePhoto}
                            isOwner={isOwner}
             />
             <div className={s.profile_information}>
-                <ShortInformation {...props} />
+                {/*<ShortInformation {...props} />*/}
                 <AddPost/>
-                {profile && profile.posts &&
-                profile.posts.map(p => {
-                    return <Post message={p.message} key={p.id} id={p.id} date={p.date} firstName={profile.firstName}
-                                 lastName={profile.lastName}/>
-                })}
+                {profile.posts && (profile.posts as Array<IPost>).map((p: IPost) => {
+                        return <Post key={p.id}
+                                     id={p.id}
+                                     message={p.message}
+                                     date={p.date}
+                                     firstName={profile.firstName}
+                                     lastName={profile.lastName}/>
+                    }
+                )}
             </div>
         </div>
     )
@@ -63,11 +65,10 @@ const Profile = React.memo((props: IProps) => {
 
 let mapStateToProps = (state: AppStateType) => ({
     profile: state.profilePage.profile,
-    userId: state.auth.userId,
     isLoading: state.profilePage.isLoading,
 });
 
-export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, updateStatus, savePhoto}),
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {getProfile, updateStatus, savePhoto}),
     withRouter,
 )(Profile)
