@@ -31,6 +31,8 @@ export interface IProfile {
     lastName: string
     status: string | null
     photo: string | null
+    placeOfWork: string | null
+    liveIn: string | null
     posts: IPost[] | []
 }
 
@@ -50,6 +52,8 @@ const initialState: IProfileReducer = {
         lastName: '',
         status: null,
         photo: null,
+        placeOfWork: null,
+        liveIn: null,
         posts: []
     }
 }
@@ -134,11 +138,12 @@ export const deletePost = (postId: string) => async (dispatch: any) => {
     if (res.success) dispatch({type: DELETE_POST, postId});
 }
 
-// 2
+// 1
 export const updateStatus = (status: string) => async () => await profileAPI.updateStatus(status);
 
-// 3
-export const savePhoto = (file: any) => async (dispatch: any) => {
+// 2
+// export const savePhoto = (file: any) => async (dispatch: any) => {
+export const savePhoto = () => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     // let res = await profileAPI.updatePhoto(file);
     // if (res.data.resultCode !== 0) return;

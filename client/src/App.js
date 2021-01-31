@@ -10,7 +10,7 @@ import './App.css';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {getUserData} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
-import {getProfile, getStatus, updateStatus} from "./redux/profileReducer";
+import {getProfile, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
 import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
 
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => ({
     totalUsersCount: getTotalUsersCount(state),
 });
 
-const AppContainer = connect(mapStateToProps, {getProfile, getStatus, updateStatus, getUserData}
+const AppContainer = connect(mapStateToProps, {getProfile, updateStatus, getUserData}
 )(App);
 
 // //for build on gitHub

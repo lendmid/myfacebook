@@ -13,9 +13,7 @@ interface IProps {
     lastName: string
     status: string | null
     isOwner: boolean
-
     updateStatus(): void
-
     savePhoto(): void
 }
 
@@ -35,7 +33,7 @@ const ProfileHeader = React.memo(({photo, firstName, lastName, status, updateSta
         if (!popup) return
         popup.style.display = "none";
     }
-    
+
     return (
         <div className={s.profile_header}>
             {isPhotoPopup && <UpdatePhotoPopup setUpdatePhotoPopup={setIsPhotoPopup} savePhoto={savePhoto}/>}

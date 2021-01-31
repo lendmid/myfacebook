@@ -4,32 +4,30 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {requestUsers} from "../../redux/usersReducer";
 import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../redux/selectors/usersSelectors";
-import {getProfile, getStatus} from "../../redux/profileReducer";
+import {getProfile} from "../../redux/profileReducer";
 import User from "./User/User";
 import Users from "./Users";
 // import PostConrainer from "../Profile/Post/PostContainer";
 
 
 const UsersContainer = React.memo((props) => {
-    let {match, users, profile, currentPage, pageSize, getProfile, getStatus, requestUsers} = props;
-    
+    let {match, users, profile, currentPage, pageSize, getProfile, requestUsers} = props;
+
     useEffect(() => {
         if (users.length === 0) requestUsers(currentPage, pageSize);
-    
+
         if (!match.params.userId) return;
         let userId = Number(match.params.userId);
-        getProfile(userId).then(() => {
-            getStatus(userId);
-        });
-    }, [match.params.userId, users.length, currentPage, pageSize, getProfile, getStatus, requestUsers]);
-    
+        getProfile(userId);
+    }, [match.params.userId, users.length, currentPage, pageSize, getProfile, requestUsers]);
+
     let onPageChanged = (pageNumber) => {
         requestUsers(pageNumber, pageSize);
     };
-    
+
     return <Users {...props}
                   profile={!match.params.userId ? null : profile}
-                  onPageChanged={onPageChanged} />
+                  onPageChanged={onPageChanged}/>
 });
 
 
@@ -46,6 +44,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus, requestUsers}),
+    connect(mapStateToProps, {getProfile, requestUsers}),
     withRouter,
 )(UsersContainer)

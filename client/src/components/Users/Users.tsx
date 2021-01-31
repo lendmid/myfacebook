@@ -18,7 +18,7 @@ type PropsType = {
 
 const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isLoading, totalUsersCount, ...props}) => {
 
-    let onScrollHandler = (e: any) => {
+    let onScrollHandler = () => {
         let usersList: any = document.getElementById('usersList');
         if ((usersList.clientHeight + usersList.scrollTop) === usersList.scrollHeight) onPageChanged(currentPage + 1);
     };
@@ -32,20 +32,20 @@ const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isL
                 </div>
                 <ul className={s.users_list} id="usersList" onScroll={onScrollHandler}>
                     {users}
-                    <User />
-                    <User />
+                    <User/>
+                    <User/>
                 </ul>
             </div>
             <div className={s.profile_preview}>
-                {isLoading && <PreloaderUsers />}
+                {isLoading && <PreloaderUsers/>}
                 {props.profile && !isLoading && <Profile {...props} />}
                 {!props.profile && !isLoading &&
                 <>
-                        <div className={s.not_picked_profile}>
-                            <img src={preview_profile} alt="Profile preview" className={s.icon_people} />
-                            <span className={s.not_picked_profile_span}>Select a person's name to see their profile in preview mode.</span>
-                        </div>
-                    </>
+                    <div className={s.not_picked_profile}>
+                        <img src={preview_profile} alt="Profile preview" className={s.icon_people}/>
+                        <span className={s.not_picked_profile_span}>Select a person's name to see their profile in preview mode.</span>
+                    </div>
+                </>
                 }
             </div>
         </div>
