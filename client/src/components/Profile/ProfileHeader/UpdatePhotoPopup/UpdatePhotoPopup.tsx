@@ -18,7 +18,7 @@ const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}: IProps) =
     // }
 
     let showFileProperties = () => {
-        let input = document.getElementById('input_file');
+        // let input = document.getElementById('input_file');
         // let label = input.nextElementSibling;
         // let countFiles = '';
         // if (input.files && input.files.length >= 1) {
