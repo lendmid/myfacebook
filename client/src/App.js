@@ -17,9 +17,7 @@ import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
 
 const App = React.memo(({isAuth, userId, getUserData}) => {
 
-    useEffect(() => {
-        getUserData();
-    }, [getUserData]);
+    useEffect(getUserData, [getUserData]);
 
     let renderWithNotAuth = () => {
         return (

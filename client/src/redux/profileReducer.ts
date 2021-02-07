@@ -1,4 +1,3 @@
-import {profileAPI} from "../api/api";
 import request from "../helpers/request";
 
 
@@ -6,14 +5,13 @@ const SET_PROFILE_DATA = 'myFacebook/profile/SET_PROFILE_DATA';
 
 const ADD_POST = 'myFacebook/profile/ADD-POST';
 const DELETE_POST = 'myFacebook/profile/DELETE_POST';
+const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
 
 const LOADING_START = 'myFacebook/profile/LOADING_START';
 const LOADING_END = 'myFacebook/profile/LOADING_END';
 const SET_ERROR = 'myFacebook/profile/SET_ERROR';
 const CLEAR_ERROR = 'myFacebook/profile/CLEAR_ERROR';
 
-// const UPDATE_STATUS = 'myFacebook/profile/UPDATE-STATUS';
-//
 // const SAVE_PHOTO_SUCCESS = 'myFacebook/profile/SAVE_PHOTO_SUCCESS';
 // const LOADING_PROFILE = 'myFacebook/profile/LOADING_PROFILE';
 
@@ -29,7 +27,7 @@ export interface IProfile {
     userId: string | null
     firstName: string
     lastName: string
-    status: string | null
+    status: string
     photo: string | null
     placeOfWork: string | null
     liveIn: string | null
@@ -50,7 +48,7 @@ const initialState: IProfileReducer = {
         userId: null,
         firstName: '',
         lastName: '',
-        status: null,
+        status: '',
         photo: null,
         placeOfWork: null,
         liveIn: null,
@@ -81,15 +79,18 @@ export function profileReducer(state = initialState, action: any): IProfileReduc
                     posts: state.profile && state.profile.posts.filter((p: IPost) => p.id !== action.postId),
                 }
             };
+        case UPDATE_STATUS:
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    status: action.status
+                }
+            };
         // case LOADING_PROFILE:
         //     return {
         //         ...state,
         //         isLoading: true
-        //     };
-        // case UPDATE_STATUS:
-        //     return {
-        //         ...state,
-        //         // status: action.status,
         //     };
         // case SAVE_PHOTO_SUCCESS:
         //     return {
@@ -115,20 +116,17 @@ export function profileReducer(state = initialState, action: any): IProfileReduc
 export const getProfile = () => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     let res = await request('/api/profile', 'GET');
-    console.log(res)
+
     if (res.success) dispatch({type: SET_PROFILE_DATA, profile: res.payload});
     if (!res.success) dispatch({type: SET_ERROR, error: res.error});
-
     dispatch({type: LOADING_END});
 }
 
 export const addPost = (postText: string) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
-
     let res = await request('/api/profile/post', 'POST',
-        {
-            postText, date: new Date(Date.now()).toLocaleString()
-        });
+        {postText, date: new Date(Date.now()).toLocaleString()});
+
     if (res.success) dispatch({type: ADD_POST, post: res.payload});
     dispatch({type: LOADING_END});
 }
@@ -139,7 +137,11 @@ export const deletePost = (postId: string) => async (dispatch: any) => {
 }
 
 // 1
-export const updateStatus = (status: string) => async () => await profileAPI.updateStatus(status);
+export const updateStatus = (status: string) => async (dispatch: any) => {
+    let res = await request('/api/profile/status', 'POST', {status});
+    if (res.success) dispatch({type: ADD_POST, status});
+
+}
 
 // 2
 // export const savePhoto = (file: any) => async (dispatch: any) => {

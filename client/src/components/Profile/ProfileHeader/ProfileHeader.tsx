@@ -5,20 +5,18 @@ import UpdatePhotoPopup from "./UpdatePhotoPopup/UpdatePhotoPopup"
 import user_avatar from "../../../assets/images/user_avatar.png"
 import avatar_bg from "../../../assets/images/avatar_background.jpg"
 import camera_icon from "../../../assets/images/camera_icon.png"
+import {IProfile} from "../../../redux/profileReducer";
 
 
 interface IProps {
-    photo: string | null
-    firstName: string
-    lastName: string
-    status: string | null
+    profile: IProfile
     isOwner: boolean
     updateStatus(): void
     savePhoto(): void
 }
 
 
-const ProfileHeader = React.memo(({photo, firstName, lastName, status, updateStatus, isOwner, savePhoto}: IProps) => {
+const ProfileHeader = React.memo(({profile, updateStatus, isOwner, savePhoto}: IProps) => {
 
     let [isPhotoPopup, setIsPhotoPopup] = useState(false);
 
@@ -45,18 +43,18 @@ const ProfileHeader = React.memo(({photo, firstName, lastName, status, updateSta
                     <img src={avatar_bg} alt="background"/>
                 </div>
                 <button className={s.photo} onClick={() => isOwner ? setIsPhotoPopup(true) : openPhoto()}>
-                    <img src={photo ? photo : user_avatar} className={s.user_photo} alt="user_photo"/>
+                    <img src={profile.photo ? profile.photo : user_avatar} className={s.user_photo} alt="user_photo"/>
                     {isOwner && <img src={camera_icon} alt="camera icon" className={s.camera_icon}/>}
                 </button>
                 {!isOwner &&
                 <div onClick={closePhoto} id="userPhoto" className={s.popup}>
-                    <img className={s.full_img} src={photo || user_avatar} alt=""/>
+                    <img className={s.full_img} src={profile.photo || user_avatar} alt=""/>
                 </div>
                 }
             </div>
             <div className={s.short_biography}>
-                <span className={s.fullName}>{`${firstName} ${lastName}`}</span>
-                <ProfileStatus status={status} updateStatus={updateStatus} isOwner={isOwner}/>
+                <span className={s.fullName}>{`${profile.firstName} ${profile.lastName}`}</span>
+                <ProfileStatus status={profile.status} updateStatus={updateStatus} isOwner={isOwner}/>
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import s from './ProfileStatus.module.css';
 
 
 interface IProps {
-    status: string | null
+    status: string
     isOwner: boolean
     updateStatus(status: string): void
 }
@@ -18,7 +18,7 @@ const ProfileStatus = React.memo(({status, updateStatus, isOwner}: IProps) => {
 
     let deActivateEditMode = () => {
         setEditMode(false);
-        if (newStatus && newStatus.length > 0) updateStatus(newStatus);
+        if (newStatus.length > 0) updateStatus(newStatus);
     };
 
     return (
@@ -26,7 +26,7 @@ const ProfileStatus = React.memo(({status, updateStatus, isOwner}: IProps) => {
             {editMode && isOwner &&
             <>
                 <textarea onChange={(e) => setNewStatus(e.currentTarget.value)} onBlur={deActivateEditMode}
-                          value={newStatus ? newStatus : ""}
+                          value={newStatus}
                           className={s.textarea} placeholder="Enter new status..." maxLength={140} autoFocus/>
                 <button className={s.save} onClick={deActivateEditMode}>Save</button>
             </>

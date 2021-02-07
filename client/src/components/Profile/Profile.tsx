@@ -32,10 +32,7 @@ const Profile = React.memo(({isLoading, match, userId, profile, getProfile, upda
 
     return (
         <div className={s.profile}>
-            <ProfileHeader photo={profile.photo}
-                           firstName={profile.firstName}
-                           lastName={profile.lastName}
-                           status={profile.status}
+            <ProfileHeader profile={profile}
                            updateStatus={updateStatus}
                            savePhoto={savePhoto}
                            isOwner={isOwner}

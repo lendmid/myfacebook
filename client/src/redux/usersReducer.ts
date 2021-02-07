@@ -1,4 +1,3 @@
-import {usersAPI} from "../api/api";
 import {UserType} from "../types/types";
 
 const SET_USERS = 'myFacebook/users/SET-USERS';
@@ -36,11 +35,11 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
 export const requestUsers = (page = 1, pageSize = 100) => async (dispatch: any) => {
     dispatch({type: SET_CURRENT_PAGE, page});
     dispatch({type: TOGGLE_IS_FETCHING, isFetching: true});
-    let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)
+    // let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)
 
     dispatch({type: TOGGLE_IS_FETCHING, isFetching: false});
-    dispatch({type: SET_USERS, users});
-    dispatch({type: SET_TOTAL_USERS_COUNT, totalUsersCount: Math.ceil(totalCount)});
+    // dispatch({type: SET_USERS, users});
+    // dispatch({type: SET_TOTAL_USERS_COUNT, totalUsersCount: Math.ceil(totalCount)});
 }
 
 export default usersReducer;
