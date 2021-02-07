@@ -37,21 +37,13 @@ export function authReducer(state: IAuth = initialState, action: any): IAuth {
                 isAuth: action.isAuth,
             };
         case SET_ERROR:
-            return {
-                ...state,
-                serverError: action.error
-            };
+            return {...state, serverError: action.error};
         case CLEAR_ERROR:
-            return {
-                ...state,
-                serverError: null
-            };
-        case LOADING_START: {
-            return {...state, isLoading: true}
-        }
-        case LOADING_END: {
-            return {...state, isLoading: false}
-        }
+            return {...state, serverError: null};
+        case LOADING_START:
+            return {...state, isLoading: true};
+        case LOADING_END:
+            return {...state, isLoading: false};
         default:
             return state
     }

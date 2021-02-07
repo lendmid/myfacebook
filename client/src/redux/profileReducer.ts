@@ -87,11 +87,6 @@ export function profileReducer(state = initialState, action: any): IProfileReduc
                     status: action.status
                 }
             };
-        // case LOADING_PROFILE:
-        //     return {
-        //         ...state,
-        //         isLoading: true
-        //     };
         // case SAVE_PHOTO_SUCCESS:
         //     return {
         //         ...state,
@@ -102,12 +97,10 @@ export function profileReducer(state = initialState, action: any): IProfileReduc
             return {...state, serverError: action.error};
         case CLEAR_ERROR:
             return {...state, serverError: null};
-        case LOADING_START: {
-            return {...state, isLoading: true}
-        }
-        case LOADING_END: {
-            return {...state, isLoading: false}
-        }
+        case LOADING_START:
+            return {...state, isLoading: true};
+        case LOADING_END:
+            return {...state, isLoading: false};
         default:
             return state
     }
@@ -116,19 +109,15 @@ export function profileReducer(state = initialState, action: any): IProfileReduc
 export const getProfile = () => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     let res = await request('/api/profile', 'GET');
-
     if (res.success) dispatch({type: SET_PROFILE_DATA, profile: res.payload});
     if (!res.success) dispatch({type: SET_ERROR, error: res.error});
     dispatch({type: LOADING_END});
 }
 
 export const addPost = (postText: string) => async (dispatch: any) => {
-    dispatch({type: LOADING_START});
     let res = await request('/api/profile/post', 'POST',
         {postText, date: new Date(Date.now()).toLocaleString()});
-
     if (res.success) dispatch({type: ADD_POST, post: res.payload});
-    dispatch({type: LOADING_END});
 }
 
 export const deletePost = (postId: string) => async (dispatch: any) => {
@@ -136,14 +125,12 @@ export const deletePost = (postId: string) => async (dispatch: any) => {
     if (res.success) dispatch({type: DELETE_POST, postId});
 }
 
-// 1
 export const updateStatus = (status: string) => async (dispatch: any) => {
-    let res = await request('/api/profile/status', 'POST', {status});
-    if (res.success) dispatch({type: ADD_POST, status});
-
+    let res = await request('/api/profile/status', 'PUT', {status});
+    if (res.success) dispatch({type: UPDATE_STATUS, status});
 }
 
-// 2
+// 1
 // export const savePhoto = (file: any) => async (dispatch: any) => {
 export const savePhoto = () => async (dispatch: any) => {
     dispatch({type: LOADING_START});

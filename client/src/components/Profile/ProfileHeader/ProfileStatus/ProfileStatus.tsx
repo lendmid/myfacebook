@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './ProfileStatus.module.css';
 
 
@@ -11,15 +11,20 @@ interface IProps {
 
 const ProfileStatus = React.memo(({status, updateStatus, isOwner}: IProps) => {
 
-    const [editMode, setEditMode] = useState(false);
     const [newStatus, setNewStatus] = useState(status);
+    const [editMode, setEditMode] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
+
+    useEffect(() => {
+        if (isFetching && newStatus.length > 0 && newStatus !== status) updateStatus(newStatus);
+        setIsFetching(false);
+    }, [newStatus, editMode, isFetching, status, updateStatus])
 
     let activateEditMode = () => setEditMode(true);
-
     let deActivateEditMode = () => {
         setEditMode(false);
-        if (newStatus.length > 0) updateStatus(newStatus);
-    };
+        setIsFetching(true);
+    }
 
     return (
         <>

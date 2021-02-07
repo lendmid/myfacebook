@@ -6,7 +6,7 @@ const app = express();
 // const dataBase = require('./dataBase');
 // const usersController = require('./controllers/users');
 
-// require new API
+
 const mongoose = require('mongoose');
 const config = require('config');
 
