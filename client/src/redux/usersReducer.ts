@@ -3,7 +3,8 @@ import {UserType} from "../types/types";
 const SET_USERS = 'myFacebook/users/SET-USERS';
 const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'myFacebook/users/SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FETCHING = 'myFacebook/users/TOGGLE_IS_FETCHING';
+const LOADING_START = 'myFacebook/users/LOADING_START';
+const LOADING_END = 'myFacebook/users/LOADING_END';
 
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
     pageSize: 100,
     totalUsersCount: 0,
     currentPage: 10,
-    isFetching: false,
+    isLoading: false,
 }
 
 export type initialStateType = typeof initialState;
@@ -24,8 +25,10 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
             return {...state, currentPage: action.currentPage}
         case SET_TOTAL_USERS_COUNT:
             return {...state, totalUsersCount: action.totalUsersCount}
-        case TOGGLE_IS_FETCHING:
-            return {...state, isFetching: action.isFetching}
+        case LOADING_START:
+            return {...state, isLoading: true};
+        case LOADING_END:
+            return {...state, isLoading: false};
         default:
             return state
     }
@@ -33,11 +36,11 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
 
 // 4
 export const requestUsers = (page = 1, pageSize = 100) => async (dispatch: any) => {
-    dispatch({type: SET_CURRENT_PAGE, page});
-    dispatch({type: TOGGLE_IS_FETCHING, isFetching: true});
+    dispatch({type: LOADING_START, isLoading: true});
+
     // let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)
 
-    dispatch({type: TOGGLE_IS_FETCHING, isFetching: false});
+    dispatch({type: LOADING_END, isLoading: false});
     // dispatch({type: SET_USERS, users});
     // dispatch({type: SET_TOTAL_USERS_COUNT, totalUsersCount: Math.ceil(totalCount)});
 }
