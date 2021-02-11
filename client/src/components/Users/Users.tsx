@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import s from './Users.module.css';
 import preview_profile from "../../assets/images/preview_profile.svg"
 import User from "./User/User";
@@ -7,7 +7,7 @@ import Profile from "../Profile/Profile";
 import {ProfileType, UserType} from "../../types/types";
 
 
-type PropsType = {
+interface IProps {
     onPageChanged: (pageNumber: number) => void
     currentPage: number
     users: UserType[]
@@ -16,7 +16,7 @@ type PropsType = {
     profile: ProfileType
 }
 
-const Users: FC<PropsType> = React.memo(({onPageChanged, currentPage, users, isLoading, totalUsersCount, ...props}) => {
+const Users = React.memo(({onPageChanged, currentPage, users, isLoading, totalUsersCount, ...props}: IProps) => {
 
     let onScrollHandler = () => {
         let usersList: any = document.getElementById('usersList');
