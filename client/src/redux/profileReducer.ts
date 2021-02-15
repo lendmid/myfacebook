@@ -90,7 +90,7 @@ export function profileReducer(state = initialState, action: any): IProfileReduc
         // case SAVE_PHOTO_SUCCESS:
         //     return {
         //         ...state,
-        //         // profile: {...state.profile, photos: action.photos} as ProfileType
+        //         // profile: {...state.profile, photos: action.photos} as IProfile
         //     };
 
         case SET_ERROR:

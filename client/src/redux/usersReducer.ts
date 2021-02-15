@@ -1,4 +1,4 @@
-import {UserType} from "../types/types";
+import {IUser} from "../types/types";
 
 const SET_USERS = 'myFacebook/users/SET-USERS';
 const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
@@ -8,7 +8,7 @@ const LOADING_END = 'myFacebook/users/LOADING_END';
 
 
 const initialState = {
-    users: [] as UserType[],
+    users: [] as IUser[],
     pageSize: 100,
     totalUsersCount: 0,
     currentPage: 10,
