@@ -17,7 +17,7 @@ interface IProps extends RouteComponentProps<IMatch> {
     userId: string
     profile: IProfile
     isLoading: boolean
-    getProfile(): void
+    getProfile(id: string): void
     updateStatus(): void
     savePhoto(): void
 }
@@ -25,7 +25,7 @@ interface IProps extends RouteComponentProps<IMatch> {
 
 const Profile = React.memo(({isLoading, match, userId, profile, getProfile, updateStatus, savePhoto}: IProps) => {
 
-    useEffect(getProfile, [getProfile]);
+    useEffect(() => getProfile(match.params.userId), [getProfile]);
     if (!profile || isLoading) return <Preloader/>;
 
     let isOwner = (userId === match.params.userId);
