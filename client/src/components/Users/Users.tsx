@@ -5,13 +5,10 @@ import User from "./User/User";
 import PreloaderUsers from "../common/PreloaderUsers/Preloader";
 import Profile from "../Profile/Profile";
 import {getProfile, IProfile} from "../../redux/profileReducer";
-import {getCurrentPage, getPageSize, getTotalUsersCount, getUsers} from "../../redux/selectors/usersSelectors";
-import {compose} from "redux";
+import {getTotalUsersCount, getUsers} from "../../redux/selectors/usersSelectors";
 import {connect} from "react-redux";
 import {requestUsers} from "../../redux/usersReducer";
-import {RouteComponentProps, withRouter} from "react-router-dom";
 import {AppStateType} from "../../redux/redux-store";
-import {IMatch} from "../../interfaces/IMatch";
 
 
 export interface IUser {
@@ -21,46 +18,23 @@ export interface IUser {
     photo?: string | null
 }
 
-interface IProps extends RouteComponentProps<IMatch> {
-    onPageChanged: (pageNumber: number) => void
-    currentPage: number
-    pageSize: number
+interface IProps {
     users: IUser[] | []
-    isLoading: boolean
+    profile: IProfile | null
     totalUsersCount: number
-    profile: IProfile
-    requestUsers(): void
+    isLoading: boolean
+    requestUsers(lastId?: string): void
 }
 
-const Users = React.memo(({onPageChanged, currentPage, pageSize, users, profile, isLoading, totalUsersCount, match}: IProps) => {
+const Users = React.memo(({users, profile, totalUsersCount, isLoading, requestUsers}: IProps) => {
 
     useEffect(() => {
-        if (users.length === 0) requestUsers(currentPage, pageSize);
-    }, [match.params.userId, users.length, currentPage, pageSize, requestUsers]);
-
-
-    // let {match, users, profile, currentPage, pageSize, getProfile, requestUsers} = props;
-    //
-    // useEffect(() => {
-    //     if (users.length === 0) requestUsers(currentPage, pageSize);
-    //
-    //     if (!match.params.userId) return;
-    //     let userId = Number(match.params.userId);
-    //     getProfile(userId);
-    // }, [match.params.userId, users.length, currentPage, pageSize, getProfile, requestUsers]);
-    //
-    // let onPageChanged = (pageNumber) => {
-    //     requestUsers(pageNumber, pageSize);
-    // };
-
-    // return <Users {...props}
-    //               profile={!match.params.userId ? null : profile}
-    //               onPageChanged={onPageChanged}/>
-
+        if (users.length === 0) requestUsers()
+    }, [users.length, requestUsers]);
 
     let onScrollHandler = () => {
         let usersList: any = document.getElementById('usersList');
-        if ((usersList.clientHeight + usersList.scrollTop) === usersList.scrollHeight) onPageChanged(currentPage + 1);
+        if ((usersList.clientHeight + usersList.scrollTop) === usersList.scrollHeight) requestUsers(users[users.length - 1].id);
     };
 
     return (
@@ -87,7 +61,7 @@ const Users = React.memo(({onPageChanged, currentPage, pageSize, users, profile,
                     <>
                         <div className={s.not_picked_profile}>
                             <img src={preview_profile} alt="Profile preview" className={s.icon_people}/>
-                            <span className={s.not_picked_profile_span}>Select a person's name to see their profile in preview mode.</span>
+                            <span className={s.not_picked_profile_span}>Select a person's that to see their profile in preview mode.</span>
                         </div>
                     </>
                 }
@@ -99,14 +73,10 @@ const Users = React.memo(({onPageChanged, currentPage, pageSize, users, profile,
 
 const mapStateToProps = (state: AppStateType) => ({
     users: getUsers(state),
-    pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
-    currentPage: getCurrentPage(state),
-    status: state.profilePage.profile.status,
+    profile: state.profilePage.profile,
     isLoading: state.profilePage.isLoading,
 });
 
-export default compose(
-    connect(mapStateToProps, {getProfile, requestUsers}),
-    withRouter,
-)(Users)
+export default connect(mapStateToProps, {getProfile, requestUsers})(Users);
+// export default Users;

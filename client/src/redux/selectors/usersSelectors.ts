@@ -8,17 +8,9 @@ const getUsersSelector = (state: AppStateType) => {
 }
 
 export const getUsers = createSelector(getUsersSelector, (users: IUser[]) => {
-    return users.filter(user => !!user.status && !!user.photos);
+    return users.filter(user => !!user.status && !!user.photo);
 })
-
-export const getPageSize = (state: AppStateType) => {
-    return state.usersPage.pageSize;
-}
 
 export const getTotalUsersCount = (state: AppStateType) => {
     return state.usersPage.totalUsersCount;
-}
-
-export const getCurrentPage = (state: AppStateType) => {
-    return state.usersPage.currentPage;
 }

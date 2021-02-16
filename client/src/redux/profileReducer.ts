@@ -37,7 +37,7 @@ export interface IProfile {
 interface IProfileReducer {
     isLoading: boolean
     serverError: string | null
-    profile: IProfile
+    profile: IProfile | null
 }
 
 

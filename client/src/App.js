@@ -3,14 +3,13 @@ import Header from './components/Header/Header';
 import Profile from "./components/Profile/Profile";
 import LogIn from "./components/LogIn/LogIn";
 import Register from "./components/Register/Register";
-import UsersContainer from "./components/Users/UsersContainer";
+import Users from "./components/Users/Users";
 import Messages from './components/Messages/Messages';
 
 import './App.css';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {getUserData} from "./redux/authReducer";
 import {connect, Provider} from "react-redux";
-import {getProfile, updateStatus} from "./redux/profileReducer";
 import store from './redux/redux-store';
 import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
 
@@ -36,7 +35,7 @@ const App = React.memo(({isAuth, userId, getUserData}) => {
                 <Switch>
                     <Route exact path="/profile/:userId" component={Profile}/>
                     <Route exact path="/messages/:userId" component={Messages}/>
-                    <Route exact path='/users/:userId?' component={UsersContainer}/>
+                    <Route exact path='/users/:userId?' component={Users}/>
                     <Redirect to={`/profile/${userId}`}/>
                 </Switch>
             </>
@@ -57,8 +56,7 @@ const mapStateToProps = (state) => ({
     totalUsersCount: getTotalUsersCount(state),
 });
 
-const AppContainer = connect(mapStateToProps, {getProfile, updateStatus, getUserData}
-)(App);
+const AppContainer = connect(mapStateToProps, {getUserData})(App);
 
 // //for build on gitHub
 // const MyFacebook = () => {
