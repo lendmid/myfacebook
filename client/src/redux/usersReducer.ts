@@ -1,4 +1,4 @@
-import {IUser} from "../types/types";
+import {IUser} from "../components/Users/Users";
 
 const SET_USERS = 'myFacebook/users/SET-USERS';
 const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
@@ -35,7 +35,7 @@ const usersReducer = (state = initialState, action: any): initialStateType => {
 }
 
 // 4
-export const requestUsers = (page = 1, pageSize = 100) => async (dispatch: any) => {
+export const requestUsers = (lastId = '') => async (dispatch: any) => {
     dispatch({type: LOADING_START, isLoading: true});
 
     // let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)

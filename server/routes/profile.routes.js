@@ -9,6 +9,7 @@ const auth = require('../middleware/auth.middleware');
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.userId);
+        console.log(user)
         const postsFromBase = await Post.find({owner: req.user.userId});
 
         const posts = postsFromBase.map(p => {
