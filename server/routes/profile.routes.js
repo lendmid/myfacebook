@@ -6,10 +6,10 @@ const auth = require('../middleware/auth.middleware');
 
 
 // /api/profile
-router.get('/', auth, async (req, res) => {
+router.get('/:userId', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.user.userId);
-        console.log(user)
+        const user = await User.findById(req.params.userId);
+        // const user = await User.findById(req.user.userId);
         const postsFromBase = await Post.find({owner: req.user.userId});
 
         const posts = postsFromBase.map(p => {

@@ -108,8 +108,7 @@ export function profileReducer(state = initialState, action: any): IProfileReduc
 
 export const getProfile = (userId: string) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
-    let res = await request(`/api/profile/`, 'GET');
-    // let res = await request(`/api/profile/${userId}`, 'GET');
+    let res = await request(`/api/profile/${userId}`, 'GET');
     if (res.success) dispatch({type: SET_PROFILE_DATA, profile: res.payload});
     if (!res.success) dispatch({type: SET_ERROR, error: res.error});
     dispatch({type: LOADING_END});
