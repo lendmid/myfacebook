@@ -32,6 +32,7 @@ const Users = React.memo(({users, profile, totalUsersCount, isLoading, requestUs
         if (users.length === 0) requestUsers()
     }, [users.length, requestUsers]);
 
+    //todo: added debounce function
     let onScrollHandler = () => {
         let usersList: any = document.getElementById('usersList');
         if ((usersList.clientHeight + usersList.scrollTop) === usersList.scrollHeight) requestUsers(users[users.length - 1].id);
@@ -79,4 +80,3 @@ const mapStateToProps = (state: AppStateType) => ({
 });
 
 export default connect(mapStateToProps, {getProfile, requestUsers})(Users);
-// export default Users;
