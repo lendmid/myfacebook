@@ -34,7 +34,7 @@ const ProfileHeader = React.memo(({profile, updateStatus, isOwner, savePhoto}: I
 
     return (
         <div className={s.profile_header}>
-            {isPhotoPopup && <UpdatePhotoPopup setUpdatePhotoPopup={setIsPhotoPopup} savePhoto={savePhoto}/>}
+            {isPhotoPopup && <UpdatePhotoPopup setIsPhotoPopup={setIsPhotoPopup} savePhoto={savePhoto}/>}
             <div className={s.photo_wrapper}>
                 <div className={s.background_photo}>
                     <div className={s.gradient}>

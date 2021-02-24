@@ -4,13 +4,12 @@ import add_icon from "../../../../assets/images/add_icon.svg"
 
 
 interface IProps {
-    setUpdatePhotoPopup(arg0: boolean): void
-
+    setIsPhotoPopup(arg0: boolean): void
     savePhoto(): void
 }
 
 
-const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}: IProps) => {
+const UpdatePhotoPopup = React.memo(({setIsPhotoPopup, savePhoto}: IProps) => {
 
     // let fileSize = (size: number) => {
     //     // let i = Math.floor(Math.log(size) / Math.log(1024));
@@ -40,7 +39,7 @@ const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}: IProps) =
         if (input.files.length) {
             // @ts-ignore
             savePhoto(input.files[0]);
-            setUpdatePhotoPopup(false);
+            setIsPhotoPopup(false);
         } else {
             alert("Please added file")
         }
@@ -51,7 +50,7 @@ const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}: IProps) =
             <div className={s.wrapper_popup}>
                 <div className={s.header}>
                     <h2>Updating photo profile</h2>
-                    <button className={s.close_icon} onClick={() => setUpdatePhotoPopup(false)}>╳</button>
+                    <button className={s.close_icon} onClick={() => setIsPhotoPopup(false)}>╳</button>
                 </div>
 
                 <div className={s.input_wrapper} id="input_photo_wrapper">
@@ -68,7 +67,7 @@ const UpdatePhotoPopup = React.memo(({setUpdatePhotoPopup, savePhoto}: IProps) =
                 </div>
                 <button className={s.button} onClick={photoSelected}>Update photo</button>
             </div>
-            <div className={s.closer} onClick={() => setUpdatePhotoPopup(false)}/>
+            <div className={s.closer} onClick={() => setIsPhotoPopup(false)}/>
         </div>
     )
 })
