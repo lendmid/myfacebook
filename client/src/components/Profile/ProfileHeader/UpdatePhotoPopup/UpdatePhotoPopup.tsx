@@ -37,6 +37,7 @@ const UpdatePhotoPopup = React.memo(({setIsPhotoPopup, savePhoto}: IProps) => {
         if (!input) return
         // @ts-ignore
         if (input.files.length) {
+
             // @ts-ignore
             savePhoto(input.files[0]);
             setIsPhotoPopup(false);
