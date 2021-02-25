@@ -2,7 +2,7 @@
     z-index: 6;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    
+
     position: fixed;
     top: 0;
     bottom: 0;
@@ -10,7 +10,7 @@
     right: 0;
     display: grid;
     place-items: center;
-    background-color: #f3f4f3ab;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .wrapper_popup {
@@ -25,24 +25,23 @@
     place-items: center;
 }
 
-.header {
-    justify-self: stretch;
-    border-bottom: 1px solid #EAEAEA;
-    position: relative;
-    height: 100%;
+.title {
     display: grid;
-    place-items: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 10px;
 }
 
 .close_icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: #ededed;
+    background: white;
     border: 1px solid #999;
-    font-size: 15px;
     position: absolute;
-    right: 20px;
+    right: 40px;
+    top: 40px;
 }
 
 .closer {

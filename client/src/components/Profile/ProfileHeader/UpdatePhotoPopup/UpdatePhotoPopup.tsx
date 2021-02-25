@@ -5,7 +5,7 @@ import add_icon from "../../../../assets/images/add_icon.svg"
 
 interface IProps {
     setIsPhotoPopup(arg0: boolean): void
-    savePhoto(): void
+    savePhoto(file: File): void
 }
 
 
@@ -32,27 +32,22 @@ const UpdatePhotoPopup = React.memo(({setIsPhotoPopup, savePhoto}: IProps) => {
         // }
     }
 
-    let photoSelected = () => {
-        let input = document.getElementById('input_file');
-        if (!input) return
-        // @ts-ignore
-        if (input.files.length) {
-
-            // @ts-ignore
+    const photoSelected = () => {
+        const input = document.getElementById('input_file') as HTMLInputElement
+        if (input.files && input.files.length > 0) {
             savePhoto(input.files[0]);
             setIsPhotoPopup(false);
         } else {
-            alert("Please added file")
+            alert("Please added file");
         }
     }
 
     return (
-        <div className={s.background}>
-            <div className={s.wrapper_popup}>
-                <div className={s.header}>
-                    <h2>Updating photo profile</h2>
-                    <button className={s.close_icon} onClick={() => setIsPhotoPopup(false)}>╳</button>
-                </div>
+        <div className={s.background} onClick={() => setIsPhotoPopup(false)}>
+            <button className={s.close_icon}>╳</button>
+
+            <div className={s.wrapper_popup} onClick={(e) => e.stopPropagation()}>
+                <h2 className={s.title}>Updating photo profile</h2>
 
                 <div className={s.input_wrapper} id="input_photo_wrapper">
                     <input type="file" id="input_file" className={s.input} onChange={showFileProperties}/>
@@ -68,7 +63,6 @@ const UpdatePhotoPopup = React.memo(({setIsPhotoPopup, savePhoto}: IProps) => {
                 </div>
                 <button className={s.button} onClick={photoSelected}>Update photo</button>
             </div>
-            <div className={s.closer} onClick={() => setIsPhotoPopup(false)}/>
         </div>
     )
 })
