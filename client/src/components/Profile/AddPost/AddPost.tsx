@@ -26,7 +26,6 @@ const AddPost = React.memo(({addPost}: IProps) => {
                         cols={30}
                         rows={7}
                         placeholder="Enter something..."
-                        required
                     />
                 </label>
                 {clientErrors.newPostText.length > 0 && <span className={s.error}>{clientErrors.newPostText}</span>}
