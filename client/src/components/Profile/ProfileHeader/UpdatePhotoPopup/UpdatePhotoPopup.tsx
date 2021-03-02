@@ -11,26 +11,27 @@ interface IProps {
 
 const UpdatePhotoPopup = React.memo(({setIsPhotoPopup, savePhoto}: IProps) => {
 
-    // let fileSize = (size: number) => {
-    //     // let i = Math.floor(Math.log(size) / Math.log(1024));
-    //     // return `${(size / Math.pow(1024, i)).toFixed(2) * 1 ['B', 'kB', 'MB', 'GB', 'TB'][i]}`;
-    // }
+    let fileSize = (size: number) => {
+        const i = Math.floor(Math.log(size) / Math.log(1024));
+        const countByte = (size / Math.pow(1024, i)).toFixed(2);
 
-    let showFileProperties = () => {
+        return countByte + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+    }
 
-        // let input = document.getElementById('input_file');
-        // let label = input.nextElementSibling;
-        // let countFiles = '';
-        // if (input.files && input.files.length >= 1) {
-        //     countFiles = input.files.length;
-        //     label.children.pick_file.innerText = `Picked file: ${countFiles}`;
-        //     let inputWrapper = input.parentElement;
-        //     let file = input.files[0];
-        //     inputWrapper.lastChild.innerHTML = `
-        //         <span><b>File name: </b>${file.name}</span>
-        //         <span><b>Type file: </b>${file.type}</span>
-        //         <span><b>Size file: </b>${fileSize(file.size)}</span>`
-        // }
+    let showFileProperties = (event: any) => {
+        let input = event.currentTarget;
+        let label = input.nextElementSibling;
+        let countFiles = '';
+        if (input.files && input.files.length >= 1) {
+            countFiles = input.files.length;
+            label.children.pick_file.innerText = `Picked file: ${countFiles}`;
+            let inputWrapper = input.parentElement;
+            let file = input.files[0];
+            inputWrapper.lastChild.innerHTML = `
+                 <span><b>File name: </b>${file.name}</span>
+                 <span><b>Type file: </b>${file.type}</span>
+                 <span><b>Size file: </b>${fileSize(file.size)}</span>`
+        }
     }
 
     const photoSelected = () => {
