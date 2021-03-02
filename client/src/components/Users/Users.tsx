@@ -7,34 +7,30 @@ import Profile from "../Profile/Profile";
 import {getProfile, IProfile} from "../../redux/profileReducer";
 import {getTotalUsersCount, getUsers} from "../../redux/selectors/usersSelectors";
 import {connect} from "react-redux";
-import {requestUsers} from "../../redux/usersReducer";
+import {IUser, requestUsers} from "../../redux/usersReducer";
 import {AppStateType} from "../../redux/redux-store";
+import {RouteComponentProps} from "react-router-dom";
+import {IMatch} from "../../interfaces/IMatch";
 
 
-export interface IUser {
-    id?: string
-    name?: string
-    status?: string
-    photo?: string | null
-}
-
-interface IProps {
+interface IProps extends RouteComponentProps<IMatch> {
     users: IUser[] | []
     profile: IProfile | null
     totalUsersCount: number
     isLoading: boolean
+    usersIsRequested: boolean
     requestUsers(lastId?: string): void
 }
 
-const Users = React.memo(({users, profile, totalUsersCount, isLoading, requestUsers}: IProps) => {
+const Users = React.memo(({users, profile, totalUsersCount, isLoading, requestUsers, usersIsRequested, match}: IProps) => {
 
     useEffect(() => {
-        if (users.length === 0) requestUsers()
-    }, [users.length, requestUsers]);
+        if (!usersIsRequested) requestUsers()
+    }, [usersIsRequested, requestUsers]);
 
     //todo: added debounce function
-    let onScrollHandler = () => {
-        let usersList: any = document.getElementById('usersList');
+    let onScrollHandler = (event: React.UIEvent<HTMLElement>) => {
+        let usersList = event.currentTarget
         if ((usersList.clientHeight + usersList.scrollTop) === usersList.scrollHeight) requestUsers(users[users.length - 1].id);
     };
 
@@ -45,7 +41,7 @@ const Users = React.memo(({users, profile, totalUsersCount, isLoading, requestUs
                     <span className={s.total_users_count_wrapper}>Total count users in myFacebook: <span
                         className={s.total_users_count}>{totalUsersCount}</span></span>
                 </div>
-                <ul className={s.users_list} id="usersList" onScroll={onScrollHandler}>
+                <ul className={s.users_list} onScroll={onScrollHandler}>
                     {users && (users as Array<IUser>).map((user) => {
                         return <User key={user.id} id={user.id} name={user.name} status={user.status}
                                      photo={user.photo}/>
@@ -56,8 +52,7 @@ const Users = React.memo(({users, profile, totalUsersCount, isLoading, requestUs
             </div>
             <div className={s.profile_preview}>
                 {isLoading && <PreloaderUsers/>}
-                {!isLoading &&
-                profile ?
+                {!isLoading && profile && match.params.userId ?
                     <Profile/> :
                     <>
                         <div className={s.not_picked_profile}>
@@ -77,6 +72,7 @@ const mapStateToProps = (state: AppStateType) => ({
     totalUsersCount: getTotalUsersCount(state),
     profile: state.profilePage.profile,
     isLoading: state.profilePage.isLoading,
+    usersIsRequested: state.usersPage.usersIsRequested,
 });
 
 export default connect(mapStateToProps, {getProfile, requestUsers})(Users);
