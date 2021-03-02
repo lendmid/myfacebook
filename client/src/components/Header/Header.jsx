@@ -3,7 +3,7 @@ import s from './Header.module.css';
 import {Link, Redirect} from "react-router-dom";
 import logOutImg from "../../assets/images/logOut.svg"
 import logo from "../../assets/images/logo.png";
-import {logOut} from "../../redux/authReducer";
+import {logOut} from "../../redux/auth.reducer";
 import {connect} from "react-redux";
 
 const Header = ({logOut, userId}) => {

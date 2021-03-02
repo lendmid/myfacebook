@@ -5,7 +5,7 @@ import UpdatePhotoPopup from "./UpdatePhotoPopup/UpdatePhotoPopup"
 import user_avatar from "../../../assets/images/user_avatar.png"
 import avatar_bg from "../../../assets/images/avatar_background.jpg"
 import camera_icon from "../../../assets/images/camera_icon.png"
-import {IProfile} from "../../../redux/profileReducer";
+import {IProfile} from "../../../redux/profile.reducer";
 
 
 interface IProps {

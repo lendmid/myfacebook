@@ -3,7 +3,7 @@ import s from './Post.module.css';
 import user_avatar from "../../../assets/images/user_avatar.png"
 import cross_post from "../../../assets/images/cross_post.svg"
 import {connect} from "react-redux";
-import {deletePost} from "../../../redux/profileReducer";
+import {deletePost} from "../../../redux/profile.reducer";
 
 
 interface IProps {

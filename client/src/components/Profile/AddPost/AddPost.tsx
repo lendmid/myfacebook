@@ -1,13 +1,17 @@
 import React from "react";
 import s from './AddPost.module.css';
 import {connect} from "react-redux";
-import {addPost} from "../../../redux/profileReducer";
+import {addPost} from "../../../redux/profile.reducer";
 import useValidation from "./useValidation";
 
 
-const AddPost = React.memo(({addPost}) => {
+interface IProps {
+    addPost(text: string): void
+}
 
-    const {handleChange, handleSubmit, values, clientErrors, isLoading} = useValidation(addPost);
+const AddPost = React.memo(({addPost}: IProps) => {
+
+    const {handleChange, handleSubmit, values, clientErrors} = useValidation(addPost);
 
     return (
         <div className={s.wrapper}>
@@ -19,23 +23,19 @@ const AddPost = React.memo(({addPost}) => {
                         name="newPostText"
                         value={values.newPostText}
                         onChange={handleChange}
-                        cols="30"
-                        rows="7"
+                        cols={30}
+                        rows={7}
                         placeholder="Enter something..."
                         required
                     />
                 </label>
-                {clientErrors.newPostText && <span className={s.error}>{clientErrors.newPostText}</span>}
-                <button className={s.add_post} type="submit" disabled={isLoading}>Add post</button>
+                {clientErrors.newPostText.length > 0 && <span className={s.error}>{clientErrors.newPostText}</span>}
+                <button className={s.add_post} type="submit">Add post</button>
             </form>
         </div>
     )
 })
 
 
-const mapStateToProps = (state) => ({
-    newPostText: state.profilePage.newPostText,
-});
-
-export default connect(mapStateToProps, {addPost})(AddPost);
+export default connect(null, {addPost})(AddPost);
 

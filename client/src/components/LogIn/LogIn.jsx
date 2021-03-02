@@ -5,7 +5,7 @@ import s from './LogIn.module.css';
 import {Link} from "react-router-dom";
 
 import {connect} from "react-redux";
-import {logIn} from "../../redux/authReducer";
+import {logIn} from "../../redux/auth.reducer";
 import Description from "../common/Description/Description";
 import Footer from "../common/Footer/Footer";
 import FormAlert from "../common/FormAlert/FormAlert";

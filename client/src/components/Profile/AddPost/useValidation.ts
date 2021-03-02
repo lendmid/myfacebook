@@ -1,8 +1,11 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
+interface IValues {
+  newPostText: string
+}
 
-function validate(values) {
-  let clientErrors = {};
+function validate(values: IValues) {
+  let clientErrors: any = {};
 
   if (!values.newPostText) {
     clientErrors.newPostText = 'Post can not be empty';
@@ -13,24 +16,24 @@ function validate(values) {
   return clientErrors;
 }
 
-const useValidation = (callback) => {
-  const [values, setValues] = useState({newPostText: ''});
-  const [clientErrors, setClientErrors] = useState({});
+const useValidation = (callback: (text: string) => void) => {
+  const [values, setValues] = useState<IValues>({newPostText: ''});
+  const [clientErrors, setClientErrors] = useState({newPostText: ''});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = e => {
-    const {name, value} = e.target;
+  const handleChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    const {name, value} = e.currentTarget;
     setValues({...values, [name]: value});
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setClientErrors(validate(values));
     setIsSubmitting(true);
   };
 
   useEffect(() => {
-    if (Object.keys(clientErrors).length === 0 && isSubmitting) {
+    if (Object.values(clientErrors).length === 0 && isSubmitting) {
       callback(values.newPostText);
       setValues({newPostText: ''});
       setIsSubmitting(false);

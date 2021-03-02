@@ -4,7 +4,7 @@ import s from './Register.module.css';
 import {Link} from "react-router-dom";
 
 import {connect} from "react-redux";
-import {register} from "../../redux/authReducer";
+import {register} from "../../redux/auth.reducer";
 import useValidation from "./useValidation";
 import Description from "../common/Description/Description";
 import Footer from "../common/Footer/Footer";
@@ -92,7 +92,7 @@ const Register = React.memo(({isLoading, register, serverError}) => {
                 </button>
 
                 {serverError && <FormAlert error={serverError}/>}
-                <div className={s.button_login_underline}></div>
+                <div className={s.button_login_underline}/>
 
                 <Link to={"/login"} className={s.button + " " + s.button_login}>Login</Link>
             </form>

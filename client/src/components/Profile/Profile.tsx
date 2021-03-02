@@ -5,7 +5,7 @@ import AddPost from './AddPost/AddPost';
 import ShortInformation from "./ShortInformation/ShortInformation";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getProfile, IPost, IProfile, savePhoto, updateStatus} from "../../redux/profileReducer";
+import {getProfile, IPost, IProfile, savePhoto, updateStatus} from "../../redux/profile.reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import Post from "./Post/Post";
 import {AppStateType} from "../../redux/redux-store";
@@ -27,7 +27,7 @@ const Profile = React.memo(({isLoading, match, userId, profile, getProfile, upda
 
     useEffect(() => {
         if (profile && profile.userId !== match.params.userId) getProfile(match.params.userId)
-    }, [getProfile, match.params.userId]);
+    }, [getProfile, match.params.userId, profile]);
     if (!profile || isLoading) return <Preloader/>;
 
     let isOwner = (userId === match.params.userId);

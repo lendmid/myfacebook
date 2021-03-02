@@ -8,7 +8,7 @@ import Messages from './components/Messages/Messages';
 
 import './App.css';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
-import {getUserData} from "./redux/authReducer";
+import {getUserData} from "./redux/auth.reducer";
 import {connect, Provider} from "react-redux";
 import store from './redux/redux-store';
 import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
