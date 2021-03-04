@@ -14,6 +14,7 @@ const config = require('config');
 app.use(express.json({extended: true}));
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/profile', require('./routes/profile.routes'));
+app.use('/api/users', require('./routes/users.routes'));
 
 const PORT = config.get('port') || 3012;
 
@@ -24,7 +25,14 @@ const PORT = config.get('port') || 3012;
             useUnifiedTopology: true,
             useCreateIndex: true,
         });
+
         app.listen(PORT, () => console.log(`API app has been started on port ${PORT}...`));
+        console.log(app._router)
+        // app._router.stack.forEach(function(r){
+        //     if (r.route && r.route.path){
+        //         console.log(r.route.path)
+        //     }
+        // })
     } catch (e) {
         console.log('Server Error', e.message);
         process.exit(1);

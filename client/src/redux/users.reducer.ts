@@ -1,3 +1,5 @@
+import request from "../helpers/request";
+
 const SET_USERS = 'myFacebook/users/SET-USERS';
 const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'myFacebook/users/SET_TOTAL_USERS_COUNT';
@@ -51,7 +53,10 @@ const usersReducer = (state = initialState, action: any): IUsers => {
 // 4
 export const requestUsers = (lastId = '') => async (dispatch: any) => {
     dispatch({type: LOADING_START});
-
+    let res = await request(`/api/users`);
+    console.log(res)
+    // if (res.success) dispatch({type: SET_PROFILE_DATA, profile: res.payload});
+    // if (!res.success) dispatch({type: SET_ERROR, error: res.error});
     // let [users, totalCount] = await usersAPI.requestUsers(page, pageSize)
 
     dispatch({type: LOADING_END});
