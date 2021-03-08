@@ -7,10 +7,9 @@ import Users from "./components/Users/Users";
 import Messages from './components/Messages/Messages';
 
 import './App.css';
-import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import {getUserData} from "./redux/auth.reducer";
-import {connect, Provider} from "react-redux";
-import store from './redux/redux-store';
+import {connect} from "react-redux";
 import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
 
 
@@ -58,28 +57,4 @@ const mapStateToProps = (state) => ({
     totalUsersCount: getTotalUsersCount(state),
 });
 
-const AppContainer = connect(mapStateToProps, {getUserData})(App);
-
-// //for build on gitHub
-// const MyFacebook = () => {
-//     return (
-//         <HashRouter>
-//             <Provider store={store}>
-//                 <AppContainer />
-//             </Provider>
-//         </HashRouter>
-//     )
-// }
-
-//for local development
-const MyFacebook = () => {
-    return (
-        <BrowserRouter>
-            <Provider store={store}>
-                <AppContainer/>
-            </Provider>
-        </BrowserRouter>
-    )
-};
-
-export default MyFacebook;
+export default connect(mapStateToProps, {getUserData})(App);
