@@ -4,17 +4,17 @@ import './index.css';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./redux/redux-store";
+import App from "./App";
 
 
-//for local development
-ReactDOM.render(() => {
-    return (
+ReactDOM.render(
+    <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <AppContainer/>
+                <App/>
             </Provider>
         </BrowserRouter>
-    )
-}, document.getElementById('root'));
+    </React.StrictMode>,
+    document.getElementById('root'))
 
 // serviceWorker.register();
