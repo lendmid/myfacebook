@@ -39,6 +39,7 @@ async function request(url, method = 'GET', data = null, headers = {}) {
   } catch (e) {
     console.log(e);
     let error = handleError(e.response.status);
+
     return {success: false, error: `${error}. ${e.response.data.message}`}
   }
 }
