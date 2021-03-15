@@ -7,7 +7,7 @@ import {clearError} from "../../../redux/auth.reducer";
 
 const FormAlert = React.memo(({error, clearError}) => {
 
-    function hideFormAlert(e) {
+    const hideFormAlert = (e) => {
         let cross = document.querySelector('#cross')
         if (e.target === cross) clearError();
     }
