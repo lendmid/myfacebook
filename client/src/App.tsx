@@ -7,13 +7,21 @@ import Users from "./components/Users/Users";
 import Messages from './components/Messages/Messages';
 
 import './App.css';
-import {Redirect, Route, Switch} from 'react-router-dom';
+import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
 import {getUserData} from "./redux/auth.reducer";
 import {connect} from "react-redux";
 import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
+import {IMatch} from "./interfaces/IMatch";
+import {AppStateType} from "./redux/redux-store";
 
 
-const App = React.memo(({isAuth, userId, getUserData}) => {
+interface IProps extends RouteComponentProps<IMatch> {
+    isAuth: boolean
+    userId: string | null
+    getUserData(): void
+}
+
+const App = React.memo(({isAuth, userId, getUserData}: IProps) => {
 
     useEffect(getUserData, [getUserData]); // rewrite this code to tokens
 
@@ -27,7 +35,7 @@ const App = React.memo(({isAuth, userId, getUserData}) => {
         )
     };
 
-    let renderWithAuth = (userId) => {
+    let renderWithAuth = (userId: string | null) => {
         return (
             <>
                 <Header/>
@@ -49,7 +57,7 @@ const App = React.memo(({isAuth, userId, getUserData}) => {
     )
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth,
     userId: state.auth.userId,
     totalUsersCount: getTotalUsersCount(state),
