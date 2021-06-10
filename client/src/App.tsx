@@ -7,15 +7,14 @@ import Users from "./components/Users/Users";
 import Messages from './components/Messages/Messages';
 
 import './App.css';
-import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import {getUserData} from "./redux/auth.reducer";
 import {connect} from "react-redux";
 import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
-import {IMatch} from "./interfaces/IMatch";
 import {AppStateType} from "./redux/redux-store";
 
 
-interface IProps extends RouteComponentProps<IMatch> {
+interface IProps {
     isAuth: boolean
     userId: string | null
     getUserData(): void

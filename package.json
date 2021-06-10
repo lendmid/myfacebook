@@ -17,5 +17,9 @@
   },
   "devDependencies": {
     "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "@sentry/react": "^6.2.5",
+    "@sentry/tracing": "^6.2.5"
   }
 }
