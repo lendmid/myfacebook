@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './User.module.css';
 import {Link} from "react-router-dom";
-import {IUser} from "../../../redux/users.reducer";
+import {IUser} from "../../../store/reducers/users.reducer";
 
 
 const User = React.memo(({id, name, status, photo}: IUser) => {

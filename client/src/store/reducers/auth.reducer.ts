@@ -1,4 +1,4 @@
-import request from "../helpers/request";
+import request from "../../helpers/request";
 import Cookies from "js-cookie";
 
 
@@ -52,40 +52,34 @@ export function authReducer(state: IAuth = initialState, action: any): IAuth {
 export const getUserData = () => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     let res = await request('/api/auth/userData', 'GET');
-
-    if (res.success) {
-        const {userId, email} = res.payload;
-        dispatch({type: SET_USER_DATA, userId, email, isAuth: true});
-    }
-
+    if (res.success) dispatch({
+        type: SET_USER_DATA,
+        userId: res.payload.userId,
+        email: res.payload.email,
+        isAuth: true
+    });
     dispatch({type: LOADING_END});
 };
 
 export const logIn = (email: string, password: string) => async (dispatch: any) => {
     dispatch({type: LOADING_START});
     let res = await request('/api/auth/login', 'POST', {email, password});
-
     if (res.success) dispatch({type: SET_USER_DATA, userId: res.payload.userId, email, isAuth: true});
     if (!res.success) dispatch({type: SET_ERROR, error: res.error});
-
     dispatch({type: LOADING_END});
 };
+
+export const register = (email: string, password: string, firstName: string, lastName: string) => async (dispatch: any) => {
+    dispatch({type: LOADING_START});
+    const res = await request('/api/auth/register', 'POST', {email, password, firstName, lastName});
+    if (res.success) dispatch({type: SET_USER_DATA, userId: res.payload.userId, email, isAuth: true});
+    if (!res.success) dispatch({type: SET_ERROR, error: res.error});
+    dispatch({type: LOADING_END});
+}
 
 export const logOut = () => async (dispatch: any) => {
     dispatch({type: SET_USER_DATA, userId: null, email: null, isAuth: false});
     Cookies.remove("token");
 };
-
-export const register = (email: string, password: string, firstName: string, lastName: string) => {
-    return async (dispatch: any) => {
-        dispatch({type: LOADING_START});
-        const res = await request('/api/auth/register', 'POST', {email, password, firstName, lastName});
-
-        if (res.success) dispatch({type: SET_USER_DATA, userId: res.payload.userId, email, isAuth: true});
-        if (!res.success) dispatch({type: SET_ERROR, error: res.error});
-
-        dispatch({type: LOADING_END});
-    }
-}
 
 export const clearError = () => async (dispatch: any) => dispatch({type: CLEAR_ERROR});

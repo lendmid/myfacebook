@@ -2,10 +2,10 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from "redux-thunk";
 import {reducer as formReducer} from "redux-form"
 
-import profileReducer from "./profile.reducer";
-import {messagesReducer} from "./messages.reducer";
-import usersReducer from "./users.reducer";
-import {authReducer} from "./auth.reducer";
+import profileReducer from "./reducers/profile.reducer";
+import {messagesReducer} from "./reducers/messages.reducer";
+import usersReducer from "./reducers/users.reducer";
+import {authReducer} from "./reducers/auth.reducer";
 import logger from "redux-logger";
 
 

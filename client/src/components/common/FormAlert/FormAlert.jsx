@@ -2,7 +2,7 @@ import React from "react";
 import s from './FormAlert.module.css';
 import cross from '../../../assets/images/cross.svg';
 import {connect} from "react-redux";
-import {clearError} from "../../../redux/auth.reducer";
+import {clearError} from "../../../store/reducers/auth.reducer";
 
 
 const FormAlert = React.memo(({error, clearError}) => {

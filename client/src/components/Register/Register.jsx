@@ -4,7 +4,7 @@ import s from './Register.module.css';
 import {Link} from "react-router-dom";
 
 import {connect} from "react-redux";
-import {register} from "../../redux/auth.reducer";
+import {register} from "../../store/reducers/auth.reducer";
 import useValidation from "./useValidation";
 import Description from "../common/Description/Description";
 import Footer from "../common/Footer/Footer";

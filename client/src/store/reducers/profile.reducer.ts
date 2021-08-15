@@ -1,4 +1,4 @@
-import request from "../helpers/request";
+import request from "../../helpers/request";
 
 
 const SET_PROFILE_DATA = 'myFacebook/profile/SET_PROFILE_DATA';

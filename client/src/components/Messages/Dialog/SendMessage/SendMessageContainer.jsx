@@ -1,4 +1,4 @@
-import {sendMessage} from "../../../../redux/messages.reducer";
+import {sendMessage} from "../../../../store/reducers/messages.reducer";
 import SendMessage from "./SendMessage";
 import {connect} from "react-redux";
 import {compose} from "redux";

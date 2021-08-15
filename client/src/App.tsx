@@ -8,10 +8,10 @@ import Messages from './components/Messages/Messages';
 
 import './App.css';
 import {Redirect, Route, Switch} from 'react-router-dom';
-import {getUserData} from "./redux/auth.reducer";
+import {getUserData} from "./store/reducers/auth.reducer";
 import {connect} from "react-redux";
-import {getTotalUsersCount} from "./redux/selectors/usersSelectors";
-import {AppStateType} from "./redux/redux-store";
+import {getTotalUsersCount} from "./store/selectors/usersSelectors";
+import {AppStateType} from "./store";
 
 
 interface IProps {
@@ -24,29 +24,24 @@ const App = React.memo(({isAuth, userId, getUserData}: IProps) => {
 
     useEffect(getUserData, [getUserData]); // rewrite this code to tokens
 
-    let renderWithNotAuth = () => {
-        return (
-            <Switch>
-                <Route exact path='/login' component={LogIn}/>
-                <Route exact path='/register' component={Register}/>
-                <Redirect to={'/login'}/>
-            </Switch>
-        )
-    };
+    let renderWithNotAuth = () => (
+        <Switch>
+            <Route exact path='/login' component={LogIn}/>
+            <Route exact path='/register' component={Register}/>
+            <Redirect to={'/login'}/>
+        </Switch>
+    )
 
-    let renderWithAuth = (userId: string | null) => {
-        return (
-            <>
-                <Header/>
-                <Switch>
-                    <Route exact path="/profile/:userId" component={Profile}/>
-                    <Route exact path="/messages/:userId" component={Messages}/>
-                    <Route exact path='/users/:userId?' component={Users}/>
-                    <Redirect to={`/profile/${userId}`}/>
-                </Switch>
-            </>
-        )
-    };
+    let renderWithAuth = (userId: string | null) => (
+        <>
+            <Header/>
+            <Switch>
+                <Route exact path="/profile/:userId" component={Profile}/>
+                <Route exact path="/messages/:userId" component={Messages}/>
+                <Route exact path='/users/:userId?' component={Users}/>
+                <Redirect to={`/profile/${userId}`}/>
+            </Switch>
+        </>)
 
     return (
         <div className="app-wrapper">

@@ -5,7 +5,7 @@ import s from './LogIn.module.css';
 import {Link} from "react-router-dom";
 
 import {connect} from "react-redux";
-import {logIn} from "../../redux/auth.reducer";
+import {logIn} from "../../store/reducers/auth.reducer";
 import Description from "../common/Description/Description";
 import Footer from "../common/Footer/Footer";
 import FormAlert from "../common/FormAlert/FormAlert";
@@ -56,7 +56,7 @@ const LogIn = React.memo(({logIn, isLoading, serverError}) => {
 
                 {serverError && <FormAlert error={serverError}/>}
 
-                <div className={s.button_register_underline}></div>
+                <div className={s.button_register_underline}/>
 
                 <Link to={"/register"} className={s.button + " " + s.button_register}>Register</Link>
             </form>

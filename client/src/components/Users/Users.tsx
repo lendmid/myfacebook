@@ -4,11 +4,11 @@ import preview_profile from "../../assets/images/preview_profile.svg"
 import User from "./User/User";
 import PreloaderUsers from "../common/PreloaderUsers/Preloader";
 import Profile from "../Profile/Profile";
-import {getProfile, IProfile} from "../../redux/profile.reducer";
-import {getTotalUsersCount, getUsers} from "../../redux/selectors/usersSelectors";
+import {getProfile, IProfile} from "../../store/reducers/profile.reducer";
+import {getTotalUsersCount, getUsers} from "../../store/selectors/usersSelectors";
 import {connect} from "react-redux";
-import {IUser, requestUsers} from "../../redux/users.reducer";
-import {AppStateType} from "../../redux/redux-store";
+import {IUser, requestUsers} from "../../store/reducers/users.reducer";
+import {AppStateType} from "../../store";
 import {RouteComponentProps} from "react-router-dom";
 import {IMatch} from "../../interfaces/IMatch";
 

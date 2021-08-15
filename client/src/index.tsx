@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import store from "./redux/redux-store";
+import store from "./store";
 import App from "./App";
 import * as Sentry from "@sentry/react";
 import {Integrations} from "@sentry/tracing";

@@ -1,4 +1,4 @@
-import profileReducer, {addPostCreator, deletePostCreator} from "../profile.reducer";
+import profileReducer, {addPostCreator, deletePostCreator} from "../reducers/profile.reducer";
 import React from "react";
 
 

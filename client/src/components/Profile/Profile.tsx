@@ -5,10 +5,10 @@ import AddPost from './AddPost/AddPost';
 import ShortInformation from "./ShortInformation/ShortInformation";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getProfile, IPost, IProfile, savePhoto, updateStatus} from "../../redux/profile.reducer";
+import {getProfile, IPost, IProfile, savePhoto, updateStatus} from "../../store/reducers/profile.reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import Post from "./Post/Post";
-import {AppStateType} from "../../redux/redux-store";
+import {AppStateType} from "../../store";
 import Preloader from "../common/Preloader/Preloader";
 import {IMatch} from "../../interfaces/IMatch";
 

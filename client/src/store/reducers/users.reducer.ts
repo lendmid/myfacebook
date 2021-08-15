@@ -1,4 +1,4 @@
-import request from "../helpers/request";
+import request from "../../helpers/request";
 
 const SET_USERS = 'myFacebook/users/SET-USERS';
 const SET_CURRENT_PAGE = 'myFacebook/users/SET_CURRENT_PAGE';
