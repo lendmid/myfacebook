@@ -2,8 +2,8 @@
   "name": "myfacebook",
   "version": "1.0.0",
   "description": "Pet project on React/Redux",
-  "main": "index.js",
   "author": "lendmid",
+  "main": "index.js",
   "license": "ISC",
   "homepage": "https://github.com/lendmid/facebook#readme",
   "scripts": {
@@ -19,7 +19,7 @@
     "concurrently": "^5.3.0"
   },
   "dependencies": {
-    "@sentry/react": "^6.6.0",
-    "@sentry/tracing": "^6.6.0"
+    "@sentry/react": "^6.11.0",
+    "@sentry/tracing": "^6.11.0"
   }
 }
