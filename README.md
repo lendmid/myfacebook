@@ -1,10 +1,10 @@
-# Pet project №2: Myfacebook
-### Preview: https://cntr.click/KK81Bk5
+# Myfacebook
+#### Preview: https://cntr.click/KK81Bk5
 
-#### Main goal of the myfacebook: practice and playing with technologies 
-##### There are 4 pages: login, profile, messages and users
+#### Main goal: practice and playing with technologies 
+#### There are 4 pages: login, profile, messages and users
 
-### `Technologies:`
+#### `Technologies`:
 - React + Redux
 - JavaScript / TypeScript
 - Node js
