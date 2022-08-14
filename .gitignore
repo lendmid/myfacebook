@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/myfacebook/node_modules/
+/myfacebook-api/node_modules/
 /.pnp
 .pnp.js
 
@@ -24,5 +26,3 @@ yarn-error.log*
 
 
 /.idea
-/server/node_modules/
-/client/node_modules/
