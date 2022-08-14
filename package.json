@@ -1,25 +1,35 @@
 {
   "name": "myfacebook",
   "version": "1.0.0",
-  "description": "Pet project on React/Redux",
   "author": "lendmid",
-  "main": "index.js",
-  "license": "ISC",
-  "homepage": "https://github.com/lendmid/facebook#readme",
+  "description": "myfacebook - copy of real facebook",
+  "homepage": "https://github.com/lendmid/facebook",
   "scripts": {
-    "client": "npm run start --prefix client",
-    "server": "npm run server --prefix server",
-    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\" "
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lendmid/facebook.git"
+    "frontend": "npm run start --prefix frontend",
+    "backend": "npm run server --prefix backend",
+    "dev": "concurrently --kill-others \"npm run frontend\" \"npm run backend\" ",
+    "eslint:frontend": "eslint \"frontend/src/**/*.{ts,tsx}\"",
+    "eslint:frontend:fix": "eslint \"frontend/src/**/*.{ts,tsx}\" --fix",
+    "eslint:backend": "eslint \"backend/src/**/*.{ts,tsx}\"",
+    "eslint:backend:fix": "eslint \"backend/src/**/*.{ts,tsx}\" --fix"
   },
   "devDependencies": {
-    "concurrently": "^5.3.0"
+    "concurrently": "^7.3.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.4.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
   },
-  "dependencies": {
-    "@sentry/react": "^6.19.7",
-    "@sentry/tracing": "^6.19.7"
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged --no-stash"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix --color --max-warnings=0"
+    ]
   }
 }
