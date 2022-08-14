@@ -5,13 +5,13 @@
   "description": "myfacebook - copy of real facebook",
   "homepage": "https://github.com/lendmid/facebook",
   "scripts": {
-    "frontend": "npm run start --prefix frontend",
-    "backend": "npm run server --prefix backend",
-    "dev": "concurrently --kill-others \"npm run frontend\" \"npm run backend\" ",
-    "eslint:frontend": "eslint \"frontend/src/**/*.{ts,tsx}\"",
-    "eslint:frontend:fix": "eslint \"frontend/src/**/*.{ts,tsx}\" --fix",
-    "eslint:backend": "eslint \"backend/src/**/*.{ts,tsx}\"",
-    "eslint:backend:fix": "eslint \"backend/src/**/*.{ts,tsx}\" --fix"
+    "myfacebook": "npm run start --prefix myfacebook",
+    "myfacebook-api": "npm run server --prefix myfacebook-api",
+    "dev": "concurrently --kill-others \"npm run myfacebook\" \"npm run myfacebook-api\" ",
+    "eslint:myfacebook": "eslint \"myfacebook/src/**/*.{ts,tsx}\"",
+    "eslint:myfacebook:fix": "eslint \"myfacebook/src/**/*.{ts,tsx}\" --fix",
+    "eslint:myfacebook-api": "eslint \"myfacebook-api/src/**/*.{ts,tsx}\"",
+    "eslint:myfacebook-api:fix": "eslint \"myfacebook-api/src/**/*.{ts,tsx}\" --fix"
   },
   "devDependencies": {
     "concurrently": "^7.3.0",
