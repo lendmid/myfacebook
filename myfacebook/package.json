@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "author": "lendmid",
+  "description": "myfacebook - copy of real facebook",
+  "homepage": "https://github.com/lendmid/facebook",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "config": "^3.3.7",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.7.3",
+    "mongoose": "^5.13.14"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

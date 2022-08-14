@@ -1,0 +1,26 @@
+body,
+button,
+input,
+textarea {
+    color: #444;
+}
+
+* {
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a, button:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}

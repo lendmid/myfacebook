@@ -1,0 +1,55 @@
+// variables
+
+//$main-bg-blue: #046C96;
+//$main-bg-blue-light: #EAF6FA;
+//
+//$main-orange: #FF9901;
+//$main-orange-light: #FF99015E;
+//$main-orange-lightness: #FF99011F;
+//
+//$bg-box-shadow: 0 0 10px 0 #dedede;
+//$elem-box-shadow: 0 0 5px 0 #dedede;
+
+
+// mixins
+@mixin flex($justify: flex-start, $align: flex-start, $wrap: wrap) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+
+    @media (max-width: 767px) {
+        flex-wrap: wrap;
+    }
+}
+
+@mixin grid($gap: 10px) {
+    display: grid;
+    @if $gap != 0 {
+        gap: $gap;
+    }
+}
+
+@mixin transition($prop) {
+    transition: $prop .2s;
+}
+
+
+// media queries
+@media (max-width: 1200px) {
+}
+
+@media(max-width: 1100px) {
+}
+
+@media (max-width: 991px) {
+}
+
+@media (max-width: 767px) {
+}
+
+@media (max-width: 480px) {
+}
+
+@media (max-width: 320px) {
+}
