@@ -33,7 +33,7 @@ const initialState: IUsers = {
 }
 
 
-const usersReducer = (state = initialState, action: any): IUsers => {
+export const usersReducer = (state = initialState, action: any): IUsers => {
     switch (action.type) {
         case SET_USERS:
             return {...state, users: [...state.users, ...action.users]}
@@ -64,5 +64,3 @@ export const requestUsers = () => async (dispatch: any) => {
     // dispatch({type: SET_USERS, users});
     // dispatch({type: SET_TOTAL_USERS_COUNT, totalUsersCount: Math.ceil(totalCount)});
 }
-
-export default usersReducer;

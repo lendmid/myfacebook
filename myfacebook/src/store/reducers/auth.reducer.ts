@@ -1,12 +1,19 @@
 import request from "../../utils/request";
 import Cookies from "js-cookie";
+import {createAction} from "@reduxjs/toolkit";
 
 
-const SET_USER_DATA = 'myFacebook/auth/SET_USER_DATA';
-const LOADING_START = 'myFacebook/auth/LOADING_START';
-const LOADING_END = 'myFacebook/auth/LOADING_END';
-const SET_ERROR = 'myFacebook/auth/SET_ERROR';
-const CLEAR_ERROR = 'myFacebook/auth/CLEAR_ERROR';
+const SET_USER_DATA = createAction('myFacebook/auth/SET_USER_DATA');
+const LOADING_START = createAction('myFacebook/auth/LOADING_START');
+const LOADING_END = createAction('myFacebook/auth/LOADING_END');
+const SET_ERROR = createAction('myFacebook/auth/SET_ERROR');
+const CLEAR_ERROR = createAction('myFacebook/auth/CLEAR_ERROR');
+
+// const SET_USER_DATA = 'myFacebook/auth/SET_USER_DATA';
+// const LOADING_START = 'myFacebook/auth/LOADING_START';
+// const LOADING_END = 'myFacebook/auth/LOADING_END';
+// const SET_ERROR = 'myFacebook/auth/SET_ERROR';
+// const CLEAR_ERROR = 'myFacebook/auth/CLEAR_ERROR';
 
 
 interface IAuth {
@@ -27,27 +34,33 @@ const initialState: IAuth = {
 };
 
 
-export function authReducer(state: IAuth = initialState, action: any): IAuth {
-    switch (action.type) {
-        case SET_USER_DATA:
-            return {
-                ...state,
-                userId: action.userId,
-                email: action.email,
-                isAuth: action.isAuth,
-            };
-        case SET_ERROR:
-            return {...state, serverError: action.error};
-        case CLEAR_ERROR:
-            return {...state, serverError: null};
-        case LOADING_START:
-            return {...state, isLoading: true};
-        case LOADING_END:
-            return {...state, isLoading: false};
-        default:
-            return state
-    }
-}
+// export const authReducer = createReducer(initialState, {
+//     [SET_USER_DATA] : () => {
+//         state.userId =
+//     }
+// })
+
+// export function authReducer(state: IAuth = initialState, action: any): IAuth {
+//     switch (action.type) {
+//         case SET_USER_DATA:
+//             return {
+//                 ...state,
+//                 userId: action.userId,
+//                 email: action.email,
+//                 isAuth: action.isAuth,
+//             };
+//         case SET_ERROR:
+//             return {...state, serverError: action.error};
+//         case CLEAR_ERROR:
+//             return {...state, serverError: null};
+//         case LOADING_START:
+//             return {...state, isLoading: true};
+//         case LOADING_END:
+//             return {...state, isLoading: false};
+//         default:
+//             return state
+//     }
+// }
 
 export const getUserData = () => async (dispatch: any) => {
     dispatch({type: LOADING_START});

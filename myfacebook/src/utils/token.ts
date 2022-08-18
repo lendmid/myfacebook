@@ -2,8 +2,8 @@ import axios from "axios";
 import {API_TOKENS} from "../store/constants.api";
 
 
-export const parseJwt = (token: any) => {
-    if (!token) return
+export const parseJwt = (token: string | null) => {
+    if (!token) return {}
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
@@ -19,11 +19,13 @@ export const updateTokens = async () => {
     const config = {url: `${API_TOKENS}/refresh`, method: 'POST', data: {accessToken, refreshToken}};
     const res = await axios.request(config)
     if (res) {
-        // todo: migrate to middleware and display error for user
         const jsonFromAccessToken = parseJwt(res.data.accessToken);
         localStorage.setItem('accessToken', res.data.accessToken);
         localStorage.setItem('refreshToken', res.data.refreshToken);
         localStorage.setItem('expiresIn', jsonFromAccessToken.exp);
+    }
+    if (!res) {
+        // todo: display error for user
     }
 }
 
@@ -34,6 +36,7 @@ export const checkAccessTokenExpired = async () => {
     if ((+tokenExpiredTs - 30) * 1000 <= Date.now()) {
         try {
             await updateTokens();
+            // todo: return response
         } catch (e) {
             return true
         }

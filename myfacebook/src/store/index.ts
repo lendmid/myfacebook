@@ -1,33 +1,39 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import thunk from "redux-thunk";
-import {reducer as formReducer} from "redux-form"
-
-import profileReducer from "./reducers/profile.reducer";
-import {messagesReducer} from "./reducers/messages.reducer";
-import usersReducer from "./reducers/users.reducer";
-import {authReducer} from "./reducers/auth.reducer";
+import {AnyAction, Middleware} from "redux";
 import logger from "redux-logger";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import authReducer from './auth/auth.reducer.slice'
 
 
-const rootReducer = combineReducers({
-    profilePage: profileReducer,
-    messagesPage: messagesReducer,
-    usersPage: usersReducer,
-    auth: authReducer,
-    form: formReducer,
+const middlewares: Middleware[] = [];
+if (process.env.NODE_ENV === 'development') middlewares.push(logger);
+
+
+const reducers = {
+    authReducer
+    // profilePage: profileReducer,
+    // messagesPage: messagesReducer,
+    // usersPage: usersReducer,
+};
+
+const rootReducer = combineReducers<typeof reducers>(reducers);
+
+
+const resettableRootReducer = (state: ReturnType<typeof rootReducer> | undefined, action: AnyAction) => {
+    if (action.type === 'resetAppState') {
+        return rootReducer(undefined, action);
+    }
+
+    return rootReducer(state, action);
+};
+
+
+export const setupStore = () => configureStore({
+    reducer: resettableRootReducer,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middlewares)
 });
 
 
-export const composeEnhancers = (
-    window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-) || compose;
-
-const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(thunk, logger))
-);
-
-export default store;
-export type AppStateType = ReturnType<typeof rootReducer>
-
-
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch']

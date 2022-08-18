@@ -7,7 +7,7 @@ import Users from "./components/Users/Users";
 import Messages from './components/Messages/Messages';
 
 import style from './rootStyles/App.module.scss';
-import {Redirect, Route, Switch} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {getUserData} from "./store/reducers/auth.reducer";
 import {connect} from "react-redux";
 import {getTotalUsersCount} from "./store/selectors/usersSelectors";
@@ -20,27 +20,40 @@ interface IProps {
     getUserData(): void
 }
 
+// function RequireAuth({ children }: { children: JSX.Element }) {
+//     let auth = useAuth();
+//     let location = useLocation();
+//
+//     if (!auth.user) {
+//         return <Navigate to="/login" state={{ from: location }} replace />;
+//     }
+//
+//     return children;
+// }
 const App = React.memo(({isAuth, userId, getUserData}: IProps) => {
 
     useEffect(getUserData, [getUserData]); // rewrite this code to tokens
 
+
     let renderWithNotAuth = () => (
-        <Switch>
-            <Route exact path='/login' component={LogIn}/>
-            <Route exact path='/register' component={Register}/>
-            <Redirect to={'/login'}/>
-        </Switch>
+        <Routes>
+            <Route path='/login' element={<LogIn/>}/>
+            <Route path='/register' element={<Register/>}/>
+            {/*<Redirect to='/login'/>*/}
+        </Routes>
     )
 
     let renderWithAuth = (userId: string | null) => (
         <>
             <Header/>
-            <Switch>
-                <Route exact path="/profile/:userId" component={Profile}/>
-                <Route exact path="/messages/:userId" component={Messages}/>
-                <Route exact path='/users/:userId?' component={Users}/>
-                <Redirect to={`/profile/${userId}`}/>
-            </Switch>
+            <Routes>
+                <Route path='/login' element={<LogIn/>}/>
+                <Route path='/register' element={<Register/>}/>
+                <Route path="/profile/:userId" element={<Profile/>}/>
+                <Route path="/messages/:userId" element={<Messages/>}/>
+                <Route path='/users/:userId?' element={<Users/>}/>
+                {/*<Redirect to={`/profile/${userId}`}/>*/}
+            </Routes>
         </>)
 
     return (
