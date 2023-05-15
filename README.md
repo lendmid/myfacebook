@@ -1,5 +1,5 @@
 # Myfacebook
-#### Preview: [https://lcc.click/HkFA9Ax](https://lendmid.github.io/myfacebook/#/login)
+#### Preview: [lendmid.github.io/myfacebook](https://lendmid.github.io/myfacebook/#/login)
 
 #### Main goal: practice and playing with technologies 
 #### There are 4 pages: login, profile, messages and users
